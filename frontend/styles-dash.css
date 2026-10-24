@@ -114,3 +114,21 @@
 .dquote { margin: 6px 0; padding: 6px 12px; border-left: 3px solid var(--border-2); color: var(--text-2); }
 .dnextact { border-color: var(--blue); }
 @media (max-width: 600px) { .drule th { white-space: normal; } }
+
+/* Weekly action system */
+.dwk-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+.dwk-tabs .chip[aria-pressed="true"] { border-color: var(--blue); background: var(--blue-50); color: var(--blue); }
+.dwk-tabs .chip.locked { opacity: .55; cursor: default; }
+.dwk-head { margin: 4px 0 8px; gap: 12px; flex-wrap: wrap; }
+.dwk-group { margin-top: 12px; }
+.dwk-group h4 { margin: 0 0 6px; }
+.dwk-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.dwk-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; }
+.dwk-item.done .dwk-text { text-decoration: line-through; color: var(--text-2); }
+.dwk-check { flex: none; width: 26px; height: 26px; margin-top: 1px; border-radius: 8px; border: 2px solid var(--border-2); background: transparent;
+  color: var(--emerald-700, #047857); font-weight: 800; cursor: pointer; display: grid; place-items: center; }
+.dwk-check[aria-pressed="true"] { border-color: var(--emerald, #10B981); background: var(--emerald-50, #ECFDF5); }
+.dwk-text { font-weight: 500; }
+.dwk-why { color: var(--text-2); margin: 3px 0 2px; }
+.dwk-gate { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: var(--canvas); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.dwk-gate p { margin: 0; flex: 1 1 260px; }

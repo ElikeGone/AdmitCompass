@@ -1575,19 +1575,59 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
   const order = w.phases.flatMap(ph => ph.task_ids);
   let planOpen = false;
   const planWeek = t => `Plan week ${t.week}`;
+  const wk = w.weekly || null, act = id => wk?.actions?.[id];
+  const TIER_TEXT = { must: "Must do", should: "Should do", optional: "Optional" };
+  const unlockKey = `ac-weeks-${d.run.run_id || runId}`;
+  let unlocked = 1, viewWeek = null;
+  try { unlocked = Math.max(1, Number(localStorage.getItem(unlockKey)) || 1); } catch { /* storage blocked: start at week 1 */ }
   const toggle = (id, isDone) => () => { const nx = { ...done }; if (isDone) delete nx[id]; else nx[id] = true; change(nx); };
   const taskRow = (id, nextId) => { const t = byId[id], isDone = !!done[id];
     return el("div", { class: `dtask${isDone ? " done" : ""}${id === nextId ? " next" : ""}`, "data-task": id },
-      el("div", {}, el("div", { text: t.text }), el("div", { class: "xs muted", text: `${planWeek(t)} · ${t.priority} priority${id === nextId ? " · next up" : ""}` })),
+      el("div", {}, el("div", { text: t.text }), el("div", { class: "xs muted", text: [planWeek(t), act(id) ? `${TIER_TEXT[act(id).tier]} · ~${act(id).minutes} min (est.)` : `${t.priority} priority`,
+        act(id)?.moved_from ? "moved up to week 1" : null, id === nextId ? "next up" : null].filter(Boolean).join(" · ") })),
       el("button", { type: "button", class: "btn btn-quiet tbtn", "aria-pressed": isDone ? "true" : "false", "aria-label": `${isDone ? "Mark not done" : "Mark complete"}: ${t.text}`,
         onclick: toggle(id, isDone), text: isDone ? "Done ✓" : "Mark complete" })); };
+  /* Weekly action system: one week at a time, at most 5 priority actions split into must / should / optional, each with
+     a planning-estimate duration, the reason it matters and a completion control. The next week unlocks only after the
+     applicant confirms they understand the current one. */
+  function drawWeek() {
+    if (!wk?.weeks?.length) {   // older payloads without the weekly layer: fall back to the next open tasks
+      const nextId = order.find(id => !done[id]), open = order.filter(id => !done[id]).slice(0, 4);
+      put(clear(weekHost), el("div", { class: "dtasks" }, open.map(id => taskRow(id, nextId)))); return;
+    }
+    const weeks = wk.weeks, last = weeks[weeks.length - 1].week;
+    unlocked = Math.min(unlocked, weeks.length);
+    const shown = weeks[Math.min(viewWeek ?? unlocked, unlocked) - 1];
+    const row = id => { const t = byId[id], a = act(id), isDone = !!done[id];
+      return el("li", { class: `dwk-item${isDone ? " done" : ""}`, "data-task": id },
+        el("button", { type: "button", class: "dwk-check", "aria-pressed": isDone ? "true" : "false", "aria-label": `${isDone ? "Mark not done" : "Mark done"}: ${t.text}`,
+          onclick: toggle(id, isDone) }, isDone ? "✓" : ""),
+        el("div", {}, el("div", { class: "dwk-text", text: t.text }),
+          el("div", { class: "xs dwk-why" }, el("b", { text: "Why: " }), a.why),
+          el("div", { class: "xs muted", text: [`~${a.minutes} min (est.)`, a.moved_from ? `moved up from plan week ${a.moved_from} so week 1 covers the essentials` : null].filter(Boolean).join(" · ") }))); };
+    const group = (tier, ids) => ids.length ? el("div", { class: `dwk-group ${tier}` }, el("h4", {}, el("span", { class: `dtag ${tier === "must" ? "ok" : tier === "optional" ? "" : "ai"}`, text: TIER_TEXT[tier] })),
+      el("ul", { class: "dwk-list" }, ids.map(row))) : null;
+    const prio = shown.priority, must = prio.filter(i => act(i).tier === "must"), should = prio.filter(i => act(i).tier === "should");
+    const doneMust = must.filter(i => done[i]).length, hrs = Math.round(shown.minutes / 30) / 2;
+    put(clear(weekHost),
+      el("div", { class: "dwk-tabs", role: "group", "aria-label": "Plan weeks" },
+        weeks.slice(0, unlocked).map(x => el("button", { type: "button", class: "chip", "aria-pressed": x.week === shown.week ? "true" : "false",
+          onclick: () => { viewWeek = x.week; drawWeek(); }, text: `Week ${x.week}` })),
+        unlocked < weeks.length ? el("span", { class: "chip locked", "aria-disabled": "true", text: `Week ${weeks[unlocked].week} · locked` }) : null),
+      el("div", { class: "spread dwk-head" }, el("b", { text: `Week ${shown.week} of ${last}` }),
+        el("span", { class: "small muted", text: `${prio.length} priority actions · about ${hrs} hours (est.) · ${doneMust}/${must.length} must-dos done` })),
+      group("must", must), group("should", should), group("optional", shown.optional),
+      shown.more.length ? more(`Also planned this week (${shown.more.length})`, el("ul", { class: "dwk-list" }, shown.more.map(row))) : null,
+      shown.week === weeks[unlocked - 1].week && unlocked < weeks.length
+        ? el("div", { class: "dwk-gate" }, el("p", { class: "small", text: `When this week's plan is clear to you, unlock week ${weeks[unlocked].week}. You don't need to finish every task first.` }),
+            el("button", { type: "button", class: "btn btn-secondary", onclick: () => { unlocked += 1; viewWeek = unlocked; try { localStorage.setItem(unlockKey, String(unlocked)); } catch { /* not remembered */ } drawWeek(); },
+              text: `I understand week ${shown.week} — show week ${weeks[unlocked].week}` }))
+        : null,
+      el("p", { class: "xs muted", text: `${wk.estimate_note} ${Object.keys(done).length} of ${w.tasks.length} plan tasks done; the complete plan is in section 6.` }));
+  }
   function draw() {
     clear(host);
-    if (weekHost) {   // first screen: the next 4 open tasks, in plan order
-      const nextId = order.find(id => !done[id]), open = order.filter(id => !done[id]).slice(0, 4);
-      put(clear(weekHost), open.length ? el("div", { class: "dtasks" }, open.map(id => taskRow(id, nextId))) : el("p", { class: "small", text: "All planned tasks are marked done." }),
-        el("p", { class: "xs muted", text: `${Object.keys(done).length} of ${w.tasks.length} plan tasks done. The full plan is in section 6.` }));
-    }
+    if (weekHost) drawWeek();
     const n = Object.keys(done).length, total = w.tasks.length, pct = total ? Math.round((n / total) * 100) : 0;
     const nextId = order.find(id => !done[id]);
     put(host, el("div", { class: "dcard dprog-card" },
@@ -1604,7 +1644,7 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
       el("p", { class: "xs muted", text: remote ? `Saved to your account (${S.user.email}).` : `${w.storage_note}${S.user || !S.config?.accounts_enabled ? "" : " Sign in to keep it in your account."}` }),
       timingNote(timing)));
     const plan = el("details", { class: "more dplan", open: planOpen || null, ontoggle: e => { planOpen = e.target.open; } },
-      el("summary", { text: `View full plan (${w.tasks.length} tasks in ${w.phases.length} phases)` }));
+      el("summary", { text: `View the complete ${wk?.weeks?.length ? `${wk.weeks.length}-week ` : ""}plan (${w.tasks.length} tasks in ${w.phases.length} phases)` }));
     for (const ph of w.phases) {
       const k = ph.task_ids.filter(id => done[id]).length;
       put(plan, el("div", { class: `dphase${ph.human_checkpoint ? " human" : ""}` },

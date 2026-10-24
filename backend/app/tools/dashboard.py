@@ -176,6 +176,116 @@ def deadlines(store: EvidenceStore, program_id: str) -> dict:
     return {"status": "not_checked" if not prog.facts["application_deadlines"].checked else "not_published"}
 
 
+# ---------------- weekly action system ----------------
+# The Strategy Planner writes weekly actions as plain sentences (all "high" priority in practice). This layer is
+# deterministic code: a fixed keyword table gives each action a category, which sets its tier (must / should /
+# optional), a planning-estimate duration and a reason. Reasons cite facts already on the dashboard where they exist.
+# Nothing here is produced by a model, and the durations are labeled as AdmitCompass planning estimates in the UI.
+ACTION_RULES: list[tuple[str, str, str, int]] = [   # (regex, category, tier, minutes) — first match wins; order matters
+    (r"timed practice test", "test_practice", "must", 165),
+    (r"select gmat or gre|decide whether (?:the current test plan|to sit)", "test_decision", "must", 30),
+    (r"diagnostic", "test_diagnostic", "must", 165),
+    (r"selected test", "test_booking", "must", 30),
+    (r"recommend", "recommenders", "must", 30),
+    (r"reviewer|critique", "review", "should", 30),
+    (r"school list", "shortlist", "must", 45),
+    (r"submit|submission|confirmations", "submission", "must", 60),
+    (r"deadline", "deadlines", "must", 30),
+    (r"cost|financ|budget", "cost", "must", 45),
+    (r"career.?story|narrative|essay|short answers|examples demonstrating", "story", "must", 60),
+    (r"test.?prep|exam prep|study plan|weakest sections|review errors", "test_prep", "should", 90),
+    (r"test policies|requirements|application components|official checklist|portals|official instructions", "requirements", "should", 30),
+    (r"resume", "resume", "should", 60),
+    (r"transcript", "transcripts", "should", 30),
+    (r"dso|immigration", "immigration", "should", 30),
+    (r"recruiting|international employment", "school_questions", "optional", 30),
+]
+WEEK_ONE_ESSENTIALS = ["test_diagnostic", "story", "deadlines", "cost", "recommenders"]
+MAX_PRIORITY_ACTIONS = 5
+TIER_ORDER = {"must": 0, "should": 1, "optional": 2}
+GENERIC_WHY = {
+    "test_decision": "Turns your practice results into one test choice, so preparation time goes to a single exam.",
+    "test_practice": "A full timed test is the only reliable check of whether preparation is working.",
+    "test_prep": "Steady preparation in your available hours is what moves a practice score.",
+    "submission": "Applications are only complete once every component is in before the deadline.",
+    "test_booking": "Test dates and official score reports must fit before your target round.",
+    "deadlines": "Every other step is scheduled backwards from the round you choose.",
+    "cost": "Your budget can only be checked against an official total cost of attendance.",
+    "recommenders": "Recommenders need time and context to write detailed letters; early conversations protect quality.",
+    "story": "Your essays and interviews depend on a clear reason for the career change.",
+    "shortlist": "A final list keeps your effort on programs that fit your career goal and budget.",
+    "requirements": "Official requirements decide what you must prepare; they can change between cycles.",
+    "resume": "Your resume is the evidence behind the career story and recommender briefs.",
+    "transcripts": "Official transcripts and translations can take weeks to arrive.",
+    "immigration": "Personal immigration questions need a qualified answer, not general guidance.",
+    "review": "An outside reader catches gaps you can no longer see.",
+    "school_questions": "Useful context from the schools, but your plan doesn't depend on it this week.",
+    "other": "Part of the Strategy Planner's plan for this period.",
+}
+
+
+def classify_action(text: str) -> tuple[str, str, int]:
+    t = text.lower()
+    for rx, cat, tier, minutes in ACTION_RULES:
+        if re.search(rx, t):
+            return cat, tier, minutes
+    return "other", "should", 45
+
+
+def _why(cat: str, profile: ApplicantProfile | None, programs: list[dict], gaps: list[dict], test_state: str | None) -> str:
+    if cat == "test_diagnostic" and test_state == "undecided_no_diagnostic":
+        return "There's no diagnostic score in your profile, so the GRE-or-GMAT choice can't be made yet (see section 2)."
+    if cat == "cost":
+        missing = [p["program_name"] for p in programs if p.get("affordability") and not p["affordability"].get("comparable")]
+        if missing:
+            return f"No official total cost is on file for {', '.join(missing)}, so your budget can't be checked against it yet."
+    if cat == "story":
+        g = next((g for g in gaps if re.search(r"narrative|story|transition", g.get("gap", ""), re.I)), None)
+        if g:
+            return f"Gap flagged by the Strategy Planner (AI-inferred): {g['gap']}"
+    if cat == "recommenders":
+        g = next((g for g in gaps if re.search(r"recommend", g.get("gap", ""), re.I)), None)
+        if g:
+            return f"Gap flagged by the Strategy Planner (AI-inferred): {g['gap']}"
+    if cat == "test_prep" and profile is not None and profile.hours_per_week_available:
+        return f"Steady preparation within your {profile.hours_per_week_available} available hours a week is what moves a practice score."
+    return GENERIC_WHY[cat]
+
+
+def weekly_actions(tasks: list[dict], profile: ApplicantProfile | None = None, programs: list[dict] | None = None,
+                   gaps: list[dict] | None = None, test_state: str | None = None) -> dict:
+    """Per-week priority actions (at most 5 must/should, plus optional), with tier, minutes and reason per action.
+    Week 1 always covers the essentials: the earliest action of each essential category is moved up if needed."""
+    programs, gaps = programs or [], gaps or []
+    actions, week_of = {}, {}
+    for t in tasks:
+        cat, tier, minutes = classify_action(t["text"])
+        actions[t["id"]] = {"category": cat, "tier": tier, "minutes": minutes, "why": _why(cat, profile, programs, gaps, test_state),
+                            "plan_week": t["week"], "moved_from": None}
+        week_of[t["id"]] = t["week"]
+    if tasks:
+        first = min(week_of.values())
+        for cat in WEEK_ONE_ESSENTIALS:
+            ids = [t["id"] for t in tasks if actions[t["id"]]["category"] == cat]
+            if ids and not any(week_of[i] == first for i in ids):
+                earliest = min(ids, key=lambda i: (week_of[i], i))
+                actions[earliest]["moved_from"] = week_of[earliest]
+                week_of[earliest] = first
+                actions[earliest]["tier"] = "must"
+    weeks = []
+    for w in sorted(set(week_of.values())):
+        ids = [t["id"] for t in tasks if week_of[t["id"]] == w]
+        pos = {i: n for n, i in enumerate(ids)}   # plan order breaks ties within a tier
+        ids = sorted(ids, key=lambda i: (TIER_ORDER[actions[i]["tier"]], pos[i]))
+        prio = [i for i in ids if actions[i]["tier"] != "optional"]
+        weeks.append({"week": w, "priority": prio[:MAX_PRIORITY_ACTIONS],
+                      "optional": [i for i in ids if actions[i]["tier"] == "optional"],
+                      "more": prio[MAX_PRIORITY_ACTIONS:],
+                      "minutes": sum(actions[i]["minutes"] for i in prio[:MAX_PRIORITY_ACTIONS])})
+    return {"weeks": weeks, "actions": actions,
+            "estimate_note": "Minutes are AdmitCompass planning estimates for each kind of task, not figures from the schools or test makers."}
+
+
 # ---------------- GRE / GMAT decision ----------------
 NO_SCORE_STATUSES = {"not_started", "preparing", "unknown"}
 
@@ -216,7 +326,9 @@ def build_dashboard(store: EvidenceStore, profile: ApplicantProfile, report: dic
             "deadlines": deadlines(store, rec["program_id"]),
             "test_policy": test_policy(store, rec["program_id"]),
         })
-    return {"pathway": pathway(profile, report), "programs": programs, "workspace": workspace(report),
-            "test_decision": test_decision(profile, report),
+    ws, td, pw = workspace(report), test_decision(profile, report), pathway(profile, report)
+    ws["weekly"] = weekly_actions(ws["tasks"], profile, programs, pw.get("gaps"), td["state"])
+    return {"pathway": pw, "programs": programs, "workspace": ws,
+            "test_decision": td,
             "international_layer": profile.needs_us_work_authorization is not False,
             "run": {"run_id": report.get("run_id"), "status": report.get("status"), "model": report.get("model")}}

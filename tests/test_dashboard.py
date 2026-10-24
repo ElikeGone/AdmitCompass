@@ -169,3 +169,57 @@ def test_each_school_policy_is_the_verified_official_fact(dash):
 
 def test_unknown_program_policy_is_not_invented():
     assert policy_for(default_store(), "no-such-program") == {"status": "not_in_store"}
+
+
+# ---------------- weekly action system ----------------
+from backend.app.tools.dashboard import WEEK_ONE_ESSENTIALS, classify_action, weekly_actions  # noqa: E402
+
+
+def test_every_week_shows_at_most_five_priority_actions(dash):
+    wk = dash["dashboard"]["workspace"]["weekly"]
+    assert len(wk["weeks"]) == 10
+    for week in wk["weeks"]:
+        assert 1 <= len(week["priority"]) <= 5
+        tiers = [wk["actions"][i]["tier"] for i in week["priority"]]
+        assert "optional" not in tiers and tiers == sorted(tiers, key=lambda t: {"must": 0, "should": 1}[t])   # must before should
+
+
+def test_every_action_has_minutes_reason_and_tier(dash):
+    wk = dash["dashboard"]["workspace"]["weekly"]
+    assert len(wk["actions"]) == 40 and "planning estimates" in wk["estimate_note"]
+    for a in wk["actions"].values():
+        assert a["tier"] in {"must", "should", "optional"} and 15 <= a["minutes"] <= 240 and len(a["why"]) > 20
+
+
+def test_week_one_covers_the_essentials(dash):
+    wk = dash["dashboard"]["workspace"]["weekly"]
+    week1 = wk["weeks"][0]
+    cats = {wk["actions"][i]["category"] for i in week1["priority"]}
+    assert set(WEEK_ONE_ESSENTIALS) <= cats   # diagnostics, career story, deadlines, cost, recommenders
+    moved = [i for i in week1["priority"] if wk["actions"][i]["moved_from"]]
+    assert all(wk["actions"][i]["moved_from"] > 1 for i in moved)   # moves are recorded, never silent
+
+
+def test_reasons_cite_dashboard_facts(dash):
+    wk = dash["dashboard"]["workspace"]["weekly"]
+    by_cat = {a["category"]: a["why"] for a in wk["actions"].values()}
+    assert "no diagnostic score" in by_cat["test_diagnostic"]
+    assert "No official total cost is on file for MIT Sloan" in by_cat["cost"]
+
+
+def test_classifier_order_handles_overlapping_wording():
+    assert classify_action("Take another timed practice test and decide whether the current test plan remains appropriate.")[0] == "test_practice"
+    assert classify_action("Select GMAT or GRE based on diagnostic results.")[0] == "test_decision"
+    assert classify_action("Request a trusted reviewer to critique the resume and essay drafts.")[0] == "review"
+    assert classify_action("Finalize the school list, subject to budget review.")[0] == "shortlist"
+    assert classify_action("Something the table has never seen.") == ("other", "should", 45)
+
+
+def test_task_ids_are_unchanged_so_saved_progress_still_applies(dash):
+    w = dash["dashboard"]["workspace"]
+    ids = {i for week in w["weekly"]["weeks"] for k in ("priority", "optional", "more") for i in week[k]}
+    assert ids == {t["id"] for t in w["tasks"]}
+
+
+def test_weekly_actions_without_tasks_is_empty():
+    assert weekly_actions([])["weeks"] == []
