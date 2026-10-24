@@ -212,14 +212,6 @@ async function boot() {
   if (!!S.user !== wasUser) route();   // re-render with account-backed saved data once the session is known
 }
 function setNav(which) { document.querySelectorAll(".nav a").forEach(a => a.classList.toggle("active", a.dataset.nav === which && !a.classList.contains("btn"))); }
-/* Homepage: the header sits over the dark hero (transparent, light text) until the page scrolls past it. */
-function syncHeroHeader() {
-  const hero = document.body.classList.contains("on-home") && document.querySelector(".hp2-hero");
-  const bar = document.querySelector(".topbar");
-  document.body.classList.toggle("hero-top", !!hero && hero.getBoundingClientRect().bottom > (bar ? bar.offsetHeight : 0));
-}
-window.addEventListener("scroll", syncHeroHeader, { passive: true });
-window.addEventListener("resize", syncHeroHeader);
 function route() {
   if (S.poll && !location.hash.startsWith("#/run/")) { clearTimeout(S.poll); S.poll = null; }
   let hash = location.hash || "#/", auth = null;
@@ -234,7 +226,7 @@ function route() {
   if (view === "profile") view = "start";
   clear($main); window.scrollTo(0, 0);
   closeMenu();
-  document.body.classList.remove("on-home"); syncHeroHeader();   // renderHome sets it again
+  document.body.classList.remove("on-home");   // renderHome sets it again (solid dark header on the homepage)
   if (view === "intl") { setNav("intl"); return renderHome("intl"); }
   const views = { start: renderStart, explore: renderExplore, how: renderHow };
   if (views[view]) { setNav(view); return views[view](); }
@@ -282,96 +274,25 @@ const arrow = () => el("span", { class: "arrow", "aria-hidden": "true", text: "�
 const kUSD = v => (v == null ? "—" : `$${Math.round(v / 1000)}k`);
 
 /* Interactive product preview: the real saved analysis only (/api/dashboard/demo = saved run + deterministic checks). */
-function productPreview() {
-  const box = el("div", { class: "pv2", role: "region", "aria-label": "Interactive preview of a real saved analysis" });
-  const side = el("div", { class: "pv2-side", role: "tablist", "aria-label": "Preview sections", "aria-orientation": "vertical" });
-  const body = el("div", { class: "pv2-body", role: "tabpanel", id: "pv2-panel", tabindex: "0" }, el("p", { class: "small muted", text: "Loading the saved analysis…" }));
-  put(box, el("div", { class: "pv2-bar" }, el("div", { class: "pv-dots", "aria-hidden": "true" }, el("i"), el("i"), el("i")),
-    el("span", { class: "pv2-title", text: "Sample analysis · fictional applicant" }), el("a", { href: "#/dashboard/demo", text: "Full dashboard →" })),
-    el("div", { class: "pv2-main" }, side, body));
-  (async () => {
-    let dres;
-    try { dres = await api("/api/dashboard/demo"); } catch { put(clear(body), el("p", { class: "small muted", text: "The saved analysis could not be loaded." })); return; }
-    const d = dres.dashboard, p = dres.profile || {}, progs = d.programs, pw = d.pathway;
-    let sel = (progs.find(x => x.fit.career_fit === "strong") || progs[0]).program_id, curView = "pathway";
-    const cur = () => progs.find(x => x.program_id === sel);
-    const nm = pg => SCHOOL[pg.program_id] || pg.program_name;
-    const fitTag = pg => el("span", { class: `pvtag ${pg.fit.career_fit === "strong" ? "ok" : ""}`, text: `${pg.fit.career_fit[0].toUpperCase()}${pg.fit.career_fit.slice(1)} career fit` });
-    const picker = () => el("div", { class: "pv2-pick", role: "group", "aria-label": "Shortlisted programs" }, progs.map(pg =>
-      el("button", { type: "button", "aria-pressed": pg.program_id === sel ? "true" : "false", onclick: () => { sel = pg.program_id; show(curView); }, text: nm(pg) })));
-    const costCard = pg => {
-      const a = pg.affordability;
-      if (a.comparable) {
-        const c = a.cost_of_attendance;
-        return el("div", { class: "pv2-cost" }, el("div", { class: "k", text: "Cost of attendance" }),
-          el("div", { class: "v" }, el("b", { text: fmtUSD(c.value) }), ` / year (${c.period})`),
-          el("div", { class: "track" }, el("i", { class: "c", style: `width:${Math.min(100, (c.value / a.budget) * 100)}%` })),
-          el("div", { class: "k", text: "vs. your budget" }), el("div", { class: "v" }, el("b", { text: fmtUSD(a.budget) }), " / year"),
-          el("span", { class: `pvtag ${a.gap >= 0 ? "ok" : "warn"}`, text: a.gap >= 0 ? `Within budget · ${fmtUSD(a.gap)} headroom` : `Over budget by ${fmtUSD(-a.gap)}` }));
-      }
-      return el("div", { class: "pv2-cost" }, el("div", { class: "k", text: "Cost of attendance" }), el("div", { class: "v" }, el("b", { text: "Not published" })),
-        a.tuition ? el("p", { class: "xs muted", text: `Tuition ${fmtUSD(a.tuition.value)} (${a.tuition.period}) excludes living costs, so it isn't compared with your budget.` }) : null,
-        el("span", { class: "pvtag warn", text: "Not enough comparable data" }));
-    };
-    const views = {
-      pathway: ["route", "Career pathway", () => {
-        const pg = cur();
-        return [el("h3", { text: "From here to your target career" }),
-          el("div", { class: "pv2-path" },
-            el("div", { class: "pn" }, el("span", { class: "pi" }, svgIcon("user")), el("div", {}, el("div", { class: "k", text: "Your background" }),
-              el("b", { text: pw.background.role || "Not given" }), el("div", { class: "xs muted", text: [pw.background.years != null ? `${pw.background.years} years` : null, pw.background.citizenship].filter(Boolean).join(" · ") }))),
-            el("span", { class: "pa", "aria-hidden": "true", text: "→" }),
-            el("div", { class: "pn" }, el("span", { class: "pi" }, svgIcon("book")), el("div", {}, el("div", { class: "k", text: "MBA program" }), el("b", { text: nm(pg) }), el("div", { class: "xs muted", text: pg.location || "" }))),
-            el("span", { class: "pa", "aria-hidden": "true", text: "→" }),
-            el("div", { class: "pn" }, el("span", { class: "pi" }, svgIcon("briefcase")), el("div", {}, el("div", { class: "k", text: "Target role" }),
-              el("b", { text: pw.target.roles[0] || pw.target.function || "Not given" }), el("div", { class: "xs muted", text: pw.target.industry || "" })))),
-          picker(),
-          el("div", { class: "pv2-split" },
-            el("div", {}, el("div", { class: "pv2-why" }, el("b", { text: `Why ${nm(pg)} fits` }), fitTag(pg)),
-              el("ul", { class: "pv2-checks" }, pg.fit.supported.slice(0, 3).map(c => el("li", { title: c.text }, svgIcon("checkCircle"), el("span", { text: c.text })))),
-              el("a", { class: "small", href: "#/dashboard/demo", text: "View evidence and sources →" })),
-            costCard(pg))];
-      }],
-      programs: ["list", "Recommended programs", () => [el("h3", { text: "Shortlist, by career fit" }),
-        el("div", { class: "pv2-rows" }, progs.map(pg => el("button", { type: "button", class: "pv2-row", onclick: () => { sel = pg.program_id; show("pathway"); } },
-          el("div", {}, el("b", { text: pg.program_name }), el("div", { class: "xs muted", text: `${pg.location || "Location unknown"} · STEM ${pg.feasibility?.stem.status === "verified" ? "verified" : pg.feasibility ? "unknown" : "not relevant"}` })),
-          fitTag(pg)))),
-        el("p", { class: "xs muted", text: "The Pathway Matcher's order — not a ranking, and never an admission estimate." })]],
-      cost: ["dollar", "Affordability", () => [el("h3", { text: "Budget vs. published cost" }), picker(), costCard(cur()),
-        el("p", { class: "xs muted", text: "Budget minus one-year cost of attendance, computed in code only when both are per academic year. No scholarships assumed." })]],
-      intl: ["globe", "International outlook", () => { const fe = cur().feasibility;
-        if (!fe) return [el("h3", { text: "International feasibility" }), el("p", { class: "small muted", text: "Not relevant: this applicant doesn't need U.S. work authorization." })];
-        return [el("h3", { text: "International feasibility" }), picker(),
-          el("div", { class: "pv2-intl" },
-            el("div", {}, el("div", { class: "k", text: "STEM designation" }), el("span", { class: `pvtag ${fe.stem.status === "verified" && fe.stem.designated ? "ok" : "warn"}`, text: fe.stem.status === "verified" ? (fe.stem.designated ? "Verified" : "Not designated") : "Unknown" })),
-            el("div", {}, el("div", { class: "k", text: "International outcomes" }), el("span", { class: `pvtag ${fe.international_outcomes?.kind === "figure" ? "ok" : "warn"}`, text: fe.international_outcomes?.kind === "figure" ? "Official figure" : "Not published" })),
-            el("div", {}, el("div", { class: "k", text: "Visa sponsorship" }), el("span", { class: `pvtag ${fe.sponsorship.status === "unknown" ? "warn" : "ok"}`, text: fe.sponsorship.status === "unknown" ? "Unknown" : "Employer-specific evidence" }))),
-          el("p", { class: "xs muted", text: "STEM designation is not evidence that an employer will sponsor a visa." })]; }],
-      next: ["check", "Next steps", () => { const w = d.workspace, byId = Object.fromEntries(w.tasks.map(t => [t.id, t]));
-        const first = w.phases.flatMap(ph => ph.task_ids).slice(0, 3).map(id => byId[id]);
-        return [el("h3", { text: "Your first moves" }),
-          el("ol", { class: "pv2-steps" }, first.map(t => el("li", {}, el("span", { text: t.text }), el("span", { class: "xs muted", text: ` · Week ${t.week}` })))),
-          el("p", { class: "xs muted", text: `${w.tasks.length} tasks across ${w.phases.length} phases · ${w.phases.filter(x => x.human_checkpoint).length} phases flagged for your own judgement` })]; }],
-    };
-    const keys = Object.keys(views);
-    const show = v => {
-      curView = v;
-      side.querySelectorAll("button").forEach(b => { const on = b.dataset.v === v; b.setAttribute("aria-selected", on ? "true" : "false"); b.tabIndex = on ? 0 : -1; });
-      put(clear(body), views[v][2]());
-    };
-    put(clear(side), keys.map(k => el("button", { type: "button", role: "tab", id: `pv2-tab-${k}`, "aria-controls": "pv2-panel", "data-v": k, onclick: () => show(k) }, svgIcon(views[k][0]), el("span", { text: views[k][1] }))));
-    side.addEventListener("keydown", e => {
-      const i = keys.indexOf(curView), step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
-      if (!step) return;
-      e.preventDefault(); const k = keys[(i + step + keys.length) % keys.length]; show(k); side.querySelector(`[data-v="${k}"]`).focus();
-    });
-    show("pathway");
-  })();
-  return box;
-}
 
+const TEST_CHOICE = { undecided_need_info: "Take a timed diagnostic for both tests, then choose one", gmat: "GMAT", gre: "GRE", either: "Either test is accepted" };
+async function heroProof(host) {
+  let d;
+  try { d = (await api("/api/dashboard/demo")).dashboard; } catch { host.closest(".hp2-proof")?.remove(); return; }
+  const pg = d.programs?.[0], tg = d.workspace?.test_guidance, w = d.workspace;
+  const firstId = w?.phases?.flatMap(ph => ph.task_ids)[0], task = w?.tasks?.find(t => t.id === firstId);
+  const stem = pg?.feasibility?.stem;
+  const card = (n, k, main, foot) => el("div", { class: "hp2-pcard" }, el("span", { class: "num", text: String(n) }),
+    el("div", {}, el("div", { class: "k", text: k }), el("b", { text: main }), foot ? el("div", { class: "f", text: foot }) : null));
+  put(host,
+    pg ? card(1, "Match", `${SCHOOL[pg.program_id] || pg.program_name} · ${pg.fit.career_fit} career fit`,
+      [d.pathway?.target?.roles?.[0] ? `for ${d.pathway.target.roles[0]}` : null, stem?.status === "verified" && stem.designated ? "STEM-designated (official page)" : null].filter(Boolean).join(" · ")) : null,
+    tg ? card(2, "Test decision", TEST_CHOICE[tg.recommendation] || "See the recommendation", tg.evidence_ids?.length ? `Test policy read from ${tg.evidence_ids.length} official program pages` : null) : null,
+    task ? card(3, "Next action", task.text, `Plan week ${task.week} · ${task.priority} priority`) : null);
+}
 async function renderHome(scrollTo) {
-  document.body.classList.add("on-home"); queueMicrotask(syncHeroHeader);   // runs once the hero below is in the page
+  document.body.classList.add("on-home");
+  const proof = el("div", { class: "hp2-proof-cards" });
   const stats = el("div", { class: "hp2-stats" });
   const grid = el("div", { class: "show-grid" }, el("p", { class: "small muted", text: "Loading programs…" }));
   const showFoot = el("div", { class: "show-foot" });
@@ -381,24 +302,27 @@ async function renderHome(scrollTo) {
         el("div", { class: "hp2-copy" },
           el("span", { class: "hp2-eyebrow", text: "Career-first MBA guidance" }),
           el("h1", {}, "Your career ambition deserves ", el("span", { class: "grad", text: "a better education plan." })),
-          el("p", { class: "hp2-sub", text: "Discover MBA programs by where they lead, compare real costs, understand international career options and get an actionable application plan — with every claim traced to its official source." }),
+          el("p", { class: "hp2-sub", text: "Match MBA programs to the career you want, settle the GRE-or-GMAT question, and turn your gaps into a weekly plan — with every claim traced to its official source." }),
           el("div", { class: "hp2-cta" },
             el("a", { class: "btn btn-primary btn-lg", href: "#/start" }, "Find my pathway ", arrow()),
-            el("a", { class: "btn btn-ghost-light btn-lg", href: "#/explore", text: "Explore programs" })),
-          el("ul", { class: "hp2-trust", "aria-label": "What you get" }, [["checkCircle", "Verified facts with sources"], ["target", "Career-focused program matching"],
-            ["globe", "Built for international applicants"], ["list", "A practical application plan"]].map(([i, t]) => el("li", {}, el("span", { class: "ti" }, svgIcon(i)), t)))),
-        productPreview()),
-      el("div", { class: "wrap" }, stats)),
+            el("a", { class: "btn btn-ghost-light btn-lg", href: "#/explore", text: "Explore programs" }))),
+        el("aside", { class: "hp2-proof", "aria-label": "Example from a saved sample analysis" },
+          el("p", { class: "hp2-proof-k", text: "From a saved sample analysis · fictional applicant" }),
+          proof,
+          el("a", { class: "hp2-proof-link", href: "#/dashboard/demo" }, "See the full sample ", arrow())))),
     el("section", { class: "hp2-sec", id: "how" }, el("div", { class: "wrap how2" },
-      el("div", { class: "sec2-head" }, el("span", { class: "eyebrow2", text: "How it works" }), el("h2", { text: "From career goal to application plan in four steps" }),
-        el("p", { text: "Four specialised AI agents analyse verified information. Plain code checks every answer against the evidence before you see it." })),
-      el("ol", { class: "how2-cards" }, [
-        ["user", "Share your goal", "Tell us about your background, target career, budget and timing."],
-        ["route", "Get program matches", "Programs are shortlisted by where they lead — not by prestige or rankings."],
-        ["shield", "Verify the evidence", "Costs, STEM status and outcomes are checked against official pages; a Skeptic agent challenges weak claims."],
-        ["list", "Get your plan", "See your options and a week-by-week roadmap sized to your available time."]]
+      el("div", { class: "sec2-head" }, el("span", { class: "eyebrow2", text: "What it does today" }), el("h2", { text: "Three decisions, one evidence-checked plan" }),
+        el("p", { text: "Four AI agents work from verified program facts; plain code checks every answer against the evidence before you see it." })),
+      el("ol", { class: "how2-cards three" }, [
+        ["route", "Match programs to your career goal", "Programs are shortlisted by where they lead — not by prestige or rankings — and checked against official pages."],
+        ["book", "Decide between the GRE and GMAT", "Each shortlisted program's test policy comes from its official page, so you can choose one test and plan for it."],
+        ["list", "Turn your gaps into a weekly plan", "A Skeptic agent challenges weak claims, and your gaps become a week-by-week plan sized to the time you have."]]
         .map(([i, h, t], n) => el("li", { class: "how2-card" }, el("div", { class: "how2-top" }, el("span", { class: "num", text: String(n + 1) }), el("span", { class: "ic" }, svgIcon(i))),
-          el("h3", { text: h }), el("p", { text: t })))))),
+          el("h3", { text: h }), el("p", { text: t })))),
+      stats,
+      el("div", { class: "hp2-next", "aria-label": "Coming next" },
+        el("div", { class: "hp2-next-head" }, el("span", { class: "pvtag", text: "Coming next" }), el("span", { class: "small muted", text: "The rest of the journey — not available yet." })),
+        el("ol", {}, ["Essays", "Interviews", "Visa preparation", "Networking", "Recruiting", "Casing", "Events"].map(t => el("li", { text: t })))))),
     el("section", { class: "hp2-sec tint", id: "programs" }, el("div", { class: "wrap" },
       el("div", { class: "sec2-head row2" }, el("div", {}, el("span", { class: "eyebrow2 violet", text: "Real, sourced information" }), el("h2", { text: "Leading MBA programs, with the evidence shown" }),
         el("p", { text: "Each card says what's sourced from official pages and what isn't. Unknown stays unknown." })),
@@ -420,6 +344,7 @@ async function renderHome(scrollTo) {
       el("div", { class: "hp2-cta" }, el("a", { class: "btn btn-light btn-lg", href: "#/start" }, "Find my pathway ", arrow()),
         el("a", { class: "btn btn-ghost-light btn-lg", href: "#/dashboard/demo", text: "View sample analysis" }))))));
   if (scrollTo) document.getElementById(scrollTo)?.scrollIntoView({ block: "start" });
+  heroProof(proof);
   try {
     const r = await api("/api/programs"), by = r.counts.by_evidence_status;
     put(stats, [[svgIcon("checkCircle"), String(by.detailed), "programs with detailed evidence"], [svgIcon("book"), String(by.partial), "more partially verified from official pages"],
