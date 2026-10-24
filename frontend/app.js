@@ -1124,6 +1124,8 @@ function renderHow() {
 }
 
 /* ---------------- live run ---------------- */
+/* Public errors are structured objects {status, message, error_code}; older payloads may still carry a string. */
+const errText = e => (e == null ? "" : typeof e === "string" ? e : e.message || "");
 function describeEvent(e) {
   const d = e.detail || {};
   switch (e.kind) {
@@ -1132,7 +1134,7 @@ function describeEvent(e) {
     case "tool_call": {
       let a = d.args; if (typeof a === "string") { try { a = JSON.parse(a); } catch { /* keep */ } }
       const s = a && typeof a === "object" ? Object.entries(a).map(([k, v]) => `${k}=${Array.isArray(v) ? v.join(",") : v}`).join(" ") : "";
-      return `Looked up ${d.tool}(${s.slice(0, 120)})${d.cached_repeat ? " · from cache" : ""}${d.ok === false ? ` · error: ${d.error}` : ""}`;
+      return `Looked up ${d.tool}(${s.slice(0, 120)})${d.cached_repeat ? " · from cache" : ""}${d.ok === false ? ` · ${errText(d.error) || "lookup failed"}` : ""}`;
     }
     case "validation": return d.ok ? "Answer passed format checks" : "Answer failed format checks — retrying";
     case "grounding":
@@ -1142,7 +1144,7 @@ function describeEvent(e) {
     case "handoff": return `Handed over to ${AGENT_NAME[d.to] || d.to}`;
     case "revision": return `Skeptic asked for a revision of ${AGENT_NAME[d.target] || d.target}`;
     case "budget_stop": return `Stopped by the budget limit: ${d.reason}`;
-    case "agent_failure": return `Stopped safely: ${d.error}`;
+    case "agent_failure": return errText(d.error) || "Stopped safely";
     case "run_end": return `Finished · ${d.requests} model requests · ${fmtInt(d.total_tokens)} tokens`;
     default: return e.kind;
   }
@@ -1193,7 +1195,7 @@ function renderRun(runId) {
       } else {
         title.textContent = "The analysis stopped";
         put(clear(status), note("bad", r.status === "stopped_budget" ? "It reached its budget limit." : "It stopped safely.",
-          el("span", {}, `${r.error || "No recommendations were produced."} Nothing was guessed to fill the gap. `, el("a", { href: "#/results/demo", text: "View the sample analysis" }))));
+          el("span", {}, `${errText(r.error) || "No recommendations were produced."} Nothing was guessed to fill the gap. `, el("a", { href: "#/results/demo", text: "View the sample analysis" }))));
       }
     } catch (err) {
       if (++failures > 5) { put(clear(status), note("bad", "Lost contact with the server.", err.message)); window.removeEventListener("beforeunload", onLeave); return; }
@@ -1264,7 +1266,7 @@ async function renderResults(which, sub) {
 function viewShortlist(host, res, which) {
   const r = res.report;
   const nonComparable = (r.metric_comparability || []).some(m => !m.all_comparable);
-  put(host, el("div", {}, r.status !== "completed" && r.status !== "completed_with_violations" ? note("bad", `This run ended with status ${r.status}.`, r.error || "") : null,
+  put(host, el("div", {}, r.status !== "completed" && r.status !== "completed_with_violations" ? note("bad", `This run ended with status ${r.status}.`, errText(r.error)) : null,
     (r.recommendations || []).map(rec => recCard(rec, res)),
     nonComparable ? el("div", { style: "margin-top:32px" }, more("Compare employment outcomes",
       el("p", { class: "small muted", text: "Schools define these numbers differently (who is counted, and when), so they're shown side by side but not ranked." }),

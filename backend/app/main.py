@@ -19,10 +19,12 @@ from pathlib import Path
 from typing import Any
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, ValidationError
 
+from .core.public_errors import public_error, public_event, public_report
 from .core.budget import RunBudget
 from .core.config import AUTHORIZED_MODEL, MissingAPIKeyError, REPO_ROOT, load_environment
 from .orchestrator import MAX_REVISIONS
@@ -76,13 +78,27 @@ def evidence_map(store: EvidenceStore, report: dict) -> dict[str, dict]:
     return out
 
 
+def profile_field_errors(e: ValidationError) -> dict[str, str]:
+    """{field: plain message} for the profile form. Uses Pydantic's short `msg` only (never the input value, error
+    type, model name or documentation link); "Value error, " prefixes from our own validators are dropped."""
+    out: dict[str, str] = {}
+    for err in e.errors(include_url=False, include_input=False, include_context=False):
+        field = ".".join(str(x) for x in err.get("loc", ()) if not isinstance(x, int)) or "profile"
+        msg = str(err.get("msg", "Invalid value.")).removeprefix("Value error, ")
+        if err.get("type") == "extra_forbidden":
+            msg = "This field isn't part of the profile."
+        out.setdefault(field, msg[:160])
+    return out
+
+
 def public_events(trace: list) -> list[dict]:
-    """Trace events are metadata only (no prompts, no model reasoning); pass them through as dicts."""
-    return [e.model_dump(mode="json") if hasattr(e, "model_dump") else e for e in trace]
+    """Trace events are metadata only (no prompts, no model reasoning). Raw error text is replaced by structured,
+    user-safe errors; the raw text stays in the server-side trace, the saved run record and the server log."""
+    return [public_event(e.model_dump(mode="json") if hasattr(e, "model_dump") else e) for e in trace]
 
 
 def result_payload(mode: str, profile: dict, report: dict, trace: list, extra: dict | None = None) -> dict:
-    return {"mode": mode, "profile": profile, "report": report, "events": public_events(trace),
+    return {"mode": mode, "profile": profile, "report": public_report(report), "events": public_events(trace),
             "evidence": evidence_map(default_store(), report), **(extra or {})}
 
 
@@ -213,8 +229,11 @@ def start_run(req: RunRequest) -> dict:
     data["profile_id"] = f"session-{uuid.uuid4().hex[:8]}"   # server-generated
     try:
         profile = ApplicantProfile.model_validate(data)
-    except Exception as e:
-        raise HTTPException(422, f"Invalid profile: {str(e)[:400]}")
+    except ValidationError as e:   # field-level guidance only: no input echo, error types, schema names or doc links
+        raise HTTPException(422, {"message": "Some profile fields are invalid. Please check them and try again.",
+                                  "fields": profile_field_errors(e)})
+    except Exception:
+        raise HTTPException(422, {"message": "The profile could not be read. Please check it and try again.", "fields": {}})
     try:
         state = app.state.runs.start(profile)
     except RunRejected as e:
@@ -231,7 +250,8 @@ def run_status(run_id: str, since: int = Query(0, ge=0)) -> dict:
     except RunRejected as e:
         raise HTTPException(e.status_code, e.message)
     trace = state.orchestrator.trace if state.orchestrator else []
-    out = {"run_id": run_id, "status": state.status, "error": state.error,
+    out = {"run_id": run_id, "status": state.status,
+           "error": public_error(state.error, "budget" if state.status == "stopped_budget" else "failure"),
            "events": public_events(trace[since:]), "next_since": len(trace),
            "elapsed_seconds": round(((state.finished_at or time.time()) - state.created_at), 1),
            "budget": state.orchestrator.budget.snapshot() if state.orchestrator else None}
@@ -239,6 +259,18 @@ def run_status(run_id: str, since: int = Query(0, ge=0)) -> dict:
         report = state.report.model_dump(mode="json")
         out["result"] = result_payload("live", state.profile.model_dump(mode="json"), report, trace)
     return out
+
+
+@app.exception_handler(RequestValidationError)
+def bad_request_body(_, exc: RequestValidationError):
+    """Malformed request bodies: field-level guidance only (FastAPI's default echoes the input and error types)."""
+    fields: dict[str, str] = {}
+    for err in exc.errors():
+        loc = [str(x) for x in err.get("loc", ()) if x != "body" and not isinstance(x, int)]
+        msg = "This field isn't accepted." if err.get("type") == "extra_forbidden" else str(err.get("msg", "Invalid value."))
+        fields.setdefault(".".join(loc) or "request", msg.removeprefix("Value error, ")[:160])
+    return JSONResponse(status_code=422, content={"detail": {"message": "Some fields are invalid. Please check them and try again.",
+                                                             "fields": fields}})
 
 
 @app.exception_handler(Exception)

@@ -6,6 +6,7 @@ Every handoff, tool call, model call, validation, and grounding decision is appe
 """
 from __future__ import annotations
 
+import logging
 import time
 import uuid
 from typing import Any
@@ -44,6 +45,8 @@ AGENT_SPECS = {
 }
 ORDER = ["pathway_matcher", "evidence_analyst", "strategy_planner"]
 
+
+errlog = logging.getLogger("admitcompass.errors")  # raw error detail stays server-side
 
 class Orchestrator:
     def __init__(self, chat: ChatFn, store: EvidenceStore, budget: RunBudget | None = None, model: str = "gpt-6-luna",
@@ -166,9 +169,11 @@ class Orchestrator:
         except AgentFailure as e:
             status, error = "failed_closed", redact_secrets(str(e))
             self.event("agent_failure", "orchestrator", {"error": error[:300]})
+            errlog.error("run %s failed closed: %s", run_id, error[:300])
         except Exception as e:  # unexpected API/network errors also fail closed
             status, error = "failed_closed", redact_secrets(f"{type(e).__name__}: {str(e)[:300]}")
             self.event("agent_failure", "orchestrator", {"error": error})
+            errlog.error("run %s failed closed: %s", run_id, error)
         if status == "completed" and self.violations:
             status = "completed_with_violations"
         report = self._report(run_id, profile, status, error, revision_target, time.perf_counter() - started)

@@ -1,6 +1,7 @@
 """Generic bounded agent runner: tool loop -> JSON -> Pydantic validation -> (optional) one corrective retry."""
 from __future__ import annotations
 
+import logging
 import json
 from dataclasses import dataclass, field
 from typing import Callable, TypeVar
@@ -17,6 +18,8 @@ T = TypeVar("T", bound=BaseModel)
 MAX_TOOL_ROUNDS = 4       # model turns that may request tools before it must answer
 MAX_ATTEMPTS = 2          # initial + one corrective retry for invalid JSON/schema
 
+
+errlog = logging.getLogger("admitcompass.errors")  # raw error detail stays server-side
 
 class AgentFailure(RuntimeError):
     pass
@@ -79,6 +82,7 @@ def run_agent(*, agent: str, system: str, user_payload: dict, schema: type[T], t
         except (ValidationError, ValueError, TypeError) as e:
             err = str(e)[:800]
             event("validation", agent, {"attempt": attempt, "ok": False, "error": err[:300]})
+            errlog.warning("%s output failed validation (attempt %s): %s", agent, attempt, err[:300])
             if attempt == MAX_ATTEMPTS:
                 raise AgentFailure(f"{agent}: output failed validation after {MAX_ATTEMPTS} attempts: {err[:300]}") from e
             messages.append({"role": "assistant", "content": content[:4000]})

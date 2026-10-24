@@ -4,6 +4,7 @@ Tools only READ the evidence store. Nothing a model writes can create or change 
 """
 from __future__ import annotations
 
+import logging
 import json
 from typing import Any, Callable
 
@@ -15,6 +16,8 @@ from .evidence_store import EvidenceNotFoundError, EvidenceStore
 OVERVIEW_FACTS = ("location", "tuition", "cost_of_attendance", "stem_designation", "employment_rate",
                   "median_base_salary", "test_policy")
 
+
+errlog = logging.getLogger("admitcompass.errors")  # raw error detail stays server-side
 
 def _norm_def(d: str | None) -> str:
     return " ".join((d or "").lower().split())
@@ -124,6 +127,7 @@ class ToolBox:
             return out
         except (EvidenceNotFoundError, ValueError, TypeError, json.JSONDecodeError) as e:
             self.log(agent, name, {"args": raw_args, "ok": False, "error": str(e)[:200]})
+            errlog.warning("%s tool %s failed: %s", agent, name, str(e)[:200])
             return json.dumps({"error": str(e)[:200]})
 
     # ----- OpenAI tool specs -----

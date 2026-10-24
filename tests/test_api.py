@@ -148,7 +148,8 @@ def test_model_failure_is_reported_safely(client):
     run_id = client.post("/api/runs", json={"profile": PROFILE, "confirm_paid_run": True}).json()["run_id"]
     done = wait_done(client, run_id)
     assert done["status"] == "failed_closed"
-    assert "test-secret-value-123" not in str(done) and "<redacted>" in done["error"]
+    assert "test-secret-value-123" not in str(done) and "upstream 500" not in str(done)   # no raw exception text at all
+    assert done["error"] == {"status": "failed", "error_code": "ANALYSIS_FAILED", "message": "The analysis stopped safely before finishing."}
 
 
 def test_unknown_run_404(client):
