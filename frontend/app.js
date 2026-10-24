@@ -1308,44 +1308,146 @@ async function renderDashboard(runId) {
   const d = dres.dashboard, p = dres.profile || {}, demo = dres.mode === "saved_demo";
   const res = { evidence: dres.evidence };
   let sel = d.programs[0]?.program_id;
-  const wrap = el("div", { class: "wrap dash" });
-  const jump = id => () => document.getElementById(id)?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-  put(wrap, el("div", { class: "dash-head" },
-    el("div", { class: "kicker", text: demo ? "Sample analysis · fictional applicant" : "Your analysis" }),
-    el("h1", { text: "Career intelligence dashboard" }),
-    el("p", { class: "lead", text: `${[p.target_function, p.target_industry].filter(Boolean).join(" in ") || "Career goal not given"} · budget ${p.budget_usd ? `${fmtUSD(p.budget_usd)} ${PERIOD_TEXT(p.budget_period)}` : "not given"}${p.citizenship_country ? ` · from ${p.citizenship_country}` : ""}` }),
-    demo ? el("p", { class: "small muted", text: `A real ${d.run.model} analysis saved on 23 October 2026, combined with today's evidence store. Viewing it makes no AI call.` }) : null));
-
-  /* Overview: the first screen — summary, three priority decisions, compact school cards, this week's actions. */
-  const pw = d.pathway;
-  const needsAuth = d.programs.some(pg => pg.feasibility);
-  const timing = planTiming(d.programs);
+  const wrap = el("div", { class: "wrap dash dash2" });
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const jump = id => () => document.getElementById(id)?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  const pw = d.pathway, timing = planTiming(d.programs), td = d.test_decision;
   const sevRank = { high: 0, medium: 1, low: 2 };
-  const priorities = [...(pw.gaps || [])].sort((a, b) => (sevRank[a.severity] ?? 3) - (sevRank[b.severity] ?? 3)).slice(0, 3);
-  const weekHost = el("div");
-  put(wrap, el("section", { class: "dsec doverview", id: "d-overview", "aria-labelledby": "h-overview" },
-    el("h2", { id: "h-overview", class: "sr-only", text: "Overview" }),
-    el("div", { class: "dcols" },
-      el("div", { class: "dcard dsummary" }, el("h3", { text: "Applicant summary" }),
-        el("ul", { class: "dlist" },
-          el("li", {}, el("span", { class: "muted", text: "Now: " }), [pw.background.role, pw.background.industry, pw.background.years != null ? `${pw.background.years} years` : null].filter(Boolean).join(" · ") || "Not given"),
-          el("li", {}, el("span", { class: "muted", text: "Goal: " }), [pw.target.roles[0] || pw.target.function, pw.target.industry].filter(Boolean).join(" · ") || "Not given"),
-          el("li", {}, el("span", { class: "muted", text: "Budget: " }), p.budget_usd ? `${fmtUSD(p.budget_usd)} ${PERIOD_TEXT(p.budget_period)}` : "Not given"),
-          el("li", {}, el("span", { class: "muted", text: "U.S. work authorization: " }), needsAuth ? "needed after the MBA" : "not needed"),
-          el("li", {}, el("span", { class: "muted", text: "Analysis: " }), RUN_STATUS_TEXT[d.run.status] || "Status not recorded"))),
-      el("div", { class: "dcard" }, el("h3", { text: "Three priority decisions" }), el("span", { class: "dtag ai", text: "AI-inferred · Strategy Planner" }),
-        priorities.length ? el("ol", { class: "dlist dprio" }, priorities.map(g => el("li", {}, el("b", { text: g.gap }), el("div", { class: "small muted", text: g.action }))))
-          : el("p", { class: "small muted", text: "The analysis didn't produce priority decisions." }))),
-    el("h3", { class: "dsub", text: "Shortlisted programs" }),
-    el("p", { class: "xs muted", text: "Order is the Pathway Matcher's, not a ranking. Select a program for its fit, costs and evidence." }),
-    el("div", { class: "dschools" }, d.programs.map(pg => schoolCard(pg, () => { sel = pg.program_id; drawPrograms(); jump("d-fit")(); }))),
-    el("div", { class: "dcard dweek" }, el("h3", { text: "This week's actions" }), timingNote(timing), weekHost)));
-  put(wrap, el("nav", { class: "dash-nav", "aria-label": "Dashboard sections" }, [["d-path", "Pathway"], ["d-test", "GRE or GMAT"], ["d-fit", "Program fit"], ["d-cost", "Affordability"], ["d-intl", "International"], ["d-work", "Full plan & deadlines"]]
-    .map(([id, t]) => el("button", { type: "button", class: "chip", onclick: jump(id), text: t }))));
+  const gaps = [...(pw.gaps || [])].sort((x, y) => (sevRank[x.severity] ?? 3) - (sevRank[y.severity] ?? 3));
+  const name = pg => SCHOOL[pg.program_id] || pg.program_name;
+  const target = pw.target.roles[0] || pw.target.function || "your target role";
+  const strong = d.programs.filter(pg => pg.fit?.career_fit === "strong").map(name);
+  const wk = d.workspace.weekly, byId = Object.fromEntries(d.workspace.tasks.map(t => [t.id, t]));
+  let doneIds = {};
+  try { doneIds = JSON.parse(localStorage.getItem(`ac-workspace-${d.run.run_id || runId}`)) || {}; } catch { doneIds = {}; }
+  const firstAction = (wk?.weeks || []).flatMap(x => x.priority).find(id => !doneIds[id]);
+  const undecided = td?.state === "undecided_no_diagnostic";
 
-  /* 1. pathway */
-  put(wrap, el("section", { class: "dsec", id: "d-path", "aria-labelledby": "h-path" },
-    el("h2", { id: "h-path", text: "1 · Career pathway" }),
+  /* 1. top summary: who, where to, one sentence, three decisions, one primary action */
+  put(wrap, el("header", { class: "ds-top" },
+    el("div", { class: "kicker", text: demo ? "Sample analysis · fictional applicant" : "Your analysis" }),
+    el("h1", { text: demo ? "Sample analysis" : "Your analysis" }),
+    el("p", { class: "ds-who" }, el("span", { text: [pw.background.role, pw.background.industry, pw.background.years != null ? `${pw.background.years} years` : null].filter(Boolean).join(" · ") || "Background not given" }),
+      el("span", { class: "ds-arrow", "aria-hidden": "true", text: " → " }), el("b", { text: target })),
+    el("p", { class: "ds-rec", text: `Research the ${d.programs.length} programs shortlisted for a ${target} path${strong.length ? ` — ${strong.join(" and ")} ${strong.length > 1 ? "fit" : "fits"} your career goal best` : ""}${undecided ? ", and take timed diagnostics before choosing between the GRE and GMAT" : ""}.` }),
+    el("div", { class: "ds-decisions" },
+      el("div", { class: "ds-dec" }, el("span", { class: "ds-k", text: "School shortlist" }), el("b", { text: `${d.programs.length} programs` }),
+        el("span", { class: "ds-v", text: strong.length ? `Strongest fit: ${strong.join(", ")}` : d.programs.map(name).join(", ") })),
+      el("div", { class: "ds-dec" }, el("span", { class: "ds-k", text: "GRE or GMAT" }), el("b", { text: undecided ? "Undecided" : (PLANNER_TEST_TEXT[td?.planner_recommendation] || "See the test section") }),
+        el("span", { class: "ds-v", text: undecided ? "No diagnostic scores yet — take one timed practice test of each" : "From the Strategy Planner (AI-inferred)" })),
+      el("div", { class: "ds-dec" }, el("span", { class: "ds-k", text: "Next action this week" }),
+        firstAction ? [el("b", { text: byId[firstAction].text }), el("span", { class: "ds-v", text: `About ${wk.actions[firstAction].minutes} minutes (estimate)` })]
+          : el("b", { text: "All planned actions are marked done" }))),
+    el("div", { class: "ds-cta" },
+      el("button", { type: "button", class: "btn btn-primary btn-lg", onclick: jump("d-plan") }, "Start this week's plan ", arrow()),
+      el("button", { type: "button", class: "btn btn-quiet", onclick: jump("d-short"), text: "See the shortlist" })),
+    demo ? el("p", { class: "ds-note", text: `A real ${d.run.model} analysis saved on 23 October 2026, combined with today's evidence store. Viewing it makes no AI call.` }) : null));
+
+  /* 2. shortlist: four compact cards; "View evidence" opens that school's full source-backed details */
+  const drawer = el("div", { class: "ds-drawer", hidden: true });
+  let open = null;
+  const openEvidence = pg => {
+    if (open === pg.program_id) { open = null; drawer.hidden = true; clear(drawer); drawCards(); return; }
+    open = pg.program_id; sel = pg.program_id; drawPrograms();
+    const f = el("div"), c = el("div"), i = el("div");
+    drawFit(f, pg, res); drawCost(c, pg, dres); drawIntl(i, pg, dres);
+    put(clear(drawer), el("div", { class: "spread" }, el("h3", { text: `Evidence for ${name(pg)}` }),
+      el("button", { type: "button", class: "btn btn-quiet", onclick: () => openEvidence(pg), text: "Close" })),
+      el("h4", { text: "Program fit" }), f, el("h4", { text: "Affordability" }), c, pg.feasibility ? [el("h4", { text: "International feasibility" }), i] : null);
+    drawer.hidden = false; drawCards(); drawer.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  };
+  const cards = el("div", { class: "ds-cards" });
+  const drawCards = () => put(clear(cards), d.programs.map(pg => shortlistCard(pg, open === pg.program_id, () => openEvidence(pg))));
+  drawCards();
+  put(wrap, el("section", { class: "ds-sec", id: "d-short", "aria-labelledby": "h-short" },
+    el("h2", { id: "h-short", text: "Shortlist" }),
+    el("p", { class: "ds-lead", text: "Ordered by the Pathway Matcher, not ranked. No match scores or admission odds." }), cards, drawer));
+
+  /* 3. test decision: compact card; policy evidence behind an expander */
+  if (td) put(wrap, el("section", { class: "ds-sec", id: "d-test", "aria-labelledby": "h-test" },
+    el("h2", { id: "h-test", text: "GRE or GMAT" }),
+    el("div", { class: "ds-card" },
+      el("div", { class: "ds-row" }, el("b", { class: "ds-big", text: undecided ? "Undecided — and that's the honest answer" : (PLANNER_TEST_TEXT[td.planner_recommendation] || "See the Strategy Planner's note") }),
+        badge(undecided ? "unknown" : "ai", undecided ? "No diagnostic scores" : "AI-inferred")),
+      el("p", { text: undecided ? "There are no timed results to compare yet, so neither test is recommended. Neither is picked because it's more common." : (td.planner_rationale || "") }),
+      undecided ? el("p", { class: "ds-next" }, el("b", { text: "Next: " }), "take one full-length, timed official practice test of each — either first. About 2½–3 hours each, including a short review (planning estimate).") : null,
+      more("View each school's test policy (official sources)", testPolicyList(d)))));
+
+  /* 4. profile gaps: top three; the rest behind "View all gaps" */
+  put(wrap, el("section", { class: "ds-sec", id: "d-gaps", "aria-labelledby": "h-gaps" },
+    el("h2", { id: "h-gaps", text: "Profile gaps" }),
+    el("p", { class: "ds-lead" }, "Inferred by the Strategy Planner from your profile ", badge("ai", "AI-inferred")),
+    gaps.length ? el("ol", { class: "ds-gaps" }, gaps.slice(0, 3).map(gapItem)) : el("p", { text: "No gaps were identified." }),
+    gaps.length > 3 ? more(`View all gaps (${gaps.length})`, el("ol", { class: "ds-gaps", start: "4" }, gaps.slice(3).map(gapItem))) : null));
+
+  /* 5. weekly plan: the current week only (3–5 actions); the full plan lives in the collapsed panel below */
+  const weekHost = el("div"), workHost = el("div");
+  const fullPlan = panel("Full plan and deadlines", "d-work", workHost);
+  put(wrap, el("section", { class: "ds-sec", id: "d-plan", "aria-labelledby": "h-plan" },
+    el("h2", { id: "h-plan", text: "This week's plan" }), timingNote(timing), weekHost,
+    el("button", { type: "button", class: "btn btn-quiet", onclick: () => { fullPlan.open = true; workHost.querySelector("details.dplan")?.setAttribute("open", ""); fullPlan.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); },
+      text: `View full ${wk?.weeks?.length ? `${wk.weeks.length}-week ` : ""}plan` })));
+
+  /* 6. detailed evidence: every long section, collapsed by default */
+  const picker = el("div", { class: "dpick", role: "group", "aria-label": "Show details for" });
+  const fitHost = el("div"), costHost = el("div"), intlHost = el("div");
+  const drawPrograms = () => {
+    clear(picker);
+    setChatContext({ ...(demo ? { run: "demo" } : {}), program_id: sel });
+    d.programs.forEach(pg => put(picker, el("button", { type: "button", class: "dprog", "aria-pressed": pg.program_id === sel ? "true" : "false",
+      onclick: () => { sel = pg.program_id; drawPrograms(); } }, el("b", { text: name(pg) }), el("span", { class: "xs muted", text: `${pg.fit.career_fit} career fit` }))));
+    const pg = d.programs.find(x => x.program_id === sel);
+    drawFit(fitHost, pg, res); drawCost(costHost, pg, dres); drawIntl(intlHost, pg, dres);
+  };
+  put(wrap, el("section", { class: "ds-sec ds-details", id: "d-details", "aria-labelledby": "h-details" },
+    el("h2", { id: "h-details", text: "Detailed evidence" }),
+    el("p", { class: "ds-lead", text: "Everything behind the summary, with sources, verification status, dates checked, unknowns and tradeoffs." }),
+    el("div", { class: "ds-pick" }, el("span", { class: "ds-k", text: "School shown in the panels" }), picker),
+    panel("Career pathway details", "d-path", careerPathwayBlock(d)),
+    td ? panel("GRE or GMAT evidence", "d-test-ev", drawTestDecision(d, p, timing)) : null,
+    panel("Program fit", "d-fit", fitHost),
+    panel("Affordability", "d-cost", costHost),
+    panel("International feasibility", "d-intl", intlHost),
+    fullPlan),
+    el("footer", { class: "dfoot xs muted" }, `Analysis status: ${RUN_STATUS_TEXT[d.run.status] || "not recorded"}. For reviewers: `,
+      el("a", { href: `#/results/${runId}/evidence`, text: "Skeptic review, citations, usage and technical run details" }),
+      " · Legacy views: ", el("a", { href: `#/results/${runId}/shortlist`, text: "shortlist" }), " · ", el("a", { href: `#/results/${runId}/plan`, text: "roadmap" }),
+      runDetailsPanel(runId), safetyTestPanel()));
+  put($main, wrap);
+  drawPrograms();
+  let remote = null;
+  if (S.user) { try { remote = (await api(`/api/account/progress/${encodeURIComponent(d.run.run_id || runId)}`)).done; } catch { remote = null; } }
+  drawWorkspace(workHost, d, dres, runId, id => { sel = id; drawPrograms(); jump("d-details")(); }, remote, weekHost, timing);
+}
+/* ---- summary-page building blocks ---- */
+const BADGE = { verified: ["ok", "Verified"], estimated: ["warn", "Estimated"], unknown: ["", "Unknown"], passed: ["", "Passed"], upcoming: ["ok", "Upcoming"], ai: ["ai", "AI-inferred"] };
+function badge(kind, text) { const [cls, def] = BADGE[kind] || ["", kind]; return el("span", { class: `dtag ds-badge ${cls}`, text: text || def }); }
+function panel(title, id, content) {
+  return el("details", { class: "ds-panel", id }, el("summary", {}, el("span", { text: title })), el("div", { class: "ds-panel-body" }, content));
+}
+function gapItem(g) {
+  return el("li", {}, el("b", { text: g.gap }), el("p", { text: g.action }));
+}
+function shortlistCard(pg, isOpen, onEvidence) {
+  const a = pg.affordability || {}, tp = pg.test_policy || {}, dl = deadlineRounds(pg.deadlines);
+  const cost = a.comparable ? [badge("verified"), ` ${a.gap >= 0 ? `Within budget by ${fmtUSD(a.gap)}` : `${fmtUSD(-a.gap)} over budget`} a year`]
+    : a.estimate ? [badge("estimated"), ` About ${fmtUSD(a.estimate.value)} a year (${a.estimate.publisher})`] : [badge("unknown"), " Total cost not published"];
+  const test = tp.status === "verified" ? [badge("verified"), ` ${String(tp.summary).split(";")[0]}`] : [badge("unknown"), " Not established"];
+  const next = dl.next ? [badge("upcoming"), ` ${dl.next.name} · ${fmtDate(dl.next.date)}`] : dl.status === "unverified" ? [badge("unknown"), " Not verified"] : [badge("passed", "All passed"), " No upcoming round verified"];
+  const trade = (pg.fit?.tradeoffs || []).map(t => splitLabel(t)[1]).find(Boolean);
+  return el("article", { class: `ds-school${isOpen ? " open" : ""}` },
+    el("div", { class: "ds-school-head" }, el("h3", { text: SCHOOL[pg.program_id] || pg.program_name }),
+      el("span", { class: `ds-fit ${pg.fit?.career_fit || ""}`, text: pg.fit?.career_fit ? `${pg.fit.career_fit} career fit` : "career fit not rated" })),
+    el("dl", {},
+      el("div", {}, el("dt", { text: "Cost" }), el("dd", {}, cost)),
+      el("div", {}, el("dt", { text: "Test policy" }), el("dd", {}, test)),
+      el("div", {}, el("dt", { text: "Next deadline" }), el("dd", {}, next)),
+      trade ? el("div", {}, el("dt", { text: "Tradeoff" }), el("dd", {}, trade, " ", badge("ai"))) : null),
+    el("button", { type: "button", class: "btn btn-secondary ds-ev", "aria-expanded": isOpen ? "true" : "false", onclick: onEvidence, text: isOpen ? "Hide evidence" : "View evidence" }));
+}
+function careerPathwayBlock(d) {
+  const pw = d.pathway;
+  return el("div", {},
     el("div", { class: "dpath" },
       el("div", { class: "dnode from" }, el("div", { class: "xs k", text: "Where you are" }), el("b", { text: pw.background.role || "Not given" }),
         el("div", { class: "small muted", text: [pw.background.industry, pw.background.years != null ? `${pw.background.years} years` : null].filter(Boolean).join(" · ") })),
@@ -1355,46 +1457,10 @@ async function renderDashboard(runId) {
       el("div", { class: "dlink", "aria-hidden": "true", text: "→" }),
       el("div", { class: "dnode to" }, el("div", { class: "xs k", text: "Where you want to go" }), el("b", { text: pw.target.roles[0] || pw.target.function || "Not given" }),
         el("div", { class: "small muted", text: pw.target.industry || "" }))),
-    el("div", { class: "dcols" },
-      el("div", { class: "dcard" }, el("h3", { text: "Strengths" }), el("span", { class: "dtag fact", text: "From your profile" }),
-        el("ul", { class: "dlist" }, pw.profile_facts.map(f => el("li", {}, el("span", { class: "muted", text: `${f.label}: ` }), f.value)))),
-      el("div", { class: "dcard" }, el("h3", { text: "Gaps to close" }), el("span", { class: "dtag ai", text: "AI-inferred · Strategy Planner" }),
-        el("ul", { class: "dlist" }, pw.gaps.map(g => el("li", {}, el("span", { class: `sev ${g.severity}`, text: g.severity }), el("b", { text: g.gap }), el("div", { class: "small muted", text: g.action }))))))));
-
-  /* 2. GRE or GMAT */
-  if (d.test_decision) put(wrap, el("section", { class: "dsec", id: "d-test", "aria-labelledby": "h-test" },
-    el("h2", { id: "h-test", text: "2 · GRE or GMAT" }), drawTestDecision(d, p, timing)));
-
-  /* 3–5. program-specific panels, driven by the shortlist picker */
-  const picker = el("div", { class: "dpick", role: "group", "aria-label": "Shortlisted programs" });
-  const fitHost = el("div"), costHost = el("div"), intlHost = el("div");
-  const drawPrograms = () => {
-    clear(picker);
-    setChatContext({ ...(demo ? { run: "demo" } : {}), program_id: sel });
-    d.programs.forEach(pg => put(picker, el("button", { type: "button", class: "dprog", "aria-pressed": pg.program_id === sel ? "true" : "false",
-      onclick: () => { sel = pg.program_id; drawPrograms(); } },
-      el("b", { text: SCHOOL[pg.program_id] || pg.program_name }), el("span", { class: "xs muted", text: `${pg.fit.career_fit} career fit${pg.location ? ` · ${pg.location}` : ""}` }))));
-    const pg = d.programs.find(x => x.program_id === sel);
-    drawFit(fitHost, pg, res); drawCost(costHost, pg, dres); drawIntl(intlHost, pg, dres);
-  };
-  put(wrap, el("section", { class: "dsec", id: "d-fit", "aria-labelledby": "h-fit" }, el("h2", { id: "h-fit", text: "3 · Program fit" }),
-    el("p", { class: "small muted", text: "Choose a program — the fit, affordability and international sections below update. Order is the Pathway Matcher's, not a ranking; no match scores or admission odds." }),
-    picker, fitHost),
-    el("section", { class: "dsec", id: "d-cost", "aria-labelledby": "h-cost" }, el("h2", { id: "h-cost", text: "4 · Affordability" }), costHost),
-    el("section", { class: "dsec", id: "d-intl", "aria-labelledby": "h-intl" }, el("h2", { id: "h-intl", text: "5 · International feasibility" }), intlHost));
-
-  /* 5. workspace */
-  const workHost = el("div");
-  put(wrap, el("section", { class: "dsec", id: "d-work", "aria-labelledby": "h-work" }, el("h2", { id: "h-work", text: "6 · Full plan and deadlines" }), workHost),
-    el("footer", { class: "dfoot xs muted" }, "For reviewers: ",
-      el("a", { href: `#/results/${runId}/evidence`, text: "Skeptic review, citations, usage and technical run details" }),
-      " · Legacy views: ", el("a", { href: `#/results/${runId}/shortlist`, text: "shortlist" }), " · ", el("a", { href: `#/results/${runId}/plan`, text: "roadmap" }),
-      runDetailsPanel(runId), safetyTestPanel()));
-  put($main, wrap);
-  drawPrograms();
-  let remote = null;
-  if (S.user) { try { remote = (await api(`/api/account/progress/${encodeURIComponent(d.run.run_id || runId)}`)).done; } catch { remote = null; } }
-  drawWorkspace(workHost, d, dres, runId, id => { sel = id; drawPrograms(); jump("d-fit")(); }, remote, weekHost, timing);
+    el("h4", { text: "Strengths" }), el("p", {}, badge("verified", "From your profile")),
+    el("ul", { class: "dlist" }, pw.profile_facts.map(f => el("li", {}, el("span", { class: "muted", text: `${f.label}: ` }), f.value))),
+    el("h4", { text: "All gaps" }), el("p", {}, badge("ai", "AI-inferred · Strategy Planner")),
+    el("ul", { class: "dlist" }, pw.gaps.map(g => el("li", {}, el("span", { class: `sev ${g.severity}`, text: g.severity }), " ", el("b", { text: g.gap }), el("div", { class: "small muted", text: g.action })))));
 }
 /* GRE vs GMAT. The state comes from code (no diagnostic score -> undecided); nothing here predicts scores, ranks the
    tests by popularity or estimates admission odds. School policies are the verified official facts with their excerpts. */
@@ -1402,9 +1468,8 @@ const TEST_STATUS_TEXT = { not_started: "haven't started test preparation", prep
   gmat_taken: "have taken the GMAT", gmat_focus_taken: "have taken the GMAT Focus Edition", gre_taken: "have taken the GRE", ea_taken: "have taken the Executive Assessment" };
 const PLANNER_TEST_TEXT = { take_gmat: "Take the GMAT", take_gre: "Take the GRE", either_gmat_or_gre: "Either test works", use_existing_score: "Use your existing score",
   retake_existing_test: "Retake your current test", undecided_need_info: "Decide after a diagnostic" };
-function drawTestDecision(d, p, timing) {
-  const td = d.test_decision, undecided = td.state === "undecided_no_diagnostic";
-  const policies = el("ul", { class: "dlist dpolicies" }, d.programs.map(pg => { const tp = pg.test_policy || {};
+function testPolicyList(d) {
+  return el("ul", { class: "dlist dpolicies" }, d.programs.map(pg => { const tp = pg.test_policy || {};
     const ev = (tp.evidence || []).find(e => e.source_url) || {};
     return el("li", {}, el("b", { text: SCHOOL[pg.program_id] || pg.program_name }),
       tp.status === "verified"
@@ -1412,6 +1477,10 @@ function drawTestDecision(d, p, timing) {
            ev.excerpt ? el("blockquote", { class: "dquote small", text: `${ev.excerpt_is_paraphrase ? "Paraphrase" : "Official page"}: “${ev.excerpt}”` }) : null,
            el("div", { class: "xs muted" }, ev.checked_on ? `Checked ${fmtDate(ev.checked_on)} · ` : "", ev.source_url ? extLink(ev.source_url, "Confirm on the official admissions page") : "No official link on file")]
         : el("div", { class: "small unk", text: "Test policy not established from official pages — check the school's admissions page before choosing a test." })); }));
+}
+function drawTestDecision(d, p, timing) {
+  const td = d.test_decision, undecided = td.state === "undecided_no_diagnostic";
+  const policies = testPolicyList(d);
   const evidence = el("div", { class: "dcard" }, el("h3", { text: "Each school's current test policy" }), el("span", { class: "dtag fact", text: "Official sources" }), policies,
     el("p", { class: "xs muted", text: "Policies change between cycles. Confirm on each official admissions page before you register for a test." }));
   if (!undecided) {
@@ -1519,18 +1588,6 @@ function timingNote(t) {
   return el("p", { class: `small dtiming${t.passedAt.length ? " late" : ""}`, text: parts.join(" ") });
 }
 const DL_TAG = { passed: ["", "Passed"], upcoming: ["ok", "Upcoming"], unverified: ["warn", "Unverified"] };
-function schoolCard(pg, onOpen) {
-  const a = pg.affordability || {}, fe = pg.feasibility, s = fe?.stem, dl = deadlineRounds(pg.deadlines);
-  const cost = a.comparable ? `${a.gap >= 0 ? `Within budget: ${fmtUSD(a.gap)} headroom` : `Over budget: ${fmtUSD(-a.gap)} short`} per year (official cost)`
-    : a.estimate ? `No official total cost · estimate ${fmtUSD(a.estimate.value)} a year (${a.estimate.publisher})` : "Total cost not published";
-  const stem = !fe ? null : s?.status === "verified" ? (s.designated ? (s.partial ? "STEM: some tracks only" : "STEM: designated") : "STEM: not designated") : "STEM: unknown";
-  const next = dl.next ? `Next deadline: ${dl.next.name}, ${fmtDate(dl.next.date)}` : dl.status === "unverified" ? "Deadlines: unverified" : "No upcoming deadline verified";
-  return el("button", { type: "button", class: "dschool", onclick: onOpen },
-    el("b", { text: SCHOOL[pg.program_id] || pg.program_name }),
-    el("span", { class: "xs muted", text: [pg.fit?.career_fit ? `${pg.fit.career_fit} career fit` : null, pg.location].filter(Boolean).join(" · ") }),
-    el("ul", { class: "xs" }, [cost, stem, next].filter(Boolean).map(t => el("li", { text: t }))),
-    el("span", { class: "xs dlinkt", text: "View fit and evidence →" }));
-}
 function drawFit(host, pg, res) {
   const f = pg.fit;
   clear(host);
@@ -1682,7 +1739,7 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
             el("button", { type: "button", class: "btn btn-secondary", onclick: () => { unlocked += 1; viewWeek = unlocked; try { localStorage.setItem(unlockKey, String(unlocked)); } catch { /* not remembered */ } drawWeek(); },
               text: `I understand week ${shown.week} — show week ${weeks[unlocked].week}` }))
         : null,
-      el("p", { class: "xs muted", text: `${wk.estimate_note} ${Object.keys(done).length} of ${w.tasks.length} plan tasks done; the complete plan is in section 6.` }));
+      el("p", { class: "xs muted", text: `${wk.estimate_note} ${Object.keys(done).length} of ${w.tasks.length} plan tasks done; the full plan is under Detailed evidence.` }));
   }
   function draw() {
     clear(host);

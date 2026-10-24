@@ -146,3 +146,78 @@
 .drun-sum dt { color: var(--text-2); }
 .drun-sum dd { margin: 0; color: var(--text); }
 @media (max-width: 600px) { .drun-sum { grid-template-columns: 1fr; } .drun-sum dd { margin-bottom: 6px; } }
+
+/* ---------- Sample analysis: decision summary with progressive disclosure ---------- */
+.dash2 { max-width: 960px; padding-top: 40px; padding-bottom: 96px; font-size: 16px; }
+.dash2 h2 { font-size: 26px; margin: 0 0 8px; letter-spacing: -.01em; }
+.dash2 h3 { font-size: 18px; margin: 0; }
+.dash2 h4 { font-size: 16px; margin: 20px 0 8px; }
+.ds-sec { margin-top: 72px; scroll-margin-top: 16px; }
+.ds-lead { color: var(--text-2); margin: 0 0 20px; }
+.ds-k { display: block; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--text-3); }
+.ds-badge { font-size: 12px; padding: 2px 9px; vertical-align: 1px; }
+
+/* top summary */
+.ds-top h1 { font-size: clamp(32px, 4.4vw, 46px); margin: 6px 0 10px; letter-spacing: -.02em; }
+.ds-who { font-size: 18px; color: var(--text-2); margin: 0 0 14px; }
+.ds-who b { color: var(--text); }
+.ds-rec { font-size: 19px; line-height: 1.5; margin: 0 0 28px; max-width: 46em; }
+.ds-decisions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.ds-dec { padding: 18px 20px 18px 0; display: grid; gap: 4px; align-content: start; }
+.ds-dec + .ds-dec { padding-left: 20px; border-left: 1px solid var(--border); }
+.ds-dec b { font-size: 17px; line-height: 1.35; }
+.ds-v { color: var(--text-2); font-size: 15px; }
+.ds-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; }
+.ds-note { margin: 16px 0 0; font-size: 14px; color: var(--text-3); }
+
+/* shortlist */
+.ds-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.ds-school { display: flex; flex-direction: column; gap: 12px; padding: 20px; border-radius: 16px; background: var(--surface, var(--white)); border: 1px solid var(--border); }
+.ds-school.open { border-color: var(--blue); }
+.ds-school-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.ds-fit { font-size: 14px; font-weight: 600; color: var(--text-2); text-transform: capitalize; }
+.ds-fit.strong { color: var(--emerald-700, #047857); }
+.ds-school dl { margin: 0; display: grid; gap: 10px; }
+.ds-school dl > div { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px; }
+.ds-school dt { color: var(--text-3); font-size: 14px; }
+.ds-school dd { margin: 0; font-size: 15px; line-height: 1.45; }
+.ds-ev { align-self: flex-start; margin-top: auto; }
+.ds-drawer { margin-top: 24px; padding-top: 8px; scroll-margin-top: 16px; }
+.ds-drawer > .spread { align-items: center; }
+
+/* test decision + gaps */
+.ds-card { padding: 22px 24px; border-radius: 16px; background: var(--surface, var(--white)); border: 1px solid var(--border); }
+.ds-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.ds-big { font-size: 19px; }
+.ds-card p { margin: 10px 0 0; line-height: 1.55; }
+.ds-next { padding: 12px 14px; border-radius: 12px; background: var(--blue-50); }
+.ds-gaps { margin: 0; padding-left: 22px; display: grid; gap: 16px; }
+.ds-gaps li::marker { font-weight: 700; color: var(--text-3); }
+.ds-gaps p { margin: 4px 0 0; color: var(--text-2); line-height: 1.55; }
+
+/* detailed evidence panels: collapsed by default */
+.ds-pick { margin-bottom: 16px; }
+.ds-pick .dpick { margin-top: 8px; }
+.ds-panel { border-top: 1px solid var(--border); scroll-margin-top: 16px; }
+.ds-panel:last-of-type { border-bottom: 1px solid var(--border); }
+.ds-panel > summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 18px 4px; font-size: 18px; font-weight: 600; min-height: 44px; }
+.ds-panel > summary::-webkit-details-marker { display: none; }
+.ds-panel > summary::after { content: "+"; font-size: 22px; font-weight: 400; color: var(--text-3); }
+.ds-panel[open] > summary::after { content: "–"; }
+.ds-panel-body { padding: 0 4px 28px; }
+.dash2 .dfoot { margin-top: 56px; }
+
+@media (max-width: 760px) {
+  /* keep the primary action in the first viewport: actions move above the three decisions */
+  .ds-top { display: flex; flex-direction: column; }
+  .ds-top .ds-cta { order: 1; margin: 0 0 24px; }
+  .ds-top .ds-decisions { order: 2; }
+  .ds-top .ds-note { order: 3; }
+  .ds-rec { font-size: 17px; margin-bottom: 20px; }
+  .ds-decisions { grid-template-columns: 1fr; }
+  .ds-dec, .ds-dec + .ds-dec { padding: 14px 0; border-left: 0; }
+  .ds-dec + .ds-dec { border-top: 1px solid var(--border); }
+  .ds-cards { grid-template-columns: 1fr; }
+  .ds-sec { margin-top: 56px; }
+  .ds-school dl > div { grid-template-columns: 1fr; gap: 2px; }
+}

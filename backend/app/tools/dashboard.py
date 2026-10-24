@@ -235,7 +235,7 @@ def classify_action(text: str) -> tuple[str, str, int]:
 
 def _why(cat: str, profile: ApplicantProfile | None, programs: list[dict], gaps: list[dict], test_state: str | None) -> str:
     if cat == "test_diagnostic" and test_state == "undecided_no_diagnostic":
-        return "There's no diagnostic score in your profile, so the GRE-or-GMAT choice can't be made yet (see section 2)."
+        return "There's no diagnostic score in your profile, so the GRE-or-GMAT choice can't be made yet (see GRE or GMAT)."
     if cat == "cost":
         missing = [p["program_name"] for p in programs if p.get("affordability") and not p["affordability"].get("comparable")]
         if missing:
