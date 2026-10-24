@@ -103,3 +103,14 @@
 @media (max-width: 1024px) { .dschools { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 480px) { .dschools { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .dschool { transition: none; } }
+
+/* GRE or GMAT */
+#d-test .dcard + .dcard, #d-test .dcols + .dcard { margin-top: 16px; }
+.dsteps { padding-left: 20px; list-style: decimal; }
+.dsteps li { margin-bottom: 10px; }
+.drule th { text-align: left; white-space: nowrap; padding-right: 16px; vertical-align: top; font-weight: 600; }
+.drule td, .drule th { padding-top: 8px; padding-bottom: 8px; }
+.dpolicies li { margin-bottom: 14px; }
+.dquote { margin: 6px 0; padding: 6px 12px; border-left: 3px solid var(--border-2); color: var(--text-2); }
+.dnextact { border-color: var(--blue); }
+@media (max-width: 600px) { .drule th { white-space: normal; } }

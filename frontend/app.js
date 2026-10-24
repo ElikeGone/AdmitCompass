@@ -1340,7 +1340,7 @@ async function renderDashboard(runId) {
     el("p", { class: "xs muted", text: "Order is the Pathway Matcher's, not a ranking. Select a program for its fit, costs and evidence." }),
     el("div", { class: "dschools" }, d.programs.map(pg => schoolCard(pg, () => { sel = pg.program_id; drawPrograms(); jump("d-fit")(); }))),
     el("div", { class: "dcard dweek" }, el("h3", { text: "This week's actions" }), timingNote(timing), weekHost)));
-  put(wrap, el("nav", { class: "dash-nav", "aria-label": "Dashboard sections" }, [["d-path", "Pathway"], ["d-fit", "Program fit"], ["d-cost", "Affordability"], ["d-intl", "International"], ["d-work", "Full plan & deadlines"]]
+  put(wrap, el("nav", { class: "dash-nav", "aria-label": "Dashboard sections" }, [["d-path", "Pathway"], ["d-test", "GRE or GMAT"], ["d-fit", "Program fit"], ["d-cost", "Affordability"], ["d-intl", "International"], ["d-work", "Full plan & deadlines"]]
     .map(([id, t]) => el("button", { type: "button", class: "chip", onclick: jump(id), text: t }))));
 
   /* 1. pathway */
@@ -1361,7 +1361,11 @@ async function renderDashboard(runId) {
       el("div", { class: "dcard" }, el("h3", { text: "Gaps to close" }), el("span", { class: "dtag ai", text: "AI-inferred · Strategy Planner" }),
         el("ul", { class: "dlist" }, pw.gaps.map(g => el("li", {}, el("span", { class: `sev ${g.severity}`, text: g.severity }), el("b", { text: g.gap }), el("div", { class: "small muted", text: g.action }))))))));
 
-  /* 2–4. program-specific panels, driven by the shortlist picker */
+  /* 2. GRE or GMAT */
+  if (d.test_decision) put(wrap, el("section", { class: "dsec", id: "d-test", "aria-labelledby": "h-test" },
+    el("h2", { id: "h-test", text: "2 · GRE or GMAT" }), drawTestDecision(d, p, timing)));
+
+  /* 3–5. program-specific panels, driven by the shortlist picker */
   const picker = el("div", { class: "dpick", role: "group", "aria-label": "Shortlisted programs" });
   const fitHost = el("div"), costHost = el("div"), intlHost = el("div");
   const drawPrograms = () => {
@@ -1373,15 +1377,15 @@ async function renderDashboard(runId) {
     const pg = d.programs.find(x => x.program_id === sel);
     drawFit(fitHost, pg, res); drawCost(costHost, pg, dres); drawIntl(intlHost, pg, dres);
   };
-  put(wrap, el("section", { class: "dsec", id: "d-fit", "aria-labelledby": "h-fit" }, el("h2", { id: "h-fit", text: "2 · Program fit" }),
+  put(wrap, el("section", { class: "dsec", id: "d-fit", "aria-labelledby": "h-fit" }, el("h2", { id: "h-fit", text: "3 · Program fit" }),
     el("p", { class: "small muted", text: "Choose a program — the fit, affordability and international sections below update. Order is the Pathway Matcher's, not a ranking; no match scores or admission odds." }),
     picker, fitHost),
-    el("section", { class: "dsec", id: "d-cost", "aria-labelledby": "h-cost" }, el("h2", { id: "h-cost", text: "3 · Affordability" }), costHost),
-    el("section", { class: "dsec", id: "d-intl", "aria-labelledby": "h-intl" }, el("h2", { id: "h-intl", text: "4 · International feasibility" }), intlHost));
+    el("section", { class: "dsec", id: "d-cost", "aria-labelledby": "h-cost" }, el("h2", { id: "h-cost", text: "4 · Affordability" }), costHost),
+    el("section", { class: "dsec", id: "d-intl", "aria-labelledby": "h-intl" }, el("h2", { id: "h-intl", text: "5 · International feasibility" }), intlHost));
 
   /* 5. workspace */
   const workHost = el("div");
-  put(wrap, el("section", { class: "dsec", id: "d-work", "aria-labelledby": "h-work" }, el("h2", { id: "h-work", text: "5 · Full plan and deadlines" }), workHost),
+  put(wrap, el("section", { class: "dsec", id: "d-work", "aria-labelledby": "h-work" }, el("h2", { id: "h-work", text: "6 · Full plan and deadlines" }), workHost),
     el("footer", { class: "dfoot xs muted" }, "For reviewers: ",
       el("a", { href: `#/results/${runId}/evidence`, text: "Skeptic review, citations, usage and technical run details" }),
       " · Legacy views: ", el("a", { href: `#/results/${runId}/shortlist`, text: "shortlist" }), " · ", el("a", { href: `#/results/${runId}/plan`, text: "roadmap" })));
@@ -1390,6 +1394,53 @@ async function renderDashboard(runId) {
   let remote = null;
   if (S.user) { try { remote = (await api(`/api/account/progress/${encodeURIComponent(d.run.run_id || runId)}`)).done; } catch { remote = null; } }
   drawWorkspace(workHost, d, dres, runId, id => { sel = id; drawPrograms(); jump("d-fit")(); }, remote, weekHost, timing);
+}
+/* GRE vs GMAT. The state comes from code (no diagnostic score -> undecided); nothing here predicts scores, ranks the
+   tests by popularity or estimates admission odds. School policies are the verified official facts with their excerpts. */
+const TEST_STATUS_TEXT = { not_started: "haven't started test preparation", preparing: "are preparing for a test", unknown: "haven't said where you are with testing",
+  gmat_taken: "have taken the GMAT", gmat_focus_taken: "have taken the GMAT Focus Edition", gre_taken: "have taken the GRE", ea_taken: "have taken the Executive Assessment" };
+const PLANNER_TEST_TEXT = { take_gmat: "Take the GMAT", take_gre: "Take the GRE", either_gmat_or_gre: "Either test works", use_existing_score: "Use your existing score",
+  retake_existing_test: "Retake your current test", undecided_need_info: "Decide after a diagnostic" };
+function drawTestDecision(d, p, timing) {
+  const td = d.test_decision, undecided = td.state === "undecided_no_diagnostic";
+  const policies = el("ul", { class: "dlist dpolicies" }, d.programs.map(pg => { const tp = pg.test_policy || {};
+    const ev = (tp.evidence || []).find(e => e.source_url) || {};
+    return el("li", {}, el("b", { text: SCHOOL[pg.program_id] || pg.program_name }),
+      tp.status === "verified"
+        ? [el("div", { class: "small", text: tp.summary }),
+           ev.excerpt ? el("blockquote", { class: "dquote small", text: `${ev.excerpt_is_paraphrase ? "Paraphrase" : "Official page"}: “${ev.excerpt}”` }) : null,
+           el("div", { class: "xs muted" }, ev.checked_on ? `Checked ${fmtDate(ev.checked_on)} · ` : "", ev.source_url ? extLink(ev.source_url, "Confirm on the official admissions page") : "No official link on file")]
+        : el("div", { class: "small unk", text: "Test policy not established from official pages — check the school's admissions page before choosing a test." })); }));
+  const evidence = el("div", { class: "dcard" }, el("h3", { text: "Each school's current test policy" }), el("span", { class: "dtag fact", text: "Official sources" }), policies,
+    el("p", { class: "xs muted", text: "Policies change between cycles. Confirm on each official admissions page before you register for a test." }));
+  if (!undecided) {
+    return el("div", {}, el("div", { class: "dcard" },
+      el("h3", { text: PLANNER_TEST_TEXT[td.planner_recommendation] || "See the Strategy Planner's note" }), el("span", { class: "dtag ai", text: "AI-inferred · Strategy Planner" }),
+      td.planner_rationale ? el("p", { class: "small", text: td.planner_rationale }) : null), evidence);
+  }
+  const next = timing?.earliest;
+  return el("div", {},
+    el("div", { class: "dcols" },
+      el("div", { class: "dcard" }, el("h3", { text: "Undecided — and that's the honest answer" }), el("span", { class: "dtag warn", text: "No diagnostic scores yet" }),
+        el("p", { class: "small", text: `Your profile says you ${TEST_STATUS_TEXT[td.test_status] || "haven't reported a test result"} and lists no diagnostic score. With no timed results to compare, there's no basis for choosing one test over the other, so AdmitCompass doesn't pick one. Neither test is recommended just because more people take it.` }),
+        el("p", { class: "xs muted", text: "No score predictions or admission odds are shown: there's no diagnostic data to base them on." }),
+        td.planner_rationale ? more("Strategy Planner's note (AI-inferred)", el("p", { class: "small", text: td.planner_rationale })) : null),
+      el("div", { class: "dcard" }, el("h3", { text: "Two-test diagnostic plan" }),
+        el("ol", { class: "dlist dsteps" },
+          el("li", {}, el("b", { text: "Take one full-length, timed official GMAT Focus Edition practice test" }), el("div", { class: "small muted" }, "Official practice materials: ", extLink("https://www.mba.com/", "mba.com"))),
+          el("li", {}, el("b", { text: "Within about a week, take one full-length, timed official GRE practice test" }), el("div", { class: "small muted" }, "Same conditions: quiet room, timed, no breaks beyond the official ones. Official practice materials: ", extLink("https://www.ets.org/gre.html", "ets.org"))),
+          el("li", {}, el("b", { text: "Compare the two with the decision rule below, then pick one test" }))))),
+    el("div", { class: "dcard dnextact" }, el("span", { class: "dtag ai", text: "Next action" }),
+      el("p", {}, el("b", { text: "Take the first full-length timed practice test this week — either test first." }),
+        el("br"), el("span", { class: "small muted", text: "Estimated time: about 2½–3 hours, including setup and a short review of the results (planning estimate, not an official test length)." }))),
+    el("div", { class: "dcard" }, el("h3", { text: "Decision rule" }),
+      el("table", { class: "tbl drule" }, el("tbody", {}, [
+        ["Timed performance", "Compare each result as a percentile, not a raw score — the two tests use different scales."],
+        ["Preparation burden", "Which test's weaker sections would take fewer study hours to bring up to your goal?"],
+        ["Target-school acceptance", "The test must be accepted by every program you apply to — see each school's official policy below."],
+        ["Scheduling logistics", `Test dates and official score reports must fit before your target round.${next ? ` Earliest upcoming verified deadline on your shortlist: ${next.school} ${next.name}, ${fmtDate(next.date)}.` : " No upcoming deadline is verified for your shortlist yet."}`]]
+        .map(([k, v]) => el("tr", {}, el("th", { scope: "row", text: k }), el("td", { text: v })))))),
+    evidence);
 }
 const RUN_STATUS_TEXT = {
   completed: "completed",
@@ -1535,7 +1586,7 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
     if (weekHost) {   // first screen: the next 4 open tasks, in plan order
       const nextId = order.find(id => !done[id]), open = order.filter(id => !done[id]).slice(0, 4);
       put(clear(weekHost), open.length ? el("div", { class: "dtasks" }, open.map(id => taskRow(id, nextId))) : el("p", { class: "small", text: "All planned tasks are marked done." }),
-        el("p", { class: "xs muted", text: `${Object.keys(done).length} of ${w.tasks.length} plan tasks done. The full plan is in section 5.` }));
+        el("p", { class: "xs muted", text: `${Object.keys(done).length} of ${w.tasks.length} plan tasks done. The full plan is in section 6.` }));
     }
     const n = Object.keys(done).length, total = w.tasks.length, pct = total ? Math.round((n / total) * 100) : 0;
     const nextId = order.find(id => !done[id]);

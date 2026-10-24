@@ -176,6 +176,34 @@ def deadlines(store: EvidenceStore, program_id: str) -> dict:
     return {"status": "not_checked" if not prog.facts["application_deadlines"].checked else "not_published"}
 
 
+# ---------------- GRE / GMAT decision ----------------
+NO_SCORE_STATUSES = {"not_started", "preparing", "unknown"}
+
+
+def test_policy(store: EvidenceStore, program_id: str) -> dict:
+    """The program's verified test policy with its official evidence (excerpt, page, checked date) — nothing inferred."""
+    try:
+        f = store.get_fact(program_id, "test_policy")
+    except EvidenceNotFoundError:
+        return {"status": "not_in_store"}
+    if f.status != "verified":
+        return {"status": "unknown"}
+    return {"status": "verified", "summary": f.value,
+            "evidence": [{k: e.get(k) for k in ("evidence_id", "excerpt", "excerpt_is_paraphrase", "source_url", "source_title",
+                                                "publisher", "checked_on")} for e in f.evidence]}
+
+
+def test_decision(profile: ApplicantProfile, report: dict) -> dict:
+    """Computed in code, not by the model: without a diagnostic score there is nothing to compare, so the state is
+    'undecided_no_diagnostic' whatever the planner wrote. No score predictions or admission odds are produced."""
+    status = profile.test_status.value
+    has_score = profile.test_score is not None and status not in NO_SCORE_STATUSES
+    tg = (report.get("strategy") or {}).get("test_guidance") or {}
+    return {"state": "has_score" if has_score else "undecided_no_diagnostic", "test_status": status,
+            "test_score": profile.test_score if has_score else None,
+            "planner_recommendation": tg.get("recommendation"), "planner_rationale": tg.get("rationale")}
+
+
 # ---------------- assemble ----------------
 def build_dashboard(store: EvidenceStore, profile: ApplicantProfile, report: dict) -> dict:
     programs = []
@@ -186,7 +214,9 @@ def build_dashboard(store: EvidenceStore, profile: ApplicantProfile, report: dic
             "location": (f"{loc['value']['city']}, {loc['value']['state']}" if _verified(loc) else None),
             "fit": program_fit(rec), "affordability": affordability(profile, rec), "feasibility": feasibility(rec, profile) if profile.needs_us_work_authorization is not False else None,
             "deadlines": deadlines(store, rec["program_id"]),
+            "test_policy": test_policy(store, rec["program_id"]),
         })
     return {"pathway": pathway(profile, report), "programs": programs, "workspace": workspace(report),
+            "test_decision": test_decision(profile, report),
             "international_layer": profile.needs_us_work_authorization is not False,
             "run": {"run_id": report.get("run_id"), "status": report.get("status"), "model": report.get("model")}}

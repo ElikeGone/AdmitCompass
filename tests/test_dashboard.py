@@ -131,3 +131,41 @@ def test_deadlines_only_when_verified(dash):
 
 def test_unknown_run_404():
     assert TestClient(app).get("/api/dashboard/nope").status_code == 404
+
+
+# ---------------- GRE / GMAT decision ----------------
+from backend.app.schemas.applicant import TestStatus as TS  # noqa: E402  (aliased: pytest collects Test* names)
+from backend.app.tools.dashboard import test_decision as decide_test, test_policy as policy_for  # noqa: E402  (aliased: pytest collects test_* names)
+
+
+def test_no_diagnostic_score_is_undecided_whatever_the_planner_says(demo):
+    report = copy.deepcopy(demo["report"])
+    report["strategy"]["test_guidance"]["recommendation"] = "take_gmat"   # even if the model picked one...
+    for status in (TS.PREPARING, TS.NOT_STARTED, TS.UNKNOWN):
+        td = decide_test(_profile(demo, test_status=status, test_score=None), report)
+        assert td["state"] == "undecided_no_diagnostic" and td["test_score"] is None   # ...code keeps it undecided
+
+
+def test_a_reported_score_moves_out_of_undecided(demo):
+    td = decide_test(_profile(demo, test_status=TS.GRE_TAKEN, test_score=325), demo["report"])
+    assert td["state"] == "has_score" and td["test_score"] == 325
+
+
+def test_decision_block_contains_no_predictions_or_odds(dash):
+    td = dash["dashboard"]["test_decision"]
+    assert td["state"] == "undecided_no_diagnostic"
+    assert set(td) == {"state", "test_status", "test_score", "planner_recommendation", "planner_rationale"}
+
+
+def test_each_school_policy_is_the_verified_official_fact(dash):
+    store = default_store()
+    for pg in dash["dashboard"]["programs"]:
+        tp = pg["test_policy"]
+        f = store.get_fact(pg["program_id"], "test_policy")
+        assert tp["status"] == "verified" and tp["summary"] == f.value
+        assert tp["evidence"] and all(e["source_url"].startswith("https://") for e in tp["evidence"])
+        assert all(e["excerpt"] for e in tp["evidence"])
+
+
+def test_unknown_program_policy_is_not_invented():
+    assert policy_for(default_store(), "no-such-program") == {"status": "not_in_store"}
