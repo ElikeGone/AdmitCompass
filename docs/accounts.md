@@ -79,6 +79,10 @@ No new dependencies are needed. The database is created automatically on first u
   - microphone blocked — "Microphone access is blocked. Allow it in your browser settings, or type your question instead.";
   - unsupported browser — "Voice input isn’t supported in this browser. Type your question instead.";
   - no speech — "I didn’t hear anything. Try again or type your question."
+- **When the online speech service fails** (the browser reports a `network` error):
+  - **On-device retry:** if the browser supports on-device speech recognition (newer Chrome, feature-detected), AdmitCompass retries on-device automatically when it's installed. If it can be downloaded, AdmitCompass offers a "Download on-device speech" button; the browser downloads a language pack once. After that, dictation runs on the device.
+  - **Browser guidance:** browsers known to block the online speech service — Brave, and embedded Electron windows such as an app's built-in preview — get specific guidance: "This browser blocks the online speech service that voice input needs. Open AdmitCompass in Chrome, Edge or Safari, or type your question instead."
+  - **Otherwise:** the network message above is shown.
 - **Typing always works:** the text box and Enter-to-send are unchanged.
 
 ## Voice input limitations

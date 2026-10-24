@@ -1990,6 +1990,7 @@ function setupCopilot() {
    never sent automatically. AdmitCompass never receives, sends or stores audio — only the text the user submits. */
 const VOICE_MSG = {
   ready: "", listening: "Listening… speak your question, then click the microphone to stop. Your browser turns speech into text; AdmitCompass only receives the text you choose to send.",
+  "listening-local": "Listening with on-device speech… speak your question, then click the microphone to stop. Speech is turned into text on this device.",
   paused: "Stopped listening. Review or edit your question, then press Send. Click the microphone to continue.",
   unsupported: "Voice input isn’t supported in this browser. Type your question instead.",
   "not-allowed": "Microphone access is blocked. Allow it in your browser settings, or type your question instead.",
@@ -1997,46 +1998,83 @@ const VOICE_MSG = {
   "audio-capture": "No microphone was found. Type your question instead.",
   "no-speech": "I didn’t hear anything. Try again or type your question.",
   network: "Voice input is temporarily unavailable. Type your question instead.",
+  "network-blocked": "This browser blocks the online speech service that voice input needs. Open AdmitCompass in Chrome, Edge or Safari, or type your question instead.",
+  "offer-local": "Your browser’s online speech service can’t be reached. You can download on-device speech recognition once (your browser downloads a language pack) and dictate without it.",
+  downloading: "Downloading on-device speech… this can take a minute. You can keep typing meanwhile.",
+  checking: "Speech service unreachable — checking for on-device speech…",
   error: "Voice input stopped because of an error. Type your question, or try the microphone again.",
 };
 const speechAPI = () => window.SpeechRecognition || window.webkitSpeechRecognition || null;
+/* Browsers known to block the online speech service behind webkitSpeechRecognition (it then fails with "network"). */
+const speechServiceBlocked = () => !!navigator.brave || /\bElectron\//.test(navigator.userAgent);
+/* On-device recognition (newer Chrome): feature-detected; "available" | "downloadable" | "downloading" | "unavailable". */
+async function onDeviceSpeech(SR, lang) {
+  if (!SR || typeof SR.available !== "function") return "unavailable";
+  try { return await SR.available({ langs: [lang], processLocally: true }); } catch { return "unavailable"; }
+}
 function setupVoice(input) {
-  let rec = null, state = speechAPI() ? "ready" : "unsupported", base = "";
+  let rec = null, state = speechAPI() ? "ready" : "unsupported", base = "", preferLocal = false;
+  const lang = () => document.documentElement.lang || "en-US";
   const status = el("div", { class: "cp-voice", role: "status", "aria-live": "polite" });
   const button = el("button", { type: "button", class: "cp-mic", "aria-pressed": "false", onclick: () => toggle() },
     el("span", { "aria-hidden": "true", class: "cp-mic-ic", text: "🎙" }));
-  const set = (next, msgKey = next) => {
+  const set = (next, msgKey = next, action = null) => {
     state = next;
     button.dataset.state = next;
     button.setAttribute("aria-pressed", next === "listening" ? "true" : "false");
     button.setAttribute("aria-label", next === "listening" ? "Stop voice input" : next === "unsupported" ? "Voice input isn’t supported in this browser" : "Start voice input");
     button.title = button.getAttribute("aria-label");
     if (next === "unsupported") button.setAttribute("aria-disabled", "true"); else button.removeAttribute("aria-disabled");
-    status.textContent = VOICE_MSG[msgKey] ?? VOICE_MSG.error;
+    put(clear(status), VOICE_MSG[msgKey] ?? VOICE_MSG.error, action ? [" ", action] : null);
     status.hidden = !status.textContent;
   };
   const write = text => {   // into the question box, then let the box resize itself; never submits
     input.value = (base && text ? `${base} ` : base) + text;
     input.dispatchEvent(new Event("input"));
   };
-  function start() {
+  function start(local = preferLocal) {
     const SR = speechAPI();
     if (!SR) { set("unsupported"); return; }
     try {
       rec = new SR();
-      rec.lang = document.documentElement.lang || "en-US";
+      rec.lang = lang();
       rec.interimResults = true; rec.continuous = true; rec.maxAlternatives = 1;
+      if (local && "processLocally" in rec) rec.processLocally = true;
       base = input.value.trim();
       rec.onresult = e => {
+        if (local) preferLocal = true;   // on-device worked: keep using it
         let finalText = "", interim = "";
         for (let i = 0; i < e.results.length; i++) (e.results[i].isFinal ? (finalText += e.results[i][0].transcript) : (interim += e.results[i][0].transcript));
         write(`${finalText}${interim}`.replace(/\s+/g, " ").trim());
       };
-      rec.onerror = e => { const k = e.error === "aborted" ? null : (e.error in VOICE_MSG ? e.error : "error"); rec = null; if (k) set("error", k); };
+      rec.onerror = e => {
+        rec = null;
+        if (e.error === "aborted") return;
+        if (e.error === "network" && !local) { onNetworkError(); return; }
+        set("error", e.error in VOICE_MSG ? e.error : "error");
+      };
       rec.onend = () => { if (state === "listening") set("paused"); rec = null; input.focus(); };
       rec.start();   // the browser asks for microphone permission here, after the click
-      set("listening");
+      set("listening", local ? "listening-local" : "listening");
     } catch { rec = null; set("error", "error"); }
+  }
+  /* The online speech service failed: try on-device recognition before giving up. */
+  async function onNetworkError() {
+    set("error", "checking");
+    const SR = speechAPI(), avail = await onDeviceSpeech(SR, lang());
+    if (avail === "available") { start(true); return; }
+    if (avail === "downloadable" || avail === "downloading") {
+      const dl = el("button", { type: "button", class: "linkbtn cp-voice-act", text: "Download on-device speech",
+        onclick: async () => {
+          set("error", "downloading");
+          let ok = false;
+          try { ok = await SR.install({ langs: [lang()], processLocally: true }); } catch { ok = false; }
+          if (ok) start(true); else set("error", speechServiceBlocked() ? "network-blocked" : "network");
+        } });
+      set("error", "offer-local", dl);
+      return;
+    }
+    set("error", speechServiceBlocked() ? "network-blocked" : "network");
   }
   function stop() { if (rec) { try { rec.stop(); } catch { /* already stopped */ } } }
   function toggle() { if (!speechAPI()) { set("unsupported"); return; } state === "listening" ? stop() : start(); }
