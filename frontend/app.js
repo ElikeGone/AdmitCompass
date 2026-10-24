@@ -1991,12 +1991,12 @@ function setupCopilot() {
 const VOICE_MSG = {
   ready: "", listening: "Listening… speak your question, then click the microphone to stop. Your browser turns speech into text; AdmitCompass only receives the text you choose to send.",
   paused: "Stopped listening. Review or edit your question, then press Send. Click the microphone to continue.",
-  unsupported: "Voice input isn't available in this browser. Type your question instead.",
-  "not-allowed": "Microphone access was blocked. Allow it in your browser's site settings to dictate, or type your question.",
-  "service-not-allowed": "This browser won't allow speech recognition here. Type your question instead.",
+  unsupported: "Voice input isn’t supported in this browser. Type your question instead.",
+  "not-allowed": "Microphone access is blocked. Allow it in your browser settings, or type your question instead.",
+  "service-not-allowed": "Microphone access is blocked. Allow it in your browser settings, or type your question instead.",
   "audio-capture": "No microphone was found. Type your question instead.",
-  "no-speech": "No speech was heard. Click the microphone to try again, or type your question.",
-  network: "Speech recognition needs a network connection in this browser. Type your question instead.",
+  "no-speech": "I didn’t hear anything. Try again or type your question.",
+  network: "Voice input is temporarily unavailable. Type your question instead.",
   error: "Voice input stopped because of an error. Type your question, or try the microphone again.",
 };
 const speechAPI = () => window.SpeechRecognition || window.webkitSpeechRecognition || null;
@@ -2009,7 +2009,7 @@ function setupVoice(input) {
     state = next;
     button.dataset.state = next;
     button.setAttribute("aria-pressed", next === "listening" ? "true" : "false");
-    button.setAttribute("aria-label", next === "listening" ? "Stop voice input" : next === "unsupported" ? "Voice input isn't available in this browser" : "Start voice input");
+    button.setAttribute("aria-label", next === "listening" ? "Stop voice input" : next === "unsupported" ? "Voice input isn’t supported in this browser" : "Start voice input");
     button.title = button.getAttribute("aria-label");
     if (next === "unsupported") button.setAttribute("aria-disabled", "true"); else button.removeAttribute("aria-disabled");
     status.textContent = VOICE_MSG[msgKey] ?? VOICE_MSG.error;

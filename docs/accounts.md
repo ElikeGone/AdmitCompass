@@ -66,13 +66,21 @@ No new dependencies are needed. The database is created automatically on first u
 
 # Voice input for Ask AdmitCompass
 
-- **What it is:** an optional microphone button in the Ask AdmitCompass question box.
-- **How it works:** it uses the browser's own speech recognition (the Web Speech API) when the browser provides it — for example Chrome, Edge and Safari; Firefox doesn't, so there it shows "Voice input isn't available" and typing works as usual.
-- **Permission:** the browser asks for microphone access only after the user clicks the button.
-- **Nothing is sent automatically:** the transcript is written into the question box so the user can review and edit it, and it's sent only when the user presses Send.
-- **Privacy:** AdmitCompass never receives, sends or stores audio — it receives only the transcript the user chooses to send, through the normal Ask AdmitCompass request with all its existing safety checks. Speech-to-text happens in the browser; some browsers (Chrome, for example) use their vendor's own speech service for this, which AdmitCompass doesn't control.
-- **States shown:** ready, listening, paused (stopped; review and send), unsupported, and errors (microphone blocked, no microphone, no speech heard, network). The listening animation is turned off when the system asks for reduced motion.
+- **Browser speech recognition only:** the microphone button in the Ask AdmitCompass question box uses the browser's built-in speech recognition (the Web Speech API). AdmitCompass has no transcription server, no speech-to-text provider and no extra API key for voice.
+- **Support depends on the browser:** Chrome, Edge and Safari are supported where their speech recognition is available. Firefox may show "Voice input isn’t supported in this browser. Type your question instead."
+- **Permission:** the browser asks for microphone access only after the user clicks the microphone button.
+- **Nothing is sent automatically:** the transcript is written into the question box so the user can review and edit it. It's sent only when the user presses Send (or Enter), like a typed question.
+- **Privacy:**
+  - AdmitCompass receives only the transcript the user chooses to send, through the normal Ask AdmitCompass request with its existing safety checks.
+  - Audio is not stored by AdmitCompass, and AdmitCompass never receives it.
+  - Speech-to-text is done by the browser. Some browsers (Chrome, for example) use their vendor's own online speech service, so voice input isn't guaranteed to work offline.
+- **Messages:**
+  - network error — "Voice input is temporarily unavailable. Type your question instead.";
+  - microphone blocked — "Microphone access is blocked. Allow it in your browser settings, or type your question instead.";
+  - unsupported browser — "Voice input isn’t supported in this browser. Type your question instead.";
+  - no speech — "I didn’t hear anything. Try again or type your question."
+- **Typing always works:** the text box and Enter-to-send are unchanged.
 
 ## Voice input limitations
-- **Not tested with a real microphone.** Successful dictation, editing, stopping and the unsupported state were tested with a simulated speech API, and the blocked-permission state with a real browser API that had no microphone access. A real end-to-end dictation test on a device with a microphone is still open.
+- **Successful dictation with a physical microphone was not tested in this environment.** Dictation, editing, stopping and the unsupported state were tested with a simulated speech API; the blocked-microphone state was tested with a real browser speech API that had no microphone access.
 - **Browser support varies;** recognition quality and language handling depend on the browser.
