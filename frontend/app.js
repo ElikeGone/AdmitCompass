@@ -278,7 +278,6 @@ const kUSD = v => (v == null ? "—" : `$${Math.round(v / 1000)}k`);
 async function renderHome(scrollTo) {
   document.body.classList.add("on-home");
   const grid = el("div", { class: "show-grid" }, el("p", { class: "small muted", text: "Loading programs…" }));
-  const showFoot = el("div", { class: "show-foot" });
   put($main,
     el("section", { class: "hp2-hero" },
       el("div", { class: "wrap hp2-grid" },
@@ -309,7 +308,7 @@ async function renderHome(scrollTo) {
       el("div", { class: "sec2-head row2" }, el("div", {}, el("span", { class: "eyebrow2 violet", text: "Real, sourced information" }), el("h2", { text: "Leading MBA programs, with the evidence shown" }),
         el("p", { text: "Each card says what's sourced from official pages and what isn't. Unknown stays unknown." })),
         el("a", { class: "btn btn-outline", href: "#/explore" }, "Explore all programs ", arrow())),
-      grid, showFoot)),
+      grid)),
     el("section", { class: "hp2-sec", id: "intl" }, el("div", { class: "wrap intl3" },
       el("div", { class: "sec2-head" }, el("span", { class: "eyebrow2 cyan", text: "For international applicants" }), el("h2", { text: "Straight answers where generic advice gets it wrong" }),
         el("p", { text: "Work authorization, total cost and real outcomes matter most when you apply from abroad. AdmitCompass shows the evidence — and says clearly when there isn't any." }),
@@ -327,7 +326,7 @@ async function renderHome(scrollTo) {
         el("a", { class: "btn btn-ghost-light btn-lg", href: "#/dashboard/demo", text: "View sample analysis" }))))));
   if (scrollTo) document.getElementById(scrollTo)?.scrollIntoView({ block: "start" });
   try {
-    const r = await api("/api/programs"), by = r.counts.by_evidence_status;
+    const r = await api("/api/programs");
     const items = r.items.filter(it => it.tier === "verified").slice(0, 6);
     put(clear(grid), items.map((it, i) => {
       const coa = it.cost_of_attendance, stem = it.stem_designated === true ? (it.stem_partial ? "Some tracks" : "Verified") : "Unknown";
@@ -343,7 +342,6 @@ async function renderHome(scrollTo) {
           el("div", {}, el("dt", { text: "Employment rate" }), el("dd", { class: it.employment ? "" : "unk", text: it.employment ? `${it.employment.rate}% (${it.employment.period})` : "Not on official pages checked" }))),
         it.official_link?.url ? extLink(it.official_link.final_url || it.official_link.url, "Official page") : null);
     }));
-    put(showFoot, el("span", { text: `${r.counts.verified} programs with sourced facts · ${by.discovered} discovered only (existence confirmed, no facts yet) · ${by.unavailable} official page couldn't be retrieved` }));
   } catch { put(clear(grid), el("p", { class: "small muted", text: "Programs could not be loaded." })); }
   if (scrollTo && location.hash === "#/" + scrollTo) document.getElementById(scrollTo)?.scrollIntoView({ block: "start" });
 }
