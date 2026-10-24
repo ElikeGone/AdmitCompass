@@ -212,6 +212,11 @@ async function boot() {
   if (!!S.user !== wasUser) route();   // re-render with account-backed saved data once the session is known
 }
 function setNav(which) { document.querySelectorAll(".nav a").forEach(a => a.classList.toggle("active", a.dataset.nav === which && !a.classList.contains("btn"))); }
+const ROUTE_TITLE = {
+  home: "AdmitCompass — your career ambition deserves a better education plan",
+  explore: "Explore MBA programs · AdmitCompass", how: "How it works · AdmitCompass", intl: "International applicants · AdmitCompass",
+  dashboard: "Sample analysis · AdmitCompass", start: "Find your pathway · AdmitCompass",
+};
 function route() {
   if (S.poll && !location.hash.startsWith("#/run/")) { clearTimeout(S.poll); S.poll = null; }
   let hash = location.hash || "#/", auth = null;
@@ -227,13 +232,14 @@ function route() {
   clear($main); window.scrollTo(0, 0);
   closeMenu();
   document.body.classList.remove("on-home");   // renderHome sets it again (solid dark header on the homepage)
-  if (view === "intl") { setNav("intl"); return renderHome("intl"); }
+  document.title = ROUTE_TITLE[view === "results" || view === "run" ? "dashboard" : view] || ROUTE_TITLE.home;
+  if (view === "intl") { setNav("intl"); return renderIntl(); }
   const views = { start: renderStart, explore: renderExplore, how: renderHow };
   if (views[view]) { setNav(view); return views[view](); }
   if (view === "run" && arg) { setNav(""); return renderRun(arg); }
   if (view === "dashboard" && arg) { setNav(arg === "demo" ? "results" : ""); return renderDashboard(arg); }
   if (view === "results") { setNav(arg === "demo" ? "results" : ""); return renderResults(arg, sub); }
-  setNav(""); renderHome();
+  setNav("home"); renderHome();
 }
 
 /* ---------------- landing ---------------- */
@@ -312,8 +318,8 @@ async function renderHome(scrollTo) {
     el("section", { class: "hp2-sec", id: "intl" }, el("div", { class: "wrap intl3" },
       el("div", { class: "sec2-head" }, el("span", { class: "eyebrow2 cyan", text: "For international applicants" }), el("h2", { text: "Straight answers where generic advice gets it wrong" }),
         el("p", { text: "Work authorization, total cost and real outcomes matter most when you apply from abroad. AdmitCompass shows the evidence — and says clearly when there isn't any." }),
-        el("div", { class: "hp2-cta" }, el("a", { class: "btn btn-primary", href: "#/dashboard/demo" }, "See an international analysis ", arrow()),
-          el("a", { class: "btn btn-outline", href: "#/start", text: "Find my pathway" }))),
+        el("div", { class: "hp2-cta" }, el("a", { class: "btn btn-primary", href: "#/intl" }, "Read the international guide ", arrow()),
+          el("a", { class: "btn btn-outline", href: "#/dashboard/demo", text: "See a sample analysis" }))),
       el("div", { class: "intl3-grid" }, [
         ["shield", "STEM status, with its source", "Shown only when an official university page says so — never presented as a visa guarantee."],
         ["globe", "Sponsorship is never assumed", "Without employer-specific evidence, sponsorship stays unknown."],
@@ -327,7 +333,7 @@ async function renderHome(scrollTo) {
   if (scrollTo) document.getElementById(scrollTo)?.scrollIntoView({ block: "start" });
   try {
     const r = await api("/api/programs");
-    const items = r.items.filter(it => it.tier === "verified").slice(0, 6);
+    const items = r.items.filter(it => it.tier === "verified").slice(0, 3);
     put(clear(grid), items.map((it, i) => {
       const coa = it.cost_of_attendance, stem = it.stem_designated === true ? (it.stem_partial ? "Some tracks" : "Verified") : "Unknown";
       return el("article", { class: "show-card" },
@@ -680,7 +686,9 @@ async function renderExplore() {
   const f = S.explore = { ...DEFAULT_FILTERS, ...S.explore };
   delete f.tier;
   S.compare = S.compare || [];
-  let meta = null, seq = 0, first = null;
+  let meta = null, seq = 0, first = null, showAll = false;
+  const FEATURED = 8;
+  const filtersActive = () => !!(f.q || f.status || f.state || f.stem || num(f.max) || f.savedOnly);
   const grid = el("div", { class: "ex-grid", "aria-live": "polite" }), metaLine = el("div", { class: "ex-meta" }), active = el("div", { class: "active-row" }), tray = el("div");
   try { first = await api("/api/programs"); } catch { /* load() shows the error */ }
   const by = first?.counts?.by_evidence_status || {}, idx = first?.index || {};
@@ -728,13 +736,18 @@ async function renderExplore() {
     if (!meta) return;
     const saved = savedSet();
     const items = f.savedOnly ? meta.items.filter(i => saved.has(i.id)) : meta.items;
-    put(clear(metaLine), el("span", {}, el("b", { text: String(items.length) }), ` program${items.length === 1 ? "" : "s"}`,
-      (f.stem || num(f.max)) ? " · cost and STEM filters only match facts with official evidence" : ""), el("span", { class: "xs", text: sortHelp[f.sort] }));
+    const featured = !filtersActive() && !showAll && items.length > FEATURED;
+    const shown = featured ? items.slice(0, FEATURED) : items;
+    put(clear(metaLine), el("h2", { class: "ex-h", text: featured ? "Strongest evidence first" : filtersActive() ? `${items.length} matching program${items.length === 1 ? "" : "s"}` : `All ${items.length} programs` }),
+      el("span", { class: "ex-sub", text: featured ? `${FEATURED} of ${items.length} programs, ordered by how much is backed by official sources.` : `${sortHelp[f.sort]}.${(f.stem || num(f.max)) ? " Cost and STEM filters only match facts with official evidence." : ""}` }));
     clear(grid);
     if (!items.length) { put(grid, el("div", { class: "empty2" }, el("b", { text: f.savedOnly ? "No saved programs yet" : "No programs match" }),
       el("p", { class: "small", style: "margin:6px 0 12px", text: f.savedOnly ? "Tap the heart on any program to save it." : "Try removing a filter." }),
       el("button", { type: "button", class: "btn btn-secondary", onclick: () => { Object.assign(f, DEFAULT_FILTERS); load(); }, text: "Reset filters" }))); return; }
-    put(grid, items.map(it => card(it, saved)));
+    put(grid, shown.map(it => card(it, saved)));
+    if (!filtersActive() && items.length > FEATURED)
+      put(grid, el("div", { class: "ex-more" }, el("button", { type: "button", class: "btn btn-secondary", onclick: () => { showAll = !showAll; drawList(); if (!showAll) metaLine.scrollIntoView({ block: "start" }); },
+        text: showAll ? "Show the strongest-evidence programs only" : `View all ${items.length} programs` })));
     drawTray();
   };
   const load = async () => {
@@ -749,72 +762,39 @@ async function renderExplore() {
   };
   function card(it, saved) {
     const st = it.evidence_status, ev = EV[st], where = [it.city, it.state].filter(Boolean).join(", ") || "Location not confirmed";
-    const color = LOGO_COLORS[[...it.id].reduce((a, ch) => a + ch.charCodeAt(0), 0) % LOGO_COLORS.length];
-    const coa = it.cost_of_attendance, emp = it.employment, isSaved = saved.has(it.id), inCmp = S.compare.includes(it.id);
-    const f3 = (k, val, title, ok) => el("div", { class: "f3", title: title || null }, el("div", { class: "k", text: k }), el("div", { class: `v ${val ? (ok ? "ok" : "") : "unk"}`, text: val || "Not on official pages" }));
-    let middle;
-    if (st === "detailed" || st === "partial") {
-      const stemText = it.stem_designated === true ? (it.stem_partial ? "Some tracks" : "Verified") : null;
-      const anyKey = coa || it.costs?.estimate_annual || it.tuition || it.stem_designated != null || emp;
-      middle = [
-        anyKey ? el("div", { class: "facts3" },
-          coa ? f3("Cost / yr", kUSD(coa.value), `Official cost of attendance ${fmtUSD(coa.value)} (${coa.period})`, false)
-            : it.costs?.estimate_annual ? f3("Est. cost / yr", kUSD(it.costs.estimate_annual.value), `Estimate by ${it.costs.estimate_annual.publisher} (${it.costs.estimate_annual.period}) — not an official figure`, false)
-            : it.costs?.lines.find(l => l.label === "Cost of attendance as compiled") ? (l => f3(`Reported cost / yr`, kUSD(l.value), `As compiled by ${l.publisher} for ${l.period} — not the school's own current figure`, false))(it.costs.lines.find(l => l.label === "Cost of attendance as compiled"))
-            : f3(it.tuition ? "Tuition / yr" : "Total cost / yr", it.tuition ? kUSD(it.tuition.value) : null, it.tuition ? `Tuition ${fmtUSD(it.tuition.value)} (${it.tuition.period}); total cost not published` : "", false),
-          f3("STEM", stemText, it.stem_scope || "", !it.stem_partial),
-          f3("Employed*", emp ? `${emp.rate}%` : null, emp ? `${emp.period}: ${emp.definition}` : "", false)) : null,
-        rankLine(it.ranking, false),
-        st === "partial" ? el("div", { class: "pc-avail", "aria-label": "Facts with official sources" },
-          el("span", { class: "xs muted", style: "align-self:center", text: "Sourced:" }),
-          it.verified_facts.filter(n => !["location", "sponsorship"].includes(n)).slice(0, 4).map(n => el("span", { class: "av", text: FACT_SHORT[n] })),
-          it.verified_facts.length > 5 ? el("span", { class: "av", text: `+${it.verified_facts.length - 5}` }) : null) : null];
-    } else if (st === "discovered") {
-      const e1 = it.costs?.estimate_annual;
-      middle = el("div", { class: "pc-summary" }, el("b", { text: "Official facts not collected yet. " }), "Official program page confirmed; STEM status and outcomes haven't been checked.",
-        e1 ? el("div", { class: "xs", style: "margin-top:6px" }, el("b", { text: `Est. ${kUSD(e1.value)}/yr` }), ` — ${e1.publisher} estimate, ${e1.period}`) : null, rankLine(it.ranking, false));
-    } else {
-      const e2 = it.costs?.estimate_annual;
-      middle = el("div", { class: "pc-summary unavail" }, el("b", { text: "Official site blocks automated checks. " }), "The link below opens normally in your browser.",
-        e2 ? el("div", { class: "xs", style: "margin-top:6px" }, el("b", { text: `Est. ${kUSD(e2.value)}/yr` }), ` — ${e2.publisher} estimate, ${e2.period}`) : null, rankLine(it.ranking, false));
-    }
-    return el("article", { class: `pc ev-${st} ${it.tier === "verified" ? "" : "disc"}` },
-      el("div", { class: "pc-top" },
-        el("div", { class: "logo", style: `background-color:${color}`, "aria-hidden": "true", text: initials(shortName(it)) || "MBA" }),
-        el("div", { class: "pc-name" }, el("h3", { text: shortName(it) }), el("div", { class: "sub", text: `${it.program_name} · ${where}` })),
-        el("button", { type: "button", class: "save-btn", "aria-pressed": isSaved ? "true" : "false", "aria-label": `${isSaved ? "Remove" : "Save"} ${shortName(it)}${isSaved ? " from saved" : ""}`,
-          onclick: e => { const s = savedSet(); s.has(it.id) ? s.delete(it.id) : s.add(it.id); storeSaved(s); const on = s.has(it.id);
-            e.currentTarget.setAttribute("aria-pressed", on); e.currentTarget.setAttribute("aria-label", `${on ? "Remove" : "Save"} ${shortName(it)}${on ? " from saved" : ""}`);
-            toast(on ? `Saved ${shortName(it)} on this device` : `Removed ${shortName(it)}`); if (f.savedOnly) drawList(); } }, svgIcon("heart"))),
-      el("span", { class: `status ev-${st}`, title: ev.plain }, svgIcon(ev.icon), ev.label),
-      middle,
-      it.matched_keywords?.length ? el("div", { class: "pc-why", text: `Reports hiring into ${it.matched_keywords.join(", ")}` }) : null,
-      el("div", { class: "pc-acts" },
-        el("div", { class: "row", style: "gap:8px" },
-          el("button", { type: "button", class: "cmp-btn", "aria-pressed": inCmp ? "true" : "false", disabled: !inCmp && S.compare.length >= 3 ? true : null,
-            "aria-label": `${inCmp ? "Remove" : "Add"} ${shortName(it)} ${inCmp ? "from" : "to"} comparison`,
-            onclick: () => { S.compare = inCmp ? S.compare.filter(x => x !== it.id) : [...S.compare, it.id].slice(0, 3); drawList(); } },
-            svgIcon(inCmp ? "check" : "plus"), inCmp ? "Comparing" : "Compare"),
-          it.official_link ? el("a", { class: "pc-link", href: it.official_link.url, target: "_blank", rel: "noopener noreferrer", title: `Official page${linkLabel(it.official_link)}` }, "Official page ↗") : null),
-        el("button", { type: "button", class: "det-btn", onclick: () => openDetails(it.id) }, "Details ", arrow())));
+    const coa = it.cost_of_attendance, est = it.costs?.estimate_annual, emp = it.employment;
+    const cost = coa ? `${fmtUSD(coa.value)} a year · official` : est ? `About ${fmtUSD(est.value)} a year · ${est.publisher} estimate`
+      : it.tuition ? `Tuition ${fmtUSD(it.tuition.value)} a year · total not published` : "Total cost not published";
+    const stem = it.stem_designated === true ? (it.stem_partial ? "STEM-designated tracks · official" : "STEM-designated · official") : it.tier === "verified" ? "STEM status not confirmed" : "Not checked yet";
+    const job = emp ? `${emp.rate}% employed · ${emp.period}` : it.tier === "verified" ? "Employment not published" : "Not checked yet";
+    const sig = (icon, text, known) => el("li", { class: known ? "" : "unk" }, svgIcon(icon), el("span", { text }));
+    return el("article", { class: `pc2 ev-${st}` },
+      el("div", { class: "pc2-head" }, el("h3", { text: shortName(it) }), el("div", { class: "pc2-where", text: where })),
+      el("div", { class: `pc2-ev ev-${st}`, title: ev.plain }, el("span", { class: "dot", "aria-hidden": "true" }), ev.label),
+      el("ul", { class: "pc2-sig" }, sig("dollar", cost, !!(coa || est || it.tuition)), sig("shield", stem, it.stem_designated === true), sig("chart", job, !!emp)),
+      el("div", { class: "pc2-acts" },
+        el("button", { type: "button", class: "btn btn-secondary btn-sm", onclick: () => openDetails(it.id) }, "Details"),
+        it.official_link ? el("a", { class: "pc2-link", href: it.official_link.url, target: "_blank", rel: "noopener noreferrer" }, "Official page ↗") : null));
   }
 
+  const needVerify = (by.partial || 0) + (by.discovered || 0) + (by.unavailable || 0);
   put($main,
-    el("section", { class: "ex-top" }, el("div", { class: "wrap" },
+    el("section", { class: "ex-top ex2-top" }, el("div", { class: "wrap ex2" },
       el("h1", { text: "Explore MBA programs" }),
-      el("p", { text: `Search ${first?.total ?? 30} US full-time MBA programs. Every fact we show links to the official page it came from — and when something isn't published or hasn't been checked, we say so. Data collected ${idx.built_on || "—"}; this is a curated index, not a live web search.` }),
-      el("div", { class: "ex-stats" },
-        el("span", { class: "ex-stat", title: EV.detailed.plain }, el("span", { class: "dot v" }), el("b", { text: String(by.detailed ?? "—") }), "detailed evidence"),
-        el("span", { class: "ex-stat", title: EV.partial.plain }, el("span", { class: "dot p" }), el("b", { text: String(by.partial ?? "—") }), "partially verified"),
-        el("span", { class: "ex-stat", title: EV.discovered.plain }, el("span", { class: "dot d" }), el("b", { text: String(by.discovered ?? "—") }), "discovered"),
-        el("span", { class: "ex-stat", title: EV.unavailable.plain }, el("span", { class: "dot r" }), el("b", { text: String(by.unavailable ?? "—") }), "retrieval unavailable"),
-        el("button", { type: "button", class: "reset", onclick: () => openLegend(), text: "What do these mean?" })),
+      el("p", { class: "ex2-lead", text: "US full-time MBA programs, with every fact linked to the official page it came from. When something isn't published or hasn't been checked, we say so." }),
+      el("dl", { class: "ex2-sum" },
+        el("div", {}, el("dt", { text: "Programs" }), el("dd", { text: String(first?.total ?? "—") })),
+        el("div", {}, el("dt", { text: "Detailed evidence" }), el("dd", { text: String(by.detailed ?? "—") })),
+        el("div", {}, el("dt", { text: "Need verification" }), el("dd", { text: String(first ? needVerify : "—") }),
+          el("span", { class: "ex2-note", text: `${by.partial ?? 0} partially verified · ${(by.discovered ?? 0) + (by.unavailable ?? 0)} not yet checked` }))),
+      el("button", { type: "button", class: "linkbtn ex2-legend", onclick: () => openLegend(), text: "What do evidence levels mean?" }),
       el("div", { class: "ex-search" }, svgIcon("search"), searchInput),
-      el("div", { class: "ex-filters", role: "group", "aria-label": "Filters" },
-        el("div", { class: "fsel" }, statusSel), el("div", { class: "fsel" }, stateSel), el("div", { class: "fsel" }, maxIn), el("div", { class: "fsel" }, sortSel), stemBtn, savedBtn),
+      el("div", { class: "ex2-filters", role: "group", "aria-label": "Filters" },
+        el("div", { class: "fsel" }, statusSel), el("div", { class: "fsel" }, stateSel), el("div", { class: "fsel" }, sortSel), stemBtn,
+        el("details", { class: "ex2-more" }, el("summary", { text: "More filters" }), el("div", { class: "ex2-more-body" }, el("div", { class: "fsel" }, maxIn), savedBtn))),
       active)),
-    el("section", {}, el("div", { class: "wrap" }, metaLine, grid,
-      el("p", { class: "ex-foot", text: "* Employment rates use each school's own definition and graduating class, so they aren't directly comparable — open Details to see each definition. “Some tracks” means only certain tracks or majors are STEM-designated. Saved programs stay on this device." }))),
+    el("section", { class: "ex2-list" }, el("div", { class: "wrap ex2" }, metaLine, grid,
+      el("p", { class: "ex-foot", text: "Employment rates use each school's own definition and graduating class, so they aren't directly comparable — Details shows each definition. Save and compare programs from Details." }))),
     tray);
   load();
 
@@ -834,6 +814,14 @@ async function renderExplore() {
     if (it.tier === "verified") setChatContext({ ...S.ctx, program_id: id, compare_ids: [] });
     const body = el("div", { class: "drawer-body" });
     const official = it.official_link ? el("a", { class: "btn btn-secondary", href: it.official_link.url, target: "_blank", rel: "noopener noreferrer" }, "Visit official program page ↗") : null;
+    const isSaved = savedSet().has(id), inCmp = S.compare.includes(id);
+    put(body, el("div", { class: "ex2-dacts" },
+      el("button", { type: "button", class: "btn btn-quiet", "aria-pressed": isSaved ? "true" : "false", onclick: e => { const s2 = savedSet(); s2.has(id) ? s2.delete(id) : s2.add(id); storeSaved(s2);
+        const on = s2.has(id); e.currentTarget.setAttribute("aria-pressed", on); e.currentTarget.textContent = on ? "Saved on this device ✓" : "Save program"; toast(on ? `Saved ${shortName(it)} on this device` : `Removed ${shortName(it)}`); if (f.savedOnly) drawList(); },
+        text: isSaved ? "Saved on this device ✓" : "Save program" }),
+      el("button", { type: "button", class: "btn btn-quiet", disabled: !inCmp && S.compare.length >= 3 ? true : null, onclick: e => { S.compare = S.compare.includes(id) ? S.compare.filter(x => x !== id) : [...S.compare, id].slice(0, 3);
+        e.currentTarget.textContent = S.compare.includes(id) ? "Remove from comparison" : "Add to comparison"; drawTray(); },
+        text: inCmp ? "Remove from comparison" : S.compare.length >= 3 ? "Comparison is full (3)" : "Add to comparison" })));
     put(body, el("div", { class: `callout2 ${st === "detailed" ? "ok" : st === "unavailable" ? "" : "info"}` }, svgIcon(ev.icon), el("span", { text: ev.plain })));
     if (it.ranking) put(body, el("div", { class: "dsec" }, el("h3", { text: "Ranking (context only)" }), rankLine(it.ranking, true)));
     if (d.facts) {
@@ -1013,26 +1001,91 @@ function rankLine(r, full) {
 }
 
 /* ---------------- how it works ---------------- */
-function renderHow() {
-  put($main, el("div", { class: "wrap", style: "padding-top:48px" },
-    el("div", { class: "narrow" }, el("h1", { text: "How AdmitCompass works" }),
-      el("p", { class: "lead", text: "Four AI agents, each with one job, work from a small, verified evidence store. Plain code checks every answer before you see it." })),
-    el("section", { class: "section" }, el("div", { class: "steps3", style: "grid-template-columns:repeat(4,1fr)" },
-      AGENTS.map(a => el("div", {}, el("h3", { text: a.name }), el("p", { class: "muted small", text: a.desc }))))),
-    el("section", { class: "section narrow" },
-      el("h2", { text: "What the code guarantees" }),
-      el("ul", { class: "ticks" },
-        el("li", { text: "Program facts come only from the evidence store; a model can't create a verified fact." }),
-        el("li", { text: "Every verified claim cites an evidence id, and any number in it must appear in that evidence." }),
-        el("li", { text: "STEM, sponsorship and budget status are recomputed from the store and corrected if a model disagrees." }),
-        el("li", { text: "Employment numbers are compared only when cohort and definition match." }),
-        el("li", { text: "Each run is capped at 25 model requests, 200,000 tokens and 300 seconds, with at most one Skeptic revision." }))),
-    el("section", { class: "section narrow" },
-      el("h2", { text: "What's in the data" }),
-      el("p", { text: "Six full-time MBA programs have full evidence: 13 facts each, collected from official university pages on 23 October 2026, with 49 of 78 facts verified and the rest marked unknown. Detailed recommendations use only these programs." }),
-      el("p", { text: "Explore also shows programs discovered from official university pages. They're labelled “Needs verification”: we only know they exist and where. They aren't used by the agents until their facts are verified." }),
-      el("p", { class: "muted small", text: "Want the technical detail — agent trace, tokens, safeguards and every citation? Open “Evidence & risks” on any analysis." }),
-      el("a", { class: "btn btn-quiet", href: "#/results/demo/evidence", text: "See evidence for the sample analysis" }))));
+/* ---------------- International applicants (dedicated page) ----------------
+   Explains what AdmitCompass checks for applicants who will need U.S. work authorization. Counts come from the
+   catalog API; no legal advice, visa guarantees, admission odds or sponsorship claims. */
+async function renderIntl() {
+  const counts = el("dl", { class: "pg-facts" });
+  const topic = (icon, h, what, source, unknown) => el("section", { class: "pg-topic" },
+    el("div", { class: "pg-topic-h" }, el("span", { class: "pg-ic" }, svgIcon(icon)), el("h3", { text: h })),
+    el("p", { text: what }),
+    el("dl", { class: "pg-kv" }, el("div", {}, el("dt", { text: "Where it comes from" }), el("dd", { text: source })),
+      el("div", {}, el("dt", { text: "When it isn't known" }), el("dd", { text: unknown }))));
+  put($main, el("div", { class: "pg" },
+    el("header", { class: "pg-hero" }, el("div", { class: "wrap pg-narrow" },
+      el("span", { class: "kicker", text: "For international applicants" }),
+      el("h1", { text: "Plan an MBA when you'll need U.S. work authorization" }),
+      el("p", { class: "pg-lead", text: "STEM status, total cost, employer sponsorship history and international outcomes decide whether a program is realistic for you. AdmitCompass shows what official sources say about each one — and marks clearly what isn't known." }),
+      el("div", { class: "pg-cta" }, el("a", { class: "btn btn-primary btn-lg", href: "#/start" }, "Start my personalized pathway ", arrow()),
+        el("a", { class: "btn btn-quiet", href: "#/dashboard/demo", text: "See a sample analysis for an applicant from India" })),
+      counts)),
+    el("div", { class: "wrap pg-narrow" },
+      el("section", { class: "pg-sec" }, el("h2", { text: "What we check for you" }),
+        topic("shield", "STEM designation", "Whether the MBA — or only some tracks — is STEM-designated, with the exact scope the school states.",
+          "The program's official page.", "Shown as “Needs confirmation”. STEM designation is a program classification, not a visa or sponsorship guarantee."),
+        topic("dollar", "Total cost, not tuition alone", "Your budget is compared with the school's published one-year cost of attendance, which includes living costs — never with tuition alone.",
+          "The school's official cost page. Third-party estimates are labeled with their publisher.", "No comparison is made; tuition is shown separately and marked as tuition only."),
+        topic("globe", "Employer sponsorship history", "For employers that a school's official report says hired its graduates, the number of certified H-1B labor condition applications they filed.",
+          "U.S. Department of Labor H-1B disclosure data (fiscal year 2025), matched only to employers on the school's own list.", "Shown as unknown. Past filings show what employers did, not what they will do — never a promise of sponsorship."),
+        topic("chart", "International employment outcomes", "Outcome figures for international students, kept with their cohort and definition.",
+          "The school's official employment report.", "Shown as “Not published” — most schools don't publish a separate figure, so ask the career office.")),
+      el("section", { class: "pg-sec" }, el("h2", { text: "Three kinds of information, kept apart" }),
+        el("ol", { class: "pg-kinds" },
+          el("li", {}, el("b", { text: "School facts" }), el("span", { text: " — from official university pages, with the page link and the date we checked it." })),
+          el("li", {}, el("b", { text: "Employer filing history" }), el("span", { text: " — from U.S. Department of Labor data. It describes employers, not schools, and it's history, not a guarantee." })),
+          el("li", {}, el("b", { text: "Unknown" }), el("span", { text: " — not on the official pages we checked. We never fill these in; you'll see what to confirm and where." })))),
+      el("section", { class: "pg-sec pg-limits" }, el("h2", { text: "What AdmitCompass won't do" }),
+        el("p", { text: "It doesn't give legal or immigration advice, guarantee a visa or sponsorship, or estimate your chances of admission. For questions about your own visa or work-authorization eligibility, ask the school's international student office (DSO) or a qualified immigration attorney." })),
+      el("section", { class: "pg-sec pg-end" }, el("h2", { text: "See your options with the evidence attached" }),
+        el("a", { class: "btn btn-primary btn-lg", href: "#/start" }, "Start my personalized pathway ", arrow())))));
+  try {
+    const r = await api("/api/programs"), core = r.items.filter(i => i.tier === "verified");
+    put(counts,
+      el("div", {}, el("dt", { text: "Programs with STEM status from an official page" }), el("dd", { text: `${core.filter(i => i.stem_designated === true).length} of ${core.length}` })),
+      el("div", {}, el("dt", { text: "Programs with an official total cost" }), el("dd", { text: `${core.filter(i => i.cost_of_attendance).length} of ${core.length}` })));
+  } catch { counts.remove(); }
+}
+
+/* ---------------- How it works ---------------- */
+const AGENT_FLOW = [
+  ["Pathway Matcher", "Turns your goal into target roles and shortlists programs by where they lead.", "A shortlist built on career fit"],
+  ["Evidence Analyst", "Checks cost, STEM status, outcomes and employer filings against official sources.", "Verified facts, with unknowns marked"],
+  ["Strategy Planner", "Turns your gaps and the evidence into a test decision and a weekly plan.", "A GRE-or-GMAT decision and weekly actions"],
+  ["Skeptic", "Challenges weak evidence, budget assumptions and immigration overstatements.", "Corrections — at most one revision"],
+];
+async function renderHow() {
+  const data = el("div", {}, el("p", { class: "muted", text: "Loading…" }));
+  put($main, el("div", { class: "pg" },
+    el("header", { class: "pg-hero pg-hero-light" }, el("div", { class: "wrap pg-narrow" },
+      el("span", { class: "kicker", text: "How it works" }),
+      el("h1", { text: "From your career goal to a plan you can act on" }),
+      el("p", { class: "pg-lead", text: "You share your background, goal, budget and time. AdmitCompass returns a shortlist, a GRE-or-GMAT decision and a weekly plan — and plain code checks every fact against official sources before you see it." }),
+      el("div", { class: "pg-cta" }, el("a", { class: "btn btn-primary btn-lg", href: "#/start" }, "Find my pathway ", arrow()),
+        el("a", { class: "btn btn-quiet", href: "#/dashboard/demo", text: "See a sample analysis" })))),
+    el("div", { class: "wrap pg-narrow" },
+      el("section", { class: "pg-sec" }, el("h2", { text: "Four agents, one job each" }),
+        el("ol", { class: "pg-flow" }, AGENT_FLOW.map(([n, job, out], i) => el("li", {},
+          el("span", { class: "num", text: String(i + 1) }),
+          el("div", {}, el("h3", { text: n }), el("p", { text: job }), el("p", { class: "pg-out" }, el("b", { text: "Output: " }), out))))),
+        el("p", { class: "pg-note", text: "The agents read only from AdmitCompass's evidence store. They can't add a fact of their own." })),
+      el("section", { class: "pg-sec" }, el("h2", { text: "Technical details" }),
+        panel("What the code guarantees", "how-guarantees", el("ul", { class: "ticks" },
+          el("li", { text: "Program facts come only from the evidence store; a model can't create a verified fact." }),
+          el("li", { text: "Every verified claim cites an evidence id, and any number in it must appear in that evidence." }),
+          el("li", { text: "STEM, sponsorship and budget status are recomputed from the store and corrected if a model disagrees." }),
+          el("li", { text: "Employment numbers are compared only when cohort and definition match." }),
+          el("li", { text: "Questions about admission chances or your own visa eligibility are answered with a referral, not a guess, before any model is called." }),
+          el("li", { text: "Each run is capped at 25 model requests, 200,000 tokens and 300 seconds, with at most one Skeptic revision." }))),
+        panel("What's in the data", "how-data", data),
+        panel("Evidence and safety for reviewers", "how-review", el("div", {},
+          el("p", { text: "Every analysis keeps its Skeptic review, citations, usage and a technical trace. The sample analysis also has a safety test mode and an exportable run record." }),
+          el("a", { class: "btn btn-quiet", href: "#/results/demo/evidence", text: "Open the sample's evidence and trace" })))))));
+  try {
+    const r = await api("/api/programs"), by = r.counts.by_evidence_status, idx = r.index || {};
+    put(clear(data),
+      el("p", { text: `${r.total} US full-time MBA programs: ${by.detailed} with detailed evidence, ${by.partial} partially verified, and ${(by.discovered || 0) + (by.unavailable || 0)} not yet checked.${idx.built_on ? ` Facts were collected from official university pages (index built ${idx.built_on}).` : ""}` }),
+      el("p", { text: "A fact is “verified” only when an official source supports it; anything else is shown as unknown and is never filled in. Programs that are only discovered — we know they exist and where — aren't used by the agents until their facts are collected." }));
+  } catch { put(clear(data), el("p", { text: "The data summary couldn't be loaded." })); }
 }
 
 /* ---------------- live run ---------------- */
@@ -1334,14 +1387,14 @@ async function renderDashboard(runId) {
       el("div", { class: "ds-dec" }, el("span", { class: "ds-k", text: "School shortlist" }), el("b", { text: `${d.programs.length} programs` }),
         el("span", { class: "ds-v", text: strong.length ? `Strongest fit: ${strong.join(", ")}` : d.programs.map(name).join(", ") })),
       el("div", { class: "ds-dec" }, el("span", { class: "ds-k", text: "GRE or GMAT" }), el("b", { text: undecided ? "Undecided" : (PLANNER_TEST_TEXT[td?.planner_recommendation] || "See the test section") }),
-        el("span", { class: "ds-v", text: undecided ? "No diagnostic scores yet — take one timed practice test of each" : "From the Strategy Planner (AI-inferred)" })),
+        el("span", { class: "ds-v", text: undecided ? "No diagnostic scores yet — take one timed practice test of each" : "Based on your profile" })),
       el("div", { class: "ds-dec" }, el("span", { class: "ds-k", text: "Next action this week" }),
-        firstAction ? [el("b", { text: byId[firstAction].text }), el("span", { class: "ds-v", text: `About ${wk.actions[firstAction].minutes} minutes (estimate)` })]
+        firstAction ? [el("b", { text: byId[firstAction].text }), el("span", { class: "ds-v", text: `About ${wk.actions[firstAction].minutes} minutes · planning estimate` })]
           : el("b", { text: "All planned actions are marked done" }))),
     el("div", { class: "ds-cta" },
       el("button", { type: "button", class: "btn btn-primary btn-lg", onclick: jump("d-plan") }, "Start this week's plan ", arrow()),
       el("button", { type: "button", class: "btn btn-quiet", onclick: jump("d-short"), text: "See the shortlist" })),
-    demo ? el("p", { class: "ds-note", text: `A real ${d.run.model} analysis saved on 23 October 2026, combined with today's evidence store. Viewing it makes no AI call.` }) : null));
+    demo ? el("p", { class: "ds-note", text: "A saved analysis for a fictional applicant. Viewing it makes no AI call." }) : null));
 
   /* 2. shortlist: four compact cards; "View evidence" opens that school's full source-backed details */
   const drawer = el("div", { class: "ds-drawer", hidden: true });
@@ -1368,7 +1421,7 @@ async function renderDashboard(runId) {
     el("h2", { id: "h-test", text: "GRE or GMAT" }),
     el("div", { class: "ds-card" },
       el("div", { class: "ds-row" }, el("b", { class: "ds-big", text: undecided ? "Undecided — and that's the honest answer" : (PLANNER_TEST_TEXT[td.planner_recommendation] || "See the Strategy Planner's note") }),
-        badge(undecided ? "unknown" : "ai", undecided ? "No diagnostic scores" : "AI-inferred")),
+        undecided ? null : badge("ai")),
       el("p", { text: undecided ? "There are no timed results to compare yet, so neither test is recommended. Neither is picked because it's more common." : (td.planner_rationale || "") }),
       undecided ? el("p", { class: "ds-next" }, el("b", { text: "Next: " }), "take one full-length, timed official practice test of each — either first. About 2½–3 hours each, including a short review (planning estimate).") : null,
       more("View each school's test policy (official sources)", testPolicyList(d)))));
@@ -1376,7 +1429,7 @@ async function renderDashboard(runId) {
   /* 4. profile gaps: top three; the rest behind "View all gaps" */
   put(wrap, el("section", { class: "ds-sec", id: "d-gaps", "aria-labelledby": "h-gaps" },
     el("h2", { id: "h-gaps", text: "Profile gaps" }),
-    el("p", { class: "ds-lead" }, "Inferred by the Strategy Planner from your profile ", badge("ai", "AI-inferred")),
+    el("p", { class: "ds-lead", text: "Based on your profile. The three most important first." }),
     gaps.length ? el("ol", { class: "ds-gaps" }, gaps.slice(0, 3).map(gapItem)) : el("p", { text: "No gaps were identified." }),
     gaps.length > 3 ? more(`View all gaps (${gaps.length})`, el("ol", { class: "ds-gaps", start: "4" }, gaps.slice(3).map(gapItem))) : null));
 
@@ -1409,10 +1462,12 @@ async function renderDashboard(runId) {
     panel("Affordability", "d-cost", costHost),
     panel("International feasibility", "d-intl", intlHost),
     fullPlan),
-    el("footer", { class: "dfoot xs muted" }, `Analysis status: ${RUN_STATUS_TEXT[d.run.status] || "not recorded"}. For reviewers: `,
-      el("a", { href: `#/results/${runId}/evidence`, text: "Skeptic review, citations, usage and technical run details" }),
-      " · Legacy views: ", el("a", { href: `#/results/${runId}/shortlist`, text: "shortlist" }), " · ", el("a", { href: `#/results/${runId}/plan`, text: "roadmap" }),
-      runDetailsPanel(runId), safetyTestPanel()));
+    el("section", { class: "ds-sec ds-review", "aria-label": "Reviewer details" },
+      panel("Reviewer details", "d-review", el("div", {},
+        el("p", {}, `Analysis status: ${RUN_STATUS_TEXT[d.run.status] || "not recorded"}. Model: ${d.run.model}. ${demo ? "Saved on 23 October 2026 and combined with today's evidence store." : ""}`),
+        el("p", {}, el("a", { href: `#/results/${runId}/evidence`, text: "Skeptic review, citations, usage and technical trace" }),
+          " · Legacy views: ", el("a", { href: `#/results/${runId}/shortlist`, text: "shortlist" }), " · ", el("a", { href: `#/results/${runId}/plan`, text: "roadmap" })),
+        runDetailsPanel(runId), safetyTestPanel()))));
   put($main, wrap);
   drawPrograms();
   let remote = null;
@@ -1420,7 +1475,8 @@ async function renderDashboard(runId) {
   drawWorkspace(workHost, d, dres, runId, id => { sel = id; drawPrograms(); jump("d-details")(); }, remote, weekHost, timing);
 }
 /* ---- summary-page building blocks ---- */
-const BADGE = { verified: ["ok", "Verified"], estimated: ["warn", "Estimated"], unknown: ["", "Unknown"], passed: ["", "Passed"], upcoming: ["ok", "Upcoming"], ai: ["ai", "AI-inferred"] };
+/* Applicant-facing labels in plain language; the technical statuses stay in the evidence panels. */
+const BADGE = { verified: ["ok", "Official source"], estimated: ["warn", "Planning estimate"], unknown: ["", "Needs confirmation"], passed: ["", "Passed"], upcoming: ["ok", "Upcoming"], ai: ["ai", "Based on your profile"] };
 function badge(kind, text) { const [cls, def] = BADGE[kind] || ["", kind]; return el("span", { class: `dtag ds-badge ${cls}`, text: text || def }); }
 function panel(title, id, content) {
   return el("details", { class: "ds-panel", id }, el("summary", {}, el("span", { text: title })), el("div", { class: "ds-panel-body" }, content));
@@ -1442,7 +1498,7 @@ function shortlistCard(pg, isOpen, onEvidence) {
       el("div", {}, el("dt", { text: "Cost" }), el("dd", {}, cost)),
       el("div", {}, el("dt", { text: "Test policy" }), el("dd", {}, test)),
       el("div", {}, el("dt", { text: "Next deadline" }), el("dd", {}, next)),
-      trade ? el("div", {}, el("dt", { text: "Tradeoff" }), el("dd", {}, trade, " ", badge("ai"))) : null),
+      trade ? el("div", {}, el("dt", { text: "Tradeoff" }), el("dd", { text: trade })) : null),
     el("button", { type: "button", class: "btn btn-secondary ds-ev", "aria-expanded": isOpen ? "true" : "false", onclick: onEvidence, text: isOpen ? "Hide evidence" : "View evidence" }));
 }
 function careerPathwayBlock(d) {
@@ -1694,7 +1750,8 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
   const wk = w.weekly || null, act = id => wk?.actions?.[id];
   const TIER_TEXT = { must: "Must do", should: "Should do", optional: "Optional" };
   const unlockKey = `ac-weeks-${d.run.run_id || runId}`;
-  let unlocked = 1, viewWeek = null;
+  let unlocked = 1, viewWeek = null, showAllWeek = false;
+  const plainWhy = w2 => w2.replace(/^Gap flagged by the Strategy Planner \(AI-inferred\): /, "From your profile: ");
   try { unlocked = Math.max(1, Number(localStorage.getItem(unlockKey)) || 1); } catch { /* storage blocked: start at week 1 */ }
   const toggle = (id, isDone) => () => { const nx = { ...done }; if (isDone) delete nx[id]; else nx[id] = true; change(nx); };
   const taskRow = (id, nextId) => { const t = byId[id], isDone = !!done[id];
@@ -1719,24 +1776,29 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
         el("button", { type: "button", class: "dwk-check", "aria-pressed": isDone ? "true" : "false", "aria-label": `${isDone ? "Mark not done" : "Mark done"}: ${t.text}`,
           onclick: toggle(id, isDone) }, isDone ? "✓" : ""),
         el("div", {}, el("div", { class: "dwk-text", text: t.text }),
-          el("div", { class: "xs dwk-why" }, el("b", { text: "Why: " }), a.why),
-          el("div", { class: "xs muted", text: [`~${a.minutes} min (est.)`, a.moved_from ? `moved up from plan week ${a.moved_from} so week 1 covers the essentials` : null].filter(Boolean).join(" · ") }))); };
+          el("div", { class: "dwk-why" }, el("b", { text: "Why: " }), plainWhy(a.why)),
+          el("div", { class: "dwk-meta", text: [`About ${a.minutes} min · planning estimate`, a.moved_from ? `moved up from plan week ${a.moved_from} so week 1 covers the essentials` : null].filter(Boolean).join(" · ") }))); };
     const group = (tier, ids) => ids.length ? el("div", { class: `dwk-group ${tier}` }, el("h4", {}, el("span", { class: `dtag ${tier === "must" ? "ok" : tier === "optional" ? "" : "ai"}`, text: TIER_TEXT[tier] })),
       el("ul", { class: "dwk-list" }, ids.map(row))) : null;
-    const prio = shown.priority, must = prio.filter(i => act(i).tier === "must"), should = prio.filter(i => act(i).tier === "should");
-    const doneMust = must.filter(i => done[i]).length, hrs = Math.round(shown.minutes / 30) / 2;
+    const prio = shown.priority, INITIAL = 3, visible = showAllWeek ? prio : prio.slice(0, INITIAL);
+    const must = visible.filter(i => act(i).tier === "must"), should = visible.filter(i => act(i).tier === "should");
+    const allMust = prio.filter(i => act(i).tier === "must");
+    const doneMust = allMust.filter(i => done[i]).length, hrs = Math.round(shown.minutes / 30) / 2;
     put(clear(weekHost),
       el("div", { class: "dwk-tabs", role: "group", "aria-label": "Plan weeks" },
         weeks.slice(0, unlocked).map(x => el("button", { type: "button", class: "chip", "aria-pressed": x.week === shown.week ? "true" : "false",
-          onclick: () => { viewWeek = x.week; drawWeek(); }, text: `Week ${x.week}` })),
+          onclick: () => { viewWeek = x.week; showAllWeek = false; drawWeek(); }, text: `Week ${x.week}` })),
         unlocked < weeks.length ? el("span", { class: "chip locked", "aria-disabled": "true", text: `Week ${weeks[unlocked].week} · locked` }) : null),
       el("div", { class: "spread dwk-head" }, el("b", { text: `Week ${shown.week} of ${last}` }),
-        el("span", { class: "small muted", text: `${prio.length} priority actions · about ${hrs} hours (est.) · ${doneMust}/${must.length} must-dos done` })),
-      group("must", must), group("should", should), group("optional", shown.optional),
+        el("span", { class: "small muted", text: `${prio.length} priority actions · about ${hrs} hours · ${doneMust}/${allMust.length} must-dos done` })),
+      group("must", must), group("should", should),
+      prio.length > INITIAL ? el("button", { type: "button", class: "btn btn-quiet dwk-more", "aria-expanded": showAllWeek ? "true" : "false", onclick: () => { showAllWeek = !showAllWeek; drawWeek(); },
+        text: showAllWeek ? "Show fewer" : `Show ${prio.length - INITIAL} more this week` }) : null,
+      showAllWeek ? group("optional", shown.optional) : null,
       shown.more.length ? more(`Also planned this week (${shown.more.length})`, el("ul", { class: "dwk-list" }, shown.more.map(row))) : null,
       shown.week === weeks[unlocked - 1].week && unlocked < weeks.length
         ? el("div", { class: "dwk-gate" }, el("p", { class: "small", text: `When this week's plan is clear to you, unlock week ${weeks[unlocked].week}. You don't need to finish every task first.` }),
-            el("button", { type: "button", class: "btn btn-secondary", onclick: () => { unlocked += 1; viewWeek = unlocked; try { localStorage.setItem(unlockKey, String(unlocked)); } catch { /* not remembered */ } drawWeek(); },
+            el("button", { type: "button", class: "btn btn-secondary", onclick: () => { unlocked += 1; viewWeek = unlocked; showAllWeek = false; try { localStorage.setItem(unlockKey, String(unlocked)); } catch { /* not remembered */ } drawWeek(); },
               text: `I understand week ${shown.week} — show week ${weeks[unlocked].week}` }))
         : null,
       el("p", { class: "xs muted", text: `${wk.estimate_note} ${Object.keys(done).length} of ${w.tasks.length} plan tasks done; the full plan is under Detailed evidence.` }));
@@ -1817,7 +1879,7 @@ function cpSuggestions() {
 }
 function setupCopilot() {
   const launch = el("button", { type: "button", class: "cp-launch", id: "cp-launch", "aria-expanded": "false", "aria-controls": "cp-panel", onclick: () => cpToggle(!CP.open) },
-    el("span", { class: "cp-spark", "aria-hidden": "true", text: "✦" }), el("span", { text: "Ask AI" }));
+    el("span", { class: "cp-spark", "aria-hidden": "true", text: "✦" }), el("span", { class: "cp-label", text: "Ask AI" }));
   const ctx = el("div", { class: "cp-ctx", "aria-label": "Context sent with your question" });
   const log = el("div", { class: "cp-log", role: "log", "aria-live": "polite", "aria-relevant": "additions", tabindex: "0", "aria-label": "Conversation" });
   const input = el("textarea", { id: "cp-input", rows: "1", maxlength: "1000", placeholder: "Ask about costs, STEM, visas, your plan…", "aria-label": "Your question",
@@ -1837,7 +1899,9 @@ function setupCopilot() {
     el("div", { class: "cp-foot" }, form, el("div", { class: "cp-note" }, count,
       el("span", { text: "AI can make mistakes. School facts are cited and unknowns flagged — not admissions or immigration advice." }))));
   panel.addEventListener("keydown", e => { if (e.key === "Escape") { e.stopPropagation(); cpToggle(false); } });
-  document.body.appendChild(launch); document.body.appendChild(panel);
+  const themeBtn = document.getElementById("theme-toggle");
+  if (themeBtn) themeBtn.before(launch); else document.body.appendChild(launch);   // header row: never floats over content
+  document.body.appendChild(panel);
   CP.els = { launch, panel, ctx, log, input, send, sub };
   drawCtx(); drawLog();
   api("/api/copilot/status").then(s => { CP.status = s; sub.textContent = !s.available ? "Unavailable on this server" : s.mode === "mock" ? "Mock mode — no AI calls are made" : "gpt-6-luna · answers cite official sources"; drawLog(); })

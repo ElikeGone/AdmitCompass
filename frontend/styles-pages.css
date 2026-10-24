@@ -1,0 +1,128 @@
+/* Product pages: Explore, International applicants, How it works, plus shared header controls.
+   Loaded last; theme tokens only, so light and dark both work. */
+
+/* ---------- shared page shell ---------- */
+.pg { padding-bottom: 96px; }
+.pg-narrow { max-width: 880px; }
+.pg-hero { padding: 72px 0 56px; color: #E6EBF5;
+  background: radial-gradient(800px 420px at 90% -10%, rgba(124, 58, 237, .30), transparent 60%),
+    radial-gradient(700px 400px at 20% 0%, rgba(37, 99, 235, .26), transparent 60%),
+    linear-gradient(180deg, #0B1230 0%, #0F172A 100%); }
+.pg-hero .kicker { color: #93C5FD; }
+.pg-hero h1 { color: #fff; font-size: clamp(32px, 4.2vw, 48px); line-height: 1.1; letter-spacing: -.03em; margin: 10px 0 16px; }
+.pg-lead { font-size: 18px; line-height: 1.65; color: #C7D2E5; margin: 0; max-width: 40em; }
+.pg-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 28px; }
+.pg-hero .btn-quiet { color: #BFDBFE; }
+.pg-facts { display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 36px 0 0; }
+.pg-facts dt { font-size: 14px; color: #A8B3C7; }
+.pg-facts dd { margin: 2px 0 0; font: 700 24px var(--head); color: #fff; }
+.pg-sec { margin-top: 64px; }
+.pg-sec h2 { font-size: 26px; letter-spacing: -.01em; margin: 0 0 20px; }
+.pg-note { color: var(--text-2); margin-top: 20px; }
+
+/* International: one topic per row, generous spacing, no card grid */
+.pg-topic { padding: 24px 0; border-top: 1px solid var(--border); }
+.pg-topic:last-child { border-bottom: 1px solid var(--border); }
+.pg-topic-h { display: flex; align-items: center; gap: 12px; }
+.pg-topic h3 { font-size: 19px; margin: 0; }
+.pg-ic { width: 36px; height: 36px; flex: none; border-radius: 10px; display: grid; place-items: center; background: var(--blue-50); color: var(--blue); }
+.pg-ic svg { width: 19px; height: 19px; }
+.pg-topic > p { margin: 12px 0 14px; font-size: 16px; line-height: 1.6; }
+.pg-kv { display: grid; gap: 8px; margin: 0; }
+.pg-kv > div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px; }
+.pg-kv dt { color: var(--text-3); font-size: 15px; }
+.pg-kv dd { margin: 0; color: var(--text-2); font-size: 15px; line-height: 1.55; }
+.pg-kinds { margin: 0; padding-left: 22px; display: grid; gap: 14px; font-size: 16px; line-height: 1.6; }
+.pg-limits p { font-size: 16px; line-height: 1.65; padding: 18px 20px; border-radius: 14px; background: var(--canvas); margin: 0; }
+.pg-end { text-align: left; }
+
+/* How it works: numbered vertical flow */
+.pg-hero-light { padding-bottom: 48px; }
+.pg-flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.pg-flow li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px; padding: 22px 0; position: relative; }
+.pg-flow li + li { border-top: 1px solid var(--border); }
+.pg-flow .num { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font: 700 15px var(--head); color: var(--violet-700, #6D28D9); background: var(--violet-50, #F5F3FF); }
+.pg-flow h3 { margin: 4px 0 6px; font-size: 19px; }
+.pg-flow p { margin: 0; color: var(--text-2); line-height: 1.6; }
+.pg-flow .pg-out { margin-top: 8px; color: var(--text); }
+
+/* ---------- Explore ---------- */
+.ex2 { max-width: 1120px; }
+.ex2-top { padding: 48px 0 32px; }
+.ex2-lead { font-size: 17px; line-height: 1.6; }
+.ex2-sum { display: flex; flex-wrap: wrap; gap: 16px 48px; margin: 24px 0 4px; }
+.ex2-sum dt { font-size: 14px; color: var(--text-2); }
+.ex2-sum dd { margin: 2px 0 0; font: 800 30px var(--head); color: var(--text); letter-spacing: -.02em; }
+.ex2-note { display: block; font-size: 13px; color: var(--text-3); margin-top: 2px; }
+.ex2-legend { font-size: 14px; }
+.ex2-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; }
+.ex2-more { position: relative; }
+.ex2-more > summary { list-style: none; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--text-2); padding: 10px 12px; border-radius: 10px; min-height: 44px; display: flex; align-items: center; }
+.ex2-more > summary::-webkit-details-marker { display: none; }
+.ex2-more > summary::after { content: "▾"; margin-left: 6px; font-size: 12px; }
+.ex2-more-body { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 8px; }
+.ex2-list { padding: 36px 0 0; }
+.ex-meta { display: block; margin-bottom: 18px; }
+.ex-h { font-size: 22px; margin: 0 0 4px; }
+.ex-sub { color: var(--text-2); font-size: 15px; }
+.ex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.pc2 { display: flex; flex-direction: column; gap: 12px; padding: 22px; border-radius: 16px; background: var(--surface, var(--white)); border: 1px solid var(--border); }
+.pc2-head h3 { font-size: 19px; margin: 0; letter-spacing: -.01em; }
+.pc2-where { font-size: 15px; color: var(--text-2); margin-top: 2px; }
+.pc2-ev { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--text-2); }
+.pc2-ev .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-3); }
+.pc2-ev.ev-detailed .dot { background: var(--emerald, #10B981); }
+.pc2-ev.ev-partial .dot { background: var(--blue); }
+.pc2-ev.ev-discovered .dot, .pc2-ev.ev-unavailable .dot { background: var(--amber2, #F59E0B); }
+.pc2-sig { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.pc2-sig li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.45; color: var(--text); }
+.pc2-sig li.unk { color: var(--text-3); }
+.pc2-sig svg { width: 17px; height: 17px; flex: none; margin-top: 2px; color: var(--text-3); }
+.pc2-acts { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 4px; }
+.pc2-link { font-size: 14px; font-weight: 600; text-decoration: none; }
+.ex-more { grid-column: 1 / -1; display: flex; justify-content: center; padding: 12px 0 0; }
+.ex2-dacts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.ex-foot { font-size: 14px; color: var(--text-3); margin-top: 28px; }
+
+/* ---------- Ask AI lives in the header row (never floats over content) ---------- */
+.cp-launch { position: static; min-height: 40px; height: 40px; padding: 0 14px 0 12px; margin-left: 8px; font-size: 14px; flex: none;
+  box-shadow: none; border-radius: 12px; }
+.cp-launch:hover { transform: none; box-shadow: 0 6px 16px rgba(124, 58, 237, .3); }
+body.cp-open .cp-launch { display: inline-flex; }
+.cp-spark { font-size: 15px; }
+@media (max-width: 980px) { .cp-launch { margin-left: auto; } .theme-btn { margin-left: 8px; } }
+@media (max-width: 560px) { .cp-launch .cp-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } .cp-launch { width: 40px; padding: 0; justify-content: center; } }
+
+/* ---------- Sample Analysis: quieter status labels ---------- */
+.dash2 .ds-badge { background: none; padding: 0; font-weight: 600; font-size: 13px; color: var(--text-2); }
+.dash2 .ds-badge::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; background: var(--text-3); }
+.dash2 .ds-badge.ok::before { background: var(--emerald, #10B981); }
+.dash2 .ds-badge.warn::before { background: var(--amber2, #F59E0B); }
+.dash2 .ds-badge.ai::before { background: var(--violet, #8B5CF6); }
+.dwk-why { font-size: 14px; color: var(--text-2); margin: 4px 0 2px; }
+.dwk-meta { font-size: 13px; color: var(--text-3); }
+.dwk-more { margin-top: 10px; }
+.ds-review { margin-top: 56px; }
+
+/* ---------- homepage: quieter roadmap ---------- */
+.hp2-next { border: 0; padding: 0; margin-top: 28px; }
+.hp2-next .pvtag { background: none; padding: 0; color: var(--text-3); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+.hp2-next li { border: 0; padding: 0; font-size: 14px; color: var(--text-3); }
+.hp2-next li + li::before { content: "·"; margin-right: 8px; }
+.hp2-next ol { gap: 8px; }
+
+@media (max-width: 760px) {
+  .pg-hero { padding: 48px 0 40px; }
+  .pg-kv > div { grid-template-columns: 1fr; gap: 2px; }
+  .pg-sec { margin-top: 48px; }
+  .ex2-sum { gap: 12px 28px; }
+  .ex2-sum dd { font-size: 24px; }
+}
+
+/* minimum label size */
+.ev2, .dash2 .dtag { font-size: 13px; }
+
+/* header row on small screens: buttons keep their size; the wordmark gives way first */
+.menu-btn, .theme-btn, .cp-launch { flex: none; }
+.topbar .brand { min-width: 0; }
+@media (max-width: 400px) { .topbar .brand { font-size: 17px; gap: 8px; } }
