@@ -253,3 +253,32 @@ html[data-theme="dark"] .hp2-sec.tint { background: linear-gradient(180deg, #0F1
 .rankline .rk { font-weight: 600; }
 .rankline .rk-note { font-size: 11.5px; color: var(--text-3); margin-top: 2px; }
 .rankline.full { font-size: 14px; } .rankline.full .rk-note { font-size: 13px; }
+
+/* ---------- header over the hero (homepage only, both themes) ----------
+   The sticky header is in normal flow (73px), so the always-dark hero used to start below it, leaving the
+   light theme's white header as a band above the hero. On the homepage the hero now extends up under the
+   header; while the header sits over the hero it is transparent with light text, and once the page scrolls
+   past the hero it returns to its normal themed style. Toggled by body.on-home / body.hero-top in app.js. */
+:root { --topbar-h: 73px; }
+body.on-home .hp2-hero { margin-top: calc(-1 * var(--topbar-h)); padding-top: calc(80px + var(--topbar-h)); }
+.topbar { transition: background-color .2s, border-color .2s; }
+body.hero-top .topbar {
+  background: transparent; border-bottom-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none;
+  /* header-scoped dark tokens, so brand, links and buttons stay legible on the hero in the light theme too */
+  --text: #E6EBF5; --text-2: #A8B3C7; --text-3: #8592A8; --surface: rgba(17, 26, 46, .7); --white: #111A2E;
+  --border: rgba(147, 197, 253, .22); --border-2: rgba(147, 197, 253, .4); --blue-50: rgba(59, 130, 246, .18);
+  color: var(--text);
+}
+body.hero-top .topbar .brand, body.hero-top .topbar .nav a:not(.btn) { color: var(--text-2); }
+body.hero-top .topbar .brand { color: var(--text); }
+body.hero-top .topbar .nav a:not(.btn):hover { color: #fff; background: rgba(255, 255, 255, .07); }
+body.hero-top .topbar .nav a.active { color: #93C5FD; background: var(--blue-50); }
+body.hero-top .menu-btn { background: var(--surface); border-color: var(--border); }
+html[data-theme="light"] body.hero-top .theme-btn { background: var(--surface); color: #C4B5FD; }   /* light theme hard-codes a white tile */
+@media (max-width: 980px) { body.hero-top .nav { background: #111A2E; border-bottom-color: #22304D; } }
+@media (max-width: 700px) { body.on-home .hp2-hero { padding-top: calc(56px + var(--topbar-h)); } }
+@media (prefers-reduced-motion: reduce) { .topbar { transition: none; } }
+
+/* The app preview stays a distinct window on the dark hero: a thin light ring and a deeper shadow make its
+   white (light theme) or navy (dark theme) interior read as a deliberate surface rather than a cut-out. */
+.pv2 { box-shadow: 0 0 0 1px rgba(255, 255, 255, .08), 0 0 0 8px rgba(148, 163, 184, .06), 0 40px 90px rgba(2, 6, 23, .5); }

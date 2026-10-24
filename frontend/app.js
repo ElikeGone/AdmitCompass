@@ -212,6 +212,14 @@ async function boot() {
   if (!!S.user !== wasUser) route();   // re-render with account-backed saved data once the session is known
 }
 function setNav(which) { document.querySelectorAll(".nav a").forEach(a => a.classList.toggle("active", a.dataset.nav === which && !a.classList.contains("btn"))); }
+/* Homepage: the header sits over the dark hero (transparent, light text) until the page scrolls past it. */
+function syncHeroHeader() {
+  const hero = document.body.classList.contains("on-home") && document.querySelector(".hp2-hero");
+  const bar = document.querySelector(".topbar");
+  document.body.classList.toggle("hero-top", !!hero && hero.getBoundingClientRect().bottom > (bar ? bar.offsetHeight : 0));
+}
+window.addEventListener("scroll", syncHeroHeader, { passive: true });
+window.addEventListener("resize", syncHeroHeader);
 function route() {
   if (S.poll && !location.hash.startsWith("#/run/")) { clearTimeout(S.poll); S.poll = null; }
   let hash = location.hash || "#/", auth = null;
@@ -226,6 +234,7 @@ function route() {
   if (view === "profile") view = "start";
   clear($main); window.scrollTo(0, 0);
   closeMenu();
+  document.body.classList.remove("on-home"); syncHeroHeader();   // renderHome sets it again
   if (view === "intl") { setNav("intl"); return renderHome("intl"); }
   const views = { start: renderStart, explore: renderExplore, how: renderHow };
   if (views[view]) { setNav(view); return views[view](); }
@@ -362,6 +371,7 @@ function productPreview() {
 }
 
 async function renderHome(scrollTo) {
+  document.body.classList.add("on-home"); queueMicrotask(syncHeroHeader);   // runs once the hero below is in the page
   const stats = el("div", { class: "hp2-stats" });
   const grid = el("div", { class: "show-grid" }, el("p", { class: "small muted", text: "Loading programs…" }));
   const showFoot = el("div", { class: "show-foot" });
