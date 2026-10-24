@@ -94,3 +94,9 @@ Last inspected: 2026-10-23 (Step 9B: 28 programs with sourced facts, link audit,
   - **Provenance:** each record has the URL, the retrieval date, "manually saved by user" and the file's SHA-256 (`data/sources/raw/supp/z_manual_columbia.json`). The saved files are git-ignored.
   - **Limit:** Columbia stays a discovery-tier (partial) program; "detailed" needs the official test-policy and STEM pages.
   - **Tests:** 271 passed, 1 skipped; secret scan clean.
+- 2026-10-24 **Evidence + safety layer and run instrumentation.**
+  - **Evidence:** each shortlisted program shows a per-claim table with status (verified / source-backed paraphrase / estimated / unknown), source, date checked, data period and tradeoff (`backend/app/tools/evidence_rows.py`).
+  - **New guards:** admission-odds and personal-immigration questions are refused in code before any model call (`core/safety.sensitive_request`).
+  - **Safety test mode:** `GET /api/safety/demo`, and "Safety test mode" in the dashboard reviewer footer. It runs five defenses on fixed unsafe inputs with no model call; 5/5 stopped.
+  - **Run details:** `GET /api/demo/record` and `/api/runs/{id}/record`, plus the collapsed "Run details" panel with a JSON download. No keys and no profile fields; profile-derived tool arguments are masked.
+  - **Tests:** 310 passed, 1 skipped; secret scan clean.

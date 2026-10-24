@@ -32,6 +32,8 @@ from .runs import RunManager, RunRejected, max_live_runs
 from .schemas.applicant import ApplicantProfile
 from .tools.catalog import Catalog, load_discovery
 from .tools.evidence_store import EvidenceNotFoundError, EvidenceStore, default_store
+from .tools.run_record import run_record, run_summary
+from .tools.safety_demo import run_safety_demo
 
 load_environment()
 
@@ -144,6 +146,39 @@ def demo() -> dict:
     profile = ApplicantProfile.model_validate(load("input_profile.json")).model_dump(mode="json")  # normalize legacy fields
     return result_payload("saved_demo", profile, load("report.json"), load("trace.json"),
                           {"run_folder": DEMO_RUN_DIR.name, "verification": verification})
+
+
+def _record(mode: str, report: dict, trace: list, verification: dict | None) -> dict:
+    rec = run_record(report, public_events(trace), evidence_map(default_store(), report), verification, mode=mode)
+    return {**rec, "summary": [{"label": k, "value": v} for k, v in run_summary(rec)]}
+
+
+@app.get("/api/demo/record")
+def demo_record() -> dict:
+    """Developer/report view of the saved real run: steps, tools, sources, tokens, latency, cost, checks. No keys, no profile."""
+    if not (DEMO_RUN_DIR / "report.json").exists():
+        raise HTTPException(404, "Saved demo run not found.")
+    load = lambda n: json.loads((DEMO_RUN_DIR / n).read_text(encoding="utf-8"))  # noqa: E731
+    verification = load("verification.json") if (DEMO_RUN_DIR / "verification.json").exists() else None
+    return _record("saved_demo", load("report.json"), load("trace.json"), verification)
+
+
+@app.get("/api/runs/{run_id}/record")
+def live_run_record(run_id: str) -> dict:
+    try:
+        state = app.state.runs.get(run_id)
+    except RunRejected as e:
+        raise HTTPException(e.status_code, e.message)
+    if state.report is None:
+        raise HTTPException(409, "The run hasn't finished yet.")
+    return _record("live", state.report.model_dump(mode="json"), state.orchestrator.trace if state.orchestrator else [], None)
+
+
+@app.get("/api/safety/demo")
+def safety_demo() -> dict:
+    """Safety test mode: each defense run on a fixed unsafe input, using the production code. No model call."""
+    scenarios = run_safety_demo(default_store())
+    return {"scenarios": scenarios, "stopped": sum(s["stopped"] for s in scenarios), "total": len(scenarios)}
 
 
 _catalog: Catalog | None = None

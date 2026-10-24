@@ -12,6 +12,7 @@ from typing import Any
 from ..schemas.applicant import ApplicantProfile
 from ..schemas.programs import parse_academic_year
 from .catalog import stem_is_partial
+from .evidence_rows import evidence_rows
 from .evidence_store import EvidenceNotFoundError, EvidenceStore
 
 TIMING = re.compile(r"weeks?\s*(\d+)\s*[-–]\s*(\d+)", re.I)
@@ -325,6 +326,7 @@ def build_dashboard(store: EvidenceStore, profile: ApplicantProfile, report: dic
             "fit": program_fit(rec), "affordability": affordability(profile, rec), "feasibility": feasibility(rec, profile) if profile.needs_us_work_authorization is not False else None,
             "deadlines": deadlines(store, rec["program_id"]),
             "test_policy": test_policy(store, rec["program_id"]),
+            "evidence_rows": evidence_rows(store, rec["program_id"]),
         })
     ws, td, pw = workspace(report), test_decision(profile, report), pathway(profile, report)
     ws["weekly"] = weekly_actions(ws["tasks"], profile, programs, pw.get("gaps"), td["state"])

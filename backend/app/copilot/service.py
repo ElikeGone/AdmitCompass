@@ -16,7 +16,7 @@ from collections import defaultdict, deque
 from typing import Any
 
 from ..agents.grounding import numbers_in, risky_language, supported_numbers
-from ..core.safety import injection_hits, pii_hits
+from ..core.safety import REFUSAL_TEXT, injection_hits, pii_hits, sensitive_request
 from ..tools.evidence_store import EvidenceStore
 from .retrieval import Retrieved, retrieve
 
@@ -243,6 +243,9 @@ def screen_input(message: str, history: list[dict]) -> tuple[str | None, str | N
     if injection_hits(message):
         return (None, "I can't change how I work or reveal internal instructions. I can answer questions about MBA programs, costs, "
                       "STEM status, outcomes or your plan, using official sources.")
+    kind = sensitive_request(message)
+    if kind:   # decided in code, before any model call
+        return (None, REFUSAL_TEXT[kind])
     return (None, None)
 
 

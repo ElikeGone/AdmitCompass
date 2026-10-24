@@ -1388,7 +1388,8 @@ async function renderDashboard(runId) {
   put(wrap, el("section", { class: "dsec", id: "d-work", "aria-labelledby": "h-work" }, el("h2", { id: "h-work", text: "6 · Full plan and deadlines" }), workHost),
     el("footer", { class: "dfoot xs muted" }, "For reviewers: ",
       el("a", { href: `#/results/${runId}/evidence`, text: "Skeptic review, citations, usage and technical run details" }),
-      " · Legacy views: ", el("a", { href: `#/results/${runId}/shortlist`, text: "shortlist" }), " · ", el("a", { href: `#/results/${runId}/plan`, text: "roadmap" })));
+      " · Legacy views: ", el("a", { href: `#/results/${runId}/shortlist`, text: "shortlist" }), " · ", el("a", { href: `#/results/${runId}/plan`, text: "roadmap" }),
+      runDetailsPanel(runId), safetyTestPanel()));
   put($main, wrap);
   drawPrograms();
   let remote = null;
@@ -1441,6 +1442,47 @@ function drawTestDecision(d, p, timing) {
         ["Scheduling logistics", `Test dates and official score reports must fit before your target round.${next ? ` Earliest upcoming verified deadline on your shortlist: ${next.school} ${next.name}, ${fmtDate(next.date)}.` : " No upcoming deadline is verified for your shortlist yet."}`]]
         .map(([k, v]) => el("tr", {}, el("th", { scope: "row", text: k }), el("td", { text: v })))))),
     evidence);
+}
+/* ---------- developer / report view: run details + safety test mode (collapsed for ordinary users) ---------- */
+function downloadJSON(name, data) {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }));
+  const a = el("a", { href: url, download: name }); document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+function runDetailsPanel(runId) {
+  const body = el("div", { class: "inner" }, el("p", { class: "small muted", text: "Loading…" }));
+  const d = el("details", { class: "more drun", ontoggle: async e => {
+    if (!e.target.open || body.dataset.loaded) return;
+    body.dataset.loaded = "1";
+    try {
+      const rec = await api(runId === "demo" ? "/api/demo/record" : `/api/runs/${encodeURIComponent(runId)}/record`);
+      put(clear(body),
+        el("dl", { class: "drun-sum" }, rec.summary.map(x => el("div", {}, el("dt", { text: x.label }), el("dd", { text: x.value })))),
+        el("div", { class: "dactions" },
+          el("button", { type: "button", class: "btn btn-secondary", onclick: () => downloadJSON(`admitcompass-run-${rec.run_id || runId}.json`, rec), text: "Download JSON record" })),
+        el("p", { class: "xs muted", text: rec.privacy }));
+    } catch (err) { put(clear(body), el("p", { class: "small", text: `Run details aren't available: ${err.message}` })); }
+  } }, el("summary", { text: "Run details (developer / report view)" }), body);
+  return d;
+}
+function safetyTestPanel() {
+  const body = el("div", { class: "inner" });
+  const run = async b => {
+    b.disabled = true; b.textContent = "Running…";
+    try {
+      const r = await api("/api/safety/demo");
+      put(clear(body), el("p", { class: "small" }, el("b", { text: `${r.stopped} of ${r.total} defenses stopped the unsafe input.` }), " No AI call was made; each check runs the app's own code."),
+        el("div", { class: "tbl-wrap" }, el("table", { class: "tbl devtbl" },
+          el("thead", {}, el("tr", {}, ["Defense", "Unsafe input", "Result", "What the user sees"].map(h => el("th", { scope: "col", text: h })))),
+          el("tbody", {}, r.scenarios.map(x => el("tr", {},
+            el("td", {}, el("b", { text: x.defense }), el("div", { class: "xs muted", text: x.mechanism })),
+            el("td", { class: "small", text: x.input }),
+            el("td", {}, el("span", { class: `dtag ${x.stopped ? "ok" : "warn"}`, text: x.stopped ? "Stopped" : "Not stopped" }), el("div", { class: "xs", text: x.outcome })),
+            el("td", { class: "small", text: x.shown_to_user })))))));
+    } catch (err) { put(clear(body), el("p", { class: "small", text: `The safety checks couldn't run: ${err.message}` })); }
+  };
+  put(body, el("p", { class: "small muted", text: "Runs five defenses on fixed unsafe inputs: prompt injection in a source, an admissions-odds request, a personal immigration question, stale or missing data, and an answer that contradicts verified evidence." }),
+    el("button", { type: "button", class: "btn btn-secondary", onclick: e => run(e.currentTarget), text: "Run the safety checks" }));
+  return el("details", { class: "more drun" }, el("summary", { text: "Safety test mode" }), body);
 }
 const RUN_STATUS_TEXT = {
   completed: "completed",
@@ -1503,7 +1545,24 @@ function drawFit(host, pg, res) {
           f.unknown_claims.map(c => el("li", { class: "unk", text: c.text }))))),
     f.tradeoffs.length ? more("Tradeoffs (AI inference)", el("ul", { class: "dlist" }, f.tradeoffs.map(t => el("li", { text: splitLabel(t)[1] })))) : null,
     f.reasoning.length ? more(`Analyst reasoning (${f.reasoning.length})`, f.reasoning.map(c => el("div", { class: "claim" }, labelEl(c.label), el("span", { text: c.text })))) : null,
+    evidenceTable(pg.evidence_rows),
     more("Source excerpts", sources(res, [...new Set(f.supported.flatMap(c => c.evidence_ids))]))));
+}
+/* One row per important claim: status, source, date checked, data period and a short tradeoff — all built in code. */
+const EV_STATUS = { verified: ["ok", "Verified"], "source-backed paraphrase": ["fact", "Source-backed paraphrase"], estimated: ["warn", "Estimated"], unknown: ["", "Unknown"] };
+function evidenceTable(rows) {
+  if (!rows?.length) return null;
+  return el("div", { class: "dev" }, el("h4", { text: "Evidence behind this recommendation" }),
+    el("div", { class: "tbl-wrap" }, el("table", { class: "tbl devtbl" },
+      el("thead", {}, el("tr", {}, ["Claim", "Status", "Source", "Checked", "Data period", "Tradeoff"].map(h => el("th", { scope: "col", text: h })))),
+      el("tbody", {}, rows.map(r => el("tr", { class: r.status === "unknown" ? "unk" : "" },
+        el("td", {}, r.claim, r.freshness_warning ? el("div", { class: "xs dwarn", text: r.freshness_warning }) : null),
+        el("td", {}, el("span", { class: `dtag ${(EV_STATUS[r.status] || ["", r.status])[0]}`, text: (EV_STATUS[r.status] || ["", r.status])[1] })),
+        el("td", {}, r.source_url ? extLink(r.source_url, r.source_title || r.publisher || "Source") : el("span", { class: "muted", text: "—" })),
+        el("td", { text: r.checked_on ? fmtDate(r.checked_on) : "—" }),
+        el("td", { text: r.data_period || "not stated" }),
+        el("td", { class: "small", text: r.tradeoff })))))),
+    el("p", { class: "xs muted", text: "Verified = quoted from an official page. Paraphrase = the official page says it in other words. Estimated = a third party's figure, not the school's. Unknown = not on the official pages checked; nothing is guessed." }));
 }
 function drawCost(host, pg, dres) {
   const a = pg.affordability;

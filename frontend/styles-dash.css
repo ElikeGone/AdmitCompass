@@ -132,3 +132,17 @@
 .dwk-why { color: var(--text-2); margin: 3px 0 2px; }
 .dwk-gate { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: var(--canvas); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
 .dwk-gate p { margin: 0; flex: 1 1 260px; }
+
+/* Evidence table + reviewer panels */
+.dev { margin-top: 16px; }
+.dev h4 { margin: 0 0 8px; }
+.devtbl th, .devtbl td { vertical-align: top; text-align: left; }
+.devtbl td { font-size: 14px; }
+.devtbl tr.unk td:first-child { color: var(--text-2); }
+.dfoot { display: block; }
+.drun { margin-top: 12px; font-size: 14px; }
+.drun-sum { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 16px; margin: 4px 0 12px; }
+.drun-sum > div { display: contents; }
+.drun-sum dt { color: var(--text-2); }
+.drun-sum dd { margin: 0; color: var(--text); }
+@media (max-width: 600px) { .drun-sum { grid-template-columns: 1fr; } .drun-sum dd { margin-bottom: 6px; } }
