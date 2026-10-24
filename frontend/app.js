@@ -677,6 +677,8 @@ const EV = {
   discovered: { label: "Discovered", icon: "search", plain: "We've confirmed the program exists on its official page, but haven't collected its facts yet." },
   unavailable: { label: "Retrieval unavailable", icon: "alert", plain: "The official site refused our automated collector, so nothing about this program is verified yet." },
 };
+const EV_PLAIN = { detailed: "Official sources for key facts", partial: "Limited information", discovered: "Limited information · facts not collected yet",
+  unavailable: "Limited information · site couldn't be checked" };
 const FACT_SHORT = { location: "Location", duration_months: "Duration", application_requirements: "Requirements", test_policy: "Test policy", tuition: "Tuition",
   cost_of_attendance: "Total cost", stem_designation: "STEM", employment_rate: "Employment", median_base_salary: "Salary", industry_breakdown: "Industries",
   function_breakdown: "Functions", international_employment: "Intl. outcomes", sponsorship: "Sponsorship", application_deadlines: "Deadlines" };
@@ -687,8 +689,9 @@ async function renderExplore() {
   delete f.tier;
   S.compare = S.compare || [];
   let meta = null, seq = 0, first = null, showAll = false;
-  const FEATURED = 8;
+  const isPrimary = it => it.evidence_status === "detailed";
   const filtersActive = () => !!(f.q || f.status || f.state || f.stem || num(f.max) || f.savedOnly);
+  const moreBox = el("div");
   const grid = el("div", { class: "ex-grid", "aria-live": "polite" }), metaLine = el("div", { class: "ex-meta" }), active = el("div", { class: "active-row" }), tray = el("div");
   try { first = await api("/api/programs"); } catch { /* load() shows the error */ }
   const by = first?.counts?.by_evidence_status || {}, idx = first?.index || {};
@@ -699,7 +702,8 @@ async function renderExplore() {
   const searchInput = el("input", { type: "search", "aria-label": "Search programs", placeholder: "Search schools, cities, states or career keywords — try “technology” or “Texas”",
     oninput: e => { f.q = e.target.value; deb(load); } });
   const statusSel = el("select", { "aria-label": "Evidence status", onchange: e => { f.status = e.target.value; load(); } },
-    [["", "All evidence levels"], ...Object.entries(EV).map(([k, v]) => [k, v.label])].map(([v, t]) => el("option", { value: v, text: t })));
+    [["", "All programs"], ["detailed", "Official sources for key facts"], ["partial", "Limited information"], ["discovered", "Facts not collected yet"], ["unavailable", "Site couldn't be checked"]]
+      .map(([v, t]) => el("option", { value: v, text: t })));
   const stateSel = el("select", { "aria-label": "State", onchange: e => { f.state = e.target.value; load(); } }, el("option", { value: "", text: "Any state" }),
     (first?.states || []).map(s => el("option", { value: s, text: s })));
   const maxIn = el("input", { type: "number", inputmode: "numeric", min: 1000, step: 1000, "aria-label": "Maximum yearly cost of attendance in USD", placeholder: "Max cost / yr (USD)",
@@ -736,18 +740,27 @@ async function renderExplore() {
     if (!meta) return;
     const saved = savedSet();
     const items = f.savedOnly ? meta.items.filter(i => saved.has(i.id)) : meta.items;
-    const featured = !filtersActive() && !showAll && items.length > FEATURED;
-    const shown = featured ? items.slice(0, FEATURED) : items;
-    put(clear(metaLine), el("h2", { class: "ex-h", text: featured ? "Strongest evidence first" : filtersActive() ? `${items.length} matching program${items.length === 1 ? "" : "s"}` : `All ${items.length} programs` }),
-      el("span", { class: "ex-sub", text: featured ? `${FEATURED} of ${items.length} programs, ordered by how much is backed by official sources.` : `${sortHelp[f.sort]}.${(f.stem || num(f.max)) ? " Cost and STEM filters only match facts with official evidence." : ""}` }));
+    const primary = items.filter(isPrimary), others = items.filter(it => !isPrimary(it));
+    const grouped = !filtersActive() && primary.length > 0;
+    const shown = grouped ? primary : items;
+    put(clear(metaLine), el("h2", { class: "ex-h", text: grouped ? "Programs with official sources for key facts" : filtersActive() ? `${items.length} matching program${items.length === 1 ? "" : "s"}` : "All programs" }),
+      el("span", { class: "ex-sub", text: grouped ? "Cost, STEM status, test policy and outcomes each come from the school's own pages. Start your shortlist here."
+        : `${sortHelp[f.sort]}.${(f.stem || num(f.max)) ? " Cost and STEM filters only match facts with official evidence." : ""}` }));
     clear(grid);
     if (!items.length) { put(grid, el("div", { class: "empty2" }, el("b", { text: f.savedOnly ? "No saved programs yet" : "No programs match" }),
       el("p", { class: "small", style: "margin:6px 0 12px", text: f.savedOnly ? "Tap the heart on any program to save it." : "Try removing a filter." }),
       el("button", { type: "button", class: "btn btn-secondary", onclick: () => { Object.assign(f, DEFAULT_FILTERS); load(); }, text: "Reset filters" }))); return; }
     put(grid, shown.map(it => card(it, saved)));
-    if (!filtersActive() && items.length > FEATURED)
-      put(grid, el("div", { class: "ex-more" }, el("button", { type: "button", class: "btn btn-secondary", onclick: () => { showAll = !showAll; drawList(); if (!showAll) metaLine.scrollIntoView({ block: "start" }); },
-        text: showAll ? "Show the strongest-evidence programs only" : `View all ${items.length} programs` })));
+    clear(moreBox);
+    if (grouped && others.length) {
+      put(moreBox, el("div", { class: "ex3-more" },
+        el("h2", { class: "ex-h", text: "More programs to review" }),
+        el("p", { class: "ex-sub", text: "Limited information: some facts for these programs come from official pages, and the rest are marked “Needs confirmation”. Check them on the school's site before relying on them." }),
+        showAll ? el("div", { class: "ex-grid" }, others.map(it => card(it, saved))) : null,
+        el("button", { type: "button", class: "btn btn-secondary", "aria-expanded": showAll ? "true" : "false",
+          onclick: () => { showAll = !showAll; drawList(); if (!showAll) moreBox.scrollIntoView({ block: "start" }); },
+          text: showAll ? "Hide these programs" : "Show more programs" })));
+    }
     drawTray();
   };
   const load = async () => {
@@ -763,37 +776,41 @@ async function renderExplore() {
   function card(it, saved) {
     const st = it.evidence_status, ev = EV[st], where = [it.city, it.state].filter(Boolean).join(", ") || "Location not confirmed";
     const coa = it.cost_of_attendance, est = it.costs?.estimate_annual, emp = it.employment;
-    const cost = coa ? `${fmtUSD(coa.value)} a year · official` : est ? `About ${fmtUSD(est.value)} a year · ${est.publisher} estimate`
-      : it.tuition ? `Tuition ${fmtUSD(it.tuition.value)} a year · total not published` : "Total cost not published";
-    const stem = it.stem_designated === true ? (it.stem_partial ? "STEM-designated tracks · official" : "STEM-designated · official") : it.tier === "verified" ? "STEM status not confirmed" : "Not checked yet";
-    const job = emp ? `${emp.rate}% employed · ${emp.period}` : it.tier === "verified" ? "Employment not published" : "Not checked yet";
+    const cost = coa ? `${fmtUSD(coa.value)} a year · Official source` : est ? `About ${fmtUSD(est.value)} a year · ${est.publisher} estimate`
+      : it.tuition ? `Tuition ${fmtUSD(it.tuition.value)} a year · total cost needs confirmation` : "Total cost · Needs confirmation";
+    const stem = it.stem_designated === true ? (it.stem_partial ? "STEM-designated tracks · Official source" : "STEM-designated · Official source") : "STEM status · Needs confirmation";
+    const job = emp ? `${emp.rate}% employed · ${emp.period} · Official source` : "Employment outcomes · Needs confirmation";
     const sig = (icon, text, known) => el("li", { class: known ? "" : "unk" }, svgIcon(icon), el("span", { text }));
     return el("article", { class: `pc2 ev-${st}` },
       el("div", { class: "pc2-head" }, el("h3", { text: shortName(it) }), el("div", { class: "pc2-where", text: where })),
-      el("div", { class: `pc2-ev ev-${st}`, title: ev.plain }, el("span", { class: "dot", "aria-hidden": "true" }), ev.label),
+      el("div", { class: `pc2-ev ev-${st}`, title: ev.plain }, el("span", { class: "dot", "aria-hidden": "true" }), EV_PLAIN[st] || ev.label),
       el("ul", { class: "pc2-sig" }, sig("dollar", cost, !!(coa || est || it.tuition)), sig("shield", stem, it.stem_designated === true), sig("chart", job, !!emp)),
       el("div", { class: "pc2-acts" },
         el("button", { type: "button", class: "btn btn-secondary btn-sm", onclick: () => openDetails(it.id) }, "Details"),
         it.official_link ? el("a", { class: "pc2-link", href: it.official_link.url, target: "_blank", rel: "noopener noreferrer" }, "Official page ↗") : null));
   }
 
-  const needVerify = (by.partial || 0) + (by.discovered || 0) + (by.unavailable || 0);
   put($main,
     el("section", { class: "ex-top ex2-top" }, el("div", { class: "wrap ex2" },
       el("h1", { text: "Explore MBA programs" }),
-      el("p", { class: "ex2-lead", text: "US full-time MBA programs, with every fact linked to the official page it came from. When something isn't published or hasn't been checked, we say so." }),
-      el("dl", { class: "ex2-sum" },
-        el("div", {}, el("dt", { text: "Programs" }), el("dd", { text: String(first?.total ?? "—") })),
-        el("div", {}, el("dt", { text: "Detailed evidence" }), el("dd", { text: String(by.detailed ?? "—") })),
-        el("div", {}, el("dt", { text: "Need verification" }), el("dd", { text: String(first ? needVerify : "—") }),
-          el("span", { class: "ex2-note", text: `${by.partial ?? 0} partially verified · ${(by.discovered ?? 0) + (by.unavailable ?? 0)} not yet checked` }))),
-      el("button", { type: "button", class: "linkbtn ex2-legend", onclick: () => openLegend(), text: "What do evidence levels mean?" }),
+      el("p", { class: "ex2-lead", text: "Search, filter and compare US full-time MBA programs. Every fact links to the official page it came from." }),
       el("div", { class: "ex-search" }, svgIcon("search"), searchInput),
       el("div", { class: "ex2-filters", role: "group", "aria-label": "Filters" },
         el("div", { class: "fsel" }, statusSel), el("div", { class: "fsel" }, stateSel), el("div", { class: "fsel" }, sortSel), stemBtn,
         el("details", { class: "ex2-more" }, el("summary", { text: "More filters" }), el("div", { class: "ex2-more-body" }, el("div", { class: "fsel" }, maxIn), savedBtn))),
-      active)),
-    el("section", { class: "ex2-list" }, el("div", { class: "wrap ex2" }, metaLine, grid,
+      active,
+      el("div", { class: "ex3-note" },
+        el("p", {}, el("span", { class: "dot", "aria-hidden": "true" }),
+          `${by.detailed ?? "Some"} programs have official sources for every key fact and are shown first. Others have limited information — anything not confirmed is marked “Needs confirmation”, never filled in.`),
+        el("details", { class: "ex3-details" }, el("summary", { text: "Evidence details" }),
+          el("div", { class: "ex3-details-body" },
+            el("ul", {},
+              el("li", {}, el("b", { text: `${by.detailed ?? "—"} detailed evidence` }), " — cost, STEM status, test policy and outcomes each supported by an official source."),
+              el("li", {}, el("b", { text: `${by.partial ?? "—"} partially verified` }), " — some facts from official pages; the rest weren't published or haven't been checked."),
+              el("li", {}, el("b", { text: `${(by.discovered ?? 0) + (by.unavailable ?? 0)} discovered only` }), ` (${by.discovered ?? 0} with facts not yet collected, ${by.unavailable ?? 0} whose site couldn't be checked) — these programs were discovered from official university pages, but we have not verified enough facts to use them in detailed recommendations.`)),
+            el("p", { text: "Sample analyses use only the programs with detailed evidence. A personal analysis can include any program with official facts; facts that aren't verified are shown as needing confirmation." }),
+            el("button", { type: "button", class: "linkbtn", onclick: () => openLegend(), text: "What do evidence levels mean?" })))))),
+    el("section", { class: "ex2-list" }, el("div", { class: "wrap ex2" }, metaLine, grid, moreBox,
       el("p", { class: "ex-foot", text: "Employment rates use each school's own definition and graduating class, so they aren't directly comparable — Details shows each definition. Save and compare programs from Details." }))),
     tray);
   load();

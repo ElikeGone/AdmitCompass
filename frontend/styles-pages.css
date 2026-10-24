@@ -126,3 +126,19 @@ body.cp-open .cp-launch { display: inline-flex; }
 .menu-btn, .theme-btn, .cp-launch { flex: none; }
 .topbar .brand { min-width: 0; }
 @media (max-width: 400px) { .topbar .brand { font-size: 17px; gap: 8px; } }
+
+/* ---------- Explore: shorter header, one quiet evidence note ---------- */
+.ex2-top { padding: 40px 0 28px; }
+.ex2-top .ex2-lead { margin-bottom: 4px; }
+.ex3-note { margin-top: 18px; font-size: 15px; color: var(--text-2); }
+.ex3-note > p { margin: 0; display: flex; gap: 10px; align-items: baseline; line-height: 1.55; }
+.ex3-note .dot { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--emerald, #10B981); transform: translateY(-1px); }
+.ex3-details { margin-top: 6px; }
+.ex3-details > summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--text-2); padding: 6px 0; min-height: 32px; }
+.ex3-details-body { padding: 6px 0 4px 18px; font-size: 14px; line-height: 1.6; }
+.ex3-details-body ul { margin: 0 0 8px; padding-left: 18px; display: grid; gap: 4px; }
+.ex3-details-body p { margin: 0 0 6px; }
+.ex3-more { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.ex3-more .ex-grid { margin: 20px 0; }
+.ex3-more > .btn { margin-top: 16px; }
+.ex2 .active-row:empty { display: none; }
