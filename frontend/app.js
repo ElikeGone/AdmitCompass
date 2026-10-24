@@ -21,20 +21,22 @@ function el(tag, attrs, ...kids) {
   for (const [k, v] of Object.entries(attrs || {})) {
     if (v == null || v === false) continue;
     if (k === "class") n.className = v;
-    else if (k === "text") n.textContent = v;
+    else if (k === "text") n.textContent = typeof v === "string" ? moneyText(v) : v;
     else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
     else n.setAttribute(k, v === true ? "" : v);
   }
   for (const c of kids.flat(Infinity)) {
     if (c == null || c === false) continue;
-    n.appendChild(c instanceof Node ? c : document.createTextNode(String(c)));
+    n.appendChild(c instanceof Node ? c : document.createTextNode(moneyText(String(c))));
   }
   return n;
 }
+/* Model prose sometimes writes "$91892"; show every bare dollar amount with thousands separators ("$91,892"). */
+const moneyText = s => s.replace(/\$(\d{4,})(?![\d,])/g, (_, d) => "$" + Number(d).toLocaleString("en-US"));
 const clear = n => { while (n.firstChild) n.removeChild(n.firstChild); return n; };
 /* Append children with el()'s rules: flatten arrays, skip null/false, text as text nodes. Use instead of Node.append. */
 function put(parent, ...kids) {
-  for (const c of kids.flat(Infinity)) if (c != null && c !== false) parent.appendChild(c instanceof Node ? c : document.createTextNode(String(c)));
+  for (const c of kids.flat(Infinity)) if (c != null && c !== false) parent.appendChild(c instanceof Node ? c : document.createTextNode(moneyText(String(c))));
   return parent;
 }
 const fmtInt = v => (v == null ? "—" : Number(v).toLocaleString("en-US"));
@@ -1252,7 +1254,8 @@ async function renderResults(which, sub) {
     el("div", { class: "kicker", text: demo ? "Sample analysis · fictional applicant" : "Your analysis" }),
     el("h1", { text: view === "plan" ? "Your roadmap" : view === "evidence" ? "Evidence & risks" : "Your shortlist" }),
     el("p", { class: "lead", text: `${[p.target_function, p.target_industry].filter(Boolean).join(" in ") || "Career goal not given"} · ${budget}${p.citizenship_country ? ` · from ${p.citizenship_country}` : ""}` }),
-    demo ? el("p", { class: "small muted", text: `A real ${r.model} analysis saved on 23 October 2026. Viewing it makes no AI call.` }) : null),
+    demo ? el("p", { class: "small muted", text: `A real ${r.model} analysis saved on 23 October 2026. Viewing it makes no AI call.` }) : null,
+    note("", "Reviewer and legacy view.", el("span", {}, "The dashboard is the main view of this analysis. ", el("a", { href: `#/dashboard/${which}`, text: "Open the dashboard" })))),
     el("nav", { class: "seg subnav", "aria-label": "Analysis sections" }, [["shortlist", "Shortlist"], ["plan", "Roadmap"], ["evidence", "Evidence & risks"]].map(([v, t]) =>
       el("a", { href: `#/results/${which}/${v}`, "aria-current": view === v ? "page" : null, text: t }))));
   const host = el("div"); put(wrap, host); put($main, wrap);
@@ -1347,7 +1350,8 @@ function viewEvidence(host, res) {
     el("section", { class: "section", style: "padding-bottom:0" },
       more(`Automatic safeguards (${(r.grounding_violations || []).length})`,
         el("p", { class: "small muted", text: "Code checks that run after every agent: ids must exist, numbers must match evidence, statuses are recomputed, and risky wording is flagged." }),
-        (r.grounding_violations || []).map(v => el("div", { class: "claim" }, el("span", { class: "label", text: v.rule.replace(/_/g, " ") }), el("div", {}, el("div", { text: v.detail }), el("div", { class: "xs muted", text: `${AGENT_NAME[v.agent]} · ${v.action}` })))),
+        (r.grounding_violations || []).map(v => { const [label, detail] = safeguardText(v);
+          return el("div", { class: "claim" }, el("span", { class: "label", text: label }), el("div", {}, el("div", { text: detail }), el("div", { class: "xs muted", text: `${AGENT_NAME[v.agent] || "Agent"} · ${v.action}` }))); }),
         res.mode === "saved_demo" ? el("p", { class: "xs muted", text: "Note: this saved run's one flag was a false positive — the analyst was correctly warning that STEM status doesn't guarantee immigration benefits. The rule was fixed afterwards." }) : null),
       more(`All citations (${allIds.length})`, sources(res, allIds)),
       more("Usage and cost",
@@ -1356,7 +1360,17 @@ function viewEvidence(host, res) {
           el("tbody", {}, (r.usage_by_agent || []).map(u => el("tr", {}, [AGENT_NAME[u.agent], u.calls, fmtInt(u.input_tokens), fmtInt(u.cached_input_tokens), fmtInt(u.output_tokens), fmtInt(u.reasoning_tokens), `${u.elapsed_seconds}s`].map(x => el("td", { text: x }))))))),
         res.mode === "saved_demo" ? el("p", { class: "xs muted", text: "Measurement note: requests 1–9 of this saved run returned token counts identical to an earlier run, 8 in under a second — likely served from Portkey's response cache. Requests 10–16 were fresh." }) : null,
         res.verification ? el("p", { class: "xs muted", text: `Post-run audit: ${res.verification.ok ? "passed" : "problems found"} — every evidence id checked against the store; no unsupported numbers.` }) : null),
-      more(`Agent trace (${events.length} events)`, el("p", { class: "xs muted", text: "Metadata only: lookups, handoffs, checks and token counts. Prompts and model reasoning are never stored or shown." }), feed))));
+      more(`Technical run details (${events.length} events)`, el("p", { class: "xs muted", text: "For reviewers: the raw agent trace — lookups with their internal tool names and arguments, handoffs, checks and token counts. Prompts and model reasoning are never stored or shown." }), feed))));
+}
+/* Grounding rules and details are internal identifiers; show people a plain label and drop schema paths such as
+   "unsupported_claims_flagged[4]:" from the start of the detail. */
+const SAFEGUARD_LABEL = { guarantee: "Unsupported claims reviewed", sponsorship_guarantee: "Unsupported claims reviewed", unknown_evidence_id: "Citation not found",
+  unknown_program_id: "Unknown program", program_not_in_shortlist: "Program not on the shortlist", incomparable_metrics: "Figures not comparable",
+  risky_or_dated_action: "Risky or dated advice", risky_or_dated_milestone: "Risky or dated milestone", revision_limit: "Revision limit reached" };
+function safeguardText(v) {
+  const label = SAFEGUARD_LABEL[v.rule] || (v.rule || "safeguard").replace(/_/g, " ").replace(/^./, c => c.toUpperCase());
+  const detail = String(v.detail || "").replace(/^[a-z][a-z0-9_]*(\[\d+\])?(\.[a-z][a-z0-9_]*(\[\d+\])?)*:\s*/, "");
+  return [label, detail];
 }
 
 /* ---------------- Career Intelligence dashboard (Step 10) ----------------
@@ -1386,14 +1400,36 @@ async function renderDashboard(runId) {
     el("div", { class: "kicker", text: demo ? "Sample analysis · fictional applicant" : "Your analysis" }),
     el("h1", { text: "Career intelligence dashboard" }),
     el("p", { class: "lead", text: `${[p.target_function, p.target_industry].filter(Boolean).join(" in ") || "Career goal not given"} · budget ${p.budget_usd ? `${fmtUSD(p.budget_usd)} ${PERIOD_TEXT(p.budget_period)}` : "not given"}${p.citizenship_country ? ` · from ${p.citizenship_country}` : ""}` }),
-    demo ? el("p", { class: "small muted", text: `A real ${d.run.model} analysis saved on 23 October 2026, combined with today's evidence store. Viewing it makes no AI call.` }) : null,
-    el("nav", { class: "dash-nav", "aria-label": "Dashboard sections" }, [["d-path", "Pathway"], ["d-fit", "Program fit"], ["d-cost", "Affordability"], ["d-intl", "International"], ["d-work", "Workspace"]]
-      .map(([id, t]) => el("button", { type: "button", class: "chip", onclick: jump(id), text: t }))),
-    el("p", { class: "xs muted" }, "Older views: ", el("a", { href: `#/results/${runId}/shortlist`, text: "shortlist" }), " · ", el("a", { href: `#/results/${runId}/plan`, text: "roadmap" }), " · ",
-      el("a", { href: `#/results/${runId}/evidence`, text: "evidence & trace" }))));
+    demo ? el("p", { class: "small muted", text: `A real ${d.run.model} analysis saved on 23 October 2026, combined with today's evidence store. Viewing it makes no AI call.` }) : null));
+
+  /* Overview: the first screen — summary, three priority decisions, compact school cards, this week's actions. */
+  const pw = d.pathway;
+  const needsAuth = d.programs.some(pg => pg.feasibility);
+  const timing = planTiming(d.programs);
+  const sevRank = { high: 0, medium: 1, low: 2 };
+  const priorities = [...(pw.gaps || [])].sort((a, b) => (sevRank[a.severity] ?? 3) - (sevRank[b.severity] ?? 3)).slice(0, 3);
+  const weekHost = el("div");
+  put(wrap, el("section", { class: "dsec doverview", id: "d-overview", "aria-labelledby": "h-overview" },
+    el("h2", { id: "h-overview", class: "sr-only", text: "Overview" }),
+    el("div", { class: "dcols" },
+      el("div", { class: "dcard dsummary" }, el("h3", { text: "Applicant summary" }),
+        el("ul", { class: "dlist" },
+          el("li", {}, el("span", { class: "muted", text: "Now: " }), [pw.background.role, pw.background.industry, pw.background.years != null ? `${pw.background.years} years` : null].filter(Boolean).join(" · ") || "Not given"),
+          el("li", {}, el("span", { class: "muted", text: "Goal: " }), [pw.target.roles[0] || pw.target.function, pw.target.industry].filter(Boolean).join(" · ") || "Not given"),
+          el("li", {}, el("span", { class: "muted", text: "Budget: " }), p.budget_usd ? `${fmtUSD(p.budget_usd)} ${PERIOD_TEXT(p.budget_period)}` : "Not given"),
+          el("li", {}, el("span", { class: "muted", text: "U.S. work authorization: " }), needsAuth ? "needed after the MBA" : "not needed"),
+          el("li", {}, el("span", { class: "muted", text: "Analysis: " }), RUN_STATUS_TEXT[d.run.status] || "Status not recorded"))),
+      el("div", { class: "dcard" }, el("h3", { text: "Three priority decisions" }), el("span", { class: "dtag ai", text: "AI-inferred · Strategy Planner" }),
+        priorities.length ? el("ol", { class: "dlist dprio" }, priorities.map(g => el("li", {}, el("b", { text: g.gap }), el("div", { class: "small muted", text: g.action }))))
+          : el("p", { class: "small muted", text: "The analysis didn't produce priority decisions." }))),
+    el("h3", { class: "dsub", text: "Shortlisted programs" }),
+    el("p", { class: "xs muted", text: "Order is the Pathway Matcher's, not a ranking. Select a program for its fit, costs and evidence." }),
+    el("div", { class: "dschools" }, d.programs.map(pg => schoolCard(pg, () => { sel = pg.program_id; drawPrograms(); jump("d-fit")(); }))),
+    el("div", { class: "dcard dweek" }, el("h3", { text: "This week's actions" }), timingNote(timing), weekHost)));
+  put(wrap, el("nav", { class: "dash-nav", "aria-label": "Dashboard sections" }, [["d-path", "Pathway"], ["d-fit", "Program fit"], ["d-cost", "Affordability"], ["d-intl", "International"], ["d-work", "Full plan & deadlines"]]
+    .map(([id, t]) => el("button", { type: "button", class: "chip", onclick: jump(id), text: t }))));
 
   /* 1. pathway */
-  const pw = d.pathway;
   put(wrap, el("section", { class: "dsec", id: "d-path", "aria-labelledby": "h-path" },
     el("h2", { id: "h-path", text: "1 · Career pathway" }),
     el("div", { class: "dpath" },
@@ -1431,12 +1467,62 @@ async function renderDashboard(runId) {
 
   /* 5. workspace */
   const workHost = el("div");
-  put(wrap, el("section", { class: "dsec", id: "d-work", "aria-labelledby": "h-work" }, el("h2", { id: "h-work", text: "5 · Application workspace" }), workHost));
+  put(wrap, el("section", { class: "dsec", id: "d-work", "aria-labelledby": "h-work" }, el("h2", { id: "h-work", text: "5 · Full plan and deadlines" }), workHost),
+    el("footer", { class: "dfoot xs muted" }, "For reviewers: ",
+      el("a", { href: `#/results/${runId}/evidence`, text: "Skeptic review, citations, usage and technical run details" }),
+      " · Legacy views: ", el("a", { href: `#/results/${runId}/shortlist`, text: "shortlist" }), " · ", el("a", { href: `#/results/${runId}/plan`, text: "roadmap" })));
   put($main, wrap);
   drawPrograms();
   let remote = null;
   if (S.user) { try { remote = (await api(`/api/account/progress/${encodeURIComponent(d.run.run_id || runId)}`)).done; } catch { remote = null; } }
-  drawWorkspace(workHost, d, dres, runId, id => { sel = id; drawPrograms(); jump("d-fit")(); }, remote);
+  drawWorkspace(workHost, d, dres, runId, id => { sel = id; drawPrograms(); jump("d-fit")(); }, remote, weekHost, timing);
+}
+const RUN_STATUS_TEXT = {
+  completed: "completed",
+  completed_with_violations: "completed — automatic safeguards removed or flagged some AI claims (see the reviewer details at the bottom)",
+  stopped_budget: "stopped at the request budget; results may be partial",
+  failed: "stopped safely before finishing; nothing was guessed to fill gaps",
+};
+
+/* Deadline status, computed against the viewer's date (window.AC_TODAY overrides it, for testing). */
+const todayISO = () => window.AC_TODAY || (d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`)(new Date());
+const isISODate = v => typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v);
+const fmtDate = iso => new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+function deadlineRounds(dl, today = todayISO()) {
+  if (!dl || dl.status !== "verified") return { status: "unverified", rounds: [], passed: [], next: null };
+  const rounds = (Array.isArray(dl.rounds) ? dl.rounds : [dl.rounds]).filter(Boolean).map(r => {
+    const date = r && typeof r === "object" ? r.deadline : null;
+    const name = r && typeof r === "object" ? (r.round || "Round") : String(r);
+    return { name, date, status: isISODate(date) ? (date < today ? "passed" : "upcoming") : "unverified" };
+  });
+  const upcoming = rounds.filter(r => r.status === "upcoming").sort((a, b) => a.date.localeCompare(b.date));
+  return { status: "verified", rounds, passed: rounds.filter(r => r.status === "passed"), next: upcoming[0] || null };
+}
+function planTiming(programs) {
+  const info = programs.map(pg => ({ school: SCHOOL[pg.program_id] || pg.program_name, ...deadlineRounds(pg.deadlines) }));
+  const nexts = info.filter(x => x.next).map(x => ({ school: x.school, ...x.next })).sort((a, b) => a.date.localeCompare(b.date));
+  return { passedAt: info.filter(x => x.passed.length).map(x => x.school), earliest: nexts[0] || null, unverifiedAt: info.filter(x => x.status === "unverified" || (!x.next && !x.passed.length)).map(x => x.school) };
+}
+function timingNote(t) {
+  const parts = [];
+  if (t.passedAt.length) parts.push(`Earlier deadlines have passed at ${t.passedAt.join(", ")}.`);
+  parts.push(t.earliest ? `Plan weeks count from the day you start; aim for the next open round — the earliest is ${t.earliest.school} ${t.earliest.name}, ${fmtDate(t.earliest.date)}.`
+    : "No upcoming deadline is verified for the shortlist — confirm the next cycle on each official admissions page before planning.");
+  if (t.unverifiedAt.length) parts.push(`Deadlines unverified for ${t.unverifiedAt.join(", ")}.`);
+  return el("p", { class: `small dtiming${t.passedAt.length ? " late" : ""}`, text: parts.join(" ") });
+}
+const DL_TAG = { passed: ["", "Passed"], upcoming: ["ok", "Upcoming"], unverified: ["warn", "Unverified"] };
+function schoolCard(pg, onOpen) {
+  const a = pg.affordability || {}, fe = pg.feasibility, s = fe?.stem, dl = deadlineRounds(pg.deadlines);
+  const cost = a.comparable ? `${a.gap >= 0 ? `Within budget: ${fmtUSD(a.gap)} headroom` : `Over budget: ${fmtUSD(-a.gap)} short`} per year (official cost)`
+    : a.estimate ? `No official total cost · estimate ${fmtUSD(a.estimate.value)} a year (${a.estimate.publisher})` : "Total cost not published";
+  const stem = !fe ? null : s?.status === "verified" ? (s.designated ? (s.partial ? "STEM: some tracks only" : "STEM: designated") : "STEM: not designated") : "STEM: unknown";
+  const next = dl.next ? `Next deadline: ${dl.next.name}, ${fmtDate(dl.next.date)}` : dl.status === "unverified" ? "Deadlines: unverified" : "No upcoming deadline verified";
+  return el("button", { type: "button", class: "dschool", onclick: onOpen },
+    el("b", { text: SCHOOL[pg.program_id] || pg.program_name }),
+    el("span", { class: "xs muted", text: [pg.fit?.career_fit ? `${pg.fit.career_fit} career fit` : null, pg.location].filter(Boolean).join(" · ") }),
+    el("ul", { class: "xs" }, [cost, stem, next].filter(Boolean).map(t => el("li", { text: t }))),
+    el("span", { class: "xs dlinkt", text: "View fit and evidence →" }));
 }
 function drawFit(host, pg, res) {
   const f = pg.fit;
@@ -1496,15 +1582,16 @@ function drawIntl(host, pg, dres) {
         el("p", { class: "small", text: s.scope }), srcLinks(dres, s.evidence_ids)]
         : [el("span", { class: "dtag warn", text: "Unknown" }), el("p", { class: "small muted", text: "No official source establishes STEM status for this program." })]),
     el("div", { class: "dcard" }, el("h3", { text: "International outcomes" }),
-      io ? [el("span", { class: `dtag ${io.kind === "figure" ? "ok" : "warn"}`, text: io.kind === "figure" ? "Official figure" : "No outcome figure published" }), el("p", { class: "small", text: `${typeof io.value === "object" ? JSON.stringify(io.value) : io.value}${io.period ? ` (${io.period})` : ""}` }), srcLinks(dres, io.evidence_ids)]
+      io ? [el("span", { class: `dtag ${io.kind === "figure" ? "ok" : "warn"}`, text: io.kind === "figure" ? "Official figure" : "No outcome figure published" }), el("p", { class: "small", text: `${io.value && typeof io.value === "object" ? Object.entries(io.value).map(([k, x]) => `${k.replace(/_/g, " ")}: ${x}`).join(" · ") : io.value}${io.period ? ` (${io.period})` : ""}` }), srcLinks(dres, io.evidence_ids)]
         : [el("span", { class: "dtag warn", text: "Not published" }), el("p", { class: "small muted", text: "No official international-student outcome figure with a cohort and definition was found." })]),
-    el("div", { class: "dcard" }, el("h3", { text: "Visa sponsorship" }),
-      fe.sponsorship.status === "employer_specific" ? [el("span", { class: "dtag ok", text: "Employer-specific evidence" }), el("p", { class: "small", text: factValue({ fact: "sponsorship", status: "verified", value: fe.sponsorship.value }) }), srcLinks(dres, fe.sponsorship.evidence_ids)]
-        : [el("span", { class: "dtag warn", text: "No school-level evidence" }), el("p", { class: "small muted", text: "Sponsorship is decided by individual employers, case by case." }),
-           fe.h1b_history?.status === "ok" ? el("h4", { text: "Historical employer filings" }) : null, h1bBlock(fe.h1b_history, { limit: 5 })])),
+    el("div", { class: "dcard" }, el("h3", { text: "Employer H-1B filing history" }),
+      el("span", { class: "dtag warn", text: "Not school sponsorship" }),
+      el("p", { class: "small dwarn", text: "This is employer filing history, not sponsorship by the school. Past filings don't guarantee that any employer will sponsor you; employers decide case by case." }),
+      fe.sponsorship.status === "employer_specific" ? [el("p", { class: "small", text: factValue({ fact: "sponsorship", status: "verified", value: fe.sponsorship.value }) }), srcLinks(dres, fe.sponsorship.evidence_ids)] : null,
+      fe.h1b_history?.status === "ok" ? more("View employer evidence", h1bBlock(fe.h1b_history, { limit: 5 })) : h1bBlock(fe.h1b_history, { limit: 5 }))),
     note("warn", "STEM ≠ sponsorship.", fe.notes.join(" ")));
 }
-function drawWorkspace(host, d, dres, runId, selectProgram, remote = null) {
+function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekHost = null, timing = planTiming(d.programs)) {
   const w = d.workspace, key = `ac-workspace-${d.run.run_id || runId}`;
   const byId = Object.fromEntries(w.tasks.map(t => [t.id, t]));
   const valid = new Set(w.tasks.map(t => t.id));
@@ -1521,14 +1608,27 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null) {
   };
   const change = next => { history.push({ ...done }); done = next; save(); draw(); };
   const order = w.phases.flatMap(ph => ph.task_ids);
+  let planOpen = false;
+  const planWeek = t => `Plan week ${t.week}`;
+  const toggle = (id, isDone) => () => { const nx = { ...done }; if (isDone) delete nx[id]; else nx[id] = true; change(nx); };
+  const taskRow = (id, nextId) => { const t = byId[id], isDone = !!done[id];
+    return el("div", { class: `dtask${isDone ? " done" : ""}${id === nextId ? " next" : ""}`, "data-task": id },
+      el("div", {}, el("div", { text: t.text }), el("div", { class: "xs muted", text: `${planWeek(t)} · ${t.priority} priority${id === nextId ? " · next up" : ""}` })),
+      el("button", { type: "button", class: "btn btn-quiet tbtn", "aria-pressed": isDone ? "true" : "false", "aria-label": `${isDone ? "Mark not done" : "Mark complete"}: ${t.text}`,
+        onclick: toggle(id, isDone), text: isDone ? "Done ✓" : "Mark complete" })); };
   function draw() {
     clear(host);
+    if (weekHost) {   // first screen: the next 4 open tasks, in plan order
+      const nextId = order.find(id => !done[id]), open = order.filter(id => !done[id]).slice(0, 4);
+      put(clear(weekHost), open.length ? el("div", { class: "dtasks" }, open.map(id => taskRow(id, nextId))) : el("p", { class: "small", text: "All planned tasks are marked done." }),
+        el("p", { class: "xs muted", text: `${Object.keys(done).length} of ${w.tasks.length} plan tasks done. The full plan is in section 5.` }));
+    }
     const n = Object.keys(done).length, total = w.tasks.length, pct = total ? Math.round((n / total) * 100) : 0;
     const nextId = order.find(id => !done[id]);
     put(host, el("div", { class: "dcard dprog-card" },
       el("div", { class: "spread" }, el("b", { text: `${n} of ${total} tasks done` }), el("span", { class: "small muted", text: `${pct}%` })),
       el("div", { class: "track", role: "progressbar", "aria-valuemin": "0", "aria-valuemax": String(total), "aria-valuenow": String(n), "aria-label": "Tasks completed" }, el("i", { class: "c", style: `width:${pct}%` })),
-      nextId ? el("p", { class: "dnext" }, el("span", { class: "dtag ai", text: "Next task" }), " ", byId[nextId].text, el("span", { class: "xs muted", text: ` · Week ${byId[nextId].week}` }))
+      nextId ? el("p", { class: "dnext" }, el("span", { class: "dtag ai", text: "Next task" }), " ", byId[nextId].text, el("span", { class: "xs muted", text: ` · ${planWeek(byId[nextId])}` }))
         : el("p", { class: "dnext", text: "All planned tasks are marked done." }),
       el("div", { class: "dactions" },
         el("button", { type: "button", class: "btn btn-secondary", id: "ws-undo", disabled: history.length ? null : true, onclick: () => { done = history.pop(); save(); draw(); }, text: "Undo last change" }),
@@ -1536,35 +1636,38 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null) {
           ? [el("button", { type: "button", class: "btn btn-secondary danger", id: "ws-reset-yes", onclick: () => { confirmReset = false; change({}); }, text: "Yes, clear all progress" }),
              el("button", { type: "button", class: "btn btn-quiet", onclick: () => { confirmReset = false; draw(); }, text: "Cancel" })]
           : el("button", { type: "button", class: "btn btn-quiet", id: "ws-reset", disabled: n ? null : true, onclick: () => { confirmReset = true; draw(); }, text: "Reset progress" })),
-      el("p", { class: "xs muted", text: remote ? `Saved to your account (${S.user.email}).` : `${w.storage_note}${S.user || !S.config?.accounts_enabled ? "" : " Sign in to keep it in your account."}` })));
+      el("p", { class: "xs muted", text: remote ? `Saved to your account (${S.user.email}).` : `${w.storage_note}${S.user || !S.config?.accounts_enabled ? "" : " Sign in to keep it in your account."}` }),
+      timingNote(timing)));
+    const plan = el("details", { class: "more dplan", open: planOpen || null, ontoggle: e => { planOpen = e.target.open; } },
+      el("summary", { text: `View full plan (${w.tasks.length} tasks in ${w.phases.length} phases)` }));
     for (const ph of w.phases) {
       const k = ph.task_ids.filter(id => done[id]).length;
-      put(host, el("div", { class: `dphase${ph.human_checkpoint ? " human" : ""}` },
-        el("div", { class: "spread" }, el("h3", { text: ph.phase }), el("span", { class: "xs muted", text: `${ph.timing}${ph.task_ids.length ? ` · ${k}/${ph.task_ids.length}` : ""}` })),
+      put(plan, el("div", { class: `dphase${ph.human_checkpoint ? " human" : ""}` },
+        el("div", { class: "spread" }, el("h3", { text: ph.phase }), el("span", { class: "xs muted", text: `${ph.timing.replace(/^Weeks?\b/, m => `Plan ${m.toLowerCase()}`)}${ph.task_ids.length ? ` · ${k}/${ph.task_ids.length}` : ""}` })),
         ph.human_checkpoint ? el("div", { class: "xs hc", text: "Human checkpoint — these decisions are yours." }) : null,
         ph.milestones.length ? el("ul", { class: "small dmiles" }, ph.milestones.map(m => el("li", { text: m }))) : null,
-        el("div", { class: "dtasks" }, ph.task_ids.map(id => { const t = byId[id], isDone = !!done[id];
-          return el("div", { class: `dtask${isDone ? " done" : ""}${id === nextId ? " next" : ""}`, "data-task": id },
-            el("div", {}, el("div", { text: t.text }), el("div", { class: "xs muted", text: `Week ${t.week} · ${t.priority} priority${id === nextId ? " · next up" : ""}` })),
-            el("button", { type: "button", class: "btn btn-quiet tbtn", "aria-pressed": isDone ? "true" : "false", "aria-label": `${isDone ? "Mark not done" : "Mark complete"}: ${t.text}`,
-              onclick: () => { const nx = { ...done }; if (isDone) delete nx[id]; else nx[id] = true; change(nx); }, text: isDone ? "Done ✓" : "Mark complete" })); }),
+        el("div", { class: "dtasks" }, ph.task_ids.map(id => taskRow(id, nextId)),
           !ph.task_ids.length ? el("p", { class: "small muted", text: "No weekly tasks in this phase — it follows submission." }) : null)));
     }
+    put(host, plan);
     /* deadlines + saved programs */
     const saved = [...savedSet()];
     put(host, el("div", { class: "dcols" },
       el("div", { class: "dcard" }, el("h3", { text: "Deadlines" }),
         el("ul", { class: "dlist" }, d.programs.map(pg => { const dl = pg.deadlines;
-          return el("li", {}, el("b", { text: `${SCHOOL[pg.program_id] || pg.program_name}: ` }),
-            dl.status === "verified" ? [`${dl.cycle || "current"} cycle — `, (Array.isArray(dl.rounds) ? dl.rounds : [dl.rounds]).map(r => typeof r === "object" ? Object.values(r).join(" ") : r).join("; "),
-              dl.source_url ? [" · ", extLink(dl.source_url, "official page")] : null]
-              : dl.status === "not_published" ? "Checked — not published for the current cycle" : "Not checked yet — confirm on the official admissions page"); })),
-        el("p", { class: "xs muted", text: "Deadlines appear only when an official page states them for a specific cycle." })),
+          const info = deadlineRounds(dl);
+          return el("li", {}, el("b", { text: `${SCHOOL[pg.program_id] || pg.program_name}` }),
+            dl.status === "verified" ? [el("span", { class: "xs muted", text: ` · ${dl.cycle || "current"} cycle · ` }), dl.source_url ? extLink(dl.source_url, "official page") : null,
+              el("ul", { class: "ddl" }, info.rounds.map(r => el("li", { class: r.status }, el("span", { class: `dtag ${DL_TAG[r.status][0]}`, text: DL_TAG[r.status][1] }), " ",
+                `${r.name}: ${isISODate(r.date) ? fmtDate(r.date) : "date not stated"}`)))]
+              : [" ", el("span", { class: "dtag warn", text: "Unverified" }), " ", dl.status === "not_published" ? "Checked — not published for the current cycle" : "Not checked yet — confirm on the official admissions page"]); })),
+        el("p", { class: "xs muted", text: `Passed and upcoming are computed against today's date (${fmtDate(todayISO())}). Deadlines appear only when an official page states them for a specific cycle.` })),
       el("div", { class: "dcard" }, el("h3", { text: "Saved programs" }),
         saved.length ? el("ul", { class: "dlist" }, saved.map(id => { const inList = d.programs.find(pg => pg.program_id === id);
           return el("li", {}, el("b", { text: SCHOOL[id] || id }), " · ",
             inList ? el("button", { type: "button", class: "linkbtn", onclick: () => selectProgram(id), text: "View fit & evidence" }) : el("a", { href: "#/explore", text: "Open in Explore" })); }))
-          : el("p", { class: "small muted" }, "You haven't saved any programs. ", el("a", { href: "#/explore", text: "Explore programs" }), " and save the ones you like."))));
+          : el("p", { class: "small muted" }, "You haven't saved any programs. ", el("a", { href: "#/explore", text: "Explore programs" }), " and save the ones you like."),
+        S.user ? null : el("p", { class: "xs muted", text: "Saved programs and task progress are kept in this browser only." }))));
   }
   draw();
 }

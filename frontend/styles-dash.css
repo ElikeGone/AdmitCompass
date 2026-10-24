@@ -80,3 +80,26 @@
   .dcard, .dphase { padding: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .track i, .dprog { transition: none; } }
+
+/* Overview (first screen): summary, priority decisions, compact school cards, this week's actions */
+.doverview .dcols { margin-top: 0; }
+.dsub { margin: 24px 0 4px; }
+.dschools { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 10px; }
+.dschool { text-align: left; display: flex; flex-direction: column; gap: 6px; padding: 14px; border-radius: 14px; border: 1px solid var(--border-2);
+  background: var(--white); color: var(--text); cursor: pointer; font: inherit; transition: border-color .15s, box-shadow .15s; }
+.dschool:hover, .dschool:focus-visible { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-100); }
+.dschool ul { margin: 0; padding-left: 16px; display: grid; gap: 3px; }
+.dschool .dlinkt { margin-top: auto; color: var(--blue); font-weight: 600; }
+.dweek { margin-top: 16px; }
+.dprio li { margin-bottom: 8px; }
+.dtiming { margin: 6px 0 10px; }
+.dtiming.late { border-left: 3px solid var(--amber-700); padding-left: 10px; }
+.dwarn { font-weight: 600; }
+.dplan { margin-top: 16px; }
+.ddl { list-style: none; padding: 0; margin: 4px 0 8px; display: grid; gap: 4px; }
+.ddl li.passed { color: var(--text-2); text-decoration: line-through; text-decoration-color: var(--border-2); }
+.ddl li.passed .dtag { text-decoration: none; }
+.dfoot { margin: 32px 0 8px; padding-top: 12px; border-top: 1px solid var(--border-2); }
+@media (max-width: 1024px) { .dschools { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .dschools { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .dschool { transition: none; } }
