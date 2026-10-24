@@ -205,10 +205,14 @@ async function boot() {
   /* Render first; never let a slow or failed background request leave the page empty. */
   window.addEventListener("hashchange", route);
   setupCopilot();
+  const firstHash = location.hash;
   route();
   const wasUser = !!S.user;
   await api("/api/config").then(c => { S.config = c; }).catch(() => { S.config = null; });
   await loadSession();
+  // A direct link to #/signin or #/signup arrives before the config is known; open the form once it is.
+  const authLink = /^#\/(signin|signup)$/.exec(firstHash);
+  if (authLink && S.config?.accounts_enabled && !S.user && !document.querySelector("#modal-root .auth")) openAuth(authLink[1]);
   if (!!S.user !== wasUser) route();   // re-render with account-backed saved data once the session is known
 }
 function setNav(which) { document.querySelectorAll(".nav a").forEach(a => a.classList.toggle("active", a.dataset.nav === which && !a.classList.contains("btn"))); }
@@ -400,7 +404,7 @@ function renderNavAuth() {
   box.hidden = !S.config?.accounts_enabled;
   if (box.hidden) return;
   if (S.user) {
-    put(box, el("span", { class: "acct", title: S.user.email }, el("span", { class: "acct-av", "aria-hidden": "true", text: (S.user.name || "?").trim()[0].toUpperCase() }),
+    put(box, el("span", { class: "acct", title: `Signed in as ${S.user.name} (${S.user.email})` }, el("span", { class: "acct-av", "aria-hidden": "true", text: (S.user.name || "?").trim()[0].toUpperCase() }),
       el("span", { class: "acct-name", text: S.user.name })),
       el("button", { type: "button", class: "btn btn-outline", id: "signout-btn", onclick: signOut, text: "Sign Out" }));
   } else {
@@ -1955,11 +1959,12 @@ function setupCopilot() {
   const ctx = el("div", { class: "cp-ctx", "aria-label": "Context sent with your question" });
   const log = el("div", { class: "cp-log", role: "log", "aria-live": "polite", "aria-relevant": "additions", tabindex: "0", "aria-label": "Conversation" });
   const input = el("textarea", { id: "cp-input", rows: "1", maxlength: "1000", placeholder: "Ask about costs, STEM, visas, your plan…", "aria-label": "Your question",
-    onkeydown: e => { if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); cpSend(input.value); } },
+    onkeydown: e => { if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); voice.stop(); cpSend(input.value); } },
     oninput: () => { input.style.height = "auto"; input.style.height = Math.min(140, input.scrollHeight) + "px"; input.style.overflowY = input.scrollHeight > 140 ? "auto" : "hidden"; count.textContent = input.value.length > 800 ? `${input.value.length}/1000` : ""; } });
   const count = el("span", { class: "cp-count", "aria-live": "polite" });
   const send = el("button", { type: "submit", class: "cp-send", "aria-label": "Send question" }, el("span", { "aria-hidden": "true", text: "↑" }));
-  const form = el("form", { class: "cp-compose", onsubmit: e => { e.preventDefault(); cpSend(input.value); } }, input, send);
+  const voice = setupVoice(input);
+  const form = el("form", { class: "cp-compose", onsubmit: e => { e.preventDefault(); voice.stop(); cpSend(input.value); } }, input, voice.button, send);
   const sub = el("div", { class: "cp-sub", text: "Answers cite official sources" });
   const panel = el("aside", { class: "cp-panel", id: "cp-panel", role: "dialog", "aria-modal": "false", "aria-labelledby": "cp-title", hidden: true },
     el("div", { class: "cp-head" },
@@ -1968,21 +1973,81 @@ function setupCopilot() {
       el("button", { type: "button", class: "cp-icon", title: "New conversation", "aria-label": "New conversation", onclick: cpReset, text: "＋" }),
       el("button", { type: "button", class: "cp-icon", "aria-label": "Close assistant", onclick: () => cpToggle(false), text: "×" })),
     ctx, log,
-    el("div", { class: "cp-foot" }, form, el("div", { class: "cp-note" }, count,
+    el("div", { class: "cp-foot" }, form, voice.status, el("div", { class: "cp-note" }, count,
       el("span", { text: "AI can make mistakes. School facts are cited and unknowns flagged — not admissions or immigration advice." }))));
   panel.addEventListener("keydown", e => { if (e.key === "Escape") { e.stopPropagation(); cpToggle(false); } });
   const themeBtn = document.getElementById("theme-toggle");
   if (themeBtn) themeBtn.before(launch); else document.body.appendChild(launch);   // header row: never floats over content
   document.body.appendChild(panel);
-  CP.els = { launch, panel, ctx, log, input, send, sub };
+  CP.els = { launch, panel, ctx, log, input, send, sub, voice };
   drawCtx(); drawLog();
   api("/api/copilot/status").then(s => { CP.status = s; sub.textContent = !s.available ? "Unavailable on this server" : s.mode === "mock" ? "Mock mode — no AI calls are made" : "gpt-6-luna · answers cite official sources"; drawLog(); })
     .catch(() => { CP.status = { available: false }; sub.textContent = "Unavailable right now"; });
+}
+/* ---------- Optional voice input for Ask AdmitCompass ----------
+   Uses the browser's own Web Speech API only when it exists. Nothing is requested until the user clicks the microphone
+   (the browser then asks for permission). The transcript goes into the question box for review and editing; it is
+   never sent automatically. AdmitCompass never receives, sends or stores audio — only the text the user submits. */
+const VOICE_MSG = {
+  ready: "", listening: "Listening… speak your question, then click the microphone to stop. Your browser turns speech into text; AdmitCompass only receives the text you choose to send.",
+  paused: "Stopped listening. Review or edit your question, then press Send. Click the microphone to continue.",
+  unsupported: "Voice input isn't available in this browser. Type your question instead.",
+  "not-allowed": "Microphone access was blocked. Allow it in your browser's site settings to dictate, or type your question.",
+  "service-not-allowed": "This browser won't allow speech recognition here. Type your question instead.",
+  "audio-capture": "No microphone was found. Type your question instead.",
+  "no-speech": "No speech was heard. Click the microphone to try again, or type your question.",
+  network: "Speech recognition needs a network connection in this browser. Type your question instead.",
+  error: "Voice input stopped because of an error. Type your question, or try the microphone again.",
+};
+const speechAPI = () => window.SpeechRecognition || window.webkitSpeechRecognition || null;
+function setupVoice(input) {
+  let rec = null, state = speechAPI() ? "ready" : "unsupported", base = "";
+  const status = el("div", { class: "cp-voice", role: "status", "aria-live": "polite" });
+  const button = el("button", { type: "button", class: "cp-mic", "aria-pressed": "false", onclick: () => toggle() },
+    el("span", { "aria-hidden": "true", class: "cp-mic-ic", text: "🎙" }));
+  const set = (next, msgKey = next) => {
+    state = next;
+    button.dataset.state = next;
+    button.setAttribute("aria-pressed", next === "listening" ? "true" : "false");
+    button.setAttribute("aria-label", next === "listening" ? "Stop voice input" : next === "unsupported" ? "Voice input isn't available in this browser" : "Start voice input");
+    button.title = button.getAttribute("aria-label");
+    if (next === "unsupported") button.setAttribute("aria-disabled", "true"); else button.removeAttribute("aria-disabled");
+    status.textContent = VOICE_MSG[msgKey] ?? VOICE_MSG.error;
+    status.hidden = !status.textContent;
+  };
+  const write = text => {   // into the question box, then let the box resize itself; never submits
+    input.value = (base && text ? `${base} ` : base) + text;
+    input.dispatchEvent(new Event("input"));
+  };
+  function start() {
+    const SR = speechAPI();
+    if (!SR) { set("unsupported"); return; }
+    try {
+      rec = new SR();
+      rec.lang = document.documentElement.lang || "en-US";
+      rec.interimResults = true; rec.continuous = true; rec.maxAlternatives = 1;
+      base = input.value.trim();
+      rec.onresult = e => {
+        let finalText = "", interim = "";
+        for (let i = 0; i < e.results.length; i++) (e.results[i].isFinal ? (finalText += e.results[i][0].transcript) : (interim += e.results[i][0].transcript));
+        write(`${finalText}${interim}`.replace(/\s+/g, " ").trim());
+      };
+      rec.onerror = e => { const k = e.error === "aborted" ? null : (e.error in VOICE_MSG ? e.error : "error"); rec = null; if (k) set("error", k); };
+      rec.onend = () => { if (state === "listening") set("paused"); rec = null; input.focus(); };
+      rec.start();   // the browser asks for microphone permission here, after the click
+      set("listening");
+    } catch { rec = null; set("error", "error"); }
+  }
+  function stop() { if (rec) { try { rec.stop(); } catch { /* already stopped */ } } }
+  function toggle() { if (!speechAPI()) { set("unsupported"); return; } state === "listening" ? stop() : start(); }
+  set(state, state === "unsupported" ? "ready" : state);   // don't announce "unsupported" until the user asks for voice
+  return { button, status, stop, state: () => state };
 }
 function cpToggle(open) {
   CP.open = open;
   const { panel, launch, input, log } = CP.els;
   panel.hidden = !open; launch.setAttribute("aria-expanded", String(open)); document.body.classList.toggle("cp-open", open);
+  if (!open) CP.els.voice?.stop();
   if (open) { input.focus(); log.scrollTop = log.scrollHeight; } else launch.focus();
 }
 function cpReset() {

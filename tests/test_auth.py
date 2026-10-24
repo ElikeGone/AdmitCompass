@@ -15,7 +15,7 @@ PW = "correct horse battery"
 
 @pytest.fixture()
 def db(tmp_path, monkeypatch):
-    monkeypatch.setenv("AC_ENABLE_ACCOUNTS", "true")   # accounts are off by default (Task 5); these tests turn them on
+    monkeypatch.setenv("AC_ENABLE_ACCOUNTS", "true")   # on by default; set explicitly so these tests don't depend on the default
     app.state.accounts = AccountStore(tmp_path / "accounts.sqlite3")
     routes.limiter.reset()
     yield tmp_path / "accounts.sqlite3"
@@ -180,8 +180,10 @@ def test_import_is_additive_and_safe(db):
     assert client().post("/api/account/import", json={"saved": []}).status_code == 401
 
 
-def test_accounts_are_off_by_default(monkeypatch):
+def test_accounts_on_by_default_and_can_be_turned_off(monkeypatch):
     monkeypatch.delenv("AC_ENABLE_ACCOUNTS", raising=False)
+    assert client().get("/api/config").json()["accounts_enabled"] is True
+    monkeypatch.setenv("AC_ENABLE_ACCOUNTS", "false")
     c = client()
     assert c.get("/api/config").json()["accounts_enabled"] is False
     assert c.get("/api/auth/me").status_code == 404

@@ -90,7 +90,7 @@
 .cp-launch:hover { transform: none; box-shadow: 0 6px 16px rgba(124, 58, 237, .3); }
 body.cp-open .cp-launch { display: inline-flex; }
 .cp-spark { font-size: 15px; }
-@media (max-width: 980px) { .cp-launch { margin-left: auto; } .theme-btn { margin-left: 8px; } }
+@media (max-width: 1180px) { .cp-launch { margin-left: auto; } .theme-btn { margin-left: 8px; } }
 @media (max-width: 560px) { .cp-launch .cp-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } .cp-launch { width: 40px; padding: 0; justify-content: center; } }
 
 /* ---------- Sample Analysis: quieter status labels ---------- */
@@ -124,7 +124,8 @@ body.cp-open .cp-launch { display: inline-flex; }
 
 /* header row on small screens: buttons keep their size; the wordmark gives way first */
 .menu-btn, .theme-btn, .cp-launch { flex: none; }
-.topbar .brand { min-width: 0; }
+.topbar .brand { flex: none; }
+@media (max-width: 1180px) { .topbar .brand { flex: 0 1 auto; min-width: 0; } }
 @media (max-width: 400px) { .topbar .brand { font-size: 17px; gap: 8px; } }
 
 /* ---------- Explore: shorter header, one quiet evidence note ---------- */
@@ -203,3 +204,12 @@ body.cp-open .cp-launch { display: inline-flex; }
   .dash2 .ds-dec + .ds-dec { border-top: 1px solid var(--border); }
 }
 @media (max-width: 760px) { .ds-path li:first-child .ds-v, .ds-path li.to .ds-v { display: none; } .ds-path { margin-bottom: 16px; } }
+
+/* the logo mark never shrinks when the header row is full (e.g. signed-in name + Sign Out) */
+.topbar .brand > svg, .topbar .brand .mark { flex: none; }
+
+/* signed in: the name collapses to the avatar on narrower desktops (still announced to screen readers; full name on hover) */
+@media (min-width: 1181px) and (max-width: 1500px) {
+  .acct-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+

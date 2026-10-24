@@ -34,7 +34,7 @@ a { color: #93C5FD; } a:hover { color: #BFDBFE; }
 .menu-btn { background: var(--surface); border-color: var(--border); }
 .menu-btn span { background: var(--text); }
 .footer { border-top-color: var(--line); color: var(--text-3); }
-@media (max-width: 980px) { .nav { background: var(--surface); border-bottom-color: var(--line); } }
+@media (max-width: 1180px) { .nav { background: var(--surface); border-bottom-color: var(--line); } }
 
 /* generic surfaces that were hard-coded white */
 .card, .rec, .pcard, .pc, .how-card, .feat, .intl-item, .preview-card, .agent-card, .meter, .review-sec, .step,

@@ -34,8 +34,8 @@ RUN_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
 PASSWORD_MIN, PASSWORD_MAX = 10, 128
 
 def accounts_enabled() -> bool:
-    """Accounts are OFF unless AC_ENABLE_ACCOUNTS is true/1/yes (scope trim, Task 5). Read per request so tests can toggle it."""
-    return os.getenv("AC_ENABLE_ACCOUNTS", "false").strip().lower() in ("1", "true", "yes", "on")
+    """Accounts are ON by default; set AC_ENABLE_ACCOUNTS=false/0/no/off to turn them off. Read per request so tests can toggle it."""
+    return os.getenv("AC_ENABLE_ACCOUNTS", "true").strip().lower() not in ("0", "false", "no", "off")
 
 
 def _require_enabled() -> None:

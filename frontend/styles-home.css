@@ -16,8 +16,8 @@ section[id] { scroll-margin-top: 16px; }
 .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
 .nav-auth .btn-primary { box-shadow: 0 6px 18px rgba(37, 99, 235, .28); }
 
-@media (max-width: 1100px) and (min-width: 981px) { .nav-links a { padding: 9px 8px; font-size: 14px; } .nav { margin-left: 12px; gap: 8px; } .nav-auth .btn { padding: 0 12px; } }
-@media (max-width: 980px) {
+@media (max-width: 1300px) and (min-width: 1181px) { .nav-links a { padding: 9px 8px; font-size: 14px; } .nav { margin-left: 12px; gap: 8px; } .nav-auth .btn { padding: 0 12px; } }
+@media (max-width: 1180px) {
   .nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; flex-direction: column; align-items: stretch; gap: 12px;
     background: var(--white); border-bottom: 1px solid var(--border); padding: 12px 20px 20px; box-shadow: var(--shadow); }
   .nav.open { display: flex; }
@@ -168,7 +168,7 @@ html[data-theme="dark"] .hp2-sec.tint { background: linear-gradient(180deg, #0F1
 .hint { margin: -8px 0 0; }
 .auth-form .btn-primary { width: 100%; justify-content: center; min-height: 48px; }
 .auth-form .btn-primary[disabled] { opacity: .7; cursor: progress; }
-@media (max-width: 980px) { .acct { flex: 1; max-width: none; } }
+@media (max-width: 1180px) { .acct { flex: 1; max-width: none; } }
 .nav-auth .btn { white-space: nowrap; }
 
 /* ---------- research layer ---------- */
@@ -218,7 +218,7 @@ body.on-home .topbar .nav a:not(.btn):hover { color: #fff; background: rgba(255,
 body.on-home .topbar .nav a.active { color: #93C5FD; background: var(--blue-50); }
 body.on-home .menu-btn { background: var(--surface); border-color: var(--border); }
 html[data-theme="light"] body.on-home .theme-btn { background: var(--surface); color: #C4B5FD; }
-@media (max-width: 980px) {
+@media (max-width: 1180px) {
   .nav { top: 100%; }   /* the mobile menu opens directly below the top row */
   .nav-links { margin: 0; flex-direction: column; }
   body.on-home .nav { background: #111A2E; border-bottom-color: #22304D; }

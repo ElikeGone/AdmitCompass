@@ -74,3 +74,14 @@ body.cp-open .cp-launch { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .cp-launch { transition: none; } .cp-launch:hover { transform: none; } .dots i { animation: none; opacity: .7; } }
 .cp-compose textarea::placeholder { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* voice input: microphone in the compose row + a status line */
+.cp-mic { width: 38px; height: 38px; flex: none; border: 1px solid var(--border-2); border-radius: 10px; background: transparent; color: var(--text-2); cursor: pointer; display: grid; place-items: center; }
+.cp-mic-ic { font-size: 17px; line-height: 1; filter: grayscale(1); }
+.cp-mic:hover { border-color: var(--blue); }
+.cp-mic[data-state="listening"] { border-color: #DC2626; background: rgba(220, 38, 38, .12); animation: cp-mic-pulse 1.4s ease-in-out infinite; }
+.cp-mic[data-state="listening"] .cp-mic-ic { filter: none; }
+.cp-mic[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+.cp-voice { font-size: 13px; line-height: 1.45; color: var(--text-2); margin: 6px 2px 0; }
+@keyframes cp-mic-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, .35); } 50% { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); } }
+@media (prefers-reduced-motion: reduce) { .cp-mic[data-state="listening"] { animation: none; } }
