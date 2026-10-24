@@ -49,7 +49,7 @@ class ChatContext(BaseModel):
     program_id: str | None = Field(default=None, pattern=r"^[a-z0-9-]{1,80}$")
     compare_ids: list[str] = Field(default_factory=list, max_length=4)
     section: str | None = Field(default=None, max_length=40, pattern=r"^[a-z0-9-]*$")
-    run: Literal["demo"] | None = None
+    run: Literal["demo", "demo-india"] | None = None
 
 
 class ChatIn(BaseModel):
@@ -89,9 +89,9 @@ def chat(body: ChatIn, request: Request):
         raise HTTPException(503, "The AI copilot isn't available: no model key is configured on this server. Program pages and the sample analysis still work.")
     store = default_store()
     saved = None
-    if body.context.run == "demo":
+    if body.context.run:
         from ..main import dashboard
-        d = dashboard("demo")
+        d = dashboard(body.context.run)
         saved = demo_context(d["dashboard"], d["profile"])
     budget = limiter.budget(body.conversation_id)
     try:

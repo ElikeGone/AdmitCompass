@@ -225,7 +225,7 @@ function route() {
   if (auth && document.querySelector("#modal-root .auth")) return;
   if (auth && S.rendered === hash) { openAuth(auth); return; }
   S.rendered = hash;
-  if (typeof setChatContext === "function") setChatContext(/^#\/(dashboard|results)\/demo/.test(hash) ? { run: "demo" } : {});
+  if (typeof setChatContext === "function") { const m = /^#\/(?:dashboard|results)\/(demo(?:-india)?)\b/.exec(hash); setChatContext(m ? { run: m[1] } : {}); }
   if (auth) setTimeout(() => openAuth(auth), 0);
   let [, view, arg, sub] = hash.split("/");
   if (view === "profile") view = "start";
@@ -1429,20 +1429,26 @@ async function renderDashboard(runId) {
   put(wrap, el("header", { class: "ds-top" },
     el("div", { class: "kicker", text: demo ? "Sample analysis · fictional applicant" : "Your analysis" }),
     el("h1", { text: demo ? "Sample analysis" : "Your analysis" }),
-    el("p", { class: "ds-who" }, el("span", { text: [pw.background.role, pw.background.industry, pw.background.years != null ? `${pw.background.years} years` : null].filter(Boolean).join(" · ") || "Background not given" }),
-      el("span", { class: "ds-arrow", "aria-hidden": "true", text: " → " }), el("b", { text: target })),
+    el("ol", { class: "ds-path", "aria-label": "Career pathway" },
+      el("li", {}, el("span", { class: "ds-k", text: "Where you are" }), el("b", { text: pw.background.role || "Not given" }),
+        el("span", { class: "ds-v", text: [pw.background.industry, pw.background.years != null ? `${pw.background.years} years` : null].filter(Boolean).join(" · ") })),
+      el("li", { class: "mid" }, el("span", { class: "ds-k", text: "Education step" }), el("b", { text: "MBA" }),
+        el("span", { class: "ds-v", text: `${d.programs.length} programs shortlisted: ${d.programs.map(name).join(", ")}` })),
+      el("li", { class: "to" }, el("span", { class: "ds-k", text: "Where you want to go" }), el("b", { text: target }),
+        el("span", { class: "ds-v", text: pw.target.industry || "" }))),
     el("p", { class: "ds-rec", text: `Research the ${d.programs.length} programs shortlisted for a ${target} path${strong.length ? ` — ${strong.join(" and ")} ${strong.length > 1 ? "fit" : "fits"} your career goal best` : ""}${undecided ? ", and take timed diagnostics before choosing between the GRE and GMAT" : ""}.` }),
     el("div", { class: "ds-decisions" },
-      el("div", { class: "ds-dec" }, el("span", { class: "ds-k", text: "School shortlist" }), el("b", { text: `${d.programs.length} programs` }),
+      el("div", { class: "ds-dec" }, el("span", { class: "ds-num", "aria-hidden": "true", text: "1" }), el("span", { class: "ds-k", text: "School shortlist" }), el("b", { text: `${d.programs.length} programs` }),
         el("span", { class: "ds-v", text: strong.length ? `Strongest fit: ${strong.join(", ")}` : d.programs.map(name).join(", ") })),
-      el("div", { class: "ds-dec" }, el("span", { class: "ds-k", text: "GRE or GMAT" }), el("b", { text: undecided ? "Undecided" : (PLANNER_TEST_TEXT[td?.planner_recommendation] || "See the test section") }),
+      el("div", { class: "ds-dec" }, el("span", { class: "ds-num", "aria-hidden": "true", text: "2" }), el("span", { class: "ds-k", text: "GRE or GMAT" }), el("b", { text: undecided ? "Undecided" : (PLANNER_TEST_TEXT[td?.planner_recommendation] || "See the test section") }),
         el("span", { class: "ds-v", text: undecided ? "No diagnostic scores yet — take one timed practice test of each" : "Based on your profile" })),
-      el("div", { class: "ds-dec" }, el("span", { class: "ds-k", text: "Next action this week" }),
+      el("div", { class: "ds-dec" }, el("span", { class: "ds-num", "aria-hidden": "true", text: "3" }), el("span", { class: "ds-k", text: "Next action this week" }),
         firstAction ? [el("b", { text: byId[firstAction].text }), el("span", { class: "ds-v", text: `About ${wk.actions[firstAction].minutes} minutes · planning estimate` })]
           : el("b", { text: "All planned actions are marked done" }))),
     el("div", { class: "ds-cta" },
       el("button", { type: "button", class: "btn btn-primary btn-lg", onclick: jump("d-plan") }, "Start this week's plan ", arrow()),
-      el("button", { type: "button", class: "btn btn-quiet", onclick: jump("d-short"), text: "See the shortlist" })),
+      el("button", { type: "button", class: "btn btn-quiet", onclick: jump("d-short"), text: "See the shortlist" }),
+      el("button", { type: "button", class: "btn btn-quiet ds-ask", onclick: () => askAboutPathway(demo ? runId : null) }, el("span", { "aria-hidden": "true", text: "✦ " }), "Ask AI about my pathway")),
     demo ? el("p", { class: "ds-note" }, "A saved analysis for a fictional applicant. Viewing it makes no AI call.",
       (dres.sample?.others || []).map(o => [" Other sample: ", el("a", { href: `#/dashboard/${o.route}`, text: `${o.label} →` })])) : null));
 
@@ -1496,7 +1502,7 @@ async function renderDashboard(runId) {
   const fitHost = el("div"), costHost = el("div"), intlHost = el("div");
   const drawPrograms = () => {
     clear(picker);
-    setChatContext({ ...(demo ? { run: "demo" } : {}), program_id: sel });
+    setChatContext({ ...(demo ? { run: runId } : {}), program_id: sel });
     d.programs.forEach(pg => put(picker, el("button", { type: "button", class: "dprog", "aria-pressed": pg.program_id === sel ? "true" : "false",
       onclick: () => { sel = pg.program_id; drawPrograms(); } }, el("b", { text: name(pg) }), el("span", { class: "xs muted", text: `${pg.fit.career_fit} career fit` }))));
     const pg = d.programs.find(x => x.program_id === sel);
@@ -1564,6 +1570,15 @@ function filingLine(h, limit = 3) {
   return el("span", {}, top.map(e => `${e.employer} ${fmtInt(e.total_filings)}`).join(" · "),
     el("span", { class: "muted", text: ` — FY${src.fiscal_year || ""} certified H-1B filings, ${scope}. ` }),
     h.school_list?.source_url ? [extLink(h.school_list.source_url, "School list"), " · "] : null, src.source_page ? extLink(src.source_page, "DOL data") : null);
+}
+/* "Ask AI about my pathway": opens the existing copilot with this sample as context and a starter question filled in.
+   Nothing is sent until the user presses Send, so no model call happens on its own. */
+function askAboutPathway(run) {
+  if (!CP.els.input) return;
+  setChatContext({ ...S.ctx, ...(run ? { run } : {}), program_id: null, compare_ids: [] });
+  cpToggle(true);
+  if (!CP.els.input.value.trim()) { CP.els.input.value = "What should I do next on my pathway?"; CP.els.input.dispatchEvent(new Event("input")); }
+  CP.els.input.focus(); CP.els.input.select();
 }
 function careerPathwayBlock(d) {
   const pw = d.pathway;
@@ -1847,7 +1862,7 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
       const allMust = prio.filter(i => act(i).tier === "must"), doneMust = allMust.filter(i => done[i]).length, hrs = Math.round(x.minutes / 30) / 2;
       return el("details", { class: "dwk-week", open: openWeeks.has(x.week) || null, ontoggle: e => { e.target.open ? openWeeks.add(x.week) : openWeeks.delete(x.week); } },
         el("summary", {}, el("b", { text: `Week ${x.week}` }),
-          el("span", { class: "small muted", text: `${prio.length} priority actions · about ${hrs} hours · ${doneMust}/${allMust.length} must-dos done` })),
+          el("span", { class: "small muted", text: [`${prio.length} priority actions`, `about ${hrs} hours`, allMust.length ? `${doneMust}/${allMust.length} must-dos done` : null].filter(Boolean).join(" · ") })),
         el("div", { class: "dwk-body" },
           group("must", visible.filter(i => act(i).tier === "must")), group("should", visible.filter(i => act(i).tier === "should")),
           prio.length > INITIAL ? el("button", { type: "button", class: "btn btn-quiet dwk-more", "aria-expanded": all ? "true" : "false",
@@ -1855,7 +1870,9 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
           all ? group("optional", x.optional) : null,
           x.more.length ? more(`Also planned this week (${x.more.length})`, el("ul", { class: "dwk-list" }, x.more.map(row))) : null));
     }),
-      el("p", { class: "xs muted", text: `${wk.estimate_note} ${Object.keys(done).length} of ${w.tasks.length} plan tasks done; the full plan is under Detailed evidence.` }));
+      el("div", { class: "dwk-foot" },
+        el("button", { type: "button", class: "btn btn-quiet", disabled: history.length ? null : true, onclick: () => { done = history.pop(); save(); draw(); }, text: "Undo last change" }),
+        el("span", { class: "xs muted", text: `${wk.estimate_note} ${Object.keys(done).length} of ${w.tasks.length} plan tasks done; the full plan is under Detailed evidence.` })));
   }
 
   function draw() {
@@ -1927,9 +1944,9 @@ function setChatContext(ctx) { S.ctx = ctx || {}; if (CP.els.ctx) drawCtx(); if 
 function cpSuggestions() {
   const c = S.ctx, nm = id => SCHOOL[id] || id.replace(/-mba$/, "").replace(/-/g, " ");
   if (c.compare_ids?.length >= 2) return [`Compare ${c.compare_ids.map(nm).join(" and ")} on cost and STEM status.`, "Which of these has published employment outcomes?"];
-  if (c.program_id && c.run === "demo") return [`Why is ${nm(c.program_id)} recommended for this profile?`, `Can this applicant afford ${nm(c.program_id)}?`, "What should I do next?"];
+  if (c.program_id && c.run) return [`Why is ${nm(c.program_id)} recommended for this profile?`, `Can this applicant afford ${nm(c.program_id)}?`, "What should I do next?"];
   if (c.program_id) return [`What does ${nm(c.program_id)} cost?`, `Is ${nm(c.program_id)} STEM-designated?`, `What do we know about visa sponsorship at ${nm(c.program_id)}?`];
-  if (c.run === "demo") return ["Why is MIT Sloan recommended for this profile?", "Compare Yale and Booth for my career goal.", "What do we know about visa sponsorship?", "What should I do next?"];
+  if (c.run) return ["What should I do next on my pathway?", "How should I choose between the GRE and GMAT?", "What do we know about employer visa sponsorship for my shortlist?"];
   return ["Which programs have verified STEM status?", "What do we know about visa sponsorship?", "Compare Yale and Booth on cost.", "How should I choose between the GMAT and GRE?"];
 }
 function setupCopilot() {
@@ -1975,7 +1992,7 @@ function drawCtx() {
   const c = S.ctx, box = clear(CP.els.ctx), nm = id => SCHOOL[id] || id;
   const chip = (text, drop) => el("span", { class: "cp-chip" }, text, el("button", { type: "button", "aria-label": `Remove context: ${text}`, onclick: drop, text: "×" }));
   const chips = [];
-  if (c.run === "demo") chips.push(chip("Sample analysis", () => setChatContext({ ...S.ctx, run: null })));
+  if (c.run) chips.push(chip("Sample analysis", () => setChatContext({ ...S.ctx, run: null })));
   if (c.program_id) chips.push(chip(nm(c.program_id), () => setChatContext({ ...S.ctx, program_id: null })));
   if (c.compare_ids?.length) chips.push(chip(`Comparing ${c.compare_ids.map(nm).join(", ")}`, () => setChatContext({ ...S.ctx, compare_ids: [] })));
   box.hidden = !chips.length;
