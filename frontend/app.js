@@ -275,25 +275,8 @@ const kUSD = v => (v == null ? "—" : `$${Math.round(v / 1000)}k`);
 
 /* Interactive product preview: the real saved analysis only (/api/dashboard/demo = saved run + deterministic checks). */
 
-const TEST_CHOICE = { undecided_need_info: "Take a timed diagnostic for both tests, then choose one", gmat: "GMAT", gre: "GRE", either: "Either test is accepted" };
-async function heroProof(host) {
-  let d;
-  try { d = (await api("/api/dashboard/demo")).dashboard; } catch { host.closest(".hp2-proof")?.remove(); return; }
-  const pg = d.programs?.[0], tg = d.workspace?.test_guidance, w = d.workspace;
-  const firstId = w?.phases?.flatMap(ph => ph.task_ids)[0], task = w?.tasks?.find(t => t.id === firstId);
-  const stem = pg?.feasibility?.stem;
-  const card = (n, k, main, foot) => el("div", { class: "hp2-pcard" }, el("span", { class: "num", text: String(n) }),
-    el("div", {}, el("div", { class: "k", text: k }), el("b", { text: main }), foot ? el("div", { class: "f", text: foot }) : null));
-  put(host,
-    pg ? card(1, "Match", `${SCHOOL[pg.program_id] || pg.program_name} · ${pg.fit.career_fit} career fit`,
-      [d.pathway?.target?.roles?.[0] ? `for ${d.pathway.target.roles[0]}` : null, stem?.status === "verified" && stem.designated ? "STEM-designated (official page)" : null].filter(Boolean).join(" · ")) : null,
-    tg ? card(2, "Test decision", TEST_CHOICE[tg.recommendation] || "See the recommendation", tg.evidence_ids?.length ? `Test policy read from ${tg.evidence_ids.length} official program pages` : null) : null,
-    task ? card(3, "Next action", task.text, `Plan week ${task.week} · ${task.priority} priority`) : null);
-}
 async function renderHome(scrollTo) {
   document.body.classList.add("on-home");
-  const proof = el("div", { class: "hp2-proof-cards" });
-  const stats = el("div", { class: "hp2-stats" });
   const grid = el("div", { class: "show-grid" }, el("p", { class: "small muted", text: "Loading programs…" }));
   const showFoot = el("div", { class: "show-foot" });
   put($main,
@@ -305,21 +288,20 @@ async function renderHome(scrollTo) {
           el("p", { class: "hp2-sub", text: "Match MBA programs to the career you want, settle the GRE-or-GMAT question, and turn your gaps into a weekly plan — with every claim traced to its official source." }),
           el("div", { class: "hp2-cta" },
             el("a", { class: "btn btn-primary btn-lg", href: "#/start" }, "Find my pathway ", arrow()),
-            el("a", { class: "btn btn-ghost-light btn-lg", href: "#/explore", text: "Explore programs" }))),
-        el("aside", { class: "hp2-proof", "aria-label": "Example from a saved sample analysis" },
-          el("p", { class: "hp2-proof-k", text: "From a saved sample analysis · fictional applicant" }),
-          proof,
-          el("a", { class: "hp2-proof-link", href: "#/dashboard/demo" }, "See the full sample ", arrow())))),
-    el("section", { class: "hp2-sec", id: "how" }, el("div", { class: "wrap how2" },
-      el("div", { class: "sec2-head" }, el("span", { class: "eyebrow2", text: "What it does today" }), el("h2", { text: "Three decisions, one evidence-checked plan" }),
-        el("p", { text: "Four AI agents work from verified program facts; plain code checks every answer against the evidence before you see it." })),
-      el("ol", { class: "how2-cards three" }, [
-        ["route", "Match programs to your career goal", "Programs are shortlisted by where they lead — not by prestige or rankings — and checked against official pages."],
-        ["book", "Decide between the GRE and GMAT", "Each shortlisted program's test policy comes from its official page, so you can choose one test and plan for it."],
-        ["list", "Turn your gaps into a weekly plan", "A Skeptic agent challenges weak claims, and your gaps become a week-by-week plan sized to the time you have."]]
-        .map(([i, h, t], n) => el("li", { class: "how2-card" }, el("div", { class: "how2-top" }, el("span", { class: "num", text: String(n + 1) }), el("span", { class: "ic" }, svgIcon(i))),
-          el("h3", { text: h }), el("p", { text: t })))),
-      stats,
+            el("a", { class: "btn btn-ghost-light btn-lg", href: "#/explore", text: "Explore programs" })),
+          el("p", { class: "hp2-sample" }, el("a", { href: "#/dashboard/demo" }, "Or open a sample dashboard (fictional applicant) ", arrow()))),
+        el("div", { class: "hp2-flow", "aria-labelledby": "hp2-flow-h" },
+          el("h2", { id: "hp2-flow-h", class: "hp2-flow-k", text: "How AdmitCompass helps" }),
+          el("ol", {}, [
+            ["Match programs to your career goal", "Shortlisted by where they lead, not by prestige."],
+            ["Decide between the GRE and GMAT", "Using each program's official test policy."],
+            ["Turn profile gaps into weekly actions", "A week-by-week plan sized to your time."]]
+            .map(([h, t], n) => el("li", {}, el("span", { class: "num", "aria-hidden": "true", text: String(n + 1) }), el("div", {}, el("b", { text: h }), el("span", { text: t })))))))),
+    el("section", { class: "hp2-sec hp2-proofsec", id: "how" }, el("div", { class: "wrap" },
+      el("ul", { class: "hp2-points" }, [
+        ["shield", "Evidence linked to official sources."],
+        ["route", "Recommendations explain tradeoffs and unknowns."],
+        ["list", "Plans turn decisions into next actions."]].map(([i, t]) => el("li", {}, el("span", { class: "ic" }, svgIcon(i)), t))),
       el("div", { class: "hp2-next", "aria-label": "Coming next" },
         el("div", { class: "hp2-next-head" }, el("span", { class: "pvtag", text: "Coming next" }), el("span", { class: "small muted", text: "The rest of the journey — not available yet." })),
         el("ol", {}, ["Essays", "Interviews", "Visa preparation", "Networking", "Recruiting", "Casing", "Events"].map(t => el("li", { text: t })))))),
@@ -344,11 +326,8 @@ async function renderHome(scrollTo) {
       el("div", { class: "hp2-cta" }, el("a", { class: "btn btn-light btn-lg", href: "#/start" }, "Find my pathway ", arrow()),
         el("a", { class: "btn btn-ghost-light btn-lg", href: "#/dashboard/demo", text: "View sample analysis" }))))));
   if (scrollTo) document.getElementById(scrollTo)?.scrollIntoView({ block: "start" });
-  heroProof(proof);
   try {
     const r = await api("/api/programs"), by = r.counts.by_evidence_status;
-    put(stats, [[svgIcon("checkCircle"), String(by.detailed), "programs with detailed evidence"], [svgIcon("book"), String(by.partial), "more partially verified from official pages"],
-      [svgIcon("shield"), "4", "specialised AI agents, checked by code"]].map(([ic, n, t]) => el("div", { class: "hp2-stat" }, el("span", { class: "ic" }, ic), el("div", {}, el("b", { text: n }), el("span", { text: t })))));
     const items = r.items.filter(it => it.tier === "verified").slice(0, 6);
     put(clear(grid), items.map((it, i) => {
       const coa = it.cost_of_attendance, stem = it.stem_designated === true ? (it.stem_partial ? "Some tracks" : "Verified") : "Unknown";
