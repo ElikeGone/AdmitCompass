@@ -227,3 +227,13 @@ def test_unranked_program_shows_label():
     for it in c.items:
         r = it["ranking"]
         assert (r["rank"] is not None) or r["label"] == "not ranked in this source"
+
+
+def test_columbia_manual_facts_carry_manual_provenance():
+    """Columbia blocks automated retrieval (HTTP 403); its official figures come from user-saved files and are
+    verified only by an xlsx cell match or an independent verified Poets&Quants value."""
+    cols = [f for f in supp.verified("disc-columbia-university-mba") if f.publisher == "Columbia Business School"]
+    by = {f.field: f for f in cols}
+    assert by["cost_of_attendance"].value == 143030 and by["median_base_salary"].value == 175000
+    assert by["employment_rate"].value == 90.4
+    assert all("manually saved by user" in f.validation and "sha256" in f.validation for f in cols)

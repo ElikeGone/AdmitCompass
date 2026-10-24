@@ -89,3 +89,8 @@ Last inspected: 2026-10-23 (Step 9B: 28 programs with sourced facts, link audit,
   - **Guarantee rule:** the re-run exposed a false positive, fixed with negation now required in the same clause (`experiments/safety/false_positive_guarantee_negation.md`).
   - **Review zip:** removed.
   - **Tests:** 270 passed, 1 skipped; safety 26/26.
+- 2026-10-24 **Columbia: official figures from files saved by the user (the pages return HTTP 403 to automated fetches).**
+  - **Verified:** cost of attendance $143,030 and mandatory fees $6,783 (2026-2027, from a screenshot, each equal to an independently verified Poets&Quants value). Class of 2025: 90.4% accepted a job within 3 months and $175,000 median base (each found in a cell of the school's xlsx).
+  - **Provenance:** each record has the URL, the retrieval date, "manually saved by user" and the file's SHA-256 (`data/sources/raw/supp/z_manual_columbia.json`). The saved files are git-ignored.
+  - **Limit:** Columbia stays a discovery-tier (partial) program; "detailed" needs the official test-policy and STEM pages.
+  - **Tests:** 271 passed, 1 skipped; secret scan clean.

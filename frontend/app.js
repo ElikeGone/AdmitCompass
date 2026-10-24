@@ -1051,7 +1051,7 @@ function costRows(costs) {
   }),
   el("p", { class: "xs muted", text: "These measure different things — official tuition, official cost of attendance, figures reported by third parties, and third-party estimates — so they aren't combined or treated as contradictions." }));
 }
-const RESEARCH_GROUPS = [["Class profile", ["class_size", "class_median_gmat", "class_avg_gmat", "class_pct_international"]],
+const RESEARCH_GROUPS = [["Employment outcomes", ["employment_rate", "median_base_salary"]], ["Class profile", ["class_size", "class_median_gmat", "class_avg_gmat", "class_pct_international"]],
   ["Scholarships and fellowships", ["scholarships"]], ["Application deadlines", ["application_deadlines"]]];
 function researchBlocks(r) {
   if (!r) return null;

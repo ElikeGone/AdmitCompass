@@ -34,3 +34,8 @@ data/sources/cache/
 
 # Raw DOL LCA disclosure files (hundreds of MB; download per data/sponsorship/README.md)
 data/sponsorship/raw/
+
+# Manually saved copies of official school pages (third-party content; provenance recorded in data, files not published)
+data/sources/manual/**/*.pdf
+data/sources/manual/**/*.xlsx
+data/sources/manual/**/*.png

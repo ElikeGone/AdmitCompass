@@ -17,6 +17,6 @@ Updated 2026-10-24 (final sprint, Task 6). The official rubric is in `docs/rubri
 | 11–12 | Slides (6 + 2) | `slides.html`, ≤10 slides | — | — | Not started (by instruction) |
 
 ## Supporting evidence
-- **Data provenance:** `data/sponsorship/provenance.json` (DOL file hashes, quarters, case counts); `experiments/research/supplementary_validation.csv` (per-fact validation); `experiments/link_audit/`.
+- **Data provenance:** `data/sponsorship/provenance.json` (DOL file hashes, quarters, case counts); Columbia manual-file records `data/sources/raw/supp/z_manual_columbia.json` (user-saved files, SHA-256, validation rule); `experiments/research/supplementary_validation.csv` (per-fact validation); `experiments/link_audit/`.
 - **Design decisions:** `docs/decisions.md`. **Development history:** `docs/CHANGELOG.md`.
 - **Prompts used to build the project:** `AI_prompts.md`.

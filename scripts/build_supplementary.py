@@ -126,6 +126,31 @@ def date_found(iso: str, text: str) -> bool:
 RAW_HTML: dict[str, str] = {}
 
 
+def check_manual(rec: dict, built: list[dict]) -> tuple[bool, str]:
+    """Pages that block automated retrieval, saved by the project owner (PDF/xlsx/screenshot).
+    xlsx: the value must be in a cell. corroborate (screenshot, no machine-readable text): the value must equal an
+    already-VERIFIED value for the same program from an independent source (e.g. Poets&Quants). Hash recorded."""
+    f = ROOT / rec["manual_file"]
+    if not f.exists():
+        return False, f"manually saved file missing: {rec['manual_file']}"
+    digest = hashlib.sha256(f.read_bytes()).hexdigest()[:16]
+    tag = f"manually saved by user; sha256 {digest}…; "
+    if rec.get("manual_check") == "xlsx":
+        import openpyxl
+        want = rec["xlsx_value"]
+        wb = openpyxl.load_workbook(f, read_only=True, data_only=True)
+        hit = any(isinstance(v, (int, float)) and abs(float(v) - float(want)) < 1e-9
+                  for ws in wb.worksheets for row in ws.iter_rows(values_only=True) for v in row)
+        return hit, tag + (f"value {want} found in a cell of {f.name}" if hit else f"value {want} NOT found in {f.name}")
+    if rec.get("manual_check") == "corroborate":
+        c = rec["corroborate_with"]
+        match = [b for b in built if b["program_id"] == rec["program_id"] and b["field"] == c["field"] and b["publisher"] == c["publisher"]
+                 and b["status"] == "verified" and float(b["value"]) == float(rec["value"])]
+        return bool(match), tag + (f"read from screenshot; equals independently verified {c['publisher']} {c['field']} {rec['value']}"
+                                   if match else "read from screenshot; NO independent verified value matches")
+    return False, tag + "unknown manual check"
+
+
 def raw_html_of(rec: dict) -> str | None:
     return RAW_HTML.get(rec.get("source_url", ""))
 
@@ -189,6 +214,9 @@ def main(offline: bool = False) -> None:
             status_in = r.get("status", "found")
             if status_in in ("not_found", "blocked") or r.get("value") in (None, ""):
                 status, why = ("blocked" if status_in == "blocked" else "not_found"), f"collector reported {status_in}"
+            elif r.get("manual_file"):
+                ok, why = check_manual(r, out)
+                status = "verified" if ok else "unverified"
             else:
                 if r["source_url"] not in pages:
                     pages[r["source_url"]] = fetch(r["source_url"], client, last, offline)

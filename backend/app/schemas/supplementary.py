@@ -11,8 +11,10 @@ from ..core.safety import injection_hits
 
 SuppField = Literal["tuition", "mandatory_fees", "tuition_and_fees", "cost_of_attendance", "reported_cost_of_attendance",
                     "est_annual_cost", "est_two_year_cost", "class_size", "class_median_gmat", "class_avg_gmat",
-                    "class_pct_international", "scholarships", "application_deadlines", "hiring_employers", "ranking"]
+                    "class_pct_international", "scholarships", "application_deadlines", "hiring_employers", "ranking",
+                    "employment_rate", "median_base_salary"]
 FIELD_LABEL = {
+    "employment_rate": "Accepted a job within 3 months", "median_base_salary": "Median base salary",
     "tuition": "Tuition", "mandatory_fees": "Mandatory fees", "tuition_and_fees": "Tuition and fees",
     "cost_of_attendance": "Cost of attendance", "reported_cost_of_attendance": "Cost of attendance (as compiled)",
     "est_annual_cost": "Estimated one-year cost", "est_two_year_cost": "Estimated two-year cost", "class_size": "Class size",
