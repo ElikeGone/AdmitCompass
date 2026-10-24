@@ -142,3 +142,26 @@ body.cp-open .cp-launch { display: inline-flex; }
 .ex3-more .ex-grid { margin: 20px 0; }
 .ex3-more > .btn { margin-top: 16px; }
 .ex2 .active-row:empty { display: none; }
+
+/* ---------- homepage roadmap: three later stages after what's live now (text only, no controls) ---------- */
+.rm { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+.rm-h { font-size: 22px; letter-spacing: -.01em; margin: 0 0 6px; }
+.rm-lead { margin: 0 0 28px; color: var(--text-2); font-size: 16px; line-height: 1.6; max-width: 44em; }
+.rm-path { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 28px; position: relative; }
+.rm-path::before { content: ""; position: absolute; left: 6px; right: 6px; top: 6px; height: 1px; background: var(--border-2); }
+.rm-stage { position: relative; padding-top: 28px; }
+.rm-node { position: absolute; top: 0; left: 0; width: 13px; height: 13px; border-radius: 50%; background: var(--page, var(--canvas)); border: 2px solid var(--border-2); }
+.rm-stage.now .rm-node { background: var(--blue); border-color: var(--blue); }
+.rm-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.rm-stage h3 { font-size: 16px; margin: 0; }
+.rm-tag { font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--text-3); }
+.rm-tag.now { color: var(--blue); }
+.rm-stage p { margin: 8px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--text-2); }
+.rm-stage:not(.now) h3 { color: var(--text-2); }
+.rm-items { color: var(--text-3) !important; }
+@media (max-width: 900px) {
+  .rm-path { grid-template-columns: 1fr; gap: 22px; }
+  .rm-path::before { left: 6px; right: auto; top: 8px; bottom: 8px; width: 1px; height: auto; }
+  .rm-stage { padding: 0 0 0 30px; }
+  .rm-node { top: 3px; }
+}

@@ -281,6 +281,29 @@ const kUSD = v => (v == null ? "—" : `$${Math.round(v / 1000)}k`);
 
 /* Interactive product preview: the real saved analysis only (/api/dashboard/demo = saved run + deterministic checks). */
 
+/* Product roadmap: what is live now, and three later stages. Text only — no buttons, data or workflows for
+   features that don't exist yet; every later stage carries one "Coming next" label. */
+const ROADMAP = [
+  ["Apply", "Essays, a story bank and admissions interview practice, built on the career story and evidence you already have.",
+    ["Application essays", "Story bank", "Admissions interviews"]],
+  ["Prepare", "Visa guidance pointers and a structured way to plan networking and coffee chats before you arrive.",
+    ["Visa preparation", "Networking", "Coffee chats"]],
+  ["Recruit", "Employer sponsorship research, recruiting timelines, case practice and events for your target role.",
+    ["Sponsorship research", "Recruiting", "Case practice", "Events and community"]],
+];
+function roadmap() {
+  return el("section", { class: "rm", "aria-labelledby": "rm-h" },
+    el("h2", { id: "rm-h", class: "rm-h", text: "Your full journey, built in stages" }),
+    el("p", { class: "rm-lead", text: "This release covers the first stage: matching programs to your career goal, choosing between the GRE and GMAT, finding profile gaps and turning them into weekly actions." }),
+    el("ol", { class: "rm-path" },
+      el("li", { class: "rm-stage now" }, el("span", { class: "rm-node", "aria-hidden": "true" }),
+        el("div", {}, el("div", { class: "rm-top" }, el("h3", { text: "Match and plan" }), el("span", { class: "rm-tag now", text: "Available now" })),
+          el("p", { text: "School shortlist, GRE-or-GMAT decision, profile gaps and a weekly plan — with every fact traced to an official source." }))),
+      ROADMAP.map(([name, value, items]) => el("li", { class: "rm-stage" }, el("span", { class: "rm-node", "aria-hidden": "true" }),
+        el("div", {}, el("div", { class: "rm-top" }, el("h3", { text: name }), el("span", { class: "rm-tag", text: "Coming next" })),
+          el("p", { text: value }),
+          el("p", { class: "rm-items", text: items.join(" · ") }))))));
+}
 async function renderHome(scrollTo) {
   document.body.classList.add("on-home");
   const grid = el("div", { class: "show-grid" }, el("p", { class: "small muted", text: "Loading programs…" }));
@@ -307,9 +330,7 @@ async function renderHome(scrollTo) {
         ["shield", "Evidence linked to official sources."],
         ["route", "Recommendations explain tradeoffs and unknowns."],
         ["list", "Plans turn decisions into next actions."]].map(([i, t]) => el("li", {}, el("span", { class: "ic" }, svgIcon(i)), t))),
-      el("div", { class: "hp2-next", "aria-label": "Coming next" },
-        el("div", { class: "hp2-next-head" }, el("span", { class: "pvtag", text: "Coming next" }), el("span", { class: "small muted", text: "The rest of the journey — not available yet." })),
-        el("ol", {}, ["Essays", "Interviews", "Visa preparation", "Networking", "Recruiting", "Casing", "Events"].map(t => el("li", { text: t })))))),
+      roadmap())),
     el("section", { class: "hp2-sec tint", id: "programs" }, el("div", { class: "wrap" },
       el("div", { class: "sec2-head row2" }, el("div", {}, el("span", { class: "eyebrow2 violet", text: "Real, sourced information" }), el("h2", { text: "Leading MBA programs, with the evidence shown" }),
         el("p", { text: "Each card says what's sourced from official pages and what isn't. Unknown stays unknown." })),
