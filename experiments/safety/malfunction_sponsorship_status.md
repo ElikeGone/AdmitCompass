@@ -14,8 +14,8 @@
 ## Tests that now cover it
 - `tests/test_agents.py::test_sponsorship_and_affordability_corrected_to_store` checks both directions:
   - **Yale:** has a verified employer list with filings, so the model's `unknown` is corrected to `employer_specific_evidence`.
-  - **MIT:** has no employer list, so a model's `employer_specific_evidence` is corrected to `unknown`.
-- `tests/test_safety.py` scenario **S05** (fabricated sponsorship) now uses MIT. A fabricated claim citing employment-rate evidence is dropped, and the status stays `unknown`.
+  - **Rice:** has no employer list, so a model's `employer_specific_evidence` is corrected to `unknown`. (MIT was the example until its list was extracted on 2026-10-24.)
+- `tests/test_safety.py` scenario **S05** (fabricated sponsorship) now uses Rice. A fabricated claim citing unrelated (test-policy) evidence is dropped, and the status stays `unknown`.
 - `tests/test_sponsorship.py`, `tests/test_demo_fixtures.py`: the join and scoping that the rule depends on.
 
 ## Confirmation with a fresh live run

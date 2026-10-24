@@ -36,7 +36,7 @@ python3 -m venv .venv
 | Where | What |
 |---|---|
 | **Sample Analysis** (top menu) | A saved real four-agent run (fictional applicant) — no cost to view |
-| **Find my pathway** → *Use a sample applicant* → *Run my analysis* | A live four-agent run (~1–2 minutes, capped at 20 model requests / 200k tokens) |
+| **Find my pathway** → *Use a sample applicant* → *Run my analysis* | A live four-agent run (~1–2 minutes, capped at 25 model requests / 200k tokens) |
 | **Explore Programs** | 30 MBA programs with official facts, cost lines (official vs. estimates) and historical employer H-1B filings |
 | **Ask AI** (bottom right) | A copilot that answers only from the evidence store, with citations |
 

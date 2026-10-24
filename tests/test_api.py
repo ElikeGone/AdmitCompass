@@ -41,7 +41,7 @@ def test_health_and_config_do_not_leak_key(client):
         body = client.get(path).text
         assert "test-secret-value-123" not in body
     cfg = client.get("/api/config").json()
-    assert cfg["model"] == "gpt-6-luna" and cfg["max_requests"] == 20 and cfg["max_revisions"] == 1
+    assert cfg["model"] == "gpt-6-luna" and cfg["max_requests"] == 25 and cfg["max_revisions"] == 1
     assert cfg["price_known"] is False
 
 

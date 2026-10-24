@@ -195,12 +195,110 @@
           "model_seconds": 4.9
         }
       }
+    },
+    "20261024T031733Z_fixture-audit-consulting-ghana": {
+      "run_dir": "20261024T031733Z_fixture-audit-consulting-ghana",
+      "status": "stopped_budget",
+      "revision_performed": true,
+      "totals": {
+        "model_requests": 20,
+        "input_tokens": 158952,
+        "cached_input_tokens": 77243,
+        "output_tokens": 21301,
+        "reasoning_tokens_within_output": 929,
+        "tool_calls": 31,
+        "model_seconds": 126.397,
+        "wall_seconds": 126.812
+      },
+      "per_agent": {
+        "pathway_matcher": {
+          "requests": 6,
+          "input": 21713,
+          "cached_input": 11930,
+          "output": 3713,
+          "reasoning": 269,
+          "model_seconds": 24.1
+        },
+        "evidence_analyst": {
+          "requests": 10,
+          "input": 107922,
+          "cached_input": 49815,
+          "output": 13704,
+          "reasoning": 437,
+          "model_seconds": 71.54
+        },
+        "strategy_planner": {
+          "requests": 3,
+          "input": 19643,
+          "cached_input": 14175,
+          "output": 2996,
+          "reasoning": 59,
+          "model_seconds": 23.65
+        },
+        "skeptic": {
+          "requests": 1,
+          "input": 9674,
+          "cached_input": 1323,
+          "output": 888,
+          "reasoning": 164,
+          "model_seconds": 7.09
+        }
+      }
+    },
+    "20261024T032006Z_fixture-audit-consulting-ghana": {
+      "run_dir": "20261024T032006Z_fixture-audit-consulting-ghana",
+      "status": "completed_with_violations",
+      "revision_performed": false,
+      "totals": {
+        "model_requests": 9,
+        "input_tokens": 54756,
+        "cached_input_tokens": 26621,
+        "output_tokens": 8779,
+        "reasoning_tokens_within_output": 696,
+        "tool_calls": 17,
+        "model_seconds": 53.614,
+        "wall_seconds": 53.778
+      },
+      "per_agent": {
+        "pathway_matcher": {
+          "requests": 3,
+          "input": 9946,
+          "cached_input": 5494,
+          "output": 1777,
+          "reasoning": 212,
+          "model_seconds": 11.85
+        },
+        "evidence_analyst": {
+          "requests": 3,
+          "input": 23889,
+          "cached_input": 12572,
+          "output": 3616,
+          "reasoning": 0,
+          "model_seconds": 19.56
+        },
+        "strategy_planner": {
+          "requests": 2,
+          "input": 12169,
+          "cached_input": 7232,
+          "output": 2637,
+          "reasoning": 107,
+          "model_seconds": 15.38
+        },
+        "skeptic": {
+          "requests": 1,
+          "input": 8752,
+          "cached_input": 1323,
+          "output": 749,
+          "reasoning": 377,
+          "model_seconds": 6.83
+        }
+      }
     }
   },
   "average_run_tokens": {
-    "input_tokens": 83594,
-    "cached_input_tokens": 44222,
-    "output_tokens": 11586
+    "input_tokens": 91347,
+    "cached_input_tokens": 46792,
+    "output_tokens": 12738
   },
   "cache": "Portkey header x-portkey-cache-force-refresh: true on every request (PORTKEY_CACHE_FORCE_REFRESH=1).",
   "price": "UNKNOWN \u2014 no documented gpt-6-luna price was found; all dollar figures are HYPOTHETICAL scenarios.",
@@ -213,10 +311,10 @@
         "cached_input": 0.05,
         "output": 2.0
       },
-      "per_run": 0.04507,
-      "per_user_month": 0.1352,
-      "users_100_month": 13.52,
-      "users_10000_month": 1352.07
+      "per_run": 0.05009,
+      "per_user_month": 0.1503,
+      "users_100_month": 15.03,
+      "users_10000_month": 1502.76
     },
     "H2 mid (hypothetical)": {
       "usd_per_mtok": {
@@ -224,10 +322,10 @@
         "cached_input": 0.2,
         "output": 8.0
       },
-      "per_run": 0.18028,
-      "per_user_month": 0.5408,
-      "users_100_month": 54.08,
-      "users_10000_month": 5408.3
+      "per_run": 0.20037,
+      "per_user_month": 0.6011,
+      "users_100_month": 60.11,
+      "users_10000_month": 6011.03
     },
     "H3 high (hypothetical)": {
       "usd_per_mtok": {
@@ -235,10 +333,10 @@
         "cached_input": 0.5,
         "output": 20.0
       },
-      "per_run": 0.45069,
-      "per_user_month": 1.3521,
-      "users_100_month": 135.21,
-      "users_10000_month": 13520.74
+      "per_run": 0.50092,
+      "per_user_month": 1.5028,
+      "users_100_month": 150.28,
+      "users_10000_month": 15027.58
     }
   }
 }

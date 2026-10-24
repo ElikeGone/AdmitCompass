@@ -193,12 +193,12 @@ def test_evidence_from_wrong_program_rejected(store):
 def test_sponsorship_and_affordability_corrected_to_store(store, profile):
     ev = EvidenceOutput.model_validate({**EVIDENCE, "dossiers": [
         dossier("yale-som-mba", sponsorship_status="unknown", affordability="over_budget"),
-        dossier("mit-sloan-mba", sponsorship_status="employer_specific_evidence")]})
-    out, v = ground_evidence(store, profile, ev, ["yale-som-mba", "mit-sloan-mba"])
+        dossier("rice-jones-mba", sponsorship_status="employer_specific_evidence")]})
+    out, v = ground_evidence(store, profile, ev, ["yale-som-mba", "rice-jones-mba"])
     # Yale: its official report lists employers with DOL H-1B filings -> employer-specific (historical) evidence
     assert out.dossiers[0].sponsorship_status == "employer_specific_evidence"
     assert out.dossiers[0].affordability == "within_budget"  # 128,976 <= 135,000 (verified COA)
-    # MIT: no employer list in the official report -> the model's claim is corrected to unknown
+    # Rice: no employer list in the official report -> the model's claim is corrected to unknown
     assert out.dossiers[1].sponsorship_status == "unknown"
     assert {"sponsorship_status_mismatch", "affordability_mismatch"} <= {x.rule for x in v}
 

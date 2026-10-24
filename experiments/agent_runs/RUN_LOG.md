@@ -72,3 +72,12 @@ Status `completed_with_violations`, 16/20 requests, 119,977/200,000 budget token
 - **Ghana:** the full pipeline ran; then the Skeptic requested a Pathway Matcher revision, and the re-run hit the 20-request cap (the overspend defense working). The report keeps the shortlist, strategy and Skeptic output.
 - **U.S.:** sponsorship statuses are now correct (Booth and Duke `employer_specific_evidence`, MIT `unknown`). The one violation is a legitimate STEM-citation drop.
 - **Shortlist differences between runs:** see `docs/run_variability.md`.
+
+## Ghana re-runs and the request-cap change (2026-10-24, CLI, cache force-refreshed)
+| Run | Cap | Status | Requests | Shortlist |
+|---|---:|---|---:|---|
+| `20261024T031733Z_fixture-audit-consulting-ghana` | 20 | stopped_budget (after a Skeptic-requested revision; kept as evidence that the cap works) | 20 | MIT Sloan, Chicago Booth, Yale SOM |
+| `20261024T032006Z_fixture-audit-consulting-ghana` | 25 | completed_with_violations | 9 | MIT Sloan, Yale SOM, Duke Fuqua |
+
+- **The one violation in the 25-cap run** was a false positive: a correct "do not treat … as a guarantee" warning. The rule was fixed afterwards; see `experiments/safety/false_positive_guarantee_negation.md`.
+- **Cost effect of the cap change:** `experiments/tokenomics/clean_runs_analysis.md`.

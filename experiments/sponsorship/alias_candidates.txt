@@ -2,6 +2,8 @@
        29  Accenture LLP
 ## Accenture Strategy   (key words: ['accenture'])
        29  Accenture LLP
+## Adobe   (key words: ['adobe'])
+       35  Adobe Inc.
 ## Adobe, Inc.   (key words: ['adobe'])
        35  Adobe Inc.
 ## Africa Finance Corporation   (key words: ['africa', 'finance'])
@@ -95,6 +97,7 @@
         2  Barclays Bank PLC
 ## Bessemer Trust Company   (key words: ['bessemer'])
         1  Deer Management Company LLC d/b/a Bessemer Venture Partners LP
+## Biogen   (key words: ['biogen'])
 ## Bip   (key words: ['bip'])
 ## Boston Consulting Group   (key words: ['boston'])
       171  Boston Consulting Group, Inc.
@@ -112,6 +115,14 @@
         1  University of Massachusetts Boston
 ## Bridgewise   (key words: ['bridgewise'])
 ## Capital Group   (key words: [])
+## Capital One   (key words: ['one'])
+        5  Capital One Services, LLC
+        3  Capital One, National Association
+        1  Gems One Trading, LLC
+        1  Ninety One North America Inc.
+        1  One Rock Capital Partners, LLC
+        1  One Ten Group Inc.
+        1  One Strategy Group Advisors LLC
 ## Capital One Financial Corp   (key words: ['one'])
         5  Capital One Services, LLC
         3  Capital One, National Association
@@ -144,6 +155,20 @@
 ## EY-Parthenon   (key words: ['parthenon'])
 ## Evercore Partners Inc.   (key words: ['evercore'])
        50  EVERCORE PARTNERS SERVICES EAST LLC
+## Fidelity Investments   (key words: ['fidelity', 'investments'])
+       12  FMR LLC d/b/a Fidelity Investments
+        5  Fidelity Management & Research Company LLC d/b/a Fidelity Investments
+        4  Fidelity Technology Group, LLC d/b/a Fidelity Investments
+        4  Fidelity Technology Group, LLC
+        4  Russell Investments Group LLC
+        3  Two Sigma Investments, LP
+        2  Fidelity Management & Research Company LLC
+        2  National Financial Services LLC d/b/a Fidelity Investments
+        2  Fidelity Investments Institutional Operations Company d/b/a Fidelity Investments
+        2  Ariel Investments LLC
+        2  TWO SIGMA INVESTMENTS, LP
+        2  XP Investments US, LLC
+## Formlabs   (key words: ['formlabs'])
 ## General Mills   (key words: ['mills'])
 ## Goldman Sachs   (key words: ['goldman', 'sachs'])
       110  GOLDMAN SACHS & CO. LLC
@@ -161,6 +186,8 @@
         1  J. Goldman & Co., LP
 ## Google   (key words: ['google'])
       116  Google LLC
+## IBM   (key words: ['ibm'])
+        5  IBM Corporation
 ## International Business Machines Corporation   (key words: ['business', 'machines'])
         6  PwC US Business Advisory LLP
         5  UBS Business Solutions US LLC
@@ -174,10 +201,25 @@
         1  Asian Business Care Insurance Services, Inc.
         1  ENTERPRISE BUSINESS SOLUTIONS, INC.
         1  Bright Machines, Inc.
+## JP Morgan Chase & Co.   (key words: ['morgan', 'chase'])
+      194  JPMorgan Chase & Co.
+       83  Morgan Stanley & Co., LLC
+       35  Morgan Stanley Services Group Inc.
+       11  Morgan Stanley & Co, LLC
+       10  Morgan Stanley Investment Management Inc.
+        4  Morgan Stanley Bank N.A.
+        4  Morgan Stanley Fund Services Inc.
+        3  Morgan Stanley Services Group, Inc.
+        3  Morgan Stanley Smith Barney LLC
+        1  Morgan Stanley & Co, LLC.
+        1  Morgan Stanley & Co. LLC
+        1  Morgan Stanley Private Bank NA
 ## JPMorgan Chase & Co.   (key words: ['jpmorgan', 'chase'])
       194  JPMorgan Chase & Co.
 ## Jefferies Group, Inc.   (key words: ['jefferies'])
        49  Jefferies LLC
+## Johnson & Johnson   (key words: ['johnson', 'johnson'])
+        1  JOHNSON CONTROLS, INC.
 ## Kearney   (key words: ['kearney'])
        13  A.T. Kearney, Inc.
 ## L.E.K. Consulting   (key words: [])
@@ -193,10 +235,12 @@
        47  McKinsey & Company, Inc. United States
        18  MCKINSEY & COMPANY, INC. UNITED STATES
         5  McKinsey & Company, Inc., United States
+## McMaster-Carr   (key words: ['mcmaster', 'carr'])
 ## Microsoft   (key words: ['microsoft'])
        64  Microsoft Corporation
 ## Microsoft Corporation   (key words: ['microsoft'])
        64  Microsoft Corporation
+## Moderna   (key words: ['moderna'])
 ## Morgan Stanley   (key words: ['morgan', 'stanley'])
        83  Morgan Stanley & Co., LLC
        35  Morgan Stanley Services Group Inc.
@@ -210,13 +254,32 @@
         1  Morgan Stanley & Co. LLC
         1  Morgan Stanley Private Bank NA
         1  Morgan Stanley Private Bank, NA
+## NVIDIA Corporation   (key words: ['nvidia'])
+       27  NVIDIA Corporation
+## NextEra Energy   (key words: ['nextera', 'energy'])
+        5  BB Energy USA LLC
+        3  AES Clean Energy Services, LLC
+        3  Citigroup Energy Inc.
+        2  AES CLEAN ENERGY SERVICES, LLC
+        2  United Energy Trading, LLC
+        2  Crusoe Energy Systems, Inc.
+        1  Good Energy, L.P.
+        1  SB Energy DevCo (US), LLC
+        1  547 Energy Management LLC
+        1  DRW Energy Associates LLC
+        1  ENGIE Energy Marketing NA, Inc.
+        1  ENGIE Energy Marketing North America, Inc.
 ## Nike   (key words: ['nike'])
+## Palantir   (key words: ['palantir'])
+        6  PALANTIR TECHNOLOGIES INC.
 ## PwC Strategy&   (key words: ['pwc'])
         6  PwC US Business Advisory LLP
         2  PwC US Consulting LLP
         1  PwC US Tax LLP
 ## Roland Berger LLC   (key words: ['roland', 'berger'])
         1  Roland Berger LP
+## Sanofi   (key words: ['sanofi'])
+## Strategy&   (key words: [])
 ## The Boston Consulting Group, Inc.   (key words: ['boston'])
       171  Boston Consulting Group, Inc.
         4  City of Boston Treasury Division
@@ -234,5 +297,6 @@
 ## TikTok   (key words: ['tiktok'])
        47  TikTok Inc.
         9  TikTok U.S. Data Security Inc.
+## Verizon   (key words: ['verizon'])
 ## nVidia   (key words: ['nvidia'])
        27  NVIDIA Corporation

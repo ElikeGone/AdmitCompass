@@ -81,3 +81,11 @@ Last inspected: 2026-10-23 (Step 9B: 28 programs with sourced facts, link audit,
   - **Git:** repository initialized; first commit `8985bf2`; not pushed.
   - **UI fixes:** the evidence page no longer calls sponsorship "unknown" where employer filings exist, and no "Sign in" hint appears while accounts are off.
   - **Tests:** 266 passed, 1 skipped.
+- 2026-10-24 **Follow-up 2 (owner's 6 items): done except Columbia and HBS, which need the owner's PDFs.**
+  - **MIT Sloan employer list:** extracted from the official 2025-26 report by text colour (red = "hiring three or more MIT Sloan MBA students"), 27 employers, verified against the live PDF. The reviewed aliases were extended (Fidelity, IBM, Palantir…), giving 17 MIT employers with historical H-1B filings.
+  - **HBS:** blocked (HTTP 202, empty page). Waiting for a manually saved PDF.
+  - **Ranking:** Poets&Quants 2025-2026 U.S. MBA ranking (a composite of five rankings). All 30 programs verified in their table rows. Shown as context with the note "Rankings reflect prestige; AdmitCompass ranks by career fit."; never used in matching, default sort or prompts (tested).
+  - **Ghana re-run:** hit 20/20 again (kept as evidence). The cap was raised to 25 and the re-run completed in 9 requests (MIT, Yale, Duke). The cost effect is in `clean_runs_analysis.md`.
+  - **Guarantee rule:** the re-run exposed a false positive, fixed with negation now required in the same clause (`experiments/safety/false_positive_guarantee_negation.md`).
+  - **Review zip:** removed.
+  - **Tests:** 270 passed, 1 skipped; safety 26/26.

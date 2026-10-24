@@ -78,6 +78,7 @@ official_top_employers.json,sx-chicago-booth-mba-hiring-employers-chicagobooth,c
 official_top_employers.json,sx-duke-fuqua-mba-hiring-employers-dukefuqua,duke-fuqua-mba,hiring_employers,official,published,verified,all 25 employer names found on page
 official_top_employers.json,sx-rice-jones-mba-hiring-employers-ricejones,rice-jones-mba,hiring_employers,official,published,not_found,collector reported not_found
 official_top_employers.json,sx-dartmouth-tuck-mba-hiring-employers-dartmouthtuc,dartmouth-tuck-mba,hiring_employers,official,published,verified,all 15 employer names found on page
+official_top_employers_mit.json,sx-mit-sloan-mba-hiring-employers-mitsloanscho,mit-sloan-mba,hiring_employers,official,published,verified,all 27 employer names found on page
 secondary_clearadmit_2025.json,sx-cmu-tepper-mba-reported-cost-of-attendance-clearadmit,cmu-tepper-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Tepper' and '$116,428'"
 secondary_clearadmit_2025.json,sx-disc-columbia-university-mba-reported-cost-of-attendance-clearadmit,disc-columbia-university-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Columbia' and '$137,571'"
 secondary_clearadmit_2025.json,sx-cornell-johnson-mba-reported-cost-of-attendance-clearadmit,cornell-johnson-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Cornell' and '$119,994'"
@@ -210,3 +211,33 @@ secondary_poetsandquants_2026.json,sx-notre-dame-mendoza-mba-tuition-poetsquants
 secondary_poetsandquants_2026.json,sx-notre-dame-mendoza-mba-mandatory-fees-poetsquants,notre-dame-mendoza-mba,mandatory_fees,secondary,reported,verified,"row with 'Mendoza' and '$3,350'"
 secondary_poetsandquants_2026.json,sx-notre-dame-mendoza-mba-est-annual-cost-poetsquants,notre-dame-mendoza-mba,est_annual_cost,secondary,estimate,verified,"row with 'Mendoza' and '$107,800'"
 secondary_poetsandquants_2026.json,sx-notre-dame-mendoza-mba-est-two-year-cost-poetsquants,notre-dame-mendoza-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Mendoza' and '$215,600'"
+secondary_pq_ranking_2025_2026.json,sx-kellogg-mba-ranking-poetsquants,kellogg-mba,ranking,secondary,published,verified,row with 'Northwestern (Kellogg)' and '#1'
+secondary_pq_ranking_2025_2026.json,sx-hbs-mba-ranking-poetsquants,hbs-mba,ranking,secondary,published,verified,row with 'Harvard Business School' and '#2'
+secondary_pq_ranking_2025_2026.json,sx-disc-columbia-university-mba-ranking-poetsquants,disc-columbia-university-mba,ranking,secondary,published,verified,row with 'Columbia Business School' and '#3'
+secondary_pq_ranking_2025_2026.json,sx-dartmouth-tuck-mba-ranking-poetsquants,dartmouth-tuck-mba,ranking,secondary,published,verified,row with 'Dartmouth (Tuck)' and '#4'
+secondary_pq_ranking_2025_2026.json,sx-uva-darden-mba-ranking-poetsquants,uva-darden-mba,ranking,secondary,published,verified,row with 'Virginia (Darden)' and '#5'
+secondary_pq_ranking_2025_2026.json,sx-nyu-stern-mba-ranking-poetsquants,nyu-stern-mba,ranking,secondary,published,verified,row with 'New York (Stern)' and '#6'
+secondary_pq_ranking_2025_2026.json,sx-cornell-johnson-mba-ranking-poetsquants,cornell-johnson-mba,ranking,secondary,published,verified,row with 'Cornell (Johnson)' and '#7'
+secondary_pq_ranking_2025_2026.json,sx-wharton-mba-ranking-poetsquants,wharton-mba,ranking,secondary,published,verified,row with 'Pennsylvania (Wharton)' and '#8'
+secondary_pq_ranking_2025_2026.json,sx-michigan-ross-mba-ranking-poetsquants,michigan-ross-mba,ranking,secondary,published,verified,row with 'Michigan (Ross)' and '#9'
+secondary_pq_ranking_2025_2026.json,sx-ucla-anderson-mba-ranking-poetsquants,ucla-anderson-mba,ranking,secondary,published,verified,row with 'UCLA (Anderson)' and '#10'
+secondary_pq_ranking_2025_2026.json,sx-mit-sloan-mba-ranking-poetsquants,mit-sloan-mba,ranking,secondary,published,verified,row with 'MIT (Sloan)' and '#11'
+secondary_pq_ranking_2025_2026.json,sx-chicago-booth-mba-ranking-poetsquants,chicago-booth-mba,ranking,secondary,published,verified,row with 'Chicago (Booth)' and '#12'
+secondary_pq_ranking_2025_2026.json,sx-ut-mccombs-mba-ranking-poetsquants,ut-mccombs-mba,ranking,secondary,published,verified,row with 'Texas-Austin (McCombs)' and '#13'
+secondary_pq_ranking_2025_2026.json,sx-berkeley-haas-mba-ranking-poetsquants,berkeley-haas-mba,ranking,secondary,published,verified,row with 'UC-Berkeley (Haas)' and '#14'
+secondary_pq_ranking_2025_2026.json,sx-duke-fuqua-mba-ranking-poetsquants,duke-fuqua-mba,ranking,secondary,published,verified,row with 'Duke (Fuqua)' and '#15'
+secondary_pq_ranking_2025_2026.json,sx-cmu-tepper-mba-ranking-poetsquants,cmu-tepper-mba,ranking,secondary,published,verified,row with 'Carnegie Mellon (Tepper)' and '#16'
+secondary_pq_ranking_2025_2026.json,sx-yale-som-mba-ranking-poetsquants,yale-som-mba,ranking,secondary,published,verified,row with 'Yale SOM' and '#17'
+secondary_pq_ranking_2025_2026.json,sx-vanderbilt-owen-mba-ranking-poetsquants,vanderbilt-owen-mba,ranking,secondary,published,verified,row with 'Vanderbilt (Owen)' and '#18'
+secondary_pq_ranking_2025_2026.json,sx-georgia-tech-scheller-mba-ranking-poetsquants,georgia-tech-scheller-mba,ranking,secondary,published,verified,row with 'Georgia Institute of Technology (Scheller)' and '#20'
+secondary_pq_ranking_2025_2026.json,sx-unc-kenan-flagler-mba-ranking-poetsquants,unc-kenan-flagler-mba,ranking,secondary,published,verified,row with 'North Carolina (Kenan-Flagler)' and '#21'
+secondary_pq_ranking_2025_2026.json,sx-emory-goizueta-mba-ranking-poetsquants,emory-goizueta-mba,ranking,secondary,published,verified,row with 'Emory (Goizueta)' and '#22'
+secondary_pq_ranking_2025_2026.json,sx-uw-foster-mba-ranking-poetsquants,uw-foster-mba,ranking,secondary,published,verified,row with 'Washington (Foster)' and '#23'
+secondary_pq_ranking_2025_2026.json,sx-usc-marshall-mba-ranking-poetsquants,usc-marshall-mba,ranking,secondary,published,verified,row with 'Southern California (Marshall)' and '#24'
+secondary_pq_ranking_2025_2026.json,sx-georgetown-mcdonough-mba-ranking-poetsquants,georgetown-mcdonough-mba,ranking,secondary,published,verified,row with 'Georgetown (McDonough)' and '#25'
+secondary_pq_ranking_2025_2026.json,sx-stanford-gsb-mba-ranking-poetsquants,stanford-gsb-mba,ranking,secondary,published,verified,row with 'Stanford GSB' and '#26'
+secondary_pq_ranking_2025_2026.json,sx-rice-jones-mba-ranking-poetsquants,rice-jones-mba,ranking,secondary,published,verified,row with 'Rice (Jones)' and '#27'
+secondary_pq_ranking_2025_2026.json,sx-notre-dame-mendoza-mba-ranking-poetsquants,notre-dame-mendoza-mba,ranking,secondary,published,verified,row with 'Notre Dame (Mendoza)' and '#28'
+secondary_pq_ranking_2025_2026.json,sx-texas-am-mays-mba-ranking-poetsquants,texas-am-mays-mba,ranking,secondary,published,verified,row with 'Texas A&M (Mays)' and '#38'
+secondary_pq_ranking_2025_2026.json,sx-disc-indiana-university-mba-ranking-poetsquants,disc-indiana-university-mba,ranking,secondary,published,verified,row with 'Indiana (Kelley)' and '#39'
+secondary_pq_ranking_2025_2026.json,sx-minnesota-carlson-mba-ranking-poetsquants,minnesota-carlson-mba,ranking,secondary,published,verified,row with 'Minnesota (Carlson)' and '#43'

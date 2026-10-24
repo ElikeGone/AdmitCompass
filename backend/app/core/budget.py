@@ -12,7 +12,7 @@ class BudgetExceeded(RuntimeError):
 
 @dataclass
 class RunBudget:
-    max_requests: int = field(default_factory=lambda: int(os.getenv("ADMITCOMPASS_MAX_REQUESTS_PER_RUN", "20")))
+    max_requests: int = field(default_factory=lambda: int(os.getenv("ADMITCOMPASS_MAX_REQUESTS_PER_RUN", "25")))
     max_total_tokens: int = field(default_factory=lambda: int(os.getenv("ADMITCOMPASS_MAX_TOKENS_PER_RUN", "200000")))
     max_tool_calls: int = field(default_factory=lambda: int(os.getenv("ADMITCOMPASS_MAX_TOOL_CALLS_PER_RUN", "40")))
     max_seconds: float = field(default_factory=lambda: float(os.getenv("ADMITCOMPASS_MAX_SECONDS_PER_RUN", "300")))

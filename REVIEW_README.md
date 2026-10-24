@@ -11,9 +11,9 @@ The review build runs **without any API key**:
 - Linux or macOS with **Python 3.12 or newer** (developed on 3.14).
 - Internet access on first start, to install the Python packages.
 
-## Start (Linux)
+## Start (Linux / macOS, from a clone of this repository)
 ```bash
-unzip AdmitCompass-review.zip
+git clone <repository-url> AdmitCompass
 cd AdmitCompass
 bash run_review.sh
 ```

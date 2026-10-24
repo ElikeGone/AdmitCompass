@@ -1,0 +1,1180 @@
+[
+  {
+    "seq": 1,
+    "kind": "agent_start",
+    "agent": "pathway_matcher",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 2,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 1,
+      "input_tokens": 1723,
+      "cached_input_tokens": 1406,
+      "output_tokens": 35,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 2.477
+    }
+  },
+  {
+    "seq": 3,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "search_programs",
+      "args": {
+        "stem_designated": true,
+        "max_cost_of_attendance": 140000,
+        "states": [
+          "MA"
+        ]
+      },
+      "ok": true,
+      "result_size": 1059
+    }
+  },
+  {
+    "seq": 4,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 1,
+      "tool_calls_requested": 5,
+      "input_tokens": 2063,
+      "cached_input_tokens": 1720,
+      "output_tokens": 143,
+      "reasoning_tokens": 11,
+      "elapsed_seconds": 1.682
+    }
+  },
+  {
+    "seq": 5,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": {
+        "program_id": "yale-som-mba"
+      },
+      "ok": true,
+      "result_size": 2893
+    }
+  },
+  {
+    "seq": 6,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": {
+        "program_id": "mit-sloan-mba"
+      },
+      "ok": true,
+      "result_size": 2614
+    }
+  },
+  {
+    "seq": 7,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": {
+        "program_id": "chicago-booth-mba"
+      },
+      "ok": true,
+      "result_size": 2993
+    }
+  },
+  {
+    "seq": 8,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": {
+        "program_id": "duke-fuqua-mba"
+      },
+      "ok": true,
+      "result_size": 3029
+    }
+  },
+  {
+    "seq": 9,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": {
+        "program_id": "dartmouth-tuck-mba"
+      },
+      "ok": true,
+      "result_size": 3474
+    }
+  },
+  {
+    "seq": 10,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 2,
+      "tool_calls_requested": 0,
+      "input_tokens": 6124,
+      "cached_input_tokens": 2060,
+      "output_tokens": 1751,
+      "reasoning_tokens": 94,
+      "elapsed_seconds": 8.582
+    }
+  },
+  {
+    "seq": 11,
+    "kind": "validation",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 12,
+    "kind": "grounding",
+    "agent": "pathway_matcher",
+    "detail": {
+      "violations": 0,
+      "rules": [],
+      "details": []
+    }
+  },
+  {
+    "seq": 13,
+    "kind": "handoff",
+    "agent": "pathway_matcher",
+    "detail": {
+      "to": "evidence_analyst",
+      "output_type": "PathwayOutput"
+    }
+  },
+  {
+    "seq": 14,
+    "kind": "agent_start",
+    "agent": "evidence_analyst",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 15,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 6,
+      "input_tokens": 3749,
+      "cached_input_tokens": 1822,
+      "output_tokens": 354,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 2.957
+    }
+  },
+  {
+    "seq": 16,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_program_facts",
+      "args": {
+        "program_id": "mit-sloan-mba",
+        "fields": [
+          "location",
+          "duration_months",
+          "application_requirements",
+          "test_policy",
+          "tuition",
+          "cost_of_attendance",
+          "stem_designation",
+          "employment_rate",
+          "median_base_salary",
+          "industry_breakdown",
+          "function_breakdown",
+          "international_employment",
+          "sponsorship",
+          "application_deadlines"
+        ]
+      },
+      "ok": true,
+      "result_size": 4446
+    }
+  },
+  {
+    "seq": 17,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_program_facts",
+      "args": {
+        "program_id": "yale-som-mba",
+        "fields": [
+          "location",
+          "duration_months",
+          "application_requirements",
+          "test_policy",
+          "tuition",
+          "cost_of_attendance",
+          "stem_designation",
+          "employment_rate",
+          "median_base_salary",
+          "industry_breakdown",
+          "function_breakdown",
+          "international_employment",
+          "sponsorship",
+          "application_deadlines"
+        ]
+      },
+      "ok": true,
+      "result_size": 4719
+    }
+  },
+  {
+    "seq": 18,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_program_facts",
+      "args": {
+        "program_id": "chicago-booth-mba",
+        "fields": [
+          "location",
+          "duration_months",
+          "application_requirements",
+          "test_policy",
+          "tuition",
+          "cost_of_attendance",
+          "stem_designation",
+          "employment_rate",
+          "median_base_salary",
+          "industry_breakdown",
+          "function_breakdown",
+          "international_employment",
+          "sponsorship",
+          "application_deadlines"
+        ]
+      },
+      "ok": true,
+      "result_size": 5242
+    }
+  },
+  {
+    "seq": 19,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_sponsorship_evidence",
+      "args": {
+        "program_id": "mit-sloan-mba",
+        "occupation": "management_consulting",
+        "city": "Boston"
+      },
+      "ok": true,
+      "result_size": 5632
+    }
+  },
+  {
+    "seq": 20,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_sponsorship_evidence",
+      "args": {
+        "program_id": "yale-som-mba",
+        "occupation": "management_consulting",
+        "city": "Boston"
+      },
+      "ok": true,
+      "result_size": 4699
+    }
+  },
+  {
+    "seq": 21,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_sponsorship_evidence",
+      "args": {
+        "program_id": "chicago-booth-mba",
+        "occupation": "management_consulting",
+        "city": "Boston"
+      },
+      "ok": true,
+      "result_size": 6274
+    }
+  },
+  {
+    "seq": 22,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 1,
+      "tool_calls_requested": 2,
+      "input_tokens": 13121,
+      "cached_input_tokens": 3746,
+      "output_tokens": 103,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 1.659
+    }
+  },
+  {
+    "seq": 23,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "compare_employment_metrics",
+      "args": {
+        "program_ids": [
+          "mit-sloan-mba",
+          "yale-som-mba",
+          "chicago-booth-mba"
+        ],
+        "metric": "employment_rate"
+      },
+      "ok": true,
+      "result_size": 1114
+    }
+  },
+  {
+    "seq": 24,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "compare_employment_metrics",
+      "args": {
+        "program_ids": [
+          "mit-sloan-mba",
+          "yale-som-mba",
+          "chicago-booth-mba"
+        ],
+        "metric": "median_base_salary"
+      },
+      "ok": true,
+      "result_size": 988
+    }
+  },
+  {
+    "seq": 25,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 2,
+      "tool_calls_requested": 0,
+      "input_tokens": 13818,
+      "cached_input_tokens": 13118,
+      "output_tokens": 3416,
+      "reasoning_tokens": 70,
+      "elapsed_seconds": 16.282
+    }
+  },
+  {
+    "seq": 26,
+    "kind": "validation",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 27,
+    "kind": "grounding",
+    "agent": "evidence_analyst",
+    "detail": {
+      "violations": 1,
+      "rules": [
+        "unsupported_claim"
+      ],
+      "details": [
+        {
+          "agent": "evidence_analyst",
+          "rule": "unsupported_claim",
+          "detail": "dossier[chicago-booth-mba]: 'verified_fact: Consulting represented 36.7% of the top six industries (78.7% of total) and 37.8% of the top five functions (67.2% of total), Class of ' -> [\"stem claim must cite ['stem_designation'] evidence; cited ['function_breakdown', 'industry_breakdown', 'international_employment']\"]",
+          "action": "dropped claim"
+        }
+      ]
+    }
+  },
+  {
+    "seq": 28,
+    "kind": "grounding",
+    "agent": "evidence_analyst",
+    "detail": {
+      "retry": true,
+      "mode": "repair"
+    }
+  },
+  {
+    "seq": 29,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 0,
+      "input_tokens": 16642,
+      "cached_input_tokens": 1468,
+      "output_tokens": 3236,
+      "reasoning_tokens": 229,
+      "elapsed_seconds": 14.773
+    }
+  },
+  {
+    "seq": 30,
+    "kind": "validation",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 31,
+    "kind": "grounding",
+    "agent": "evidence_analyst",
+    "detail": {
+      "violations_after_retry": 0,
+      "rules": [],
+      "details": []
+    }
+  },
+  {
+    "seq": 32,
+    "kind": "handoff",
+    "agent": "evidence_analyst",
+    "detail": {
+      "to": "strategy_planner",
+      "output_type": "EvidenceOutput"
+    }
+  },
+  {
+    "seq": 33,
+    "kind": "agent_start",
+    "agent": "strategy_planner",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 34,
+    "kind": "llm_call",
+    "agent": "strategy_planner",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 1,
+      "input_tokens": 6030,
+      "cached_input_tokens": 1733,
+      "output_tokens": 39,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 1.538
+    }
+  },
+  {
+    "seq": 35,
+    "kind": "tool_call",
+    "agent": "strategy_planner",
+    "detail": {
+      "tool": "get_program_facts",
+      "args": {
+        "program_id": "mit-sloan-mba",
+        "fields": [
+          "test_policy",
+          "application_requirements",
+          "application_deadlines"
+        ]
+      },
+      "ok": true,
+      "result_size": 1422
+    }
+  },
+  {
+    "seq": 36,
+    "kind": "llm_call",
+    "agent": "strategy_planner",
+    "detail": {
+      "attempt": 1,
+      "round": 1,
+      "tool_calls_requested": 2,
+      "input_tokens": 6418,
+      "cached_input_tokens": 6027,
+      "output_tokens": 92,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 5.863
+    }
+  },
+  {
+    "seq": 37,
+    "kind": "tool_call",
+    "agent": "strategy_planner",
+    "detail": {
+      "tool": "get_program_facts",
+      "args": {
+        "program_id": "yale-som-mba",
+        "fields": [
+          "test_policy",
+          "application_requirements",
+          "application_deadlines"
+        ]
+      },
+      "ok": true,
+      "result_size": 1439
+    }
+  },
+  {
+    "seq": 38,
+    "kind": "tool_call",
+    "agent": "strategy_planner",
+    "detail": {
+      "tool": "get_program_facts",
+      "args": {
+        "program_id": "chicago-booth-mba",
+        "fields": [
+          "test_policy",
+          "application_requirements",
+          "application_deadlines"
+        ]
+      },
+      "ok": true,
+      "result_size": 1407
+    }
+  },
+  {
+    "seq": 39,
+    "kind": "llm_call",
+    "agent": "strategy_planner",
+    "detail": {
+      "attempt": 1,
+      "round": 2,
+      "tool_calls_requested": 0,
+      "input_tokens": 7195,
+      "cached_input_tokens": 6415,
+      "output_tokens": 2865,
+      "reasoning_tokens": 59,
+      "elapsed_seconds": 16.249
+    }
+  },
+  {
+    "seq": 40,
+    "kind": "validation",
+    "agent": "strategy_planner",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 41,
+    "kind": "grounding",
+    "agent": "strategy_planner",
+    "detail": {
+      "violations": 1,
+      "rules": [
+        "guarantee"
+      ],
+      "details": [
+        {
+          "agent": "strategy_planner",
+          "rule": "guarantee",
+          "detail": "gaps[5].action: Ask each school's international student office about current program and work-authorization information, and consult a qualified immigration attorney or official sources for personal questions. Do not",
+          "action": "flagged"
+        }
+      ]
+    }
+  },
+  {
+    "seq": 42,
+    "kind": "handoff",
+    "agent": "strategy_planner",
+    "detail": {
+      "to": "skeptic",
+      "output_type": "StrategyOutput"
+    }
+  },
+  {
+    "seq": 43,
+    "kind": "agent_start",
+    "agent": "skeptic",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 44,
+    "kind": "llm_call",
+    "agent": "skeptic",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 0,
+      "input_tokens": 9674,
+      "cached_input_tokens": 1323,
+      "output_tokens": 888,
+      "reasoning_tokens": 164,
+      "elapsed_seconds": 7.089
+    }
+  },
+  {
+    "seq": 45,
+    "kind": "validation",
+    "agent": "skeptic",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 46,
+    "kind": "grounding",
+    "agent": "skeptic",
+    "detail": {
+      "violations": 0,
+      "rules": [],
+      "details": []
+    }
+  },
+  {
+    "seq": 47,
+    "kind": "revision",
+    "agent": "orchestrator",
+    "detail": {
+      "target": "pathway_matcher",
+      "findings": 4
+    }
+  },
+  {
+    "seq": 48,
+    "kind": "agent_start",
+    "agent": "pathway_matcher",
+    "detail": {
+      "revision_feedback": true
+    }
+  },
+  {
+    "seq": 49,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 1,
+      "input_tokens": 2320,
+      "cached_input_tokens": 1720,
+      "output_tokens": 91,
+      "reasoning_tokens": 56,
+      "elapsed_seconds": 2.166
+    }
+  },
+  {
+    "seq": 50,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "search_programs",
+      "args": {
+        "stem_designated": false,
+        "max_cost_of_attendance": 140000,
+        "states": []
+      },
+      "ok": true,
+      "result_size": 1044
+    }
+  },
+  {
+    "seq": 51,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 1,
+      "tool_calls_requested": 5,
+      "input_tokens": 2710,
+      "cached_input_tokens": 2317,
+      "output_tokens": 145,
+      "reasoning_tokens": 13,
+      "elapsed_seconds": 1.684
+    }
+  },
+  {
+    "seq": 52,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": "{\"program_id\":\"yale-som-mba\"}",
+      "ok": true,
+      "cached_repeat": true
+    }
+  },
+  {
+    "seq": 53,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": "{\"program_id\":\"mit-sloan-mba\"}",
+      "ok": true,
+      "cached_repeat": true
+    }
+  },
+  {
+    "seq": 54,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": "{\"program_id\":\"chicago-booth-mba\"}",
+      "ok": true,
+      "cached_repeat": true
+    }
+  },
+  {
+    "seq": 55,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": "{\"program_id\":\"duke-fuqua-mba\"}",
+      "ok": true,
+      "cached_repeat": true
+    }
+  },
+  {
+    "seq": 56,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": "{\"program_id\":\"dartmouth-tuck-mba\"}",
+      "ok": true,
+      "cached_repeat": true
+    }
+  },
+  {
+    "seq": 57,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 2,
+      "tool_calls_requested": 0,
+      "input_tokens": 6773,
+      "cached_input_tokens": 2707,
+      "output_tokens": 1548,
+      "reasoning_tokens": 95,
+      "elapsed_seconds": 7.512
+    }
+  },
+  {
+    "seq": 58,
+    "kind": "validation",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 59,
+    "kind": "grounding",
+    "agent": "pathway_matcher",
+    "detail": {
+      "violations": 0,
+      "rules": [],
+      "details": []
+    }
+  },
+  {
+    "seq": 60,
+    "kind": "handoff",
+    "agent": "pathway_matcher",
+    "detail": {
+      "to": "evidence_analyst",
+      "phase": "revision"
+    }
+  },
+  {
+    "seq": 61,
+    "kind": "agent_start",
+    "agent": "evidence_analyst",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 62,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 3,
+      "input_tokens": 3502,
+      "cached_input_tokens": 1822,
+      "output_tokens": 238,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 2.077
+    }
+  },
+  {
+    "seq": 63,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_program_facts",
+      "args": {
+        "program_id": "mit-sloan-mba",
+        "fields": [
+          "location",
+          "application_requirements",
+          "test_policy",
+          "tuition",
+          "cost_of_attendance",
+          "stem_designation",
+          "employment_rate",
+          "median_base_salary",
+          "industry_breakdown",
+          "function_breakdown",
+          "international_employment",
+          "sponsorship",
+          "application_deadlines"
+        ]
+      },
+      "ok": true,
+      "result_size": 4404
+    }
+  },
+  {
+    "seq": 64,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_program_facts",
+      "args": {
+        "program_id": "chicago-booth-mba",
+        "fields": [
+          "location",
+          "application_requirements",
+          "test_policy",
+          "tuition",
+          "cost_of_attendance",
+          "stem_designation",
+          "employment_rate",
+          "median_base_salary",
+          "industry_breakdown",
+          "function_breakdown",
+          "international_employment",
+          "sponsorship",
+          "application_deadlines"
+        ]
+      },
+      "ok": true,
+      "result_size": 5200
+    }
+  },
+  {
+    "seq": 65,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_program_facts",
+      "args": {
+        "program_id": "yale-som-mba",
+        "fields": [
+          "location",
+          "application_requirements",
+          "test_policy",
+          "tuition",
+          "cost_of_attendance",
+          "stem_designation",
+          "employment_rate",
+          "median_base_salary",
+          "industry_breakdown",
+          "function_breakdown",
+          "international_employment",
+          "sponsorship",
+          "application_deadlines"
+        ]
+      },
+      "ok": true,
+      "result_size": 4385
+    }
+  },
+  {
+    "seq": 66,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 1,
+      "tool_calls_requested": 1,
+      "input_tokens": 7304,
+      "cached_input_tokens": 3499,
+      "output_tokens": 45,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 1.57
+    }
+  },
+  {
+    "seq": 67,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "compare_employment_metrics",
+      "args": {
+        "program_ids": [
+          "mit-sloan-mba",
+          "chicago-booth-mba",
+          "yale-som-mba"
+        ],
+        "metric": "employment_rate"
+      },
+      "ok": true,
+      "result_size": 1114
+    }
+  },
+  {
+    "seq": 68,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 2,
+      "tool_calls_requested": 1,
+      "input_tokens": 7658,
+      "cached_input_tokens": 7301,
+      "output_tokens": 46,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 1.644
+    }
+  },
+  {
+    "seq": 69,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "compare_employment_metrics",
+      "args": {
+        "program_ids": [
+          "mit-sloan-mba",
+          "chicago-booth-mba",
+          "yale-som-mba"
+        ],
+        "metric": "median_base_salary"
+      },
+      "ok": true,
+      "result_size": 988
+    }
+  },
+  {
+    "seq": 70,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 3,
+      "tool_calls_requested": 3,
+      "input_tokens": 7991,
+      "cached_input_tokens": 7655,
+      "output_tokens": 149,
+      "reasoning_tokens": 23,
+      "elapsed_seconds": 1.925
+    }
+  },
+  {
+    "seq": 71,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_sponsorship_evidence",
+      "args": "{\"program_id\":\"mit-sloan-mba\",\"occupation\":\"management_consulting\",\"city\":\"Boston\"}",
+      "ok": true,
+      "cached_repeat": true
+    }
+  },
+  {
+    "seq": 72,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_sponsorship_evidence",
+      "args": "{\"program_id\":\"chicago-booth-mba\",\"occupation\":\"management_consulting\",\"city\":\"Boston\"}",
+      "ok": true,
+      "cached_repeat": true
+    }
+  },
+  {
+    "seq": 73,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_sponsorship_evidence",
+      "args": "{\"program_id\":\"yale-som-mba\",\"occupation\":\"management_consulting\",\"city\":\"Boston\"}",
+      "ok": true,
+      "cached_repeat": true
+    }
+  },
+  {
+    "seq": 74,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 4,
+      "tool_calls_requested": 0,
+      "input_tokens": 13488,
+      "cached_input_tokens": 7916,
+      "output_tokens": 2651,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 13.094
+    }
+  },
+  {
+    "seq": 75,
+    "kind": "validation",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 76,
+    "kind": "grounding",
+    "agent": "evidence_analyst",
+    "detail": {
+      "violations": 2,
+      "rules": [
+        "unsupported_claim"
+      ],
+      "details": [
+        {
+          "agent": "evidence_analyst",
+          "rule": "unsupported_claim",
+          "detail": "dossier[chicago-booth-mba]: 'verified_fact: First-year cost of attendance is $132,449 for 2026-2027, within the applicant\u2019s $140,000 annual budget by $7,551 before individual fund' -> ['numbers [7551.0] not found in cited evidence']",
+          "action": "dropped claim"
+        },
+        {
+          "agent": "evidence_analyst",
+          "rule": "unsupported_claim",
+          "detail": "dossier[yale-som-mba]: 'verified_fact: Cost of attendance is $128,976 for 2026-2027, within the applicant\u2019s $140,000 annual budget by $11,024 before individual funding consid' -> ['numbers [11024.0] not found in cited evidence']",
+          "action": "dropped claim"
+        }
+      ]
+    }
+  },
+  {
+    "seq": 77,
+    "kind": "grounding",
+    "agent": "evidence_analyst",
+    "detail": {
+      "retry": true,
+      "mode": "repair"
+    }
+  },
+  {
+    "seq": 78,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 0,
+      "input_tokens": 20649,
+      "cached_input_tokens": 1468,
+      "output_tokens": 3466,
+      "reasoning_tokens": 115,
+      "elapsed_seconds": 15.574
+    }
+  },
+  {
+    "seq": 79,
+    "kind": "validation",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 80,
+    "kind": "grounding",
+    "agent": "evidence_analyst",
+    "detail": {
+      "violations_after_retry": 0,
+      "rules": [],
+      "details": []
+    }
+  },
+  {
+    "seq": 81,
+    "kind": "handoff",
+    "agent": "evidence_analyst",
+    "detail": {
+      "to": "strategy_planner",
+      "phase": "revision"
+    }
+  },
+  {
+    "seq": 82,
+    "kind": "agent_start",
+    "agent": "strategy_planner",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 83,
+    "kind": "budget_stop",
+    "agent": "orchestrator",
+    "detail": {
+      "reason": "request limit reached (20/20)",
+      "requests": 20,
+      "max_requests": 20,
+      "total_tokens": 180253,
+      "max_total_tokens": 200000,
+      "tool_calls": 31,
+      "max_tool_calls": 40,
+      "max_seconds": 300.0
+    }
+  },
+  {
+    "seq": 84,
+    "kind": "run_end",
+    "agent": "orchestrator",
+    "detail": {
+      "status": "stopped_budget",
+      "requests": 20,
+      "max_requests": 20,
+      "total_tokens": 180253,
+      "max_total_tokens": 200000,
+      "tool_calls": 31,
+      "max_tool_calls": 40,
+      "max_seconds": 300.0
+    }
+  }
+]

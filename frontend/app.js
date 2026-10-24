@@ -850,6 +850,7 @@ async function renderExplore() {
             : f3(it.tuition ? "Tuition / yr" : "Total cost / yr", it.tuition ? kUSD(it.tuition.value) : null, it.tuition ? `Tuition ${fmtUSD(it.tuition.value)} (${it.tuition.period}); total cost not published` : "", false),
           f3("STEM", stemText, it.stem_scope || "", !it.stem_partial),
           f3("Employed*", emp ? `${emp.rate}%` : null, emp ? `${emp.period}: ${emp.definition}` : "", false)) : null,
+        rankLine(it.ranking, false),
         st === "partial" ? el("div", { class: "pc-avail", "aria-label": "Facts with official sources" },
           el("span", { class: "xs muted", style: "align-self:center", text: "Sourced:" }),
           it.verified_facts.filter(n => !["location", "sponsorship"].includes(n)).slice(0, 4).map(n => el("span", { class: "av", text: FACT_SHORT[n] })),
@@ -857,11 +858,11 @@ async function renderExplore() {
     } else if (st === "discovered") {
       const e1 = it.costs?.estimate_annual;
       middle = el("div", { class: "pc-summary" }, el("b", { text: "Official facts not collected yet. " }), "Official program page confirmed; STEM status and outcomes haven't been checked.",
-        e1 ? el("div", { class: "xs", style: "margin-top:6px" }, el("b", { text: `Est. ${kUSD(e1.value)}/yr` }), ` — ${e1.publisher} estimate, ${e1.period}`) : null);
+        e1 ? el("div", { class: "xs", style: "margin-top:6px" }, el("b", { text: `Est. ${kUSD(e1.value)}/yr` }), ` — ${e1.publisher} estimate, ${e1.period}`) : null, rankLine(it.ranking, false));
     } else {
       const e2 = it.costs?.estimate_annual;
       middle = el("div", { class: "pc-summary unavail" }, el("b", { text: "Official site blocks automated checks. " }), "The link below opens normally in your browser.",
-        e2 ? el("div", { class: "xs", style: "margin-top:6px" }, el("b", { text: `Est. ${kUSD(e2.value)}/yr` }), ` — ${e2.publisher} estimate, ${e2.period}`) : null);
+        e2 ? el("div", { class: "xs", style: "margin-top:6px" }, el("b", { text: `Est. ${kUSD(e2.value)}/yr` }), ` — ${e2.publisher} estimate, ${e2.period}`) : null, rankLine(it.ranking, false));
     }
     return el("article", { class: `pc ev-${st} ${it.tier === "verified" ? "" : "disc"}` },
       el("div", { class: "pc-top" },
@@ -920,6 +921,7 @@ async function renderExplore() {
     const body = el("div", { class: "drawer-body" });
     const official = it.official_link ? el("a", { class: "btn btn-secondary", href: it.official_link.url, target: "_blank", rel: "noopener noreferrer" }, "Visit official program page ↗") : null;
     put(body, el("div", { class: `callout2 ${st === "detailed" ? "ok" : st === "unavailable" ? "" : "info"}` }, svgIcon(ev.icon), el("span", { text: ev.plain })));
+    if (it.ranking) put(body, el("div", { class: "dsec" }, el("h3", { text: "Ranking (context only)" }), rankLine(it.ranking, true)));
     if (d.facts) {
       const F = Object.fromEntries(d.facts.map(x => [x.fact, x]));
       const box = (label, fct, fmt, extra) => {
@@ -1087,6 +1089,15 @@ function h1bBlock(h, opts = {}) {
     note);
 }
 
+
+/* Prestige ranking as CONTEXT only (Poets&Quants composite); never used for matching or sorting. */
+function rankLine(r, full) {
+  if (!r) return null;
+  const txt = r.rank ? `#${r.rank} · ${r.source} U.S. MBA ranking, ${r.edition}` : `${r.source} U.S. MBA ranking: not ranked in this source`;
+  return el("div", { class: `rankline${full ? " full" : ""}` }, el("span", { class: "rk" }, txt),
+    full && r.source_url ? [" · ", extLink(r.source_url, "Source")] : null, el("div", { class: "rk-note", text: r.note }));
+}
+
 /* ---------------- how it works ---------------- */
 function renderHow() {
   put($main, el("div", { class: "wrap", style: "padding-top:48px" },
@@ -1101,7 +1112,7 @@ function renderHow() {
         el("li", { text: "Every verified claim cites an evidence id, and any number in it must appear in that evidence." }),
         el("li", { text: "STEM, sponsorship and budget status are recomputed from the store and corrected if a model disagrees." }),
         el("li", { text: "Employment numbers are compared only when cohort and definition match." }),
-        el("li", { text: "Each run is capped at 20 model requests, 200,000 tokens and 300 seconds, with at most one Skeptic revision." }))),
+        el("li", { text: "Each run is capped at 25 model requests, 200,000 tokens and 300 seconds, with at most one Skeptic revision." }))),
     el("section", { class: "section narrow" },
       el("h2", { text: "What's in the data" }),
       el("p", { text: "Six full-time MBA programs have full evidence: 13 facts each, collected from official university pages on 23 October 2026, with 49 of 78 facts verified and the rest marked unknown. Detailed recommendations use only these programs." }),

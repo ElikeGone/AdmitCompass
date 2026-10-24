@@ -3,6 +3,7 @@ Accenture,Accenture,school_evidence,School-printed name; same firm as canonical 
 Accenture,Accenture Strategy,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 Accenture,Accenture LLP,lca,Same firm's U.S. filing entity (reviewed 2026-10-23). 'Accenture Strategy' is Accenture's strategy practice; it files under Accenture LLP.
 Adobe,"Adobe, Inc.",school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
+Adobe,Adobe,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 Adobe,Adobe Inc.,lca,Same firm's U.S. filing entity (reviewed 2026-10-23).
 Airbnb,Airbnb,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 Airbnb,"AIRBNB, INC.",lca,Same firm's U.S. filing entity (reviewed 2026-10-23).
@@ -58,6 +59,7 @@ Boston Consulting Group,"Boston Consulting Group, Inc.",school_evidence,School-p
 Boston Consulting Group,"The Boston Consulting Group, Inc.",school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 Boston Consulting Group,"Boston Consulting Group, Inc.",lca,Same firm's U.S. filing entity (reviewed 2026-10-23). 'BCG GLASS INDUSTRY INC.' is unrelated and NOT mapped.
 Capital One,Capital One Financial Corp,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
+Capital One,Capital One,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 Capital One,"Capital One Services, LLC",lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23).
 Capital One,"Capital One, National Association",lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23).
 Citigroup,Citi,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
@@ -83,6 +85,7 @@ Google,Google LLC,lca,Same firm's U.S. filing entity (reviewed 2026-10-23).
 Jefferies,"Jefferies Group, Inc.",school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 Jefferies,Jefferies LLC,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23).
 JPMorgan Chase,JPMorgan Chase & Co.,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
+JPMorgan Chase,JP Morgan Chase & Co.,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 JPMorgan Chase,JPMorgan Chase & Co.,lca,Same firm's U.S. filing entity (reviewed 2026-10-23).
 Kearney,Kearney,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 Kearney,"A.T. Kearney, Inc.",lca,Same firm's U.S. filing entity (reviewed 2026-10-23).
@@ -113,9 +116,29 @@ Morgan Stanley,Morgan Stanley & Co. LLC,lca,U.S. subsidiary of the same firm tha
 Morgan Stanley,Morgan Stanley Private Bank NA,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23).
 Morgan Stanley,"Morgan Stanley Private Bank, NA",lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23).
 NVIDIA,nVidia,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
+NVIDIA,NVIDIA Corporation,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 NVIDIA,NVIDIA Corporation,lca,Same firm's U.S. filing entity (reviewed 2026-10-23).
 Roland Berger,Roland Berger LLC,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 Roland Berger,Roland Berger LP,lca,Same firm's U.S. filing entity (reviewed 2026-10-23).
+IBM,IBM,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
+IBM,International Business Machines Corporation,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
+IBM,IBM Corporation,lca,Same firm's U.S. filing entity (reviewed 2026-10-23). (reviewed 2026-10-24)
+Fidelity Investments,Fidelity Investments,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
+Fidelity Investments,FMR LLC,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,FMR LLC d/b/a Fidelity Investments,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,"F-Prime, Inc. d/b/a Fidelity Investments",lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,Fidelity Brokerage Services LLC d/b/a Fidelity Investments,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,"Fidelity Global Brokerage Group, Inc. d/b/a Fidelity Investments",lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,Fidelity Investments Institutional Operations Company d/b/a Fidelity Investments,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,Fidelity Management & Research Company,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,Fidelity Management & Research Company LLC,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,Fidelity Management & Research Company LLC d/b/a Fidelity Investments,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,"Fidelity Technology Group, LLC",lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,"Fidelity Technology Group, LLC d/b/a Fidelity Investments",lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,Fidelity Workplace Investing LLC d/b/a Fidelity Investments,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Fidelity Investments,National Financial Services LLC d/b/a Fidelity Investments,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23). FMR LLC is Fidelity's parent; every other row files 'd/b/a Fidelity Investments' or is a Fidelity-named entity (reviewed 2026-10-24).
+Palantir,Palantir,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
+Palantir,PALANTIR TECHNOLOGIES INC.,lca,Same firm's U.S. filing entity (reviewed 2026-10-23). (reviewed 2026-10-24)
 TikTok,TikTok,school_evidence,School-printed name; same firm as canonical (reviewed 2026-10-23).
 TikTok,TikTok Inc.,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23).
 TikTok,TikTok U.S. Data Security Inc.,lca,U.S. subsidiary of the same firm that files LCAs separately (reviewed 2026-10-23).

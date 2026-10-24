@@ -122,6 +122,23 @@ def main() -> int:
     for name, c in priced.items():
         p = c["usd_per_mtok"]
         md.append(f"| {name} | {p['input']} · {p['cached_input']} · {p['output']} | ${c['per_run']} | ${c['per_user_month']} | ${c['users_100_month']:,} | ${c['users_10000_month']:,} |")
+    # ---- request-cap change 20 -> 25 (2026-10-24): measured effect ----
+    reqs = sum(r["totals"]["model_requests"] for r in runs.values())
+    tin = sum(r["totals"]["input_tokens"] for r in runs.values()); tc = sum(r["totals"]["cached_input_tokens"] for r in runs.values())
+    tout = sum(r["totals"]["output_tokens"] for r in runs.values())
+    per_req = {"input": tin / reqs, "cached": tc / reqs, "output": tout / reqs}
+    capped = [r["run_dir"] for r in runs.values() if r["status"] == "stopped_budget"]
+    md += ["", "## Request-cap change: 20 → 25 (2026-10-24)", "",
+           f"- **Why:** two Ghana runs stopped at 20/20 requests after a Skeptic-requested revision ({', '.join(f'`{c}`' for c in capped)}). They are kept as evidence that the cap works. "
+           "The cap was raised to 25 (`ADMITCOMPASS_MAX_REQUESTS_PER_RUN`). The 200,000-token, 40-tool-call and 300-second caps are unchanged, so the **worst-case cost per run is still bounded by the 200k-token cap**.",
+           f"- **Measured average per request** across these {len(runs)} runs: {per_req['input']:,.0f} input ({per_req['cached']:,.0f} cached) and {per_req['output']:,.0f} output tokens.",
+           "- **Most a run can now spend beyond the old cap:** 5 more requests, about "
+           f"{5 * per_req['input']:,.0f} input and {5 * per_req['output']:,.0f} output tokens:", ""]
+    md += ["| Price set | Extra cost per run if all 5 extra requests are used |", "|---|---:|"]
+    for name, p in HYPOTHETICAL.items():
+        md.append(f"| {name} | ${cost(5 * per_req['input'], 5 * per_req['cached'], 5 * per_req['output'], p):.4f} |")
+    md += ["", "- **Typical runs are unaffected:** completed runs used 9–13 requests. The re-run after the change finished in "
+           f"{min(r['totals']['model_requests'] for r in runs.values())} requests without a revision, so the higher cap only matters when the Skeptic requests a revision on a larger shortlist."]
     (OUT / "clean_runs_analysis.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print("\n".join(md))
     return 0

@@ -101,9 +101,17 @@ def test_join_uses_only_verified_school_lists():
 
 
 def test_programs_without_employer_evidence_stay_unknown():
-    for pid in ("mit-sloan-mba", "hbs-mba", "rice-jones-mba", "wharton-mba"):
+    for pid in ("hbs-mba", "rice-jones-mba", "wharton-mba"):
         ev = sp.get_sponsorship_evidence(pid)
         assert ev["status"] == "no_employer_evidence" and ev["employers"] == []
+
+
+def test_mit_list_from_red_marked_employers_joins():
+    """MIT's list comes from the colour-coded official report (scripts/extract_mit_employers.py) and joins to DOL data."""
+    ev = sp.get_sponsorship_evidence("mit-sloan-mba")
+    assert ev["status"] == "ok" and "mitsloan.mit.edu" in ev["school_list"]["source_url"]
+    assert {"JPMorgan Chase", "NVIDIA", "Fidelity Investments"} <= {e["employer"] for e in ev["employers"] if e["total_filings"]}
+    assert {"Johnson & Johnson", "NextEra Energy"} <= set(ev["unmatched_school_employers"])   # reviewed: different firms only
 
 
 def test_filters_narrow_results():
@@ -156,3 +164,11 @@ def test_ui_endpoints_carry_the_exact_note():
     assert d["h1b_history"]["note"] == sp.SPONSORSHIP_NOTE
     dash = c.get("/api/dashboard/demo").json()["dashboard"]
     assert all(p["feasibility"]["h1b_history"]["note"] == sp.SPONSORSHIP_NOTE for p in dash["programs"])
+
+
+def test_negated_guarantee_framing_is_not_flagged():
+    """Found in a live run: 'Do not treat historical employer filings as a guarantee' was wrongly flagged."""
+    assert risky_language("Do not treat historical employer filings as a guarantee of sponsorship.") == []
+    assert risky_language("Past filings do not imply a guarantee.") == []
+    assert "guarantee" in risky_language("It is not cheap, but it guarantees a job.")   # negation in another clause doesn't count
+    assert "guarantee" in risky_language("This MBA guarantees you an H-1B.")

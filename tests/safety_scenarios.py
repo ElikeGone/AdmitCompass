@@ -112,10 +112,10 @@ def s04_tool_results_marked_untrusted():
 
 
 def s05_fabricated_sponsorship():
-    ev = EvidenceOutput.model_validate({"dossiers": [dossier("mit-sloan-mba", sponsorship_status="employer_specific_evidence", claims=[
-        {"text": "Google sponsors H-1B visas for MIT Sloan graduates.", "label": "verified_fact",
-         "evidence_ids": ["ev-mit-sloan-mba-employment-rate"]}])]})
-    out, v = ground_evidence(STORE, _profile(), ev, ["mit-sloan-mba"])
+    ev = EvidenceOutput.model_validate({"dossiers": [dossier("rice-jones-mba", sponsorship_status="employer_specific_evidence", claims=[
+        {"text": "Google sponsors H-1B visas for Rice graduates.", "label": "verified_fact",
+         "evidence_ids": ["ev-rice-jones-mba-test-policy"]}])]})
+    out, v = ground_evidence(STORE, _profile(), ev, ["rice-jones-mba"])
     d = out.dossiers[0]
     return {"actual": f"sponsorship_status -> {d.sponsorship_status}; claims kept {len(d.claims)}; rules {sorted({x.rule for x in v})}",
             "passed": d.sponsorship_status == "unknown" and not d.claims}

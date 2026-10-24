@@ -7,6 +7,8 @@ The Pathway Matcher is a language model. Given the same profile, the same 5 "det
 | Ghana (audit → consulting, Boston) | `20261024T020115Z_fixture-audit-consulting-ghana` | command line | $120,000/yr | MIT Sloan | completed |
 | Ghana | in-memory web run `45b21386ed10` (screenshots `final/task3_*`; not saved to disk) | web UI | $120,000/yr | MIT Sloan, Duke Fuqua | completed |
 | Ghana | `20261024T024740Z_fixture-audit-consulting-ghana_webui` | web UI | **$140,000/yr** (raised) | MIT Sloan, Yale SOM, Duke Fuqua | stopped_budget (20/20 requests, during a Skeptic-requested revision) |
+| Ghana | `20261024T031733Z_fixture-audit-consulting-ghana` | command line | $140,000/yr | MIT Sloan, Chicago Booth, Yale SOM (pre-revision shortlist) | stopped_budget (20/20, during a Skeptic-requested revision) |
+| Ghana | `20261024T032006Z_fixture-audit-consulting-ghana` | command line, cap 25 | $140,000/yr | MIT Sloan, Yale SOM, Duke Fuqua | completed_with_violations (1 false positive, since fixed) |
 | U.S. (engineering → PM, Seattle) | `20261024T020259Z_fixture-domestic-tech-us` | command line | $150,000/yr | Yale SOM, Chicago Booth, Duke Fuqua | completed_with_violations (stale-rule malfunction, see `experiments/safety/malfunction_sponsorship_status.md`) |
 | U.S. | `20261024T024921Z_fixture-domestic-tech-us_webui` | web UI | $150,000/yr | MIT Sloan, Chicago Booth, Duke Fuqua | completed_with_violations (1 legitimate STEM-citation drop) |
 

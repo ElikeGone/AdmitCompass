@@ -64,12 +64,19 @@ def iter_strings(obj: Any, path: str = "") -> Iterable[tuple[str, str]]:
             yield from iter_strings(v, f"{path}[{i}]")
 
 
+NEGATED_AS = re.compile(r"\b(do not|don't|does not|doesn't|never|not|cannot|can't)\b[^.;!?]*\b(as|is|are|be|mean|imply)\s+(an?\s+|any\s+)?$", re.I)
+
+
 def risky_language(text: str) -> list[str]:
     hits = []
     for rule, pat in RISKY_PATTERNS.items():
         for m in pat.finditer(text):
-            window = text[max(0, m.start() - 40):m.start()]
-            if not NEGATIONS.search(window) and not NEGATION_AFTER.search(text[m.end():]):
+            # negation must be in the same clause: "It is not cheap, but it guarantees a job" is still a guarantee
+            window = re.split(r"[.;!?]|\bbut\b|\bhowever\b|\byet\b", text[max(0, m.start() - 40):m.start()], flags=re.I)[-1]
+            # "Do not treat historical filings as a guarantee": negated framing earlier in the same sentence
+            clause = re.split(r"[.;!?]", text[max(0, m.start() - 160):m.start()])[-1]
+            negated_as = NEGATED_AS.search(clause)
+            if not NEGATIONS.search(window) and not NEGATION_AFTER.search(text[m.end():]) and not negated_as:
                 hits.append(rule)
                 break
     return hits

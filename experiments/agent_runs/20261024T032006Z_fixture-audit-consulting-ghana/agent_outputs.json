@@ -1,0 +1,668 @@
+{
+  "pathway_matcher": {
+    "target_roles": [
+      {
+        "title": "Management consultant",
+        "rationale": "inference: Directly matches the applicant\u2019s stated target function, industry, and strategy-firm goal."
+      },
+      {
+        "title": "Strategy consultant",
+        "rationale": "inference: A more specific title aligned with the stated goal of consulting at a strategy firm."
+      },
+      {
+        "title": "Internal strategy consultant",
+        "rationale": "advice: A related role to consider as a broader alternative if external strategy-consulting recruiting is limited."
+      }
+    ],
+    "candidates": [
+      {
+        "program_id": "mit-sloan-mba",
+        "career_fit": "strong",
+        "fit_rationale": "inference: Cambridge, Massachusetts best matches the stated Boston-area preference among the reviewed programs. The verified employment and salary metrics are available for context, but do not establish consulting-specific outcomes. verified_fact: Tuition is $91892 for 2026-2027; test scores are required.",
+        "tradeoffs": [
+          "unknown: Total cost of attendance is not available in the store, so fit against the $140000 annual budget cannot be confirmed.",
+          "verified_fact: The MBA is STEM-designated; this classification does not guarantee an immigration benefit.",
+          "verified_fact: GMAT or GRE is required."
+        ]
+      },
+      {
+        "program_id": "yale-som-mba",
+        "career_fit": "moderate",
+        "fit_rationale": "inference: New Haven, Connecticut is a regional alternative to Boston, and verified total cost of attendance is within the stated annual budget. Consulting-specific recruiting access is not established by the available evidence.",
+        "tradeoffs": [
+          "verified_fact: Total single-student cost of attendance is $128976 for 2026-2027.",
+          "verified_fact: The full-time MBA is STEM-designated; this classification does not guarantee an immigration benefit.",
+          "verified_fact: GMAT or GRE is required."
+        ]
+      },
+      {
+        "program_id": "duke-fuqua-mba",
+        "career_fit": "moderate",
+        "fit_rationale": "inference: The verified $118974 first-year cost of attendance is within the stated annual budget, making this a budget-aligned alternative. Durham is less aligned with the stated Boston long-term location, and the available evidence does not establish consulting-specific recruiting access.",
+        "tradeoffs": [
+          "verified_fact: Location is Durham, North Carolina.",
+          "verified_fact: The Daytime MBA is STEM-designated; this classification does not guarantee an immigration benefit.",
+          "verified_fact: Test is required; GMAT, GMAT Focus, GRE, and Executive Assessment are accepted."
+        ]
+      }
+    ],
+    "excluded": [
+      {
+        "program_id": "chicago-booth-mba",
+        "reason": "inference: Verified first-year cost of attendance is within budget, but Chicago is less aligned with the applicant\u2019s Boston location preference; consulting-specific access is not established by the available evidence."
+      },
+      {
+        "program_id": "dartmouth-tuck-mba",
+        "reason": "inference: Verified single-student on-campus cost is within budget, but Hanover is less aligned with the stated Boston location preference; consulting-specific access is not established by the available evidence."
+      }
+    ],
+    "missing_profile_info": [
+      "advice: Confirm whether the applicant would consider locations outside Massachusetts or the Boston region.",
+      "unknown: Quantified GMAT/GRE readiness and planned test date; test status is not started.",
+      "unknown: Specific consulting practice interests, such as strategy, operations, or public sector.",
+      "unknown: Work-authorization constraints or preferences beyond needing U.S. authorization after the MBA; program STEM designation does not determine individual eligibility.",
+      "unknown: MIT Sloan total cost of attendance, needed to compare the program with the annual budget."
+    ],
+    "claims": [
+      {
+        "text": "verified_fact: MIT Sloan is located in Cambridge, Massachusetts; its tuition is $91892 for 2026-2027; total cost of attendance is unknown; its MBA is STEM-designated; and GMAT or GRE is required.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-location",
+          "ev-mit-sloan-mba-tuition",
+          "ev-mit-sloan-mba-stem-designation",
+          "ev-mit-sloan-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "verified_fact: Yale SOM is located in New Haven, Connecticut; total single-student cost of attendance is $128976 for 2026-2027; its full-time MBA is STEM-designated; and GMAT or GRE is required.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-location",
+          "ev-yale-som-mba-cost-of-attendance",
+          "ev-yale-som-mba-stem-designation",
+          "ev-yale-som-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "verified_fact: Duke Fuqua is located in Durham, North Carolina; first-year cost of attendance is $118974 for 2026-2027; its Daytime MBA is STEM-designated; and its test policy accepts GMAT, GMAT Focus, GRE, and Executive Assessment.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-duke-fuqua-mba-location",
+          "ev-duke-fuqua-mba-cost-of-attendance",
+          "ev-duke-fuqua-mba-stem-designation",
+          "ev-duke-fuqua-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "inference: The shortlist prioritizes proximity to the stated Boston goal, verified cost relative to the $140000 annual budget, and the applicant\u2019s consulting target; the available store evidence does not establish program-specific consulting access.",
+        "label": "inference",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": [
+          "Applicant profile: target role is management consultant at a strategy consulting firm in Boston; annual budget is $140000.",
+          "Verified program location, cost, STEM, and test-policy facts cited above."
+        ]
+      },
+      {
+        "text": "advice: Treat STEM designation as a program classification only; it does not guarantee any immigration benefit. Confirm current work-authorization requirements with official sources and the school\u2019s international student office.",
+        "label": "advice",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": []
+      }
+    ]
+  },
+  "evidence_analyst": {
+    "dossiers": [
+      {
+        "program_id": "mit-sloan-mba",
+        "claims": [
+          {
+            "text": "MIT Sloan is in Cambridge, MA. GMAT (Focus or 10th Edition) or GRE is required; no minimum score is stated, and the Executive Assessment is not accepted. Application materials include transcripts, video question, one professional recommendation, two additional professional references, organizational chart, employment history, cover letter, resume, and fee; interview is by invitation.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-mit-sloan-mba-location",
+              "ev-mit-sloan-mba-test-policy",
+              "ev-mit-sloan-mba-application-requirements"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "Tuition is $91892 for 2026-2027; total cost of attendance is unknown. Affordability versus the applicant's $140000 annual budget cannot be determined from tuition alone.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-mit-sloan-mba-tuition"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "The entire MIT Sloan MBA is verified as STEM-designated. This program classification does not guarantee an immigration benefit or individual eligibility.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-mit-sloan-mba-stem-designation"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "For the Class of 2025, employment rate was 91.0%: share of job seekers with an offer by three months after graduation (94.1% as of publication). Median full-time base salary was 175000; 89.7% of students accepting an offer provided usable salary data. Consulting was 32.3% of full-time accepted offers by industry. These figures do not establish consulting-specific placement for this applicant.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-mit-sloan-mba-employment-rate",
+              "ev-mit-sloan-mba-median-base-salary",
+              "ev-mit-sloan-mba-industry-breakdown"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "International employment information and official program-level sponsorship information are unknown. FY2025 DOL data records Boston management-consulting LCA filings by Boston Consulting Group (39), McKinsey & Company (14), and Bain & Company (3), among other employers listed in MIT's report as hiring graduates or interns. Historical H-1B filings by this employer. Not a guarantee of sponsorship. U.S. work-authorization rules change; confirm with official sources and the school's international student office. Not legal advice.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "lca-fy2025-boston-consulting-group-10fa21",
+              "lca-fy2025-mckinsey-company-0a859c",
+              "lca-fy2025-bain-company-59a2e5"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "The employment rate and median salary figures should not be directly compared across the shortlist: cohort years match, but metric definitions do not.",
+            "label": "inference",
+            "evidence": [],
+            "evidence_ids": [],
+            "based_on": [
+              "employment_rate comparison result: not all comparable",
+              "median_base_salary comparison result: not all comparable"
+            ]
+          }
+        ],
+        "affordability": "unknown",
+        "affordability_basis": "Cost of attendance is unknown; affordability must be based on cost of attendance, not tuition.",
+        "stem_status": "verified_designated",
+        "sponsorship_status": "employer_specific_evidence",
+        "source_strength": "Employment and salary are source_backed_excerpt; location, test policy, and tuition are source_backed_excerpt; application requirements are source_backed_paraphrase; STEM status is rechecked_first_hand. Sponsorship evidence combines FY2025 DOL filings with a school employer list that includes internships. Several facts have freshness warnings because source data periods are unstated; no freshness warning is reported for tuition or employment metrics.",
+        "flags": [
+          "Cost of attendance unknown; affordability cannot be confirmed.",
+          "Function breakdown is unknown because report narrative and table disagree.",
+          "International employment and program-level sponsorship remain unknown.",
+          "Historical H-1B filings are not a guarantee of sponsorship."
+        ]
+      },
+      {
+        "program_id": "yale-som-mba",
+        "claims": [
+          {
+            "text": "Yale SOM is in New Haven, CT. GMAT or GRE is required (valid five years); no waivers or minimum score are stated. Application requirements include a bachelor's degree or international equivalent, application and essay, transcripts, two professional recommendations, resume, fee, video questions, and Behavioral Assessment.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-location",
+              "ev-yale-som-mba-test-policy",
+              "ev-yale-som-mba-application-requirements"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "Total single-student cost of attendance is $128976 for 2026-2027, within the applicant's $140000 per-academic-year budget. Tuition is $90900 for 2026-2027.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-cost-of-attendance",
+              "ev-yale-som-mba-tuition"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "The full-time MBA is verified as STEM-designated, effective with the Class of 2026. This classification does not guarantee an immigration benefit or individual eligibility.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-stem-designation"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "For the Class of 2025, 82.1% received an offer by three months post-graduation; the page gives no further denominator definition. Median base salary was 175000 for all full-time employed graduates. International students' median base salary was $175,000, and 7.2% of full-time employment was outside the U.S. (median base $120K). These figures do not establish consulting-specific placement.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-employment-rate",
+              "ev-yale-som-mba-median-base-salary",
+              "ev-yale-som-mba-international-employment"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "Official program-level sponsorship information is unknown. FY2025 DOL data records Boston management-consulting LCA filings by Boston Consulting Group (39), McKinsey & Company (14), and Bain & Company (3), among other employers on Yale's Class of 2025 employer list. Historical H-1B filings by this employer. Not a guarantee of sponsorship. U.S. work-authorization rules change; confirm with official sources and the school's international student office. Not legal advice.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "lca-fy2025-boston-consulting-group-10fa21",
+              "lca-fy2025-mckinsey-company-0a859c",
+              "lca-fy2025-bain-company-59a2e5"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "Although the reported employment figures are for the same graduating class as the other shortlisted programs, their definitions differ; do not treat the rates or salaries as directly comparable.",
+            "label": "inference",
+            "evidence": [],
+            "evidence_ids": [],
+            "based_on": [
+              "employment_rate comparison result: not all comparable",
+              "median_base_salary comparison result: not all comparable"
+            ]
+          }
+        ],
+        "affordability": "within_budget",
+        "affordability_basis": "Verified 2026-2027 single-student cost of attendance of $128976 is below the $140000 per-academic-year budget.",
+        "stem_status": "verified_designated",
+        "sponsorship_status": "employer_specific_evidence",
+        "source_strength": "Cost of attendance and tuition are rechecked_first_hand; STEM status, location, test policy, employment metrics, international employment, and application requirements are source_backed_excerpt or source_backed_paraphrase. Freshness warnings apply to location, STEM classification, test policy, and application requirements because source periods are unstated; no freshness warning is reported for cost, tuition, or Class of 2025 outcomes. Sponsorship records are historical FY2025 DOL data.",
+        "flags": [
+          "No verified consulting industry or function breakdown in the returned program facts.",
+          "Historical H-1B filings are not a guarantee of sponsorship."
+        ]
+      },
+      {
+        "program_id": "duke-fuqua-mba",
+        "claims": [
+          {
+            "text": "Duke Fuqua is in Durham, NC. A test is required; GMAT, GMAT Focus, GRE, and Executive Assessment are accepted, self-reported scores are accepted at application, and no minimum score is stated. Application requirements include educational background, unofficial transcripts, employment history, one-page business resume, activities and achievements, essays, one recommendation, and application fee.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-duke-fuqua-mba-location",
+              "ev-duke-fuqua-mba-test-policy",
+              "ev-duke-fuqua-mba-application-requirements"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "First-year cost of attendance is $118974 for 2026-2027, within the applicant's $140000 per-academic-year budget. The source does not explicitly state that the budget is for a single student.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-duke-fuqua-mba-cost-of-attendance"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "The entire Daytime MBA is verified as STEM-designated. This classification does not guarantee an immigration benefit or individual eligibility.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-duke-fuqua-mba-stem-designation"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "For the Class of 2025, 79% accepted by three months post-graduation among graduates seeking employment (315 of 350); offers by three months were 82.2%. Median base salary was 160000, excluding discretionary bonuses, options, and carried interest. International employment information is unknown. These figures do not establish consulting-specific placement.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-duke-fuqua-mba-employment-rate",
+              "ev-duke-fuqua-mba-median-base-salary"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "Official program-level sponsorship information is unknown. FY2025 DOL data records Boston management-consulting LCA filings by Boston Consulting Group (39), Bain & Company (3), and AlixPartners (6), among other employers listed by Fuqua. Historical H-1B filings by this employer. Not a guarantee of sponsorship. U.S. work-authorization rules change; confirm with official sources and the school's international student office. Not legal advice.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "lca-fy2025-boston-consulting-group-10fa21",
+              "lca-fy2025-bain-company-59a2e5",
+              "lca-fy2025-alixpartners-e28598"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "Employment rate and median salary results are Class of 2025 figures, but their metric definitions differ from those of the other shortlisted programs, so they should not be directly compared.",
+            "label": "inference",
+            "evidence": [],
+            "evidence_ids": [],
+            "based_on": [
+              "employment_rate comparison result: not all comparable",
+              "median_base_salary comparison result: not all comparable"
+            ]
+          }
+        ],
+        "affordability": "within_budget",
+        "affordability_basis": "Verified 2026-2027 first-year cost of attendance of $118974 is below the $140000 per-academic-year budget; source does not explicitly state single-student scope.",
+        "stem_status": "verified_designated",
+        "sponsorship_status": "employer_specific_evidence",
+        "source_strength": "Cost of attendance is source_backed_paraphrase; tuition, STEM status, test policy, employment outcomes, and location are source_backed_excerpt; application requirements are source_backed_paraphrase. Freshness warnings apply to location, STEM classification, and test policy because source periods are unstated; no warning is reported for 2026-2027 cost or Class of 2025 outcomes. Sponsorship records are historical FY2025 DOL data.",
+        "flags": [
+          "International employment is unknown.",
+          "Industry and function breakdowns are unknown because report extraction was not verified.",
+          "Historical H-1B filings are not a guarantee of sponsorship."
+        ]
+      }
+    ],
+    "metric_comparisons": [
+      {
+        "program_ids": [
+          "mit-sloan-mba",
+          "yale-som-mba",
+          "duke-fuqua-mba"
+        ],
+        "metric": "employment_rate",
+        "treated_as_comparable": false,
+        "reason": "All report Class of 2025, but metric definitions differ, including denominator and offer/acceptance distinctions."
+      },
+      {
+        "program_ids": [
+          "mit-sloan-mba",
+          "yale-som-mba",
+          "duke-fuqua-mba"
+        ],
+        "metric": "median_base_salary",
+        "treated_as_comparable": false,
+        "reason": "All report Class of 2025, but salary definitions and reporting populations differ."
+      }
+    ],
+    "unsupported_claims_flagged": [
+      "Pathway Matcher claim that Yale total single-student cost of attendance is $128976 for 2026-2027: supported.",
+      "Pathway Matcher claim that Duke first-year cost of attendance is $118974 for 2026-2027: amount and period supported, but source does not explicitly specify single-student scope.",
+      "Pathway Matcher statement that MIT tuition is $91892 for 2026-2027: supported; it does not establish total affordability.",
+      "Pathway Matcher STEM and test-policy claims for all three programs: supported, with STEM classification not guaranteeing an immigration benefit.",
+      "Pathway Matcher claim that consulting-specific recruiting access is not established: consistent with the returned evidence; do not infer program-specific consulting access from school employer lists or overall employment metrics."
+    ]
+  },
+  "strategy_planner": {
+    "test_guidance": {
+      "recommendation": "either_gmat_or_gre",
+      "rationale": "You have not started testing, and all three programs require a test while accepting GMAT or GRE. Take timed diagnostic tests for both in Week 1, then choose one based on your comparative performance, preparation fit, and official current policies. MIT does not accept the Executive Assessment; Duke does. No school states a minimum score in the available evidence. Evidence: MIT ev-mit-sloan-mba-test-policy; Yale ev-yale-som-mba-test-policy; Duke ev-duke-fuqua-mba-test-policy.",
+      "evidence_ids": [
+        "ev-mit-sloan-mba-test-policy",
+        "ev-yale-som-mba-test-policy",
+        "ev-duke-fuqua-mba-test-policy"
+      ]
+    },
+    "gaps": [
+      {
+        "gap": "No test score or preparation baseline; all three programs require a test.",
+        "severity": "high",
+        "action": "Complete timed GMAT and GRE diagnostics, select one test, and build a focused study plan. Confirm current test policies directly with each school."
+      },
+      {
+        "gap": "Application materials and recommenders are not yet prepared or confirmed.",
+        "severity": "high",
+        "action": "Identify recommenders, brief them on your goals and examples of your work, and begin transcripts, resume, essays, and school-specific materials. MIT additionally lists a video question, two professional references, organizational chart, and cover letter; Yale lists video questions and a Behavioral Assessment; Duke lists essays and one recommendation."
+      },
+      {
+        "gap": "The first-application timing is 12 weeks away, but application deadlines for the shortlisted programs are not established in the provided evidence.",
+        "severity": "high",
+        "action": "Confirm the applicable intake rounds and deadlines on each school's official admissions page; adjust the school list and workback plan accordingly."
+      },
+      {
+        "gap": "MIT total cost of attendance is unknown, and Duke's stated first-year cost scope is not explicitly single-student; funding capacity and scholarship outcomes are not established.",
+        "severity": "high",
+        "action": "Compare official full cost-of-attendance figures, financing terms, and potential funding for each option; build a financing plan before deciding whether to apply or enroll."
+      },
+      {
+        "gap": "Consulting-specific recruiting access and program-level sponsorship information are not established by the available evidence; international employment information is unknown for some programs.",
+        "severity": "high",
+        "action": "Ask each school about international student outcomes and consulting recruiting, and speak with the international student office about work-authorization questions. Do not treat historical employer filings or STEM classification as a guarantee."
+      },
+      {
+        "gap": "The application narrative must connect audit and public-sector experience to the target management-consulting role.",
+        "severity": "medium",
+        "action": "Develop specific examples demonstrating analytical problem-solving, leadership, influence, and measurable impact; explain why an MBA and why the target consulting path."
+      }
+    ],
+    "weekly_plan": [
+      {
+        "week": 1,
+        "priority": "high",
+        "actions": [
+          "Use up to 10 hours for timed GMAT and GRE diagnostics, then select one test.",
+          "Check each school's official admissions pages for current deadlines, rounds, and test rules.",
+          "Draft a school-by-school application checklist and identify potential recommenders."
+        ]
+      },
+      {
+        "week": 2,
+        "priority": "high",
+        "actions": [
+          "Start a focused test-preparation schedule based on diagnostic results.",
+          "Request transcripts and any required certified translations.",
+          "Brief recommenders on your target role and ask whether they can provide detailed professional examples."
+        ]
+      },
+      {
+        "week": 3,
+        "priority": "high",
+        "actions": [
+          "Continue test preparation and review mistakes from practice.",
+          "Draft a one-page resume emphasizing measurable audit, analytics, leadership, and public-sector impact.",
+          "Create a fact-checked inventory of career stories and accomplishments."
+        ]
+      },
+      {
+        "week": 4,
+        "priority": "high",
+        "actions": [
+          "Complete a timed practice test and adjust the study plan.",
+          "Draft your career goals and explain the transition from audit to management consulting.",
+          "Confirm school-specific application components and recommender requirements."
+        ]
+      },
+      {
+        "week": 5,
+        "priority": "high",
+        "actions": [
+          "Continue test preparation, prioritizing the weakest tested areas.",
+          "Draft school-specific essays and identify evidence for each claim.",
+          "Ask recommenders to begin their letters and provide them a concise achievement summary."
+        ]
+      },
+      {
+        "week": 6,
+        "priority": "high",
+        "actions": [
+          "Take another timed practice test and decide whether a test date within the application workback is realistic.",
+          "Revise the resume and essays for clarity, impact, and consistency.",
+          "Gather MIT-specific organizational chart, references, and cover-letter information if applying."
+        ]
+      },
+      {
+        "week": 7,
+        "priority": "high",
+        "actions": [
+          "Continue test preparation and address recurring errors.",
+          "Review Yale's video-question and Behavioral Assessment requirements and Duke's essay requirements.",
+          "Conduct an initial school-list and application-readiness review."
+        ]
+      },
+      {
+        "week": 8,
+        "priority": "high",
+        "actions": [
+          "Take a timed practice test and assess readiness against your own target and school policies.",
+          "Revise essays using feedback from a trusted reviewer.",
+          "Check recommender progress and resolve missing transcripts or documents."
+        ]
+      },
+      {
+        "week": 9,
+        "priority": "high",
+        "actions": [
+          "Sit for the selected test if prepared and scheduled; otherwise reassess timing against confirmed official deadlines.",
+          "Finalize core application materials and resume.",
+          "Research consulting recruiting and international-student support through official school channels."
+        ]
+      },
+      {
+        "week": 10,
+        "priority": "high",
+        "actions": [
+          "Complete remaining test preparation or an appropriate retake plan if needed.",
+          "Practice interview stories and concise explanations of your career transition.",
+          "Verify every application component and recommender submission status."
+        ]
+      },
+      {
+        "week": 11,
+        "priority": "high",
+        "actions": [
+          "Proofread applications for accuracy and consistency; complete any school-specific video or assessment components.",
+          "Confirm official deadlines and submission requirements again.",
+          "Review affordability using full cost-of-attendance information, not tuition alone."
+        ]
+      },
+      {
+        "week": 12,
+        "priority": "high",
+        "actions": [
+          "Submit only applications you have personally decided to pursue and that are ready before their confirmed official deadlines.",
+          "Confirm receipt of submitted materials and follow official instructions for interviews.",
+          "Maintain a record of outstanding decisions, financing questions, and immigration questions for the relevant school office or qualified adviser."
+        ]
+      }
+    ],
+    "roadmap": [
+      {
+        "phase": "Profile, test, and school-list readiness",
+        "timing": "Weeks 1-4",
+        "milestones": [
+          "Compare timed GMAT and GRE diagnostics and choose a test.",
+          "Confirm official deadlines and requirements for the shortlisted programs.",
+          "Identify recommenders and assemble transcripts and career evidence."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Application development and submission",
+        "timing": "Weeks 5-12",
+        "milestones": [
+          "Prepare school-specific essays, resume, references, and required assessments.",
+          "Complete the selected test plan in line with readiness and confirmed deadlines.",
+          "Make the personal decision about which schools to apply to and submit complete applications."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Interview and admission evaluation",
+        "timing": "After application submission",
+        "milestones": [
+          "Follow each school's official interview process and instructions.",
+          "Prepare examples that connect audit experience, leadership, and analytical work to consulting goals.",
+          "Track official communications and any requested follow-up materials."
+        ],
+        "human_checkpoint": false
+      },
+      {
+        "phase": "Offer comparison, financing, and enrollment decision",
+        "timing": "After admission decisions",
+        "milestones": [
+          "Compare offers using verified full cost of attendance, aid, loan terms, career fit, and location.",
+          "Personally decide whether to accept, how to finance attendance, and whether to submit a deposit.",
+          "Direct work-authorization questions to the school's international student office or a qualified immigration attorney; verify current rules through official sources."
+        ],
+        "human_checkpoint": true
+      }
+    ],
+    "claims": [
+      {
+        "text": "All three shortlisted programs require a test and accept GMAT or GRE; Duke also accepts the Executive Assessment, while MIT does not.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-test-policy",
+          "ev-yale-som-mba-test-policy",
+          "ev-duke-fuqua-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "MIT lists transcripts, a test score, a video question, one professional recommendation, two additional professional references, an organizational chart, employment history, a cover letter, and a resume among application materials.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-application-requirements"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Yale lists transcripts, two professional recommendations, a resume, video questions, and a Behavioral Assessment among application materials.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-application-requirements"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Duke lists essays, a one-page business resume, and one recommendation among application materials.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-duke-fuqua-mba-application-requirements"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Application deadlines were not collected in the available evidence; confirm current deadlines on official school pages.",
+        "label": "unknown",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": []
+      },
+      {
+        "text": "The applicant has 12 weeks until the first application and 10 hours per week available, and has not started testing.",
+        "label": "inference",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": [
+          "applicant_profile.weeks_until_first_application",
+          "applicant_profile.hours_per_week_available",
+          "applicant_profile.test_status"
+        ]
+      },
+      {
+        "text": "A diagnostic comparison followed by a single-test preparation plan is a practical way to use the available preparation period; it does not predict admission or a test outcome.",
+        "label": "advice",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": [
+          "Applicant has not started testing",
+          "All shortlisted programs require GMAT or GRE"
+        ]
+      }
+    ]
+  },
+  "skeptic": {
+    "findings": [
+      {
+        "target_agent": "pathway_matcher",
+        "target_ref": "duke-fuqua-mba: \"The verified $118974 first-year cost of attendance is within the stated annual budget\"",
+        "category": "affordability",
+        "severity": "medium",
+        "issue": "The evidence analyst notes that the cost source does not explicitly state single-student scope. The matcher\u2019s budget-fit wording omits that qualification, which could overstate the affordability comparison.",
+        "required_fix": "Qualify the comparison: the reported first-year cost is below the budget, but the source does not specify single-student scope; confirm the applicable full cost before treating Duke as budget-aligned."
+      },
+      {
+        "target_agent": "pathway_matcher",
+        "target_ref": "mit-sloan-mba: career_fit \"strong\"",
+        "category": "overconfidence",
+        "severity": "low",
+        "issue": "The rationale establishes geographic alignment with Boston, but the supplied evidence does not establish consulting-specific recruiting access or placement. Calling career fit strong may imply broader career evidence than is available.",
+        "required_fix": "Clarify that the strong rating reflects location alignment only, or state that overall career fit remains uncertain pending verified consulting-specific outcomes and recruiting information."
+      }
+    ],
+    "revision_request": null,
+    "overall_assessment": "The work generally distinguishes verified facts, inferences, unknowns, and advice; appropriately flags unknown cost of attendance and non-comparable employment metrics; and avoids treating STEM status or historical H-1B filings as guarantees. The affordability qualification for Duke should be carried into the shortlist, and MIT\u2019s rating should be framed narrowly around location."
+  }
+}

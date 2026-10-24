@@ -1,0 +1,716 @@
+{
+  "pathway_matcher": {
+    "target_roles": [
+      {
+        "title": "Management consultant",
+        "rationale": "inference: This is the applicant's stated target function and industry; the audit and assurance background may be transferable, but program-specific recruiting access and individual outcomes are unknown."
+      },
+      {
+        "title": "Strategy consultant",
+        "rationale": "inference: This narrows the applicant's stated goal of management consulting at a strategy consulting firm; access and outcomes for this applicant are unknown."
+      }
+    ],
+    "candidates": [
+      {
+        "program_id": "mit-sloan-mba",
+        "career_fit": "moderate",
+        "fit_rationale": "inference: Cambridge, MA is geographically aligned with the stated long-term Boston preference, but location alone does not establish consulting recruiting access or outcomes. Those are unknown, as is applicant-specific fit. Tuition is verified at $91,892 for 2026-2027, but full cost of attendance is unknown, so affordability against the $140,000 annual budget is also unknown.",
+        "tradeoffs": [
+          "verified_fact: Location is Cambridge, MA (ev-mit-sloan-mba-location).",
+          "verified_fact: Tuition is $91,892 for 2026-2027 (ev-mit-sloan-mba-tuition); full cost of attendance is unknown (no evidence id provided for unknown status).",
+          "unknown: Consulting recruiting access, Boston-area placement, and outcomes for applicants with this profile.",
+          "advice: Do not treat this option as financially feasible until a verified full cost estimate and funding review are available."
+        ]
+      },
+      {
+        "program_id": "chicago-booth-mba",
+        "career_fit": "moderate",
+        "fit_rationale": "inference: This is a possible consulting-pivot option to investigate, but the available program facts do not establish consulting recruiting access or outcomes for this applicant. Its verified first-year cost is within the stated annual budget, but that does not establish individual affordability or career outcomes.",
+        "tradeoffs": [
+          "verified_fact: Location is Chicago, IL (ev-chicago-booth-mba-location).",
+          "verified_fact: First-year cost of attendance is $132,449 for 2026-2027 (ev-chicago-booth-mba-cost-of-attendance).",
+          "unknown: Applicant-specific consulting recruiting access and outcomes; no verified program-specific consulting evidence is available here.",
+          "inference: Chicago is not the applicant's stated long-term location, Boston."
+        ]
+      },
+      {
+        "program_id": "yale-som-mba",
+        "career_fit": "moderate",
+        "fit_rationale": "inference: Yale is a location-based possibility only if the applicant is open to studying outside Boston. Verified location in New Haven does not establish a Boston career pathway; Boston recruiting access, consulting access, and applicant-specific outcomes are unknown.",
+        "tradeoffs": [
+          "verified_fact: Location is New Haven, CT (ev-yale-som-mba-location).",
+          "verified_fact: Cost of attendance is $128,976 for 2026-2027 (ev-yale-som-mba-cost-of-attendance), within the stated annual budget before personal funding considerations.",
+          "verified_fact: GMAT or GRE is required and there are no test waivers (ev-yale-som-mba-test-policy).",
+          "unknown: Whether the applicant considers non-Boston locations acceptable, and whether the program provides relevant Boston consulting access."
+        ]
+      }
+    ],
+    "excluded": [
+      {
+        "program_id": "duke-fuqua-mba",
+        "reason": "advice: Not shortlisted because the applicant's stated long-term location is Boston and Durham is a less direct location match; consulting recruiting access and outcomes are unknown. Its verified first-year cost of attendance is $118,974 for 2026-2027 (ev-duke-fuqua-mba-cost-of-attendance), so exclusion is not based on the stated budget."
+      },
+      {
+        "program_id": "dartmouth-tuck-mba",
+        "reason": "advice: Not shortlisted because the applicant's stated long-term location is Boston and Hanover is not Boston; any Boston recruiting pathway is unknown. Its verified on-campus single-student cost of attendance is $135,331 for 2026-2027 (ev-dartmouth-tuck-mba-cost-of-attendance), leaving limited room within the stated budget for additional costs."
+      }
+    ],
+    "missing_profile_info": [
+      "Whether the applicant is willing to attend an MBA program outside the Boston area.",
+      "Whether the applicant prioritizes Boston post-MBA employment over broader U.S. consulting opportunities.",
+      "Verified program-specific consulting recruiting, placement, and employer data, including Boston-area outcomes, for each shortlisted option.",
+      "A verified full cost of attendance for MIT Sloan and the applicant's total funding plan, including likely scholarship and loan amounts.",
+      "Targeted GMAT or GRE plan and anticipated score, since the applicant has not started testing."
+    ],
+    "claims": [
+      {
+        "text": "verified_fact: MIT Sloan is located in Cambridge, MA, and Yale SOM is located in New Haven, CT.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-location",
+          "ev-yale-som-mba-location"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "unknown: The available evidence does not establish consulting recruiting access, Boston-area placement, or applicant-specific outcomes for MIT Sloan, Yale SOM, or Chicago Booth.",
+        "label": "unknown",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": []
+      },
+      {
+        "text": "inference: MIT's Boston-area geographic alignment is a location preference consideration, not evidence of a program-specific career advantage or strongest career fit.",
+        "label": "inference",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-location"
+        ],
+        "based_on": [
+          "The applicant's stated long-term location is Boston.",
+          "Consulting recruiting access and outcomes are unknown."
+        ]
+      },
+      {
+        "text": "verified_fact: MIT Sloan tuition is $91,892 for 2026-2027; full cost of attendance is unknown.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-tuition"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "verified_fact: Yale SOM cost of attendance is $128,976 for 2026-2027, and Chicago Booth first-year cost of attendance is $132,449 for 2026-2027.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-cost-of-attendance",
+          "ev-chicago-booth-mba-cost-of-attendance"
+        ],
+        "based_on": []
+      }
+    ]
+  },
+  "evidence_analyst": {
+    "dossiers": [
+      {
+        "program_id": "mit-sloan-mba",
+        "claims": [
+          {
+            "text": "verified_fact: Location is Cambridge, MA; GMAT or GRE is required, with no minimum score. Application materials include transcripts, a video question, one professional recommendation, two additional professional references, organizational chart, employment history, cover letter, and resume.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-mit-sloan-mba-location",
+              "ev-mit-sloan-mba-test-policy",
+              "ev-mit-sloan-mba-application-requirements"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: Tuition is $91,892 for 2026-2027, but cost of attendance is unknown; therefore affordability against the applicant\u2019s $140,000 annual budget is unknown.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-mit-sloan-mba-tuition"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: The entire MIT Sloan MBA is STEM-designated. This classification does not guarantee an immigration benefit.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-mit-sloan-mba-stem-designation"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: For the Class of 2025, employment rate was 91.0%\u2014job seekers receiving an offer by three months (94.1% as of publication); median full-time base salary was $175000, with 89.7% of students accepting an offer providing usable salary data. Consulting accounted for 32.3% of accepted full-time offers by industry.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-mit-sloan-mba-employment-rate",
+              "ev-mit-sloan-mba-median-base-salary",
+              "ev-mit-sloan-mba-industry-breakdown"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: FY2025 Boston management-consulting LCA filings included Boston Consulting Group (39), McKinsey & Company (14), Fidelity Investments (7), and Bain & Company (3). Historical H-1B filings by this employer. Not a guarantee of sponsorship. U.S. work-authorization rules change; confirm with official sources and the school's international student office. Not legal advice.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "lca-fy2025-boston-consulting-group-10fa21",
+              "lca-fy2025-mckinsey-company-0a859c",
+              "lca-fy2025-fidelity-investments-9bfd40",
+              "lca-fy2025-bain-company-59a2e5"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "unknown: International employment statistics and program-level employer sponsorship are unknown; Boston-area hiring-employer evidence and historical LCA filings do not establish individual recruiting access or sponsorship.",
+            "label": "unknown",
+            "evidence": [],
+            "evidence_ids": [],
+            "based_on": []
+          }
+        ],
+        "affordability": "unknown",
+        "affordability_basis": "Cost of attendance is unknown; tuition alone does not establish affordability against the $140,000 annual budget.",
+        "stem_status": "verified_designated",
+        "sponsorship_status": "employer_specific_evidence",
+        "source_strength": "Location, test policy, tuition, employment, salary, and industry data are source-backed excerpts; application requirements are source-backed paraphrase. STEM status is rechecked_first_hand. Freshness warnings: location, requirements, test policy, and STEM data period not stated; tuition and employment metrics have stated periods. Historical LCA evidence is FY2025; school employer list covers Classes of 2025 and 2026, including internships.",
+        "flags": [
+          "MIT full cost of attendance unknown; do not infer affordability from tuition.",
+          "Employment metrics are not directly comparable across shortlisted programs because metric definitions differ.",
+          "STEM designation does not guarantee immigration benefits."
+        ]
+      },
+      {
+        "program_id": "chicago-booth-mba",
+        "claims": [
+          {
+            "text": "verified_fact: Location is Chicago, IL. GMAT or GRE is required, with listed exceptions only for current UChicago undergraduates or UChicago program graduates; application materials include short answers, resume, supervisor recommendation, transcripts, self-reported score, and fee.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-chicago-booth-mba-location",
+              "ev-chicago-booth-mba-test-policy",
+              "ev-chicago-booth-mba-application-requirements"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: First-year cost of attendance is $132,449 for 2026-2027, within the applicant\u2019s $140,000 annual budget before individual funding considerations.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-chicago-booth-mba-cost-of-attendance"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: Chicago Booth MBA degree is designated STEM-eligible for OPT purposes. This does not guarantee an immigration benefit.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-chicago-booth-mba-stem-designation"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: For the Class of 2025, 89.1% of job-seeking graduates landed full-time offers within three months; median base salary was $175000. Consulting accounted for 36.7% of the top-six industry list and 37.8% of the top-five function list.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-chicago-booth-mba-employment-rate",
+              "ev-chicago-booth-mba-median-base-salary",
+              "ev-chicago-booth-mba-industry-breakdown",
+              "ev-chicago-booth-mba-function-breakdown"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: International F-1 graduates may be eligible for an additional 24 months of OPT; no international-specific outcome statistics were found. FY2025 Boston management-consulting LCA filings included Boston Consulting Group (39), McKinsey & Company (14), Deloitte Consulting (4), and Bain & Company (3). Historical H-1B filings by this employer. Not a guarantee of sponsorship. U.S. work-authorization rules change; confirm with official sources and the school's international student office. Not legal advice.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-chicago-booth-mba-international-employment",
+              "lca-fy2025-boston-consulting-group-10fa21",
+              "lca-fy2025-mckinsey-company-0a859c",
+              "lca-fy2025-deloitte-consulting-168118",
+              "lca-fy2025-bain-company-59a2e5"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "unknown: Program-specific employer sponsorship and applicant-specific Boston consulting outcomes are unknown; historical filings do not establish that a graduate will receive sponsorship.",
+            "label": "unknown",
+            "evidence": [],
+            "evidence_ids": [],
+            "based_on": []
+          }
+        ],
+        "affordability": "within_budget",
+        "affordability_basis": "Verified first-year cost of attendance is $132,449 for 2026-2027, compared with the applicant\u2019s $140,000 annual budget; this is a budget comparison, not an individual funding assessment.",
+        "stem_status": "verified_designated",
+        "sponsorship_status": "employer_specific_evidence",
+        "source_strength": "Cost of attendance and tuition are rechecked_first_hand; location, test policy, STEM status, employment, and international-employment data are source-backed excerpts; application requirements are source-backed paraphrase. Freshness warnings: location, requirements, test policy, STEM, and international-employment periods not stated; cost and employment metrics have stated periods. Historical employer-list page has an ambiguous class-year note; LCA data is FY2025.",
+        "flags": [
+          "Within-budget cost comparison does not establish individual affordability or full two-year affordability.",
+          "Employment comparisons with other shortlisted programs are not valid as definitions differ.",
+          "STEM status is not a guarantee of immigration benefit."
+        ]
+      },
+      {
+        "program_id": "yale-som-mba",
+        "claims": [
+          {
+            "text": "verified_fact: Location is New Haven, CT. GMAT or GRE is required with no test waivers and no minimum score; application materials include an essay, transcripts, two professional recommendations, resume, video questions, and Behavioral Assessment.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-location",
+              "ev-yale-som-mba-test-policy",
+              "ev-yale-som-mba-application-requirements"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: Cost of attendance is $128,976 for 2026-2027, within the applicant\u2019s $140,000 annual budget before individual funding considerations.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-cost-of-attendance"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: The full-time MBA degree is STEM-designated, effective with the Class of 2026. This classification does not guarantee an immigration benefit.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-stem-designation"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: For the Class of 2025, 82.1% received an offer by three months post-graduation; the page gives no further denominator definition. Median base salary was $175000 for all full-time employed graduates. International students\u2019 median base salary was $175,000, and 7.2% of full-time employment was outside the U.S. (median base $120K). Industry and function breakdowns are unknown.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-employment-rate",
+              "ev-yale-som-mba-median-base-salary",
+              "ev-yale-som-mba-international-employment"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: FY2025 Boston management-consulting LCA filings included Boston Consulting Group (39), McKinsey & Company (14), Deloitte Consulting (4), and Bain & Company (3). Historical H-1B filings by this employer. Not a guarantee of sponsorship. U.S. work-authorization rules change; confirm with official sources and the school's international student office. Not legal advice.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "lca-fy2025-boston-consulting-group-10fa21",
+              "lca-fy2025-mckinsey-company-0a859c",
+              "lca-fy2025-deloitte-consulting-168118",
+              "lca-fy2025-bain-company-59a2e5"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "unknown: Program-specific employer sponsorship and applicant-specific Boston consulting outcomes are unknown; employer lists and historical filings do not establish individual recruiting access or sponsorship.",
+            "label": "unknown",
+            "evidence": [],
+            "evidence_ids": [],
+            "based_on": []
+          }
+        ],
+        "affordability": "within_budget",
+        "affordability_basis": "Verified single-student cost of attendance is $128,976 for 2026-2027, compared with the applicant\u2019s $140,000 annual budget; this is a budget comparison, not an individual funding assessment.",
+        "stem_status": "verified_designated",
+        "sponsorship_status": "employer_specific_evidence",
+        "source_strength": "Cost of attendance and tuition are rechecked_first_hand; location, test policy, STEM status, and employment data are source-backed excerpts; application requirements are source-backed paraphrase. Freshness warnings: location, requirements, test policy, and STEM data period not stated; STEM note specifies Class of 2026 onward; cost and employment metrics have stated periods. Historical LCA data is FY2025; employer list covers Class of 2025.",
+        "flags": [
+          "Cost figure is a single-student budget; individual expenses and funding remain applicant-specific.",
+          "Employment metrics are not directly comparable across shortlisted programs because metric definitions differ.",
+          "STEM status does not guarantee immigration benefits."
+        ]
+      }
+    ],
+    "metric_comparisons": [
+      {
+        "program_ids": [
+          "mit-sloan-mba",
+          "chicago-booth-mba",
+          "yale-som-mba"
+        ],
+        "metric": "employment_rate",
+        "treated_as_comparable": false,
+        "reason": "All report Class of 2025, but definitions differ: MIT uses job seekers receiving an offer by three months and reports 94.1% as of publication; Booth describes job-seeking graduates landing full-time offers; Yale provides no further denominator definition."
+      },
+      {
+        "program_ids": [
+          "mit-sloan-mba",
+          "chicago-booth-mba",
+          "yale-som-mba"
+        ],
+        "metric": "median_base_salary",
+        "treated_as_comparable": false,
+        "reason": "All report Class of 2025 and $175000, but definitions differ: MIT reports full-time base salary with usable salary data from 89.7% of offer acceptors; Booth says median base salary; Yale specifies all full-time employed graduates."
+      }
+    ],
+    "unsupported_claims_flagged": [
+      "Pathway Matcher calls MIT and Yale locations verified; those statements are supported by the location evidence.",
+      "Pathway Matcher states that MIT full cost of attendance is unknown; confirmed by structured facts, but no evidence ID is available for the unknown status.",
+      "Pathway Matcher says Booth\u2019s verified first-year cost is within the annual budget; supported by $132,449 compared with $140,000, but this does not establish individual affordability.",
+      "Pathway Matcher says Yale cost is within the annual budget; supported by $128,976 compared with $140,000, but this does not establish individual affordability.",
+      "Pathway Matcher\u2019s Yale GMAT/GRE-required and no-waiver statement is supported.",
+      "Pathway Matcher\u2019s statements that consulting recruiting access and applicant-specific outcomes are unknown are consistent with the available evidence; no evidence establishes those outcomes."
+    ]
+  },
+  "strategy_planner": {
+    "test_guidance": {
+      "recommendation": "either_gmat_or_gre",
+      "rationale": "Advice: Both tests satisfy the stated requirement at all three shortlisted programs. Since no diagnostic score or test preference is provided, take timed GMAT and GRE diagnostics in Week 1, compare results and preparation fit, then choose one exam and focus on it. MIT requires GMAT or GRE and states no minimum score; Yale requires GMAT or GRE, valid within five years, and has no waivers; Booth requires GMAT or GRE, valid five years, and does not superscore. Confirm current policies on official admissions pages.",
+      "evidence_ids": [
+        "ev-mit-sloan-mba-test-policy",
+        "ev-yale-som-mba-test-policy",
+        "ev-chicago-booth-mba-test-policy"
+      ]
+    },
+    "gaps": [
+      {
+        "gap": "No standardized test has been started, and the applicant has no diagnostic results to guide test selection.",
+        "severity": "high",
+        "action": "Complete one timed GMAT and one timed GRE diagnostic in Week 1; choose the exam that best fits performance, format preference, and available preparation time. Build a study schedule and reserve a test date after checking current official requirements."
+      },
+      {
+        "gap": "Application essays and school-specific written responses are not yet prepared.",
+        "severity": "high",
+        "action": "Draft a coherent career-transition narrative connecting audit experience, leadership and impact, and the consulting goal. Map it to each school's current essay and response prompts; confirm those prompts on official pages."
+      },
+      {
+        "gap": "Recommendations, references, and transcripts have not been confirmed.",
+        "severity": "high",
+        "action": "Identify recommenders early, request their agreement, share a resume and accomplishment notes, and request transcripts from every postsecondary institution. Check translation and submission requirements for international records."
+      },
+      {
+        "gap": "MIT-specific materials and application components need preparation.",
+        "severity": "medium",
+        "action": "Prepare MIT's organizational chart, employment history, cover letter, resume, video-question practice, one professional recommendation, and two additional professional references; confirm current official instructions."
+      },
+      {
+        "gap": "The complete MIT annual cost is unknown, so affordability against the stated annual budget is not established by tuition alone.",
+        "severity": "high",
+        "action": "Obtain the current full cost-of-attendance estimate and likely funding sources, then build a school-by-school budget including living costs, fees, travel, loan terms, and scholarship uncertainty."
+      },
+      {
+        "gap": "The applicant needs U.S. work authorization after the MBA, but school-specific international employment outcomes and individual immigration eligibility are not established by the supplied evidence.",
+        "severity": "high",
+        "action": "Ask each school's international student office about current program and work-authorization information, and consult a qualified immigration attorney or official sources for personal questions. Do not treat STEM designation or historical employer filings as a guarantee."
+      },
+      {
+        "gap": "The first application is 12 weeks away, but application deadlines and current prompts were not collected in the evidence dossiers.",
+        "severity": "high",
+        "action": "Check each school's official admissions page now for the relevant intake, deadlines, prompts, score policies, and required documents; adjust the plan to verified deadlines rather than assuming a date."
+      },
+      {
+        "gap": "The shortlist includes options outside the stated Boston location preference, and the applicant has not confirmed geographic flexibility.",
+        "severity": "medium",
+        "action": "Decide personally whether Boston-area proximity is a firm constraint or whether other locations remain acceptable, then use that decision to finalize the school list."
+      }
+    ],
+    "weekly_plan": [
+      {
+        "week": 1,
+        "priority": "high",
+        "actions": [
+          "Use the 10 available hours to take timed GMAT and GRE diagnostics and compare results and test-format fit.",
+          "Check official admissions pages for deadlines, current prompts, score policies, and required documents for all three programs.",
+          "List recommenders and request transcripts from every postsecondary institution."
+        ]
+      },
+      {
+        "week": 2,
+        "priority": "high",
+        "actions": [
+          "Choose GMAT or GRE based on diagnostics and personal preference.",
+          "Create a weekly study schedule and identify targeted skill gaps from the diagnostic.",
+          "Draft a master resume with quantified achievements and leadership examples."
+        ]
+      },
+      {
+        "week": 3,
+        "priority": "high",
+        "actions": [
+          "Begin focused test preparation using the diagnostic results.",
+          "Outline the career story: audit experience, motivation for consulting, and post-MBA direction.",
+          "Brief recommenders with school context, deadlines verified from official pages, and accomplishment examples."
+        ]
+      },
+      {
+        "week": 4,
+        "priority": "high",
+        "actions": [
+          "Continue test preparation and complete a timed practice section.",
+          "Draft the first school-specific essay or written responses using verified current prompts.",
+          "Request certified translations for any records that require them."
+        ]
+      },
+      {
+        "week": 5,
+        "priority": "high",
+        "actions": [
+          "Review practice-test performance and adjust study priorities.",
+          "Draft remaining school-specific essays and short answers.",
+          "Prepare a leadership and impact inventory with specific examples for interviews and video responses."
+        ]
+      },
+      {
+        "week": 6,
+        "priority": "high",
+        "actions": [
+          "Complete a full-length practice exam under timed conditions.",
+          "Revise essays for clarity, evidence, and consistency across schools.",
+          "Follow up with recommenders and confirm their submission process."
+        ]
+      },
+      {
+        "week": 7,
+        "priority": "high",
+        "actions": [
+          "Continue focused test preparation on the weakest tested areas.",
+          "Prepare MIT organizational chart and employment history materials.",
+          "Practice concise video-question responses and review resume details for consistency."
+        ]
+      },
+      {
+        "week": 8,
+        "priority": "high",
+        "actions": [
+          "Take another full-length practice exam and assess readiness against personal goals.",
+          "Polish essays and application responses using a trusted reviewer.",
+          "Build an initial school-by-school funding model, including the unknown MIT total cost."
+        ]
+      },
+      {
+        "week": 9,
+        "priority": "high",
+        "actions": [
+          "Sit the selected test if ready, or revise the plan based on practice results and verified application timing.",
+          "Complete application forms and check transcripts, resume, recommendations, and references.",
+          "Contact international student offices with questions about current program-specific information."
+        ]
+      },
+      {
+        "week": 10,
+        "priority": "high",
+        "actions": [
+          "Review test score reporting and retake options against each school's current official policy.",
+          "Proofread all application materials and reconcile dates, titles, and employment history.",
+          "Confirm official deadlines and submission requirements for the relevant intake."
+        ]
+      },
+      {
+        "week": 11,
+        "priority": "high",
+        "actions": [
+          "Complete any remaining application components and video or assessment practice.",
+          "Check recommender progress and resolve transcript or translation issues.",
+          "Make a personal decision about geographic flexibility and which schools to apply to."
+        ]
+      },
+      {
+        "week": 12,
+        "priority": "high",
+        "actions": [
+          "Run a final completeness and accuracy review against each official application checklist.",
+          "Submit only when materials and verified deadlines are ready; retain confirmation records.",
+          "Review financing assumptions and prepare for interview invitations without assuming admission or employment outcomes."
+        ]
+      }
+    ],
+    "roadmap": [
+      {
+        "phase": "Research and decision setup",
+        "timing": "Week 1",
+        "milestones": [
+          "Verify current deadlines, prompts, test rules, and document requirements on official admissions pages.",
+          "Complete timed diagnostics for both GMAT and GRE.",
+          "Confirm transcript and recommender availability."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Test and application preparation",
+        "timing": "Weeks 2-8",
+        "milestones": [
+          "Choose one test and follow a focused preparation plan.",
+          "Develop the consulting-transition narrative and school-specific application materials.",
+          "Request recommendations and assemble transcripts and supporting materials.",
+          "Investigate full costs and funding options, noting that MIT total cost of attendance is unknown in the supplied evidence."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Application completion and submission",
+        "timing": "Weeks 9-12",
+        "milestones": [
+          "Complete testing or adapt the plan based on readiness and verified deadlines.",
+          "Review applications against current official checklists and submit by verified deadlines.",
+          "Decide personally which schools to apply to and whether non-Boston locations fit the applicant's preferences."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Interview, offers, and enrollment decision",
+        "timing": "After submission through enrollment decision",
+        "milestones": [
+          "Prepare for interviews and complete any school-requested follow-up.",
+          "Compare any offers using verified total costs, funding terms, career resources, location, and personal priorities.",
+          "Ask international student offices and, where appropriate, a qualified attorney or official sources about immigration questions.",
+          "Make personal financing and deposit decisions; do not infer visa eligibility or sponsorship from program designation or historical employer filings."
+        ],
+        "human_checkpoint": true
+      }
+    ],
+    "claims": [
+      {
+        "text": "Advice: With no test started and no diagnostic results supplied, compare timed GMAT and GRE diagnostics before choosing one; all three shortlisted programs require GMAT or GRE according to the supplied test-policy evidence.",
+        "label": "advice",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-test-policy",
+          "ev-yale-som-mba-test-policy",
+          "ev-chicago-booth-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Verified fact: MIT Sloan requires GMAT (Focus or 10th Edition) or GRE and states no minimum score.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Verified fact: Yale SOM requires GMAT or GRE, valid within five years, with no test waivers and no minimum score.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Verified fact: Chicago Booth requires GMAT or GRE, self-reported and valid five years, and does not superscore.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-chicago-booth-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Verified fact: MIT Sloan's application requirements include transcripts, a video question, one professional recommendation, two additional professional references, an organizational chart, employment history, cover letter, and resume.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-application-requirements"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Verified fact: Yale SOM's application requirements include a bachelor's degree or international equivalent, essay, transcripts, two professional recommendations, resume, video questions, and Behavioral Assessment.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-application-requirements"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Verified fact: Chicago Booth's application requirements include an online application, short-answer responses, resume, supervisor recommendation, postsecondary transcripts, and application fee.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-chicago-booth-mba-application-requirements"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Unknown: Application deadlines were not collected in the supplied evidence; confirm current deadlines on official admissions pages.",
+        "label": "unknown",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": []
+      },
+      {
+        "text": "Verified fact: MIT Sloan's total cost of attendance is unknown in the supplied evidence; tuition alone does not establish affordability against the applicant's annual budget.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-tuition"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Advice: A program's STEM designation is not a guarantee of any immigration benefit. Confirm current rules with official sources and the school's international student office; seek qualified legal advice for personal immigration questions.",
+        "label": "advice",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-stem-designation",
+          "ev-yale-som-mba-stem-designation",
+          "ev-chicago-booth-mba-stem-designation"
+        ],
+        "based_on": []
+      }
+    ]
+  },
+  "skeptic": {
+    "findings": [
+      {
+        "target_agent": "pathway_matcher",
+        "target_ref": "mit-sloan-mba / career_fit: strong; advice to consider MIT Sloan first",
+        "category": "unsupported_claim",
+        "severity": "high",
+        "issue": "The strong career-fit rating and first-place recommendation rely on geographic alignment and a general inference that audit experience is relevant. The supplied evidence does not establish consulting recruiting access, Boston-area placement, or outcomes for applicants with this profile. Geographic proximity alone does not demonstrate fit for the stated strategy-consulting goal.",
+        "required_fix": "Do not present MIT as the strongest career fit without supporting recruiting or outcome evidence. Recast the ranking as a geography-based preference, clearly state that consulting access and outcomes are unknown, and avoid implying a program-specific career advantage."
+      },
+      {
+        "target_agent": "pathway_matcher",
+        "target_ref": "yale-som-mba / career_fit: moderate; broader Northeast alternative",
+        "category": "unsupported_claim",
+        "severity": "medium",
+        "issue": "The regional-fit rating is not supported by evidence establishing Boston recruiting access or the applicant's willingness to attend school outside Boston. The verified New Haven location alone does not establish a meaningful Boston career pathway.",
+        "required_fix": "Label this only as a location-based inference, state that Boston recruiting access is unknown, and confirm whether the applicant considers non-Boston locations acceptable."
+      },
+      {
+        "target_agent": "pathway_matcher",
+        "target_ref": "chicago-booth-mba / career_fit: moderate",
+        "category": "unsupported_claim",
+        "severity": "medium",
+        "issue": "The consulting-pivot fit rating is not supported by program-specific evidence of consulting recruiting access or outcomes. The dossier reports consulting industry/function shares, but these do not establish this applicant's likely access or outcome.",
+        "required_fix": "Separate verified aggregate employment information from individualized fit; state that applicant-specific recruiting access and outcomes are unknown and avoid an unsupported fit rating."
+      },
+      {
+        "target_agent": "pathway_matcher",
+        "target_ref": "MIT Sloan cost tradeoff",
+        "category": "affordability",
+        "severity": "medium",
+        "issue": "The matcher correctly says total cost of attendance is unknown, but tuition alone does not establish whether MIT fits the $140,000 annual budget. This is especially material because MIT is recommended first.",
+        "required_fix": "Keep MIT affordability explicitly unknown and require a verified full cost estimate and funding review before presenting it as financially feasible."
+      }
+    ],
+    "revision_request": {
+      "target_agent": "pathway_matcher",
+      "instructions": "Revise the recommendation so MIT is not presented as the strongest career fit or first choice on the basis of geography alone. Clearly distinguish location preference from verified consulting recruiting access and outcomes, which are unknown. Keep MIT affordability unknown until full cost of attendance is verified, and frame Yale and Booth career-fit assessments with the same evidence limits."
+    },
+    "overall_assessment": "The evidence analyst and strategy planner appropriately flag key unknowns, avoid direct comparisons of non-comparable employment metrics, and caution against treating STEM designation or historical LCA filings as guarantees. The material concern is the pathway matcher\u2019s unsupported career-fit ranking and first-place recommendation for a career goal where program-specific access and outcomes are not established."
+  }
+}

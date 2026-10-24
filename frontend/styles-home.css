@@ -247,3 +247,9 @@ html[data-theme="dark"] .hp2-sec.tint { background: linear-gradient(180deg, #0F1
 .h1b-note { margin: 10px 0 0; padding: 8px 10px; border-radius: 10px; background: var(--amber-50); color: var(--amber-700); line-height: 1.5; }
 
 .nav-auth[hidden] { display: none !important; }
+
+/* ---------- ranking (context only) ---------- */
+.rankline { margin-top: 8px; font-size: 12.5px; color: var(--text-2); }
+.rankline .rk { font-weight: 600; }
+.rankline .rk-note { font-size: 11.5px; color: var(--text-3); margin-top: 2px; }
+.rankline.full { font-size: 14px; } .rankline.full .rk-note { font-size: 13px; }

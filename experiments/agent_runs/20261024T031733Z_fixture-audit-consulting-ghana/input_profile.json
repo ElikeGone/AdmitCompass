@@ -1,0 +1,35 @@
+{
+  "profile_id": "fixture-audit-consulting-ghana",
+  "is_fictional": true,
+  "citizenship_country": "Ghana",
+  "needs_us_work_authorization": true,
+  "education": [
+    {
+      "degree_level": "Bachelor's",
+      "field": "Accounting",
+      "country": "Ghana",
+      "gpa_band": "first class honours"
+    }
+  ],
+  "years_work_experience": 5.0,
+  "current_industry": "Audit and assurance (Big Four firm, then public sector)",
+  "current_function": "Audit, senior associate",
+  "target_function": "Management consulting",
+  "target_industry": "Consulting",
+  "target_roles": [
+    "Management consultant at a strategy consulting firm in Boston"
+  ],
+  "preferred_us_states": [],
+  "long_term_location": "Boston",
+  "budget_usd": 140000.0,
+  "budget_period": "per_academic_year",
+  "max_total_budget_usd_per_year": 140000.0,
+  "funding_notes": "Savings plus loans; will apply for scholarships.",
+  "quantitative_background": "Accounting degree; audit analytics",
+  "test_status": "not_started",
+  "test_score": null,
+  "target_intake_year": 2027,
+  "weeks_until_first_application": 12,
+  "hours_per_week_available": 10,
+  "notes": "Fictional profile for testing: about 5 years in audit (Big Four and public sector); needs U.S. work authorization after the MBA."
+}

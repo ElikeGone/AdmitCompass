@@ -152,6 +152,11 @@ class Catalog:
                 core_coa = {"value": c.value, "period": c.period, "source_url": c.evidence[0]["source_url"]} if c.status == "verified" and c.evidence else None
                 core_tui = {"value": t.value, "period": t.period, "source_url": t.evidence[0]["source_url"]} if t.status == "verified" and t.evidence else None
             it["costs"] = supp.cost_summary(it["id"], core_coa, core_tui)
+            # Prestige context only: never used for matching, default sorting or any prompt.
+            rk = next((f for f in supp.verified(it["id"]) if f.field == "ranking"), None)
+            it["ranking"] = ({"rank": rk.value, "source": "Poets&Quants", "edition": rk.period, "source_url": rk.source_url,
+                              "note": RANKING_NOTE} if rk else {"rank": None, "source": "Poets&Quants", "note": RANKING_NOTE,
+                                                               "label": "not ranked in this source"})
             # an official cost of attendance validated from a supplementary official page fills a core gap (never a secondary value)
             if it["cost_of_attendance"] is None and it["costs"]["official_coa"]:
                 oc = it["costs"]["official_coa"]
@@ -209,6 +214,9 @@ class Catalog:
                 "discovered": sum(i["tier"] == "discovered" for i in self.items),
                 "duplicates_of_verified_skipped": len(self.merge.duplicates_of_verified),
                 "duplicates_within_discovery_skipped": len(self.merge.duplicates_within_discovery)}
+
+
+RANKING_NOTE = "Rankings reflect prestige; AdmitCompass ranks by career fit."
 
 
 def detailed_program_ids(store: EvidenceStore) -> list[str]:

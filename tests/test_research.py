@@ -198,3 +198,32 @@ def test_possible_in_state_estimates_are_not_headlined():
         c = catalog().get(pid)["costs"]
         assert c["estimate_annual"] is None
         assert any(l["label"] == "Estimated one-year cost" and ("in-state" in l["notes"] or "resident" in l["notes"]) for l in c["lines"])
+
+
+def test_ranking_is_verified_context_only():
+    from backend.app.agents import prompts
+    from backend.app.copilot.retrieval import SUPP_TOPICS
+    from backend.app.tools.catalog import RANKING_NOTE
+    ranks = [f for f in VERIFIED if f.field == "ranking"]
+    assert len(ranks) == 30 and all(f.publisher == "Poets&Quants" and f.source_type == "secondary" for f in ranks)
+    it = catalog().get("chicago-booth-mba")
+    assert it["ranking"]["rank"] == 12 and it["ranking"]["note"] == RANKING_NOTE == "Rankings reflect prestige; AdmitCompass ranks by career fit."
+    # never used for matching, retrieval or prompts
+    assert all("ranking" not in fields for fields in SUPP_TOPICS.values())
+    text = " ".join(v for v in vars(prompts).values() if isinstance(v, str)).lower()
+    assert "poets&quants" not in text and "ranking" not in text.replace("not a ranking", "")
+    # default order is by evidence level, not by rank
+    from fastapi.testclient import TestClient
+    from backend.app.main import app
+    items = TestClient(app).get("/api/programs").json()["items"]
+    order = [i["ranking"]["rank"] for i in items if i["ranking"]["rank"]]
+    assert order != sorted(order)
+
+
+def test_unranked_program_shows_label():
+    from backend.app.tools.catalog import Catalog
+    from backend.app.tools.evidence_store import default_store
+    c = Catalog(default_store(), None)
+    for it in c.items:
+        r = it["ranking"]
+        assert (r["rank"] is not None) or r["label"] == "not ranked in this source"
