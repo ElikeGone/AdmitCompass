@@ -24,7 +24,7 @@ Last inspected: 2026-10-23 (Step 9B: 28 programs with sourced facts, link audit,
 ## Non-graded but required submission items
 | Item | Location | Status |
 |---|---|---|
-| Public GitHub repo (or private + `zlisto`) | — | pending |
+| Public GitHub repo (or private + `zlisto`) | — | in progress (local git repo, first commit `8985bf2`; not pushed yet) |
 | README.md with step-by-step setup | `README.md` | done (grader README; history moved to `docs/CHANGELOG.md`; steps verified by the fresh-clone scripts) |
 | `.env.example`, no real values | `.env.example` | done (every setting the code reads, plus prices with source notes) |
 | Small test dataset + switch instructions | `data/` | done (`data/sponsorship/lca_filtered.csv` + rebuild instructions in `data/sponsorship/README.md`) |
@@ -70,4 +70,14 @@ Last inspected: 2026-10-23 (Step 9B: 28 programs with sourced facts, link audit,
   - **Agent diagram:** `deliverables/diagrams/agent_diagram.mmd`, `.svg` and `.png` (orchestrator, 4 agents, 6 tools incl. `get_sponsorship_evidence`, handoffs, the Skeptic's ≤1 revision, grounding checks, data stores). Rendered with Mermaid 11 via `scripts/render_diagram.ps1`.
   - **Competitor kit:** `experiments/competitor_comparison/` with the exact ChatGPT prompts for both fixtures, a scoring template, and a placeholder comparison of 6 tools. Only AdmitCompass cells are filled, each with its evidence; the owner runs ChatGPT.
   - **Evidence index:** `docs/evidence_index.md` maps every rubric row to its evidence files, screenshots and open gaps.
+  - **Tests:** 266 passed, 1 skipped.
+- 2026-10-24 **Follow-up (owner's 6 items): done.**
+  - **Ghana fixture:** budget raised to $140k/yr. The live web-UI run shortlisted MIT, Yale and Duke (Yale and Duke have verified employer lists), stopping at the 20-request cap during a Skeptic-requested revision.
+  - **U.S. fixture:** re-run live with correct sponsorship statuses. The earlier buggy run is kept unedited and documented in `experiments/safety/malfunction_sponsorship_status.md`.
+  - **Screenshots:** 8 new ones in `deliverables/screenshots/final/` (`ghana_0*`, `us_0*`).
+  - **Tokenomics:** now covers all 4 clean runs.
+  - **Run variability:** `docs/run_variability.md`.
+  - **Secret scan:** `scripts/secret_scan.py` reports clean; `.env`, the raw DOL files, the copilot usage log and the accounts DB are git-ignored.
+  - **Git:** repository initialized; first commit `8985bf2`; not pushed.
+  - **UI fixes:** the evidence page no longer calls sponsorship "unknown" where employer filings exist, and no "Sign in" hint appears while accounts are off.
   - **Tests:** 266 passed, 1 skipped.
