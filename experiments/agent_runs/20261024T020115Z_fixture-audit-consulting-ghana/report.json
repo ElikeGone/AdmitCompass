@@ -1,0 +1,561 @@
+{
+  "run_id": "da7484adcabe",
+  "profile_id": "fixture-audit-consulting-ghana",
+  "status": "completed",
+  "model": "gpt-6-luna",
+  "target_roles": [
+    {
+      "title": "Management consultant",
+      "rationale": "inference: This directly matches the applicant\u2019s stated target of management consulting at a strategy consulting firm in Boston."
+    },
+    {
+      "title": "Strategy consultant",
+      "rationale": "inference: A strategy-consulting role is a concrete version of the stated target; audit experience may provide relevant analytical and client-service foundations, but the applicant\u2019s consulting experience is unknown."
+    }
+  ],
+  "recommendations": [
+    {
+      "program_id": "mit-sloan-mba",
+      "program_name": "MIT Sloan School of Management MBA Program",
+      "career_fit": "moderate",
+      "fit_rationale": "verified_fact: The program is located in Cambridge, MA, near the applicant\u2019s Boston target location; evidence_ids: ev-mit-sloan-mba-location. inference: This location is relevant to a Boston-focused job search. verified_fact: Tuition is $91,892 for 2026-2027; evidence_ids: ev-mit-sloan-mba-tuition. verified_fact: The entire MBA is STEM-designated; evidence_ids: ev-mit-sloan-mba-stem-designation. unknown: Total cost of attendance is not available, so the $120,000 annual budget cannot be confirmed against total expenses. unknown: Program-specific consulting recruiting access is not established by the available evidence.",
+      "tradeoffs": [
+        "unknown: Total cost of attendance is not established; tuition alone does not confirm affordability within the annual budget.",
+        "verified_fact: GMAT or GRE is required, with no minimum score; evidence_ids: ev-mit-sloan-mba-test-policy. advice: With the first application 12 weeks away and testing not started, plan test preparation and scheduling promptly.",
+        "inference: Cambridge\u2019s location aligns with the Boston goal, but does not establish access to a particular employer or role.",
+        "verified_fact: STEM designation does not guarantee any immigration benefit; evidence_ids: ev-mit-sloan-mba-stem-designation."
+      ],
+      "affordability": "unknown",
+      "affordability_basis": "Cost of attendance is unknown; the $91,892 tuition figure alone cannot establish whether total annual expenses are within the $120,000 budget.",
+      "stem_status": "verified_designated",
+      "sponsorship_status": "unknown",
+      "facts": [
+        {
+          "fact": "location",
+          "status": "verified",
+          "value": {
+            "city": "Cambridge",
+            "state": "MA"
+          },
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-mit-sloan-mba-location"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": ""
+        },
+        {
+          "fact": "test_policy",
+          "status": "verified",
+          "value": "GMAT (Focus or 10th Edition) or GRE required; no minimum score; Executive Assessment not accepted; TOEFL/IELTS not accepted",
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-mit-sloan-mba-test-policy"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": ""
+        },
+        {
+          "fact": "tuition",
+          "status": "verified",
+          "value": 91892,
+          "period": "2026-2027",
+          "definition": null,
+          "evidence_ids": [
+            "ev-mit-sloan-mba-tuition"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": "Source period: 2026-2027 academic year. Includes mandatory $2,200 annual MBA program fee"
+        },
+        {
+          "fact": "cost_of_attendance",
+          "status": "unknown",
+          "value": null,
+          "period": null,
+          "definition": null,
+          "evidence_ids": [],
+          "verification_level": null,
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "stem_designation",
+          "status": "verified",
+          "value": {
+            "designated": true,
+            "scope": "Entire MIT Sloan MBA; eligible F-1 graduates may apply for 24-month STEM OPT extension",
+            "cip_code": null
+          },
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-mit-sloan-mba-stem-designation"
+          ],
+          "verification_level": "rechecked_first_hand",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": "STEM designation is a program classification; it does not by itself guarantee any immigration benefit (e.g., STEM OPT also depends on the student's status, employer E-Verify enrollment, and USCIS approval)."
+        },
+        {
+          "fact": "employment_rate",
+          "status": "verified",
+          "value": 91.0,
+          "period": "Class of 2025",
+          "definition": "Share of job seekers who had received an offer of employment by three months after graduation (94.1% as of publication)",
+          "evidence_ids": [
+            "ev-mit-sloan-mba-employment-rate"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "median_base_salary",
+          "status": "verified",
+          "value": 175000,
+          "period": "Class of 2025",
+          "definition": "Median full-time base salary; 89.7% of students accepting an offer provided usable salary data",
+          "evidence_ids": [
+            "ev-mit-sloan-mba-median-base-salary"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "international_employment",
+          "status": "unknown",
+          "value": null,
+          "period": null,
+          "definition": null,
+          "evidence_ids": [],
+          "verification_level": null,
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "sponsorship",
+          "status": "unknown",
+          "value": null,
+          "period": null,
+          "definition": null,
+          "evidence_ids": [],
+          "verification_level": null,
+          "freshness_warning": null,
+          "note": "No employer-specific visa sponsorship evidence on official program pages. Employer lists in employment reports are NOT evidence of sponsorship."
+        }
+      ],
+      "analyst_claims": [
+        {
+          "text": "verified_fact: The program is located in Cambridge, Massachusetts.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-mit-sloan-mba-location"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "verified_fact: Tuition is $91,892 for the 2026-2027 academic year and includes a mandatory $2,200 annual MBA program fee. Total cost of attendance is unknown, so affordability against the applicant's $120,000 per-academic-year budget cannot be determined from tuition alone.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-mit-sloan-mba-tuition"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "verified_fact: GMAT (Focus or 10th Edition) or GRE is required; there is no minimum score, the Executive Assessment is not accepted, and TOEFL/IELTS are not accepted. Application materials include transcripts, a video question, one professional recommendation, two additional professional references, an organizational chart, employment history, a cover letter, and a resume; an interview is by invitation.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-mit-sloan-mba-test-policy",
+            "ev-mit-sloan-mba-application-requirements"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "verified_fact: The entire MBA is STEM-designated. This classification does not guarantee an immigration benefit.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-mit-sloan-mba-stem-designation"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "verified_fact: For the Class of 2025, 91.0% of job seekers had received an offer by three months after graduation (94.1% as of publication). Median full-time base salary was 175000; 89.7% of students accepting an offer provided usable salary data. Consulting accounted for 32.3% of full-time accepted offers by industry (partial list).",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-mit-sloan-mba-employment-rate",
+            "ev-mit-sloan-mba-median-base-salary",
+            "ev-mit-sloan-mba-industry-breakdown"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "unknown: International employment information and program-specific employer sponsorship information are not verified. The Boston management-consulting sponsorship lookup returned no employer evidence; that does not establish whether any employer files for other roles or circumstances.",
+          "label": "unknown",
+          "evidence": [],
+          "evidence_ids": [],
+          "based_on": []
+        }
+      ],
+      "flags": [
+        "No employer-specific sponsorship evidence was returned for management consulting in Boston. Historical filing evidence, where available, would not guarantee sponsorship."
+      ]
+    }
+  ],
+  "excluded_programs": [
+    {
+      "program_id": "yale-som-mba",
+      "reason": "unknown: Available search results did not verify that this program meets the stated location, STEM, and budget filters; no program overview evidence was available here to assess career fit."
+    },
+    {
+      "program_id": "chicago-booth-mba",
+      "reason": "unknown: Available search results did not verify that this program meets the stated location, STEM, and budget filters; no program overview evidence was available here to assess career fit."
+    },
+    {
+      "program_id": "duke-fuqua-mba",
+      "reason": "unknown: Available search results did not verify that this program meets the stated location, STEM, and budget filters; no program overview evidence was available here to assess career fit."
+    },
+    {
+      "program_id": "dartmouth-tuck-mba",
+      "reason": "unknown: Available search results did not verify that this program meets the stated location, STEM, and budget filters; no program overview evidence was available here to assess career fit."
+    }
+  ],
+  "metric_comparability": [],
+  "strategy": {
+    "test_guidance": {
+      "recommendation": "either_gmat_or_gre",
+      "rationale": "MIT Sloan requires the GMAT (Focus or 10th Edition) or GRE and has no minimum score. Since testing has not started and there is no existing score, take a diagnostic for each accepted test, then choose one based on fit, preparation progress, and available test appointments. The Executive Assessment is not accepted.",
+      "evidence_ids": [
+        "ev-mit-sloan-mba-test-policy"
+      ]
+    },
+    "gaps": [
+      {
+        "gap": "No GMAT or GRE score; testing is required for the listed program.",
+        "severity": "high",
+        "action": "Complete GMAT and GRE diagnostics in Week 1, choose one test, follow a focused study plan, and schedule a test appointment promptly. Confirm current policy and test availability on the official program page."
+      },
+      {
+        "gap": "MIT Sloan's application materials require preparation, including transcripts, a video question, one professional recommendation, two additional professional references, an organizational chart, employment history, a cover letter, and a resume.",
+        "severity": "high",
+        "action": "Build a materials checklist, request records, identify a recommender and references, and draft employment history and application narratives early. Confirm current requirements on the official page."
+      },
+      {
+        "gap": "Total cost of attendance is unknown, so tuition alone cannot establish whether the program fits the applicant's annual budget.",
+        "severity": "high",
+        "action": "Obtain the current full cost-of-attendance estimate, model living and other expenses, and compare the total with savings, loans, and potential scholarships before committing."
+      },
+      {
+        "gap": "Program-specific international employment and employer sponsorship information is unknown.",
+        "severity": "high",
+        "action": "Research consulting recruiting outcomes and speak with the school's international student office about work-authorization questions; consult an immigration attorney for legal advice if needed."
+      },
+      {
+        "gap": "The application deadline for the intended intake has not been provided.",
+        "severity": "medium",
+        "action": "Confirm application deadlines and round choices on official program pages; do not rely on this plan for calendar deadlines."
+      }
+    ],
+    "weekly_plan": [
+      {
+        "week": 1,
+        "priority": "high",
+        "actions": [
+          "Take diagnostic tests for both GMAT and GRE and choose a test path.",
+          "Review official application requirements and confirm deadlines for the intended intake.",
+          "Create a school-specific checklist and collect transcript and employment records."
+        ]
+      },
+      {
+        "week": 2,
+        "priority": "high",
+        "actions": [
+          "Start focused preparation for the selected test.",
+          "Ask a prospective recommender whether they can provide a strong professional recommendation.",
+          "Map career goals from audit experience to management consulting and Boston-focused roles."
+        ]
+      },
+      {
+        "week": 3,
+        "priority": "high",
+        "actions": [
+          "Continue test preparation and review errors from practice work.",
+          "Identify two professional references and prepare concise context about your work and goals.",
+          "Draft a resume emphasizing impact, leadership, and analytical work."
+        ]
+      },
+      {
+        "week": 4,
+        "priority": "high",
+        "actions": [
+          "Take a timed practice test and adjust the study plan.",
+          "Request transcripts and assemble employment history and organizational chart information.",
+          "Research full cost of attendance and potential financing options."
+        ]
+      },
+      {
+        "week": 5,
+        "priority": "high",
+        "actions": [
+          "Continue test preparation with emphasis on the weakest sections.",
+          "Draft application essays or cover letter responses based on the official prompt.",
+          "Discuss recommendation logistics and provide the recommender with a resume and goals summary."
+        ]
+      },
+      {
+        "week": 6,
+        "priority": "high",
+        "actions": [
+          "Take another timed practice test and assess readiness.",
+          "Refine resume and employment history for clarity and measurable impact.",
+          "Contact the international student office with questions about international student support and work authorization."
+        ]
+      },
+      {
+        "week": 7,
+        "priority": "high",
+        "actions": [
+          "Sit for the selected test if practice performance and appointment timing support readiness; otherwise schedule the next feasible sitting.",
+          "Revise application narratives and seek feedback from a trusted reviewer.",
+          "Confirm recommenders and references understand the requested materials and process."
+        ]
+      },
+      {
+        "week": 8,
+        "priority": "high",
+        "actions": [
+          "Review test results and decide whether further preparation or a retake is appropriate.",
+          "Complete a draft of the cover letter and application responses.",
+          "Check transcript, employment history, and organizational chart details for consistency."
+        ]
+      },
+      {
+        "week": 9,
+        "priority": "high",
+        "actions": [
+          "Complete remaining test preparation or retake planning as needed.",
+          "Prepare for the required video question format using official guidance.",
+          "Revisit affordability using verified full cost information and realistic funding sources."
+        ]
+      },
+      {
+        "week": 10,
+        "priority": "high",
+        "actions": [
+          "Finalize application materials and proofread for accuracy and consistency.",
+          "Check that recommendation and reference requests are progressing.",
+          "Confirm official deadline, submission requirements, and any test-score reporting steps."
+        ]
+      },
+      {
+        "week": 11,
+        "priority": "high",
+        "actions": [
+          "Complete a final application review against the official checklist.",
+          "Resolve missing documents or recommender issues.",
+          "Make a personal decision about whether this school belongs in the final application set."
+        ]
+      },
+      {
+        "week": 12,
+        "priority": "high",
+        "actions": [
+          "Submit only when the application is complete and timing is consistent with the official deadline.",
+          "Save copies of submitted materials and monitor application communications.",
+          "Prepare for a possible interview and continue researching career fit and financing."
+        ]
+      }
+    ],
+    "roadmap": [
+      {
+        "phase": "Test choice and application foundation",
+        "timing": "Weeks 1-2",
+        "milestones": [
+          "Compare GMAT and GRE diagnostics and choose a preparation path.",
+          "Verify current official requirements and deadlines.",
+          "Start collecting academic and employment records."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Preparation and application development",
+        "timing": "Weeks 3-6",
+        "milestones": [
+          "Build test readiness through regular practice.",
+          "Develop resume, career goals, and application narratives.",
+          "Engage recommender and references and investigate full program costs."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Testing and application completion",
+        "timing": "Weeks 7-12",
+        "milestones": [
+          "Complete the selected test or determine whether a retake is needed.",
+          "Complete and review application materials against official requirements.",
+          "Confirm deadlines on official pages and make a personal decision about applying."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Admissions, financing, and enrollment decision",
+        "timing": "After application submission through enrollment decision",
+        "milestones": [
+          "Respond to interview or admissions requests and evaluate any offer received.",
+          "Compare verified total costs with personal financing, loans, and scholarship possibilities.",
+          "Ask the school's international student office or an immigration attorney about immigration questions; make any deposit and enrollment decision personally."
+        ],
+        "human_checkpoint": true
+      }
+    ],
+    "claims": [
+      {
+        "text": "MIT Sloan requires the GMAT (Focus or 10th Edition) or GRE, has no minimum score, and does not accept the Executive Assessment.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "The applicant has not started testing, so there is no existing score to use; a diagnostic-based choice between the accepted tests is a practical next step.",
+        "label": "advice",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Application materials include transcripts, a video question, one professional recommendation, two additional professional references, an organizational chart, employment history, a cover letter, and a resume; an interview is by invitation.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-application-requirements"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "The program is located in Cambridge, Massachusetts, and the supplied shortlist describes this as near the applicant's Boston target location; location alone does not establish access to a particular employer or role.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-location"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "The entire MBA is STEM-designated, but this does not guarantee an immigration benefit.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-stem-designation"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "International employment and program-specific employer sponsorship information are unknown in the available dossier; immigration eligibility or sponsorship outcomes cannot be inferred from STEM designation.",
+        "label": "unknown",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": []
+      },
+      {
+        "text": "Confirm application deadlines on official program pages because no deadline is supplied here.",
+        "label": "advice",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": []
+      }
+    ]
+  },
+  "skeptic": {
+    "findings": [],
+    "revision_request": null,
+    "overall_assessment": "No material evidence, affordability, comparability, or immigration overstatement identified. The work appropriately treats total cost of attendance, consulting-specific access, international employment, and sponsorship as unknown, and presents the shortlist and next steps cautiously."
+  },
+  "revision_performed": false,
+  "revision_target": null,
+  "grounding_violations": [],
+  "usage_by_agent": [
+    {
+      "agent": "pathway_matcher",
+      "calls": 5,
+      "input_tokens": 12972,
+      "cached_input_tokens": 9321,
+      "output_tokens": 1380,
+      "reasoning_tokens": 282,
+      "elapsed_seconds": 18.498,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "evidence_analyst",
+      "calls": 5,
+      "input_tokens": 21809,
+      "cached_input_tokens": 16511,
+      "output_tokens": 1340,
+      "reasoning_tokens": 168,
+      "elapsed_seconds": 45.255,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "strategy_planner",
+      "calls": 2,
+      "input_tokens": 8432,
+      "cached_input_tokens": 0,
+      "output_tokens": 4531,
+      "reasoning_tokens": 218,
+      "elapsed_seconds": 25.587,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "skeptic",
+      "calls": 1,
+      "input_tokens": 5265,
+      "cached_input_tokens": 0,
+      "output_tokens": 348,
+      "reasoning_tokens": 279,
+      "elapsed_seconds": 7.315,
+      "estimated_cost_usd": null
+    }
+  ],
+  "totals": {
+    "input_tokens": 48478,
+    "cached_input_tokens": 25832,
+    "output_tokens": 7599,
+    "reasoning_tokens_within_output": 947,
+    "reasoning_effort": "low",
+    "model_requests": 13,
+    "tool_calls": 8,
+    "model_seconds": 96.655,
+    "wall_seconds": 96.768,
+    "estimated_cost_usd": null,
+    "cost_basis": "unknown: no documented gpt-6-luna price configured",
+    "budget": {
+      "requests": 13,
+      "max_requests": 20,
+      "total_tokens": 56077,
+      "max_total_tokens": 200000,
+      "tool_calls": 8,
+      "max_tool_calls": 40,
+      "max_seconds": 300.0
+    }
+  },
+  "disclaimers": [
+    "Decision support only \u2014 not admissions, legal, or immigration advice.",
+    "No admission probabilities are estimated. Sponsorship is never inferred from employer lists.",
+    "STEM designation does not by itself guarantee any immigration benefit; confirm with the school's DSO and a qualified attorney.",
+    "Confirm deadlines, costs, and requirements on official school pages before acting."
+  ],
+  "error": null
+}

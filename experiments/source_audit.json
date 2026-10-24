@@ -1,0 +1,2010 @@
+{
+  "generated_by": "scripts/build_dataset.py",
+  "collection_date": "2026-10-23",
+  "method": "Research subagents (Claude Code) fetched official university pages with WebFetch/WebSearch and recorded URL, title and excerpt per field (6 curated programs in Step 4; enrichment batches in Step 9B). Some excerpts are fetch-tool paraphrases (flagged). No LLM inference was used to fill missing values. Spot checks list the facts independently re-fetched by the main session.",
+  "spot_checks": [
+    {
+      "program_id": "yale-som-mba",
+      "fields": [
+        "tuition",
+        "cost_of_attendance"
+      ],
+      "url": "https://som.yale.edu/programs/mba/affording-your-mba/cost-information",
+      "result": "match ($90,900; $128,976; 2026-27)"
+    },
+    {
+      "program_id": "chicago-booth-mba",
+      "fields": [
+        "tuition",
+        "cost_of_attendance"
+      ],
+      "url": "https://www.chicagobooth.edu/mba/full-time/admissions/cost",
+      "result": "match ($89,976; $132,449; 2026-27)"
+    },
+    {
+      "program_id": "mit-sloan-mba",
+      "fields": [
+        "stem_designation"
+      ],
+      "url": "https://mitsloan.mit.edu/mba/explore-program",
+      "result": "match ('The MIT Sloan MBA is a STEM-designated program.')"
+    },
+    {
+      "program_id": "stanford-gsb-mba",
+      "fields": [
+        "tuition",
+        "cost_of_attendance"
+      ],
+      "url": "https://www.gsb.stanford.edu/programs/mba/tuition-financial-aid/cost-attendance",
+      "result": "match ($89,187; $140,940; First-Year MBA 2026-2027)"
+    },
+    {
+      "program_id": "dartmouth-tuck-mba",
+      "fields": [
+        "median_base_salary",
+        "employment_rate"
+      ],
+      "url": "https://tuck.dartmouth.edu/mba/career-services/employment-statistics",
+      "result": "match ('The median base salary for the class of 2025 is $175,000'; '90% ... received an offer and 87% accepted')"
+    },
+    {
+      "program_id": "cmu-tepper-mba",
+      "fields": [
+        "tuition",
+        "cost_of_attendance"
+      ],
+      "url": "https://www.cmu.edu/sfs/tuition/graduate/tepper/full-accel-mba.html",
+      "result": "match ($84,186; $120,798; 2026-2027 standard single budget)"
+    },
+    {
+      "program_id": "cornell-johnson-mba",
+      "fields": [
+        "stem_designation"
+      ],
+      "url": "https://business.cornell.edu/admissions/graduate/full-time-mba/",
+      "result": "mismatch: curriculum described as STEM designated; no degree designation stated -> downgraded"
+    }
+  ],
+  "programs": [
+    {
+      "program_id": "yale-som-mba",
+      "tier": "curated",
+      "batch": null,
+      "urls_checked": [
+        {
+          "url": "https://som.yale.edu/programs/mba/admissions/how-to-apply",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://som.yale.edu/programs/mba/admissions/tuition-and-financial-aid/cost-of-attendance",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://som.yale.edu/careers/employment-data",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://som.yale.edu/programs/mba/affording-your-mba/cost-information",
+          "accessible": true,
+          "note": "tuition, COA 2026-27"
+        },
+        {
+          "url": "https://som.yale.edu/sites/default/files/2025-12/Yale%20SOM%20Employment%20Data%202025-26.pdf",
+          "accessible": false,
+          "note": "PDF fetched but text not extractable"
+        },
+        {
+          "url": "https://som.yale.edu/programs/mba/admissions/application-information/faq",
+          "accessible": true,
+          "note": "requirements, test policy, length, location"
+        },
+        {
+          "url": "https://som.yale.edu/programs/mba/career-paths/employment-report-2025-26",
+          "accessible": true,
+          "note": "industry/function percentages only in chart images; not recorded"
+        },
+        {
+          "url": "https://som.yale.edu/story/2024/yale-som-mba-program-designated-stem-eligible",
+          "accessible": true,
+          "note": "STEM designation; no CIP code"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://som.yale.edu/programs/mba/admissions/how-to-apply",
+        "https://som.yale.edu/programs/mba/admissions/tuition-and-financial-aid/cost-of-attendance",
+        "https://som.yale.edu/careers/employment-data",
+        "https://som.yale.edu/sites/default/files/2025-12/Yale%20SOM%20Employment%20Data%202025-26.pdf"
+      ],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation",
+        "employment_rate",
+        "median_base_salary",
+        "international_employment"
+      ],
+      "unknown_checked_fields": [
+        "industry_breakdown",
+        "function_breakdown",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "application_deadlines"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "tuition"
+      ]
+    },
+    {
+      "program_id": "hbs-mba",
+      "tier": "curated",
+      "batch": null,
+      "urls_checked": [
+        {
+          "url": "https://www.hbs.edu/mba/admissions/application-process",
+          "accessible": true,
+          "note": "Requirements list; content truncated"
+        },
+        {
+          "url": "https://www.hbs.edu/mba/financial-aid/cost-of-attendance",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.hbs.edu/mba/financial-aid/tuition-assistance/cost-of-attendance",
+          "accessible": true,
+          "note": "2026-27 figures"
+        },
+        {
+          "url": "https://www.hbs.edu/recruiting/data",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx",
+          "accessible": false,
+          "note": "Fetched but empty content (JS-rendered). Search snippet suggested Class of 2025 median base $184,500 but not verified by fetch."
+        },
+        {
+          "url": "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx?indsort=hl",
+          "accessible": false,
+          "note": "Empty content"
+        },
+        {
+          "url": "https://www.hbs.edu/recruiting/employment-data/function/Pages/details.aspx",
+          "accessible": false,
+          "note": "403"
+        },
+        {
+          "url": "https://www.hbs.edu/recruiting/employment-data/industry/Pages/details.aspx",
+          "accessible": false,
+          "note": "403"
+        },
+        {
+          "url": "https://www.hbs.edu/mba/admissions/application-process/frequently-asked-questions",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.hbs.edu/news/releases/Pages/stem-mba.aspx",
+          "accessible": true,
+          "note": "STEM source"
+        },
+        {
+          "url": "https://www.hbs.edu/mba/admissions/application-process/international-applicants",
+          "accessible": true,
+          "note": "English tests; says STEM track qualifies for 36 months total work authorization; no sponsorship/outcome data"
+        },
+        {
+          "url": "https://www.hbs.edu/mba/handbook/academic-information-and-policies/degree-requirements",
+          "accessible": true,
+          "note": "States 'The HBS MBA is a STEM-designated degree program.' Only 'Two Years' nav tagline for duration, not recorded as months"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.hbs.edu/mba/financial-aid/cost-of-attendance",
+        "https://www.hbs.edu/recruiting/data",
+        "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx",
+        "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx?indsort=hl",
+        "https://www.hbs.edu/recruiting/employment-data/function/Pages/details.aspx",
+        "https://www.hbs.edu/recruiting/employment-data/industry/Pages/details.aspx",
+        "https://www.hbs.edu/mba/admissions/application-process/frequently-asked-questions"
+      ],
+      "verified_fields": [
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation"
+      ],
+      "unknown_checked_fields": [
+        "location",
+        "duration_months",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "application_deadlines"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "test_policy"
+      ]
+    },
+    {
+      "program_id": "mit-sloan-mba",
+      "tier": "curated",
+      "batch": null,
+      "urls_checked": [
+        {
+          "url": "https://mitsloan.mit.edu/mba/admissions/cost-attendance",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://mitsloan.mit.edu/cdo/employment-reports",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://mitsloan.mit.edu/mba/admissions/application-requirements",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://mitsloan.mit.edu/mba/admissions/financing-your-education",
+          "accessible": true,
+          "note": "Tuition; says full-time two-year program; no COA total, refers to MIT SFS"
+        },
+        {
+          "url": "https://mitsloan.mit.edu/sites/default/files/2025-12/2025-2026-MBA-Employment-Report.pdf",
+          "accessible": true,
+          "note": "Class of 2025; class profile 40% international but no international employment outcomes"
+        },
+        {
+          "url": "https://sfs.mit.edu/graduate-students/cost-of-attendance/",
+          "accessible": true,
+          "note": "Only general MIT graduate 9-month budget ($109,017 total, 2026-2027, with general tuition $66,720); not Sloan MBA-specific, so COA left null"
+        },
+        {
+          "url": "https://mitsloan.mit.edu/mba/admissions/frequently-asked-questions",
+          "accessible": true,
+          "note": "Test policy, application components, location"
+        },
+        {
+          "url": "https://mitsloan.mit.edu/mba/explore-program",
+          "accessible": true,
+          "note": "STEM designation; 'full-time, two-year' (months not stated)"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://mitsloan.mit.edu/mba/admissions/cost-attendance",
+        "https://mitsloan.mit.edu/cdo/employment-reports",
+        "https://mitsloan.mit.edu/mba/admissions/application-requirements"
+      ],
+      "verified_fields": [
+        "location",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "stem_designation",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown"
+      ],
+      "unknown_checked_fields": [
+        "duration_months",
+        "cost_of_attendance",
+        "function_breakdown",
+        "international_employment",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "application_deadlines"
+      ],
+      "downgraded_to_unknown": {
+        "function_breakdown": "Report narrative and report table disagree (38.5% vs 38.9% for Consulting/Strategic Planning)."
+      },
+      "paraphrased_excerpts": [
+        "application_requirements"
+      ]
+    },
+    {
+      "program_id": "chicago-booth-mba",
+      "tier": "curated",
+      "batch": null,
+      "urls_checked": [
+        {
+          "url": "https://www.chicagobooth.edu/programs/full-time-mba/admissions",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.chicagobooth.edu/programs/full-time-mba/admissions/tuition-and-financial-aid",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.chicagobooth.edu/careers/employment-report",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.chicagobooth.edu/mba/full-time/career-impact/employment-report",
+          "accessible": true,
+          "note": "Summary only: 89% offers within 3 months, 37% consulting (2025 report)"
+        },
+        {
+          "url": "https://www.chicagobooth.edu/mba/full-time/admissions/cost",
+          "accessible": true,
+          "note": "2026-27 costs"
+        },
+        {
+          "url": "https://www.chicagobooth.edu/mba/full-time/faq",
+          "accessible": true,
+          "note": "Test policy, location; no program length in months"
+        },
+        {
+          "url": "https://www.chicagobooth.edu/why-booth/stories/mba-employment-report-2025",
+          "accessible": true,
+          "note": "Class of 2025 outcomes"
+        },
+        {
+          "url": "https://www.chicagobooth.edu/mba/full-time/admissions/international-students",
+          "accessible": true,
+          "note": "STEM OPT statement, no CIP code"
+        },
+        {
+          "url": "https://www.chicagobooth.edu/mba/full-time/admissions/how-to-apply",
+          "accessible": true,
+          "note": "Checklist; title inferred from URL"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.chicagobooth.edu/programs/full-time-mba/admissions",
+        "https://www.chicagobooth.edu/programs/full-time-mba/admissions/tuition-and-financial-aid",
+        "https://www.chicagobooth.edu/careers/employment-report"
+      ],
+      "verified_fields": [
+        "location",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment"
+      ],
+      "unknown_checked_fields": [
+        "duration_months",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "application_deadlines"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "employment_rate"
+      ]
+    },
+    {
+      "program_id": "duke-fuqua-mba",
+      "tier": "curated",
+      "batch": null,
+      "urls_checked": [
+        {
+          "url": "https://www.fuqua.duke.edu/programs/daytime-mba/admissions/application-requirements",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.fuqua.duke.edu/programs/daytime-mba/tuition-financial-aid",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.fuqua.duke.edu/llms.txt",
+          "accessible": true,
+          "note": "Used only to find URLs"
+        },
+        {
+          "url": "https://www.fuqua.duke.edu/programs/daytime-mba/application-instructions",
+          "accessible": true,
+          "note": "Requirements, test policy"
+        },
+        {
+          "url": "https://www.fuqua.duke.edu/programs/daytime-mba",
+          "accessible": true,
+          "note": "STEM, address; no total duration stated"
+        },
+        {
+          "url": "https://www.fuqua.duke.edu/programs/daytime-mba/tuition-costs",
+          "accessible": true,
+          "note": "2026-27 tuition and COA"
+        },
+        {
+          "url": "https://www.fuqua.duke.edu/sites/default/files/media/programs/daytime/duke-mba-employment-2025.pdf",
+          "accessible": true,
+          "note": "Text extracted locally with pdftotext; no international-student or sponsorship statements"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.fuqua.duke.edu/programs/daytime-mba/admissions/application-requirements",
+        "https://www.fuqua.duke.edu/programs/daytime-mba/tuition-financial-aid"
+      ],
+      "verified_fields": [
+        "location",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation",
+        "employment_rate",
+        "median_base_salary"
+      ],
+      "unknown_checked_fields": [
+        "duration_months",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "application_deadlines"
+      ],
+      "downgraded_to_unknown": {
+        "industry_breakdown": "PDF text extraction misaligned labels and percentages; values were re-matched by hand.",
+        "function_breakdown": "PDF text extraction misaligned labels and percentages; values were re-matched by hand."
+      },
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "cost_of_attendance"
+      ]
+    },
+    {
+      "program_id": "rice-jones-mba",
+      "tier": "curated",
+      "batch": null,
+      "urls_checked": [
+        {
+          "url": "https://bursar.rice.edu/tuition_fee_rates/graduate-programs/business/business-full-time-mba",
+          "accessible": true,
+          "note": "AY2026-27 tuition and fees; no cost-of-attendance budget"
+        },
+        {
+          "url": "https://business.rice.edu/rice-mba/full-time-mba/full-time-mba-frequently-asked-questions",
+          "accessible": true,
+          "note": "22 months, test policy, requirements; no STEM text"
+        },
+        {
+          "url": "https://business.rice.edu/mba-admissions/frequently-asked-questions",
+          "accessible": true,
+          "note": "STEM statement; no CIP code; no sponsorship"
+        },
+        {
+          "url": "https://cdo.business.rice.edu/reports/",
+          "accessible": true,
+          "note": "Official index linking 2025/2024 reports hosted on cdn.uconnectlabs.com"
+        },
+        {
+          "url": "https://cdn.uconnectlabs.com/wp-content/uploads/sites/99/2026/02/2025-FTMBA-Employment-Outcomes-Data.pdf",
+          "accessible": true,
+          "note": "Non-rice.edu host but linked from official CDO page. Total 3-month acceptance rate not stated as a single figure (54.9% by graduation + 16.4% by 3 months), so employment_rate left null. Function breakdown left null: extraction had 8 function labels vs 6 percents, mapping ambiguous."
+        }
+      ],
+      "inaccessible_urls": [],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "stem_designation",
+        "median_base_salary"
+      ],
+      "unknown_checked_fields": [
+        "cost_of_attendance",
+        "employment_rate",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "application_deadlines"
+      ],
+      "downgraded_to_unknown": {
+        "industry_breakdown": "PDF text extraction scrambled the table; row-to-percent mapping uncertain.",
+        "international_employment": "PDF text extraction scrambled the table; column mapping uncertain."
+      },
+      "paraphrased_excerpts": [
+        "location",
+        "application_requirements",
+        "tuition",
+        "median_base_salary"
+      ]
+    },
+    {
+      "program_id": "stanford-gsb-mba",
+      "tier": "enriched",
+      "batch": "batchA.json",
+      "urls_checked": [
+        {
+          "url": "https://www.gsb.stanford.edu/programs/mba/admission/class-profile",
+          "accessible": true,
+          "note": "location only"
+        },
+        {
+          "url": "https://www.gsb.stanford.edu/programs/mba/admission/deadlines",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.gsb.stanford.edu/programs/mba/financial-aid/cost-attendance",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.gsb.stanford.edu/programs/mba/admission/gmat-gre",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.gsb.stanford.edu/experience/about/outcomes/employment-reports",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.gsb.stanford.edu/programs/mba/career-impact/employment-outcomes",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.gsb.stanford.edu/organizations/recruit/strategies-resources/think-globally",
+          "accessible": true,
+          "note": "no STEM statement"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.gsb.stanford.edu/programs/mba/admission/gmat-gre",
+        "https://www.gsb.stanford.edu/experience/about/outcomes/employment-reports"
+      ],
+      "verified_fields": [
+        "location",
+        "tuition",
+        "cost_of_attendance",
+        "employment_rate",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "test_policy",
+        "international_employment",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "duration_months",
+        "application_requirements",
+        "stem_designation",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "location",
+        "tuition",
+        "cost_of_attendance",
+        "employment_rate",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "wharton-mba",
+      "tier": "enriched",
+      "batch": "batchA.json",
+      "urls_checked": [
+        {
+          "url": "https://mba.wharton.upenn.edu/tuition-financial-aid/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://mba.wharton.upenn.edu/admissions/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.wharton.upenn.edu/mba-employment-report/",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://statistics.mbacareers.wharton.upenn.edu/full-time/",
+          "accessible": true,
+          "note": "placeholders for headline stats"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.wharton.upenn.edu/mba-employment-report/"
+      ],
+      "verified_fields": [
+        "tuition",
+        "cost_of_attendance",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "employment_rate",
+        "median_base_salary",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "stem_designation",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment"
+      ],
+      "downgraded_to_unknown": {
+        "median_base_salary": "Page does not state that the median is base salary."
+      },
+      "paraphrased_excerpts": [
+        "tuition",
+        "cost_of_attendance",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "kellogg-mba",
+      "tier": "enriched",
+      "batch": "batchA.json",
+      "urls_checked": [
+        {
+          "url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/admissions/deadlines.aspx",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.kellogg.northwestern.edu/admissions/financial-aid/ft-fin-aid/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/tuition-financial-aid/tuition-and-fees.aspx",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/career-services/career-outcomes/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.kellogg.northwestern.edu/companies-recruiters/hire-kellogg-mbas/hiring-international-students/",
+          "accessible": true,
+          "note": "STEM/CIP"
+        },
+        {
+          "url": "https://kellogg.northwestern.edu/admissions/ft-admissions/ft-international-candidates/",
+          "accessible": true,
+          "note": "STEM statement"
+        },
+        {
+          "url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/two-year-mba-program/",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.kellogg.northwestern.edu/programs/full-time-mba/tuition-financial-aid/tuition-and-fees.aspx"
+      ],
+      "verified_fields": [
+        "location",
+        "tuition",
+        "stem_designation",
+        "employment_rate",
+        "industry_breakdown",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "test_policy",
+        "cost_of_attendance",
+        "median_base_salary",
+        "function_breakdown",
+        "international_employment",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "duration_months",
+        "application_requirements"
+      ],
+      "downgraded_to_unknown": {
+        "cost_of_attendance": "Page labels the figure 'estimated first-year expenses'; not clearly the cost-of-attendance budget."
+      },
+      "paraphrased_excerpts": [
+        "tuition",
+        "stem_designation",
+        "employment_rate",
+        "industry_breakdown",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "berkeley-haas-mba",
+      "tier": "enriched",
+      "batch": "batchA.json",
+      "urls_checked": [
+        {
+          "url": "https://haas.berkeley.edu/full-time-mba/admissions/",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://haas.berkeley.edu/full-time-mba/admissions/deadlines/",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://haas.berkeley.edu/full-time-mba/tuition-financial-aid/",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://haas.berkeley.edu/financial-aid/full-time-mba/cost/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://mba.haas.berkeley.edu/careers/employment-report",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://newsroom.haas.berkeley.edu/berkeley-haas-receives-stem-designation-in-all-three-mba-programs/",
+          "accessible": true,
+          "note": "Haas newsroom subdomain of berkeley.edu"
+        },
+        {
+          "url": "https://mba.haas.berkeley.edu/admissions/faq",
+          "accessible": true,
+          "note": ""
+        }
+      ],
+      "inaccessible_urls": [
+        "https://haas.berkeley.edu/full-time-mba/admissions/",
+        "https://haas.berkeley.edu/full-time-mba/admissions/deadlines/",
+        "https://haas.berkeley.edu/full-time-mba/tuition-financial-aid/"
+      ],
+      "verified_fields": [
+        "application_requirements",
+        "test_policy",
+        "stem_designation",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown"
+      ],
+      "unknown_checked_fields": [
+        "tuition",
+        "cost_of_attendance",
+        "sponsorship",
+        "application_deadlines"
+      ],
+      "not_checked_fields": [
+        "location",
+        "duration_months",
+        "international_employment"
+      ],
+      "downgraded_to_unknown": {
+        "cost_of_attendance": "California-resident budget; does not apply to international (non-resident) applicants."
+      },
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "test_policy",
+        "stem_designation",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown"
+      ]
+    },
+    {
+      "program_id": "dartmouth-tuck-mba",
+      "tier": "enriched",
+      "batch": "batchA.json",
+      "urls_checked": [
+        {
+          "url": "https://www.tuck.dartmouth.edu/admissions/apply",
+          "accessible": false,
+          "note": "301 redirect"
+        },
+        {
+          "url": "http://www.tuck.dartmouth.edu/admissions/applying-to-tuck",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.tuck.dartmouth.edu/mba/tuition-financial-aid",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://tuck.dartmouth.edu/admissions/finance-your-degree/cost-attendance",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://tuck.dartmouth.edu/mba/career-services/employment-statistics",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://tuck.dartmouth.edu/mba/life-at-tuck/international-students",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://tuck.dartmouth.edu/mba",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.tuck.dartmouth.edu/admissions/apply",
+        "https://www.tuck.dartmouth.edu/mba/tuition-financial-aid"
+      ],
+      "verified_fields": [
+        "location",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "duration_months"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "michigan-ross-mba",
+      "tier": "enriched",
+      "batch": "batchB.json",
+      "urls_checked": [
+        {
+          "url": "https://michiganross.umich.edu/graduate/full-time-mba/admissions/tuition-financial-aid",
+          "accessible": false,
+          "note": "HTTP 403"
+        },
+        {
+          "url": "https://rossweb.bus.umich.edu/financial-aid/program-overview/mba/",
+          "accessible": true,
+          "note": "tuition and COA 2026-2027"
+        },
+        {
+          "url": "https://michiganross.umich.edu/graduate/full-time-mba/careers/employment-data",
+          "accessible": false,
+          "note": "HTTP 403"
+        },
+        {
+          "url": "https://michiganross.umich.edu/graduate/full-time-mba/admissions/application-requirements",
+          "accessible": false,
+          "note": "HTTP 403"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://michiganross.umich.edu/graduate/full-time-mba/admissions/tuition-financial-aid",
+        "https://michiganross.umich.edu/graduate/full-time-mba/careers/employment-data",
+        "https://michiganross.umich.edu/graduate/full-time-mba/admissions/application-requirements"
+      ],
+      "verified_fields": [
+        "tuition",
+        "cost_of_attendance"
+      ],
+      "unknown_checked_fields": [],
+      "not_checked_fields": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "stem_designation",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment",
+        "sponsorship",
+        "application_deadlines"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "tuition",
+        "cost_of_attendance"
+      ]
+    },
+    {
+      "program_id": "uva-darden-mba",
+      "tier": "enriched",
+      "batch": "batchB.json",
+      "urls_checked": [
+        {
+          "url": "https://www.darden.virginia.edu/mba/tuition-financial-aid/cost-of-attendance",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.darden.virginia.edu/mba/admissions/apply/deadlines",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://news.darden.virginia.edu/2025/11/20/2025-26-employment-results-highlight-remarkable-job-market-success-of-darden-graduates/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.darden.virginia.edu/sites/default/files/2025-11/UVA%20Darden%20Class%20of%202025%20FT%20Employment%20Outcome%20Data_web.pdf",
+          "accessible": true,
+          "note": "fetched but binary PDF not parseable by the tool"
+        },
+        {
+          "url": "https://www.darden.virginia.edu/mba/admissions/tuition-financial-aid",
+          "accessible": false,
+          "note": "HTTP 404 (guessed URL)"
+        },
+        {
+          "url": "https://www.darden.virginia.edu/mba",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.darden.virginia.edu/mba/admissions/tuition-financial-aid"
+      ],
+      "verified_fields": [
+        "location",
+        "tuition",
+        "cost_of_attendance",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "stem_designation",
+        "international_employment"
+      ],
+      "not_checked_fields": [
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "sponsorship"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "tuition",
+        "cost_of_attendance",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "cornell-johnson-mba",
+      "tier": "enriched",
+      "batch": "batchB.json",
+      "urls_checked": [
+        {
+          "url": "https://business.cornell.edu/admissions/graduate/full-time-mba/",
+          "accessible": true,
+          "note": "redirected from johnson.cornell.edu"
+        },
+        {
+          "url": "https://business.cornell.edu/admissions/graduate/mba/career-outcomes/",
+          "accessible": true,
+          "note": "redirected from johnson.cornell.edu employment-data"
+        }
+      ],
+      "inaccessible_urls": [],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "test_policy",
+        "tuition",
+        "stem_designation",
+        "international_employment"
+      ],
+      "not_checked_fields": [
+        "application_requirements",
+        "cost_of_attendance",
+        "sponsorship"
+      ],
+      "downgraded_to_unknown": {
+        "stem_designation": "Spot check (2026-10-23): the page calls the curriculum 'STEM designated' but makes no statement that the MBA degree is STEM-designated."
+      },
+      "paraphrased_excerpts": [
+        "location",
+        "duration_months",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "nyu-stern-mba",
+      "tier": "enriched",
+      "batch": "batchB.json",
+      "urls_checked": [
+        {
+          "url": "https://www.stern.nyu.edu/portal-partners/financial-aid/cost-attendance/full-time/mba1",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.stern.nyu.edu/programs-admissions/full-time-mba/admissions",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.stern.nyu.edu/experience-stern/news/nyu-stern-s-two-year-full-time-mba-program-receives-stem-designation",
+          "accessible": true,
+          "note": "dated ~2020"
+        },
+        {
+          "url": "https://www.stern.nyu.edu/business-partnerships/employment-reports",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.stern.nyu.edu/programs-admissions/full-time-mba/tuition-financial-aid",
+          "accessible": false,
+          "note": "HTTP 404 (guessed URL)"
+        },
+        {
+          "url": "https://www.stern.nyu.edu/programs-admissions/full-time-mba",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.stern.nyu.edu/programs-admissions/full-time-mba/tuition-financial-aid"
+      ],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation"
+      ],
+      "unknown_checked_fields": [
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown"
+      ],
+      "not_checked_fields": [
+        "employment_rate",
+        "international_employment",
+        "sponsorship",
+        "application_deadlines"
+      ],
+      "downgraded_to_unknown": {
+        "median_base_salary": "Page labels it 'median salary' without saying base salary."
+      },
+      "paraphrased_excerpts": [
+        "duration_months",
+        "application_requirements",
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation"
+      ]
+    },
+    {
+      "program_id": "ucla-anderson-mba",
+      "tier": "enriched",
+      "batch": "batchB.json",
+      "urls_checked": [
+        {
+          "url": "https://www.anderson.ucla.edu/degrees/full-time-mba/financing",
+          "accessible": true,
+          "note": "first 100000 chars read"
+        },
+        {
+          "url": "https://www.anderson.ucla.edu/degrees/full-time-mba/admissions/requirements",
+          "accessible": true,
+          "note": "first 100000 chars read"
+        },
+        {
+          "url": "https://www.anderson.ucla.edu/degrees/full-time-mba/career-impact",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.anderson.ucla.edu/sites/default/files/document/2026-03/Class%20of%202025%20Employment%20Report%20PDF_0.pdf",
+          "accessible": false,
+          "note": "fetch failed: maxContentLength exceeded"
+        },
+        {
+          "url": "https://www.anderson.ucla.edu/degrees/full-time-mba/admissions/tuition-and-financial-aid",
+          "accessible": false,
+          "note": "HTTP 404 (guessed URL)"
+        },
+        {
+          "url": "https://www.anderson.ucla.edu/degrees/full-time-mba",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.anderson.ucla.edu/sites/default/files/document/2026-03/Class%20of%202025%20Employment%20Report%20PDF_0.pdf",
+        "https://www.anderson.ucla.edu/degrees/full-time-mba/admissions/tuition-and-financial-aid"
+      ],
+      "verified_fields": [
+        "location",
+        "application_requirements",
+        "test_policy",
+        "cost_of_attendance",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "duration_months",
+        "tuition",
+        "stem_designation",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown"
+      ],
+      "not_checked_fields": [
+        "employment_rate",
+        "international_employment",
+        "sponsorship"
+      ],
+      "downgraded_to_unknown": {
+        "tuition": "Page gives 'program fees' including a summer term, not one-year tuition."
+      },
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "test_policy",
+        "cost_of_attendance",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "cmu-tepper-mba",
+      "tier": "enriched",
+      "batch": "batchB.json",
+      "urls_checked": [
+        {
+          "url": "https://www.cmu.edu/sfs/tuition/graduate/tepper/full-accel-mba.html",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.cmu.edu/tepper/programs/mba/admissions/apply-full-time-mba",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.cmu.edu/tepper/programs/mba/careers/compensation-highlights",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.cmu.edu/tepper/programs/mba/admissions/tuition-and-financial-aid",
+          "accessible": false,
+          "note": "HTTP 404 (guessed URL)"
+        },
+        {
+          "url": "https://www.cmu.edu/tepper/programs/mba/full-time",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.cmu.edu/tepper/programs/mba/admissions/tuition-and-financial-aid"
+      ],
+      "verified_fields": [
+        "location",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "employment_rate",
+        "median_base_salary",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "stem_designation",
+        "function_breakdown"
+      ],
+      "not_checked_fields": [
+        "duration_months",
+        "industry_breakdown",
+        "international_employment",
+        "sponsorship"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "employment_rate",
+        "median_base_salary",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "ut-mccombs-mba",
+      "tier": "enriched",
+      "batch": "batchC.json",
+      "urls_checked": [
+        {
+          "url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/tuition-financial-aid/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/admissions/application-process/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/academics/curriculum/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://go.mccombs.utexas.edu/rs/503-KLY-263/images/FT%20MBA%20Employment%20Report%202025-26.pdf",
+          "accessible": true,
+          "note": "PDF; WebFetch could not decode, text extracted locally from the saved fetched PDF with pdftotext. Domain go.mccombs.utexas.edu is a UT subdomain."
+        },
+        {
+          "url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/admissions/",
+          "accessible": true,
+          "note": "Returned Evening MBA content; not used"
+        },
+        {
+          "url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "test_policy",
+        "stem_designation",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "international_employment",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "application_requirements",
+        "tuition",
+        "cost_of_attendance",
+        "function_breakdown",
+        "sponsorship"
+      ],
+      "not_checked_fields": [],
+      "downgraded_to_unknown": {
+        "tuition": "Recorded value is the Texas-resident rate; international applicants pay the non-resident rate.",
+        "cost_of_attendance": "Recorded value is the Texas-resident budget; international applicants pay the non-resident rate."
+      },
+      "paraphrased_excerpts": [
+        "duration_months",
+        "median_base_salary",
+        "international_employment",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "unc-kenan-flagler-mba",
+      "tier": "enriched",
+      "batch": "batchC.json",
+      "urls_checked": [
+        {
+          "url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/tuition-financial-aid/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/requirements-deadlines/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/faq/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.kenan-flagler.unc.edu/wp-content/uploads/2025/12/FTMBA26-032-Employment-Statistics-One-Pager_FNL.pdf",
+          "accessible": true,
+          "note": "text extracted locally via pdftotext"
+        },
+        {
+          "url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/",
+          "accessible": true,
+          "note": "no details"
+        }
+      ],
+      "inaccessible_urls": [],
+      "verified_fields": [
+        "duration_months",
+        "test_policy",
+        "stem_designation",
+        "employment_rate",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "location",
+        "application_requirements",
+        "tuition",
+        "cost_of_attendance",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment",
+        "sponsorship"
+      ],
+      "not_checked_fields": [],
+      "downgraded_to_unknown": {
+        "tuition": "Recorded value is the North Carolina-resident rate; international applicants pay the non-resident rate.",
+        "cost_of_attendance": "Recorded value is the North Carolina-resident budget; international applicants pay the non-resident rate.",
+        "international_employment": "Read from PDF layout; the label-to-number association is uncertain."
+      },
+      "paraphrased_excerpts": [
+        "test_policy",
+        "employment_rate",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "emory-goizueta-mba",
+      "tier": "enriched",
+      "batch": "batchC.json",
+      "urls_checked": [
+        {
+          "url": "https://goizueta.emory.edu/full-time-mba/two-year-mba/admissions/tuition",
+          "accessible": true,
+          "note": "Tuition & Fees $163,549 total, period unlabeled"
+        },
+        {
+          "url": "https://goizueta.emory.edu/full-time-mba/two-year-mba/admissions",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://goizueta.emory.edu/full-time-mba/two-year-mba/career/employment",
+          "accessible": true,
+          "note": ""
+        }
+      ],
+      "inaccessible_urls": [],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "stem_designation",
+        "industry_breakdown",
+        "function_breakdown",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "tuition",
+        "cost_of_attendance",
+        "employment_rate",
+        "median_base_salary",
+        "international_employment",
+        "sponsorship"
+      ],
+      "not_checked_fields": [],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "stem_designation",
+        "industry_breakdown",
+        "function_breakdown",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "georgetown-mcdonough-mba",
+      "tier": "enriched",
+      "batch": "batchC.json",
+      "urls_checked": [
+        {
+          "url": "https://msb.georgetown.edu/full-time-mba/admissions-tuition/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://msb.georgetown.edu/mba/application-components/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://msb.georgetown.edu/mba/career/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://msb.georgetown.edu/mba/faq/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://msb.georgetown.edu/full-time-mba/",
+          "accessible": true,
+          "note": ""
+        }
+      ],
+      "inaccessible_urls": [],
+      "verified_fields": [
+        "location",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation",
+        "employment_rate",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "duration_months",
+        "median_base_salary",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "location",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "cost_of_attendance",
+        "employment_rate",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "usc-marshall-mba",
+      "tier": "enriched",
+      "batch": "batchC.json",
+      "urls_checked": [
+        {
+          "url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba/tuition-fees",
+          "accessible": true,
+          "note": "title as returned not seen; descriptive"
+        },
+        {
+          "url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba/admissions",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.marshall.usc.edu/full-time-mba-curriculum",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.marshall.usc.edu/programs/mba-programs/full-time-mba/tuition-financial-aid",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.marshall.usc.edu/programs/mba-programs/full-time-mba/career-services/employment-report",
+          "accessible": true,
+          "note": "no employment figures on page"
+        },
+        {
+          "url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://www.marshall.usc.edu/programs/mba-programs/full-time-mba/tuition-financial-aid"
+      ],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "stem_designation",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "cost_of_attendance",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "tuition",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "uw-foster-mba",
+      "tier": "enriched",
+      "batch": "batchC.json",
+      "urls_checked": [
+        {
+          "url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/tuition-and-fees/",
+          "accessible": true,
+          "note": "2026-27 figures, period ambiguity"
+        },
+        {
+          "url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/admissions/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/career-management/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/curriculum/stem-designated-mba-management-science-degree-option/",
+          "accessible": true,
+          "note": ""
+        }
+      ],
+      "inaccessible_urls": [],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "stem_designation",
+        "employment_rate",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "tuition",
+        "cost_of_attendance",
+        "median_base_salary",
+        "function_breakdown",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "industry_breakdown",
+        "international_employment"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "location",
+        "application_requirements",
+        "test_policy",
+        "employment_rate",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "vanderbilt-owen-mba",
+      "tier": "enriched",
+      "batch": "batchD.json",
+      "urls_checked": [
+        {
+          "url": "https://business.vanderbilt.edu/mba/admissions/",
+          "accessible": true,
+          "note": "deadlines"
+        },
+        {
+          "url": "https://business.vanderbilt.edu/mba/admissions/tuition-financing-scholarships/",
+          "accessible": true,
+          "note": "cost table"
+        },
+        {
+          "url": "https://business.vanderbilt.edu/mba/admissions/application-instructions/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://business.vanderbilt.edu/mba/outcomes/",
+          "accessible": true,
+          "note": ""
+        }
+      ],
+      "inaccessible_urls": [],
+      "verified_fields": [
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "employment_rate",
+        "industry_breakdown",
+        "function_breakdown",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "cost_of_attendance",
+        "stem_designation",
+        "median_base_salary",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "location",
+        "duration_months",
+        "international_employment"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "employment_rate",
+        "industry_breakdown",
+        "function_breakdown",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "texas-am-mays-mba",
+      "tier": "enriched",
+      "batch": "batchD.json",
+      "urls_checked": [
+        {
+          "url": "https://mays.tamu.edu/full-time-mba/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://mays.tamu.edu/career-management-center/",
+          "accessible": true,
+          "note": "redirected from careerlaunch.mays.tamu.edu/outcomes/"
+        },
+        {
+          "url": "https://mays.tamu.edu/graduate/mba/full-time-mba/",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "test_policy",
+        "employment_rate",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "application_requirements",
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "international_employment"
+      ],
+      "downgraded_to_unknown": {
+        "tuition": "Page gives no academic year and doesn't say whether the figure is annual or for the whole program.",
+        "stem_designation": "Page only says the MS Analytics dual degree is STEM-designated; silence is not evidence that the MBA is not designated."
+      },
+      "paraphrased_excerpts": [
+        "duration_months",
+        "test_policy",
+        "employment_rate",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "notre-dame-mendoza-mba",
+      "tier": "enriched",
+      "batch": "batchD.json",
+      "urls_checked": [
+        {
+          "url": "https://mendoza.nd.edu/graduate-programs/two-year-mba/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/outcomes/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/apply/",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy",
+        "tuition",
+        "function_breakdown",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "cost_of_attendance",
+        "median_base_salary",
+        "industry_breakdown",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "stem_designation",
+        "employment_rate",
+        "international_employment"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "duration_months",
+        "application_requirements",
+        "tuition",
+        "function_breakdown",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "georgia-tech-scheller-mba",
+      "tier": "enriched",
+      "batch": "batchD.json",
+      "urls_checked": [
+        {
+          "url": "https://scheller.gatech.edu/degrees/mba/full-time/index.html",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/tuition-and-financing/index.html",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/admissions/index.html",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/career-development/index.html",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/index.html",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://scheller.gatech.edu/degrees/mba/full-time/index.html"
+      ],
+      "verified_fields": [
+        "location",
+        "application_requirements",
+        "test_policy",
+        "employment_rate",
+        "application_deadlines"
+      ],
+      "unknown_checked_fields": [
+        "duration_months",
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "sponsorship"
+      ],
+      "not_checked_fields": [
+        "international_employment"
+      ],
+      "downgraded_to_unknown": {},
+      "paraphrased_excerpts": [
+        "application_requirements",
+        "test_policy",
+        "employment_rate",
+        "application_deadlines"
+      ]
+    },
+    {
+      "program_id": "minnesota-carlson-mba",
+      "tier": "enriched",
+      "batch": "batchD.json",
+      "urls_checked": [
+        {
+          "url": "https://carlsonschool.umn.edu/mba/full-time-mba",
+          "accessible": false,
+          "note": "404"
+        },
+        {
+          "url": "https://carlsonschool.umn.edu/graduate/mba/full-time/tuition-aid",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://carlsonschool.umn.edu/graduate/mba/full-time/admissions",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://carlsonschool.umn.edu/graduate/mba/full-time/careers/employment-statistics",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://carlsonschool.umn.edu/graduate/resources/management-science-mba-overview",
+          "accessible": true,
+          "note": ""
+        },
+        {
+          "url": "https://carlsonschool.umn.edu/graduate/mba/full-time",
+          "accessible": true,
+          "note": "discovery pass"
+        }
+      ],
+      "inaccessible_urls": [
+        "https://carlsonschool.umn.edu/mba/full-time-mba"
+      ],
+      "verified_fields": [
+        "location",
+        "duration_months",
+        "application_requirements",
+        "test_policy"
+      ],
+      "unknown_checked_fields": [
+        "tuition",
+        "cost_of_attendance",
+        "stem_designation",
+        "employment_rate",
+        "median_base_salary",
+        "industry_breakdown",
+        "function_breakdown",
+        "international_employment",
+        "sponsorship",
+        "application_deadlines"
+      ],
+      "not_checked_fields": [],
+      "downgraded_to_unknown": {
+        "stem_designation": "Page makes no STEM statement for the standard Full-Time MBA; silence is not evidence either way.",
+        "employment_rate": "Combines Classes of 2023-2025 and two different MBA programs; not a single-cohort program figure.",
+        "industry_breakdown": "Combines Classes of 2023-2025 and two different MBA programs.",
+        "function_breakdown": "Combines Classes of 2023-2025 and two different MBA programs."
+      },
+      "paraphrased_excerpts": [
+        "application_requirements"
+      ]
+    }
+  ],
+  "not_promoted": [
+    {
+      "program_id": "columbia-cbs-mba",
+      "verified_fields": [],
+      "reason": "fewer than 2 verified facts beyond location"
+    },
+    {
+      "program_id": "indiana-kelley-mba",
+      "verified_fields": [],
+      "reason": "fewer than 2 verified facts beyond location"
+    }
+  ],
+  "coverage": {
+    "programs": 28,
+    "fields_per_program": 14,
+    "total_fields": 392,
+    "verified_fields": 191,
+    "unknown_fields": 201,
+    "verified_pct": 48.7,
+    "not_checked_fields": 74,
+    "verified_by_field": {
+      "location": "22/28",
+      "duration_months": "12/28",
+      "application_requirements": "19/28",
+      "test_policy": "22/28",
+      "tuition": "18/28",
+      "cost_of_attendance": "13/28",
+      "stem_designation": "16/28",
+      "employment_rate": "18/28",
+      "median_base_salary": "11/28",
+      "industry_breakdown": "10/28",
+      "function_breakdown": "8/28",
+      "international_employment": "4/28",
+      "sponsorship": "0/28",
+      "application_deadlines": "18/28"
+    },
+    "sources_total": 169,
+    "sources_accessed": 124,
+    "sources_inaccessible": 45,
+    "source_types": {
+      "official_university": 169
+    },
+    "paraphrased_excerpts": 126,
+    "downgraded_to_unknown": 22,
+    "by_tier": {
+      "curated": 6,
+      "enriched": 22
+    }
+  }
+}

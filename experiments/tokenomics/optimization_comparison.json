@@ -1,0 +1,207 @@
+{
+  "method": "Baseline (Step 5 behaviour) vs optimized (Step 7) orchestrator on the SAME deterministic mock model.",
+  "measurement_note": "serialized_request_chars is measured exactly; estimated_input_tokens_o200k is a tokenizer ESTIMATE (gpt-6-luna's tokenizer is not published). Neither is provider-reported usage.",
+  "baseline": {
+    "mode": "baseline",
+    "status": "completed",
+    "model_requests": 17,
+    "serialized_request_chars": 507762,
+    "estimated_input_tokens_o200k": 126939,
+    "tool_calls_executed": 18,
+    "tool_calls_served_from_run_cache": 7,
+    "validation_failures": 1,
+    "downgraded_verified_claims": 0,
+    "grounding_retries": 1,
+    "per_agent": {
+      "pathway_matcher": {
+        "requests": 4,
+        "chars": 74780,
+        "est_tokens": 19259
+      },
+      "evidence_analyst": {
+        "requests": 10,
+        "chars": 338465,
+        "est_tokens": 85347
+      },
+      "strategy_planner": {
+        "requests": 2,
+        "chars": 54133,
+        "est_tokens": 13047
+      },
+      "skeptic": {
+        "requests": 1,
+        "chars": 40384,
+        "est_tokens": 9286
+      }
+    },
+    "quality": {
+      "recommended_programs": [
+        "mit-sloan-mba",
+        "chicago-booth-mba",
+        "duke-fuqua-mba",
+        "yale-som-mba"
+      ],
+      "analyst_claims": 24,
+      "verified_claims": 19,
+      "verified_claim_evidence_ids": [
+        "ev-chicago-booth-mba-application-requirements",
+        "ev-chicago-booth-mba-cost-of-attendance",
+        "ev-chicago-booth-mba-employment-rate",
+        "ev-chicago-booth-mba-industry-breakdown",
+        "ev-chicago-booth-mba-international-employment",
+        "ev-chicago-booth-mba-median-base-salary",
+        "ev-chicago-booth-mba-stem-designation",
+        "ev-chicago-booth-mba-test-policy",
+        "ev-duke-fuqua-mba-application-requirements",
+        "ev-duke-fuqua-mba-cost-of-attendance",
+        "ev-duke-fuqua-mba-employment-rate",
+        "ev-duke-fuqua-mba-median-base-salary",
+        "ev-duke-fuqua-mba-stem-designation",
+        "ev-duke-fuqua-mba-test-policy",
+        "ev-mit-sloan-mba-application-requirements",
+        "ev-mit-sloan-mba-employment-rate",
+        "ev-mit-sloan-mba-industry-breakdown",
+        "ev-mit-sloan-mba-median-base-salary",
+        "ev-mit-sloan-mba-stem-designation",
+        "ev-mit-sloan-mba-test-policy",
+        "ev-mit-sloan-mba-tuition",
+        "ev-yale-som-mba-application-requirements",
+        "ev-yale-som-mba-cost-of-attendance",
+        "ev-yale-som-mba-employment-rate",
+        "ev-yale-som-mba-international-employment",
+        "ev-yale-som-mba-median-base-salary",
+        "ev-yale-som-mba-stem-designation",
+        "ev-yale-som-mba-test-policy"
+      ],
+      "final_claims_failing_regrounding": 0,
+      "grounding_violations_recorded": [],
+      "strategy_weeks": 10,
+      "skeptic_findings": 1,
+      "pathway_claim_labels": [
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "advice"
+      ]
+    }
+  },
+  "optimized": {
+    "mode": "optimized",
+    "status": "completed",
+    "model_requests": 12,
+    "serialized_request_chars": 358047,
+    "estimated_input_tokens_o200k": 88935,
+    "tool_calls_executed": 18,
+    "tool_calls_served_from_run_cache": 0,
+    "validation_failures": 0,
+    "downgraded_verified_claims": 1,
+    "grounding_retries": 1,
+    "per_agent": {
+      "pathway_matcher": {
+        "requests": 3,
+        "chars": 42970,
+        "est_tokens": 11173
+      },
+      "evidence_analyst": {
+        "requests": 6,
+        "chars": 220429,
+        "est_tokens": 55392
+      },
+      "strategy_planner": {
+        "requests": 2,
+        "chars": 54133,
+        "est_tokens": 13047
+      },
+      "skeptic": {
+        "requests": 1,
+        "chars": 40515,
+        "est_tokens": 9323
+      }
+    },
+    "quality": {
+      "recommended_programs": [
+        "mit-sloan-mba",
+        "chicago-booth-mba",
+        "duke-fuqua-mba",
+        "yale-som-mba"
+      ],
+      "analyst_claims": 24,
+      "verified_claims": 19,
+      "verified_claim_evidence_ids": [
+        "ev-chicago-booth-mba-application-requirements",
+        "ev-chicago-booth-mba-cost-of-attendance",
+        "ev-chicago-booth-mba-employment-rate",
+        "ev-chicago-booth-mba-industry-breakdown",
+        "ev-chicago-booth-mba-international-employment",
+        "ev-chicago-booth-mba-median-base-salary",
+        "ev-chicago-booth-mba-stem-designation",
+        "ev-chicago-booth-mba-test-policy",
+        "ev-duke-fuqua-mba-application-requirements",
+        "ev-duke-fuqua-mba-cost-of-attendance",
+        "ev-duke-fuqua-mba-employment-rate",
+        "ev-duke-fuqua-mba-median-base-salary",
+        "ev-duke-fuqua-mba-stem-designation",
+        "ev-duke-fuqua-mba-test-policy",
+        "ev-mit-sloan-mba-application-requirements",
+        "ev-mit-sloan-mba-employment-rate",
+        "ev-mit-sloan-mba-industry-breakdown",
+        "ev-mit-sloan-mba-median-base-salary",
+        "ev-mit-sloan-mba-stem-designation",
+        "ev-mit-sloan-mba-test-policy",
+        "ev-mit-sloan-mba-tuition",
+        "ev-yale-som-mba-application-requirements",
+        "ev-yale-som-mba-cost-of-attendance",
+        "ev-yale-som-mba-employment-rate",
+        "ev-yale-som-mba-international-employment",
+        "ev-yale-som-mba-median-base-salary",
+        "ev-yale-som-mba-stem-designation",
+        "ev-yale-som-mba-test-policy"
+      ],
+      "final_claims_failing_regrounding": 0,
+      "grounding_violations_recorded": [],
+      "strategy_weeks": 10,
+      "skeptic_findings": 1,
+      "pathway_claim_labels": [
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "verified_fact",
+        "advice",
+        "inference"
+      ]
+    }
+  },
+  "reduction": {
+    "model_requests": 5,
+    "model_requests_pct": 29.4,
+    "estimated_input_tokens": 38004,
+    "estimated_input_tokens_pct": 29.9,
+    "serialized_chars_pct": 29.5
+  },
+  "quality_identical": {
+    "recommended_programs": true,
+    "analyst_claims": true,
+    "verified_claims": true,
+    "verified_claim_evidence_ids": true,
+    "final_claims_failing_regrounding": true,
+    "grounding_violations_recorded": true,
+    "strategy_weeks": true,
+    "skeptic_findings": true,
+    "pathway_claim_labels": false
+  }
+}

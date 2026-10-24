@@ -1,0 +1,212 @@
+raw_file,fact_id,program_id,field,source_type,value_kind,status,validation
+official_batch1.json,sx-yale-som-mba-mandatory-fees-yaleschoolof,yale-som-mba,mandatory_fees,official,published,verified,value 500 found on page near 'fee'
+official_batch1.json,sx-yale-som-mba-cost-of-attendance-yaleschoolof,yale-som-mba,cost_of_attendance,official,published,verified,"value 128,976 found on page near 'total|budget|cost|attendance'"
+official_batch1.json,sx-yale-som-mba-class-size-yaleschoolof,yale-som-mba,class_size,official,published,verified,value 367 found on page near 'class|students|enroll|size|cohort'
+official_batch1.json,sx-yale-som-mba-class-median-gmat-yaleschoolof,yale-som-mba,class_median_gmat,official,published,verified,value 740 found on page near 'gmat'
+official_batch1.json,sx-yale-som-mba-class-avg-gmat-yaleschoolof,yale-som-mba,class_avg_gmat,official,published,not_found,collector reported not_found
+official_batch1.json,sx-yale-som-mba-class-pct-international-yaleschoolof,yale-som-mba,class_pct_international,official,published,verified,value 41 found on page near 'international|foreign|citizen|countr'
+official_batch1.json,sx-yale-som-mba-scholarships-yaleschoolof,yale-som-mba,scholarships,official,published,verified,excerpt wording found on page
+official_batch1.json,sx-yale-som-mba-application-deadlines-yaleschoolof,yale-som-mba,application_deadlines,official,published,verified,all deadline dates found on page
+official_batch1.json,sx-hbs-mba-mandatory-fees-harvardbusin,hbs-mba,mandatory_fees,official,published,verified,"value 1,944 found on page near 'fee'"
+official_batch1.json,sx-hbs-mba-cost-of-attendance-harvardbusin,hbs-mba,cost_of_attendance,official,published,verified,"value 130,318 found on page near 'total|budget|cost|attendance'"
+official_batch1.json,sx-hbs-mba-class-size-harvardbusin,hbs-mba,class_size,official,published,verified,value 943 found on page near 'class|students|enroll|size|cohort'
+official_batch1.json,sx-hbs-mba-class-median-gmat-harvardbusin,hbs-mba,class_median_gmat,official,published,verified,value 685 found on page near 'gmat'
+official_batch1.json,sx-hbs-mba-class-avg-gmat-harvardbusin,hbs-mba,class_avg_gmat,official,published,not_found,collector reported not_found
+official_batch1.json,sx-hbs-mba-class-pct-international-harvardbusin,hbs-mba,class_pct_international,official,published,verified,value 37 found on page near 'international|foreign|citizen|countr'
+official_batch1.json,sx-hbs-mba-scholarships-harvardbusin,hbs-mba,scholarships,official,published,verified,excerpt wording found on page
+official_batch1.json,sx-hbs-mba-application-deadlines-harvardbusin,hbs-mba,application_deadlines,official,published,verified,all deadline dates found on page
+official_batch1.json,sx-mit-sloan-mba-mandatory-fees-mitsloanscho,mit-sloan-mba,mandatory_fees,official,published,verified,"value 2,200 found on page near 'fee'"
+official_batch1.json,sx-mit-sloan-mba-cost-of-attendance-mitsloanscho,mit-sloan-mba,cost_of_attendance,official,published,not_found,collector reported not_found
+official_batch1.json,sx-mit-sloan-mba-class-size-mitsloanscho,mit-sloan-mba,class_size,official,published,not_found,collector reported not_found
+official_batch1.json,sx-mit-sloan-mba-class-median-gmat-mitsloanscho,mit-sloan-mba,class_median_gmat,official,published,not_found,collector reported not_found
+official_batch1.json,sx-mit-sloan-mba-class-pct-international-mitsloanscho,mit-sloan-mba,class_pct_international,official,published,not_found,collector reported not_found
+official_batch1.json,sx-mit-sloan-mba-scholarships-mitsloanscho,mit-sloan-mba,scholarships,official,published,verified,excerpt wording found on page
+official_batch1.json,sx-mit-sloan-mba-application-deadlines-mitsloanscho,mit-sloan-mba,application_deadlines,official,published,verified,all deadline dates found on page
+official_batch2.json,sx-chicago-booth-mba-mandatory-fees-universityof,chicago-booth-mba,mandatory_fees,official,published,unverified,"value 4,744 NOT found on page near 'fee'"
+official_batch2.json,sx-chicago-booth-mba-cost-of-attendance-universityof,chicago-booth-mba,cost_of_attendance,official,published,verified,"value 132,449 found on page near 'total|budget|cost|attendance'"
+official_batch2.json,sx-chicago-booth-mba-class-size-universityof,chicago-booth-mba,class_size,official,published,verified,value 635 found on page near 'class|students|enroll|size|cohort'
+official_batch2.json,sx-chicago-booth-mba-class-median-gmat-universityof,chicago-booth-mba,class_median_gmat,official,published,verified,value 730 found on page near 'gmat'
+official_batch2.json,sx-chicago-booth-mba-class-avg-gmat-universityof,chicago-booth-mba,class_avg_gmat,official,published,verified,value 729 found on page near 'gmat'
+official_batch2.json,sx-chicago-booth-mba-class-pct-international-universityof,chicago-booth-mba,class_pct_international,official,published,verified,value 37 found on page near 'international|foreign|citizen|countr'
+official_batch2.json,sx-chicago-booth-mba-scholarships-universityof,chicago-booth-mba,scholarships,official,published,verified,excerpt wording found on page
+official_batch2.json,sx-chicago-booth-mba-application-deadlines-universityof,chicago-booth-mba,application_deadlines,official,published,verified,all deadline dates found on page
+official_batch2.json,sx-duke-fuqua-mba-mandatory-fees-dukeuniversi,duke-fuqua-mba,mandatory_fees,official,published,unverified,"value 4,844 NOT found on page near 'fee'"
+official_batch2.json,sx-duke-fuqua-mba-cost-of-attendance-dukeuniversi,duke-fuqua-mba,cost_of_attendance,official,published,verified,"value 118,974 found on page near 'total|budget|cost|attendance'"
+official_batch2.json,sx-duke-fuqua-mba-class-size-dukeuniversi,duke-fuqua-mba,class_size,official,published,verified,value 359 found on page near 'class|students|enroll|size|cohort'
+official_batch2.json,sx-duke-fuqua-mba-class-median-gmat-dukeuniversi,duke-fuqua-mba,class_median_gmat,official,published,not_found,collector reported not_found
+official_batch2.json,sx-duke-fuqua-mba-class-avg-gmat-dukeuniversi,duke-fuqua-mba,class_avg_gmat,official,published,not_found,collector reported not_found
+official_batch2.json,sx-duke-fuqua-mba-class-pct-international-dukeuniversi,duke-fuqua-mba,class_pct_international,official,published,verified,value 38 found on page near 'international|foreign|citizen|countr'
+official_batch2.json,sx-duke-fuqua-mba-scholarships-dukeuniversi,duke-fuqua-mba,scholarships,official,published,verified,excerpt wording found on page
+official_batch2.json,sx-duke-fuqua-mba-application-deadlines-dukeuniversi,duke-fuqua-mba,application_deadlines,official,published,verified,all deadline dates found on page
+official_batch2.json,sx-rice-jones-mba-mandatory-fees-riceuniversi,rice-jones-mba,mandatory_fees,official,published,verified,"value 1,323 found on page near 'fee'"
+official_batch2.json,sx-rice-jones-mba-cost-of-attendance-riceuniversi,rice-jones-mba,cost_of_attendance,official,published,not_found,collector reported not_found
+official_batch2.json,sx-rice-jones-mba-class-size-riceuniversi,rice-jones-mba,class_size,official,published,verified,value 134 found on page near 'class|students|enroll|size|cohort'
+official_batch2.json,sx-rice-jones-mba-class-median-gmat-riceuniversi,rice-jones-mba,class_median_gmat,official,published,not_found,collector reported not_found
+official_batch2.json,sx-rice-jones-mba-class-avg-gmat-riceuniversi,rice-jones-mba,class_avg_gmat,official,published,verified,value 694 found on page near 'gmat'
+official_batch2.json,sx-rice-jones-mba-class-pct-international-riceuniversi,rice-jones-mba,class_pct_international,official,published,verified,value 33 found on page near 'international|foreign|citizen|countr'
+official_batch2.json,sx-rice-jones-mba-scholarships-riceuniversi,rice-jones-mba,scholarships,official,published,verified,excerpt wording found on page
+official_batch2.json,sx-rice-jones-mba-application-deadlines-riceuniversi,rice-jones-mba,application_deadlines,official,published,not_found,collector reported not_found
+official_batch3.json,sx-wharton-mba-class-size-thewhartonsc,wharton-mba,class_size,official,published,verified,value 866 found on page near 'class|students|enroll|size|cohort'
+official_batch3.json,sx-wharton-mba-class-avg-gmat-thewhartonsc,wharton-mba,class_avg_gmat,official,published,verified,value 732 found on page near 'gmat'
+official_batch3.json,sx-wharton-mba-class-pct-international-thewhartonsc,wharton-mba,class_pct_international,official,published,verified,value 31 found on page near 'international|foreign|citizen|countr'
+official_batch3.json,sx-wharton-mba-application-deadlines-thewhartonsc,wharton-mba,application_deadlines,official,published,verified,all deadline dates found on page
+official_batch3.json,sx-dartmouth-tuck-mba-class-size-tuckschoolof,dartmouth-tuck-mba,class_size,official,published,verified,value 282 found on page near 'class|students|enroll|size|cohort'
+official_batch3.json,sx-dartmouth-tuck-mba-class-avg-gmat-tuckschoolof,dartmouth-tuck-mba,class_avg_gmat,official,published,verified,value 682 found on page near 'gmat'
+official_batch3.json,sx-dartmouth-tuck-mba-class-pct-international-tuckschoolof,dartmouth-tuck-mba,class_pct_international,official,published,verified,value 39 found on page near 'international|foreign|citizen|countr'
+official_batch3.json,sx-berkeley-haas-mba-class-size-ucberkeleyha,berkeley-haas-mba,class_size,official,published,verified,value 273 found on page near 'class|students|enroll|size|cohort'
+official_batch3.json,sx-berkeley-haas-mba-class-median-gmat-ucberkeleyha,berkeley-haas-mba,class_median_gmat,official,published,unverified,value 730 NOT found on page near 'gmat'
+official_batch3.json,sx-berkeley-haas-mba-class-pct-international-ucberkeleyha,berkeley-haas-mba,class_pct_international,official,published,unverified,value 44 NOT found on page near 'international|foreign|citizen|countr'
+official_batch3.json,sx-berkeley-haas-mba-application-deadlines-ucberkeleyha,berkeley-haas-mba,application_deadlines,official,published,verified,all deadline dates found on page
+official_batch3.json,sx-kellogg-mba-application-deadlines-northwestern,kellogg-mba,application_deadlines,official,published,verified,all deadline dates found on page
+official_batch3.json,sx-kellogg-mba-class-size-northwestern,kellogg-mba,class_size,official,published,not_found,collector reported not_found
+official_batch3.json,sx-stanford-gsb-mba-class-size-stanfordgsb,stanford-gsb-mba,class_size,official,published,not_found,collector reported not_found
+official_batch3.json,sx-stanford-gsb-mba-application-deadlines-stanfordgsb,stanford-gsb-mba,application_deadlines,official,published,not_found,collector reported not_found
+official_batch3.json,sx-dartmouth-tuck-mba-application-deadlines-tuck,dartmouth-tuck-mba,application_deadlines,official,published,not_found,collector reported not_found
+official_batch3.json,sx-uva-darden-mba-class-size-uvadarden,uva-darden-mba,class_size,official,published,not_found,collector reported not_found
+official_batch3.json,sx-michigan-ross-mba-class-size-michiganross,michigan-ross-mba,class_size,official,published,blocked,collector reported blocked
+official_batch3.json,sx-nyu-stern-mba-class-size-nyustern,nyu-stern-mba,class_size,official,published,blocked,collector reported blocked
+official_batch3.json,sx-wharton-mba-scholarships-,wharton-mba,scholarships,official,published,not_found,collector reported not_found
+official_batch3.json,sx-kellogg-mba-scholarships-,kellogg-mba,scholarships,official,published,not_found,collector reported not_found
+official_batch3.json,sx-stanford-gsb-mba-scholarships-,stanford-gsb-mba,scholarships,official,published,not_found,collector reported not_found
+official_batch3.json,sx-dartmouth-tuck-mba-scholarships-,dartmouth-tuck-mba,scholarships,official,published,not_found,collector reported not_found
+official_batch3.json,sx-berkeley-haas-mba-scholarships-,berkeley-haas-mba,scholarships,official,published,not_found,collector reported not_found
+official_batch3.json,sx-uva-darden-mba-scholarships-,uva-darden-mba,scholarships,official,published,not_found,collector reported not_found
+official_top_employers.json,sx-yale-som-mba-hiring-employers-yalesom,yale-som-mba,hiring_employers,official,published,verified,all 13 employer names found on page
+official_top_employers.json,sx-hbs-mba-hiring-employers-harvardbusin,hbs-mba,hiring_employers,official,published,blocked,collector reported blocked
+official_top_employers.json,sx-mit-sloan-mba-hiring-employers-mitsloan,mit-sloan-mba,hiring_employers,official,published,not_found,collector reported not_found
+official_top_employers.json,sx-chicago-booth-mba-hiring-employers-chicagobooth,chicago-booth-mba,hiring_employers,official,published,verified,all 19 employer names found on page
+official_top_employers.json,sx-duke-fuqua-mba-hiring-employers-dukefuqua,duke-fuqua-mba,hiring_employers,official,published,verified,all 25 employer names found on page
+official_top_employers.json,sx-rice-jones-mba-hiring-employers-ricejones,rice-jones-mba,hiring_employers,official,published,not_found,collector reported not_found
+official_top_employers.json,sx-dartmouth-tuck-mba-hiring-employers-dartmouthtuc,dartmouth-tuck-mba,hiring_employers,official,published,verified,all 15 employer names found on page
+secondary_clearadmit_2025.json,sx-cmu-tepper-mba-reported-cost-of-attendance-clearadmit,cmu-tepper-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Tepper' and '$116,428'"
+secondary_clearadmit_2025.json,sx-disc-columbia-university-mba-reported-cost-of-attendance-clearadmit,disc-columbia-university-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Columbia' and '$137,571'"
+secondary_clearadmit_2025.json,sx-cornell-johnson-mba-reported-cost-of-attendance-clearadmit,cornell-johnson-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Cornell' and '$119,994'"
+secondary_clearadmit_2025.json,sx-dartmouth-tuck-mba-reported-cost-of-attendance-clearadmit,dartmouth-tuck-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Tuck' and '$135,329'"
+secondary_clearadmit_2025.json,sx-duke-fuqua-mba-reported-cost-of-attendance-clearadmit,duke-fuqua-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Fuqua' and '$114,952'"
+secondary_clearadmit_2025.json,sx-emory-goizueta-mba-reported-cost-of-attendance-clearadmit,emory-goizueta-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Goizueta' and '$115,722'"
+secondary_clearadmit_2025.json,sx-georgetown-mcdonough-mba-reported-cost-of-attendance-clearadmit,georgetown-mcdonough-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'McDonough' and '$111,487'"
+secondary_clearadmit_2025.json,sx-hbs-mba-reported-cost-of-attendance-clearadmit,hbs-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Harvard' and '$126,536'"
+secondary_clearadmit_2025.json,sx-disc-indiana-university-mba-reported-cost-of-attendance-clearadmit,disc-indiana-university-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Kelley' and '$83,940'"
+secondary_clearadmit_2025.json,sx-mit-sloan-mba-reported-cost-of-attendance-clearadmit,mit-sloan-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'MIT Sloan' and '$138,310'"
+secondary_clearadmit_2025.json,sx-kellogg-mba-reported-cost-of-attendance-clearadmit,kellogg-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Kellogg' and '$128,852'"
+secondary_clearadmit_2025.json,sx-nyu-stern-mba-reported-cost-of-attendance-clearadmit,nyu-stern-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Stern' and '$135,840'"
+secondary_clearadmit_2025.json,sx-vanderbilt-owen-mba-reported-cost-of-attendance-clearadmit,vanderbilt-owen-mba,reported_cost_of_attendance,secondary,reported,verified,row with 'Owen' and '$111149'
+secondary_clearadmit_2025.json,sx-rice-jones-mba-tuition-and-fees-clearadmit,rice-jones-mba,tuition_and_fees,secondary,reported,verified,"row with 'Rice' and '79,116'"
+secondary_clearadmit_2025.json,sx-stanford-gsb-mba-reported-cost-of-attendance-clearadmit,stanford-gsb-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Stanford' and '$135,771'"
+secondary_clearadmit_2025.json,sx-berkeley-haas-mba-reported-cost-of-attendance-clearadmit,berkeley-haas-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Haas' and '$133,655'"
+secondary_clearadmit_2025.json,sx-ucla-anderson-mba-reported-cost-of-attendance-clearadmit,ucla-anderson-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Anderson' and '$133,655'"
+secondary_clearadmit_2025.json,sx-chicago-booth-mba-reported-cost-of-attendance-clearadmit,chicago-booth-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Booth' and '$129,403'"
+secondary_clearadmit_2025.json,sx-michigan-ross-mba-reported-cost-of-attendance-clearadmit,michigan-ross-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Ross' and '$111,725'"
+secondary_clearadmit_2025.json,sx-minnesota-carlson-mba-tuition-and-fees-clearadmit,minnesota-carlson-mba,tuition_and_fees,secondary,reported,verified,"row with 'Carlson' and '$71,791.88'"
+secondary_clearadmit_2025.json,sx-unc-kenan-flagler-mba-reported-cost-of-attendance-clearadmit,unc-kenan-flagler-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Kenan-Flagler' and '$102,960'"
+secondary_clearadmit_2025.json,sx-ut-mccombs-mba-reported-cost-of-attendance-clearadmit,ut-mccombs-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'McCombs' and '$122,428'"
+secondary_clearadmit_2025.json,sx-uva-darden-mba-reported-cost-of-attendance-clearadmit,uva-darden-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Darden' and '$121,275'"
+secondary_clearadmit_2025.json,sx-uw-foster-mba-reported-cost-of-attendance-clearadmit,uw-foster-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Foster' and '$100,044'"
+secondary_clearadmit_2025.json,sx-wharton-mba-reported-cost-of-attendance-clearadmit,wharton-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Wharton' and '$132,404'"
+secondary_clearadmit_2025.json,sx-yale-som-mba-reported-cost-of-attendance-clearadmit,yale-som-mba,reported_cost_of_attendance,secondary,reported,verified,"row with 'Yale' and '$123,936'"
+secondary_poetsandquants_2026.json,sx-kellogg-mba-tuition-poetsquants,kellogg-mba,tuition,secondary,reported,verified,"row with 'Kellogg' and '$88,536'"
+secondary_poetsandquants_2026.json,sx-kellogg-mba-mandatory-fees-poetsquants,kellogg-mba,mandatory_fees,secondary,reported,verified,"row with 'Kellogg' and '$5,054'"
+secondary_poetsandquants_2026.json,sx-kellogg-mba-est-annual-cost-poetsquants,kellogg-mba,est_annual_cost,secondary,estimate,verified,"row with 'Kellogg' and '$130,072'"
+secondary_poetsandquants_2026.json,sx-kellogg-mba-est-two-year-cost-poetsquants,kellogg-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Kellogg' and '$260,144'"
+secondary_poetsandquants_2026.json,sx-hbs-mba-tuition-poetsquants,hbs-mba,tuition,secondary,reported,verified,"row with 'Harvard' and '$84,760'"
+secondary_poetsandquants_2026.json,sx-hbs-mba-mandatory-fees-poetsquants,hbs-mba,mandatory_fees,secondary,reported,verified,"row with 'Harvard' and '$1,944'"
+secondary_poetsandquants_2026.json,sx-hbs-mba-est-annual-cost-poetsquants,hbs-mba,est_annual_cost,secondary,estimate,verified,"row with 'Harvard' and '$130,318'"
+secondary_poetsandquants_2026.json,sx-hbs-mba-est-two-year-cost-poetsquants,hbs-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Harvard' and '$260,636'"
+secondary_poetsandquants_2026.json,sx-disc-columbia-university-mba-tuition-poetsquants,disc-columbia-university-mba,tuition,secondary,reported,verified,"row with 'Columbia' and '$93,908'"
+secondary_poetsandquants_2026.json,sx-disc-columbia-university-mba-mandatory-fees-poetsquants,disc-columbia-university-mba,mandatory_fees,secondary,reported,verified,"row with 'Columbia' and '$6,783'"
+secondary_poetsandquants_2026.json,sx-disc-columbia-university-mba-est-annual-cost-poetsquants,disc-columbia-university-mba,est_annual_cost,secondary,estimate,verified,"row with 'Columbia' and '$143,030'"
+secondary_poetsandquants_2026.json,sx-disc-columbia-university-mba-est-two-year-cost-poetsquants,disc-columbia-university-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Columbia' and '$286,060'"
+secondary_poetsandquants_2026.json,sx-dartmouth-tuck-mba-tuition-poetsquants,dartmouth-tuck-mba,tuition,secondary,reported,verified,"row with 'Tuck' and '$87,536'"
+secondary_poetsandquants_2026.json,sx-dartmouth-tuck-mba-mandatory-fees-poetsquants,dartmouth-tuck-mba,mandatory_fees,secondary,reported,verified,"row with 'Tuck' and '$6,150'"
+secondary_poetsandquants_2026.json,sx-dartmouth-tuck-mba-est-annual-cost-poetsquants,dartmouth-tuck-mba,est_annual_cost,secondary,estimate,verified,"row with 'Tuck' and '$135,331'"
+secondary_poetsandquants_2026.json,sx-dartmouth-tuck-mba-est-two-year-cost-poetsquants,dartmouth-tuck-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Tuck' and '$270,662'"
+secondary_poetsandquants_2026.json,sx-uva-darden-mba-tuition-poetsquants,uva-darden-mba,tuition,secondary,reported,verified,"row with 'Darden' and '$83,328'"
+secondary_poetsandquants_2026.json,sx-uva-darden-mba-mandatory-fees-poetsquants,uva-darden-mba,mandatory_fees,secondary,reported,verified,"row with 'Darden' and '$5,772'"
+secondary_poetsandquants_2026.json,sx-uva-darden-mba-est-annual-cost-poetsquants,uva-darden-mba,est_annual_cost,secondary,estimate,verified,"row with 'Darden' and '$123,196'"
+secondary_poetsandquants_2026.json,sx-uva-darden-mba-est-two-year-cost-poetsquants,uva-darden-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Darden' and '$246,392'"
+secondary_poetsandquants_2026.json,sx-nyu-stern-mba-tuition-poetsquants,nyu-stern-mba,tuition,secondary,reported,verified,"row with 'Stern' and '$92,658'"
+secondary_poetsandquants_2026.json,sx-nyu-stern-mba-mandatory-fees-poetsquants,nyu-stern-mba,mandatory_fees,secondary,reported,verified,"row with 'Stern' and '$2,040'"
+secondary_poetsandquants_2026.json,sx-nyu-stern-mba-est-annual-cost-poetsquants,nyu-stern-mba,est_annual_cost,secondary,estimate,verified,"row with 'Stern' and '$140,668'"
+secondary_poetsandquants_2026.json,sx-nyu-stern-mba-est-two-year-cost-poetsquants,nyu-stern-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Stern' and '$281,336'"
+secondary_poetsandquants_2026.json,sx-cornell-johnson-mba-tuition-poetsquants,cornell-johnson-mba,tuition,secondary,reported,verified,"row with 'Johnson' and '$88,934'"
+secondary_poetsandquants_2026.json,sx-cornell-johnson-mba-mandatory-fees-poetsquants,cornell-johnson-mba,mandatory_fees,secondary,reported,verified,"row with 'Johnson' and '$2,200'"
+secondary_poetsandquants_2026.json,sx-cornell-johnson-mba-est-annual-cost-poetsquants,cornell-johnson-mba,est_annual_cost,secondary,estimate,verified,"row with 'Johnson' and '$127,278'"
+secondary_poetsandquants_2026.json,sx-cornell-johnson-mba-est-two-year-cost-poetsquants,cornell-johnson-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Johnson' and '$254,556'"
+secondary_poetsandquants_2026.json,sx-wharton-mba-tuition-poetsquants,wharton-mba,tuition,secondary,reported,verified,"row with 'Wharton' and '$87,970'"
+secondary_poetsandquants_2026.json,sx-wharton-mba-mandatory-fees-poetsquants,wharton-mba,mandatory_fees,secondary,reported,verified,"row with 'Wharton' and '$5,038'"
+secondary_poetsandquants_2026.json,sx-wharton-mba-est-annual-cost-poetsquants,wharton-mba,est_annual_cost,secondary,estimate,verified,"row with 'Wharton' and '$135,441'"
+secondary_poetsandquants_2026.json,sx-wharton-mba-est-two-year-cost-poetsquants,wharton-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Wharton' and '$270,882'"
+secondary_poetsandquants_2026.json,sx-michigan-ross-mba-tuition-poetsquants,michigan-ross-mba,tuition,secondary,reported,verified,"row with 'Ross' and '$83,946'"
+secondary_poetsandquants_2026.json,sx-michigan-ross-mba-mandatory-fees-poetsquants,michigan-ross-mba,mandatory_fees,secondary,reported,verified,row with 'Ross' and '$494'
+secondary_poetsandquants_2026.json,sx-michigan-ross-mba-est-annual-cost-poetsquants,michigan-ross-mba,est_annual_cost,secondary,estimate,verified,"row with 'Ross' and '$116,300'"
+secondary_poetsandquants_2026.json,sx-michigan-ross-mba-est-two-year-cost-poetsquants,michigan-ross-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Ross' and '$232,600'"
+secondary_poetsandquants_2026.json,sx-ucla-anderson-mba-tuition-poetsquants,ucla-anderson-mba,tuition,secondary,reported,verified,"row with 'Anderson' and '$82,734'"
+secondary_poetsandquants_2026.json,sx-ucla-anderson-mba-mandatory-fees-poetsquants,ucla-anderson-mba,mandatory_fees,secondary,reported,verified,"row with 'Anderson' and '$2,105'"
+secondary_poetsandquants_2026.json,sx-ucla-anderson-mba-est-annual-cost-poetsquants,ucla-anderson-mba,est_annual_cost,secondary,estimate,verified,"row with 'Anderson' and '$137,951'"
+secondary_poetsandquants_2026.json,sx-ucla-anderson-mba-est-two-year-cost-poetsquants,ucla-anderson-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Anderson' and '$275,902'"
+secondary_poetsandquants_2026.json,sx-mit-sloan-mba-tuition-poetsquants,mit-sloan-mba,tuition,secondary,reported,verified,"row with 'Sloan' and '$89,692'"
+secondary_poetsandquants_2026.json,sx-mit-sloan-mba-mandatory-fees-poetsquants,mit-sloan-mba,mandatory_fees,secondary,reported,verified,"row with 'Sloan' and '$2,620'"
+secondary_poetsandquants_2026.json,sx-mit-sloan-mba-est-annual-cost-poetsquants,mit-sloan-mba,est_annual_cost,secondary,estimate,verified,"row with 'Sloan' and '$144,325'"
+secondary_poetsandquants_2026.json,sx-mit-sloan-mba-est-two-year-cost-poetsquants,mit-sloan-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Sloan' and '$288,650'"
+secondary_poetsandquants_2026.json,sx-chicago-booth-mba-tuition-poetsquants,chicago-booth-mba,tuition,secondary,reported,verified,"row with 'Booth' and '$89,976'"
+secondary_poetsandquants_2026.json,sx-chicago-booth-mba-mandatory-fees-poetsquants,chicago-booth-mba,mandatory_fees,secondary,reported,verified,"row with 'Booth' and '$4,744'"
+secondary_poetsandquants_2026.json,sx-chicago-booth-mba-est-annual-cost-poetsquants,chicago-booth-mba,est_annual_cost,secondary,estimate,verified,"row with 'Booth' and '$132,449'"
+secondary_poetsandquants_2026.json,sx-chicago-booth-mba-est-two-year-cost-poetsquants,chicago-booth-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Booth' and '$264,898'"
+secondary_poetsandquants_2026.json,sx-ut-mccombs-mba-tuition-poetsquants,ut-mccombs-mba,tuition,secondary,reported,verified,"row with 'McCombs' and '$61,214'"
+secondary_poetsandquants_2026.json,sx-ut-mccombs-mba-est-annual-cost-poetsquants,ut-mccombs-mba,est_annual_cost,secondary,estimate,verified,"row with 'McCombs' and '$85,889'"
+secondary_poetsandquants_2026.json,sx-ut-mccombs-mba-est-two-year-cost-poetsquants,ut-mccombs-mba,est_two_year_cost,secondary,estimate,verified,"row with 'McCombs' and '$171,778'"
+secondary_poetsandquants_2026.json,sx-berkeley-haas-mba-tuition-poetsquants,berkeley-haas-mba,tuition,secondary,reported,verified,"row with 'Haas' and '$90,191'"
+secondary_poetsandquants_2026.json,sx-berkeley-haas-mba-mandatory-fees-poetsquants,berkeley-haas-mba,mandatory_fees,secondary,reported,verified,"row with 'Haas' and '$2,564'"
+secondary_poetsandquants_2026.json,sx-berkeley-haas-mba-est-annual-cost-poetsquants,berkeley-haas-mba,est_annual_cost,secondary,estimate,verified,"row with 'Haas' and '$138,921'"
+secondary_poetsandquants_2026.json,sx-berkeley-haas-mba-est-two-year-cost-poetsquants,berkeley-haas-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Haas' and '$277,842'"
+secondary_poetsandquants_2026.json,sx-duke-fuqua-mba-tuition-poetsquants,duke-fuqua-mba,tuition,secondary,reported,verified,"row with 'Fuqua' and '$83,700'"
+secondary_poetsandquants_2026.json,sx-duke-fuqua-mba-mandatory-fees-poetsquants,duke-fuqua-mba,mandatory_fees,secondary,reported,verified,"row with 'Fuqua' and '$4,844'"
+secondary_poetsandquants_2026.json,sx-duke-fuqua-mba-est-annual-cost-poetsquants,duke-fuqua-mba,est_annual_cost,secondary,estimate,verified,"row with 'Fuqua' and '$118,974'"
+secondary_poetsandquants_2026.json,sx-duke-fuqua-mba-est-two-year-cost-poetsquants,duke-fuqua-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Fuqua' and '$237,948'"
+secondary_poetsandquants_2026.json,sx-cmu-tepper-mba-tuition-poetsquants,cmu-tepper-mba,tuition,secondary,reported,verified,"row with 'Tepper' and '$84,186'"
+secondary_poetsandquants_2026.json,sx-cmu-tepper-mba-mandatory-fees-poetsquants,cmu-tepper-mba,mandatory_fees,secondary,reported,verified,"row with 'Tepper' and '$1,040'"
+secondary_poetsandquants_2026.json,sx-cmu-tepper-mba-est-annual-cost-poetsquants,cmu-tepper-mba,est_annual_cost,secondary,estimate,verified,"row with 'Tepper' and '$120,798'"
+secondary_poetsandquants_2026.json,sx-cmu-tepper-mba-est-two-year-cost-poetsquants,cmu-tepper-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Tepper' and '$241,596'"
+secondary_poetsandquants_2026.json,sx-yale-som-mba-tuition-poetsquants,yale-som-mba,tuition,secondary,reported,verified,"row with 'Yale' and '$90,900'"
+secondary_poetsandquants_2026.json,sx-yale-som-mba-mandatory-fees-poetsquants,yale-som-mba,mandatory_fees,secondary,reported,verified,row with 'Yale' and '$500'
+secondary_poetsandquants_2026.json,sx-yale-som-mba-est-annual-cost-poetsquants,yale-som-mba,est_annual_cost,secondary,estimate,verified,"row with 'Yale' and '$128,976'"
+secondary_poetsandquants_2026.json,sx-yale-som-mba-est-two-year-cost-poetsquants,yale-som-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Yale' and '$257,952'"
+secondary_poetsandquants_2026.json,sx-vanderbilt-owen-mba-tuition-poetsquants,vanderbilt-owen-mba,tuition,secondary,reported,verified,"row with 'Owen' and '$76,700'"
+secondary_poetsandquants_2026.json,sx-vanderbilt-owen-mba-mandatory-fees-poetsquants,vanderbilt-owen-mba,mandatory_fees,secondary,reported,verified,"row with 'Owen' and '$2,926'"
+secondary_poetsandquants_2026.json,sx-vanderbilt-owen-mba-est-annual-cost-poetsquants,vanderbilt-owen-mba,est_annual_cost,secondary,estimate,verified,"row with 'Owen' and '$113,537'"
+secondary_poetsandquants_2026.json,sx-vanderbilt-owen-mba-est-two-year-cost-poetsquants,vanderbilt-owen-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Owen' and '$227,074'"
+secondary_poetsandquants_2026.json,sx-georgia-tech-scheller-mba-tuition-poetsquants,georgia-tech-scheller-mba,tuition,secondary,reported,verified,"row with 'Scheller' and '$44,956'"
+secondary_poetsandquants_2026.json,sx-georgia-tech-scheller-mba-mandatory-fees-poetsquants,georgia-tech-scheller-mba,mandatory_fees,secondary,reported,verified,"row with 'Scheller' and '$1,516'"
+secondary_poetsandquants_2026.json,sx-georgia-tech-scheller-mba-est-annual-cost-poetsquants,georgia-tech-scheller-mba,est_annual_cost,secondary,estimate,verified,"row with 'Scheller' and '$70,352'"
+secondary_poetsandquants_2026.json,sx-georgia-tech-scheller-mba-est-two-year-cost-poetsquants,georgia-tech-scheller-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Scheller' and '$140,704'"
+secondary_poetsandquants_2026.json,sx-unc-kenan-flagler-mba-tuition-poetsquants,unc-kenan-flagler-mba,tuition,secondary,reported,verified,"row with 'Kenan-Flagler' and '$74,192'"
+secondary_poetsandquants_2026.json,sx-unc-kenan-flagler-mba-est-annual-cost-poetsquants,unc-kenan-flagler-mba,est_annual_cost,secondary,estimate,verified,"row with 'Kenan-Flagler' and '$103,612'"
+secondary_poetsandquants_2026.json,sx-unc-kenan-flagler-mba-est-two-year-cost-poetsquants,unc-kenan-flagler-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Kenan-Flagler' and '$207,224'"
+secondary_poetsandquants_2026.json,sx-emory-goizueta-mba-tuition-poetsquants,emory-goizueta-mba,tuition,secondary,reported,verified,"row with 'Goizueta' and '$79,200'"
+secondary_poetsandquants_2026.json,sx-emory-goizueta-mba-mandatory-fees-poetsquants,emory-goizueta-mba,mandatory_fees,secondary,reported,verified,"row with 'Goizueta' and '$2,452'"
+secondary_poetsandquants_2026.json,sx-emory-goizueta-mba-est-annual-cost-poetsquants,emory-goizueta-mba,est_annual_cost,secondary,estimate,verified,"row with 'Goizueta' and '$120,096'"
+secondary_poetsandquants_2026.json,sx-emory-goizueta-mba-est-two-year-cost-poetsquants,emory-goizueta-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Goizueta' and '$240,192'"
+secondary_poetsandquants_2026.json,sx-uw-foster-mba-tuition-poetsquants,uw-foster-mba,tuition,secondary,reported,verified,"row with 'Foster' and '$60,180'"
+secondary_poetsandquants_2026.json,sx-uw-foster-mba-mandatory-fees-poetsquants,uw-foster-mba,mandatory_fees,secondary,reported,verified,"row with 'Foster' and '$1,209'"
+secondary_poetsandquants_2026.json,sx-uw-foster-mba-est-annual-cost-poetsquants,uw-foster-mba,est_annual_cost,secondary,estimate,verified,"row with 'Foster' and '$102,473'"
+secondary_poetsandquants_2026.json,sx-uw-foster-mba-est-two-year-cost-poetsquants,uw-foster-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Foster' and '$204,946'"
+secondary_poetsandquants_2026.json,sx-usc-marshall-mba-tuition-poetsquants,usc-marshall-mba,tuition,secondary,reported,verified,"row with 'Marshall' and '$86,295'"
+secondary_poetsandquants_2026.json,sx-usc-marshall-mba-mandatory-fees-poetsquants,usc-marshall-mba,mandatory_fees,secondary,reported,verified,"row with 'Marshall' and '$8,772'"
+secondary_poetsandquants_2026.json,sx-usc-marshall-mba-est-annual-cost-poetsquants,usc-marshall-mba,est_annual_cost,secondary,estimate,verified,"row with 'Marshall' and '$126,523'"
+secondary_poetsandquants_2026.json,sx-usc-marshall-mba-est-two-year-cost-poetsquants,usc-marshall-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Marshall' and '$253,046'"
+secondary_poetsandquants_2026.json,sx-georgetown-mcdonough-mba-tuition-poetsquants,georgetown-mcdonough-mba,tuition,secondary,reported,verified,"row with 'McDonough' and '$75,016'"
+secondary_poetsandquants_2026.json,sx-georgetown-mcdonough-mba-mandatory-fees-poetsquants,georgetown-mcdonough-mba,mandatory_fees,secondary,reported,verified,row with 'McDonough' and '$54'
+secondary_poetsandquants_2026.json,sx-georgetown-mcdonough-mba-est-annual-cost-poetsquants,georgetown-mcdonough-mba,est_annual_cost,secondary,estimate,verified,"row with 'McDonough' and '$115,171'"
+secondary_poetsandquants_2026.json,sx-georgetown-mcdonough-mba-est-two-year-cost-poetsquants,georgetown-mcdonough-mba,est_two_year_cost,secondary,estimate,verified,"row with 'McDonough' and '$230,342'"
+secondary_poetsandquants_2026.json,sx-stanford-gsb-mba-tuition-poetsquants,stanford-gsb-mba,tuition,secondary,reported,verified,"row with 'Stanford' and '$89,187'"
+secondary_poetsandquants_2026.json,sx-stanford-gsb-mba-mandatory-fees-poetsquants,stanford-gsb-mba,mandatory_fees,secondary,reported,verified,row with 'Stanford' and '$843'
+secondary_poetsandquants_2026.json,sx-stanford-gsb-mba-est-annual-cost-poetsquants,stanford-gsb-mba,est_annual_cost,secondary,estimate,verified,"row with 'Stanford' and '$140,940'"
+secondary_poetsandquants_2026.json,sx-stanford-gsb-mba-est-two-year-cost-poetsquants,stanford-gsb-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Stanford' and '$281,880'"
+secondary_poetsandquants_2026.json,sx-rice-jones-mba-tuition-poetsquants,rice-jones-mba,tuition,secondary,reported,verified,"row with 'Rice' and '$79,116'"
+secondary_poetsandquants_2026.json,sx-rice-jones-mba-mandatory-fees-poetsquants,rice-jones-mba,mandatory_fees,secondary,reported,verified,"row with 'Rice' and '$1,323'"
+secondary_poetsandquants_2026.json,sx-rice-jones-mba-est-annual-cost-poetsquants,rice-jones-mba,est_annual_cost,secondary,estimate,verified,"row with 'Rice' and '$100,239'"
+secondary_poetsandquants_2026.json,sx-rice-jones-mba-est-two-year-cost-poetsquants,rice-jones-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Rice' and '$200,478'"
+secondary_poetsandquants_2026.json,sx-notre-dame-mendoza-mba-tuition-poetsquants,notre-dame-mendoza-mba,tuition,secondary,reported,verified,"row with 'Mendoza' and '$75,460'"
+secondary_poetsandquants_2026.json,sx-notre-dame-mendoza-mba-mandatory-fees-poetsquants,notre-dame-mendoza-mba,mandatory_fees,secondary,reported,verified,"row with 'Mendoza' and '$3,350'"
+secondary_poetsandquants_2026.json,sx-notre-dame-mendoza-mba-est-annual-cost-poetsquants,notre-dame-mendoza-mba,est_annual_cost,secondary,estimate,verified,"row with 'Mendoza' and '$107,800'"
+secondary_poetsandquants_2026.json,sx-notre-dame-mendoza-mba-est-two-year-cost-poetsquants,notre-dame-mendoza-mba,est_two_year_cost,secondary,estimate,verified,"row with 'Mendoza' and '$215,600'"

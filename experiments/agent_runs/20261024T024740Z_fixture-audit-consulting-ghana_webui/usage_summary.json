@@ -1,0 +1,84 @@
+{
+  "run_id": "96c4bf3e41d8",
+  "server_run_id": "660fed604151",
+  "source": "web UI (POST /api/runs)",
+  "status": "stopped_budget",
+  "model": "gpt-6-luna",
+  "revision_performed": true,
+  "revision_target": "pathway_matcher",
+  "grounding_violations": 0,
+  "usage_by_agent": [
+    {
+      "agent": "pathway_matcher",
+      "calls": 6,
+      "input_tokens": 20738,
+      "cached_input_tokens": 9911,
+      "output_tokens": 3808,
+      "reasoning_tokens": 100,
+      "elapsed_seconds": 29.203,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "evidence_analyst",
+      "calls": 10,
+      "input_tokens": 87954,
+      "cached_input_tokens": 51756,
+      "output_tokens": 9498,
+      "reasoning_tokens": 437,
+      "elapsed_seconds": 55.31,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "strategy_planner",
+      "calls": 2,
+      "input_tokens": 10578,
+      "cached_input_tokens": 5106,
+      "output_tokens": 2674,
+      "reasoning_tokens": 116,
+      "elapsed_seconds": 16.779,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "skeptic",
+      "calls": 1,
+      "input_tokens": 8583,
+      "cached_input_tokens": 0,
+      "output_tokens": 914,
+      "reasoning_tokens": 349,
+      "elapsed_seconds": 7.315,
+      "estimated_cost_usd": null
+    }
+  ],
+  "totals": {
+    "input_tokens": 127853,
+    "cached_input_tokens": 66773,
+    "output_tokens": 16894,
+    "reasoning_tokens_within_output": 1002,
+    "reasoning_effort": "low",
+    "model_requests": 20,
+    "tool_calls": 31,
+    "model_seconds": 108.607,
+    "wall_seconds": 110.668,
+    "estimated_cost_usd": null,
+    "cost_basis": "unknown: no documented gpt-6-luna price configured",
+    "budget": {
+      "requests": 20,
+      "max_requests": 20,
+      "total_tokens": 150404,
+      "max_total_tokens": 200000,
+      "tool_calls": 31,
+      "max_tool_calls": 40,
+      "max_seconds": 300.0
+    }
+  },
+  "error": "request limit reached (20/20)",
+  "server_budget_snapshot": {
+    "requests": 20,
+    "max_requests": 20,
+    "total_tokens": 150404,
+    "max_total_tokens": 200000,
+    "tool_calls": 31,
+    "max_tool_calls": 40,
+    "max_seconds": 300.0
+  }
+}

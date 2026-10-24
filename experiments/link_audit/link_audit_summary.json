@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-23T20:42:23+00:00",
+  "programs_covered": 30,
+  "urls_checked": 193,
+  "by_status": {
+    "blocked": 11,
+    "broken": 29,
+    "ok": 137,
+    "redirect_ok": 16
+  },
+  "by_role": {
+    "checked_not_used": 69,
+    "fact_source": 100,
+    "official_program_page": 24
+  },
+  "fact_sources_and_program_pages": {
+    "checked": 124,
+    "by_status": {
+      "blocked": 2,
+      "ok": 112,
+      "redirect_ok": 10
+    }
+  },
+  "method": {
+    "user_agent": "AdmitCompassLinkAudit/1.0 (student course project; polite link checker; no scraping)",
+    "concurrency": 4,
+    "timeout_s": 20,
+    "retries": 1,
+    "bypass": "none"
+  }
+}

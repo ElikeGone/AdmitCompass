@@ -1,0 +1,32 @@
+[
+  {
+    "seq": 1,
+    "kind": "agent_start",
+    "agent": "pathway_matcher",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 2,
+    "kind": "agent_failure",
+    "agent": "orchestrator",
+    "detail": {
+      "error": "BadRequestError: Error code: 400 - {'error': {'message': \"azure-openai error: Function tools with reasoning_effort are not supported for gpt-6-luna-global in /v1/chat/completions. To use function tools, use /v1/responses or set reasoning_effort to 'none'.\", 'type': 'invalid_request_error', 'param': 'reasoning_effort"
+    }
+  },
+  {
+    "seq": 3,
+    "kind": "run_end",
+    "agent": "orchestrator",
+    "detail": {
+      "status": "failed_closed",
+      "requests": 0,
+      "max_requests": 14,
+      "total_tokens": 0,
+      "max_total_tokens": 120000,
+      "tool_calls": 0,
+      "max_tool_calls": 40
+    }
+  }
+]

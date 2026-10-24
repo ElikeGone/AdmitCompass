@@ -1,0 +1,201 @@
+{
+  "source_runs": {
+    "complete": "20261023T180104Z_fixture-tech-pm-india",
+    "earlier_budget_stopped": "20261023T175556Z_fixture-tech-pm-india"
+  },
+  "price": "UNKNOWN \u2014 no documented gpt-6-luna price (course site, instructions page, provider config checked 2026-10-23). All dollar figures below are hypothetical scenarios.",
+  "complete_run_totals": {
+    "model_requests": 16,
+    "input_tokens": 105041,
+    "cached_input_tokens": 64600,
+    "output_tokens": 14936,
+    "reasoning_tokens_within_output": 1640,
+    "tool_calls": 24,
+    "model_seconds": 50.689,
+    "wall_seconds": 50.735
+  },
+  "cached_share_of_input_pct": 61.5,
+  "per_agent_complete_run": {
+    "pathway_matcher": {
+      "requests": 4,
+      "input": 16678,
+      "cached": 4735,
+      "output": 3983,
+      "reasoning": 176,
+      "seconds": 3.963
+    },
+    "evidence_analyst": {
+      "requests": 9,
+      "input": 67608,
+      "cached": 52935,
+      "output": 7881,
+      "reasoning": 1059,
+      "seconds": 24.278
+    },
+    "strategy_planner": {
+      "requests": 2,
+      "input": 11983,
+      "cached": 6930,
+      "output": 2458,
+      "reasoning": 0,
+      "seconds": 16.765
+    },
+    "skeptic": {
+      "requests": 1,
+      "input": 8772,
+      "cached": 0,
+      "output": 614,
+      "reasoning": 405,
+      "seconds": 5.683
+    }
+  },
+  "per_agent_earlier_run": {
+    "pathway_matcher": {
+      "requests": 4,
+      "input": 16678,
+      "cached": 4735,
+      "output": 3983,
+      "reasoning": 176,
+      "seconds": 25.024
+    },
+    "evidence_analyst": {
+      "requests": 9,
+      "input": 67680,
+      "cached": 52989,
+      "output": 7714,
+      "reasoning": 1059,
+      "seconds": 55.749
+    },
+    "strategy_planner": {
+      "requests": 1,
+      "input": 5000,
+      "cached": 0,
+      "output": 35,
+      "reasoning": 0,
+      "seconds": 5.525
+    }
+  },
+  "retry_overhead_complete_run": {
+    "schema_retry": {
+      "requests": 1,
+      "input": 7124,
+      "output": 1974
+    },
+    "grounding_retry": {
+      "requests": 4,
+      "input": 29980,
+      "output": 3592
+    }
+  },
+  "repeated_tool_calls_complete_run": [
+    {
+      "seq": 34,
+      "agent": "evidence_analyst",
+      "tool": "get_program_facts",
+      "first_seq": 19,
+      "served_from_run_cache": true
+    },
+    {
+      "seq": 35,
+      "agent": "evidence_analyst",
+      "tool": "get_program_facts",
+      "first_seq": 20,
+      "served_from_run_cache": true
+    },
+    {
+      "seq": 36,
+      "agent": "evidence_analyst",
+      "tool": "get_program_facts",
+      "first_seq": 21,
+      "served_from_run_cache": true
+    },
+    {
+      "seq": 37,
+      "agent": "evidence_analyst",
+      "tool": "get_program_facts",
+      "first_seq": 22,
+      "served_from_run_cache": true
+    },
+    {
+      "seq": 39,
+      "agent": "evidence_analyst",
+      "tool": "compare_employment_metrics",
+      "first_seq": 26,
+      "served_from_run_cache": true
+    },
+    {
+      "seq": 41,
+      "agent": "evidence_analyst",
+      "tool": "compare_employment_metrics",
+      "first_seq": 28,
+      "served_from_run_cache": true
+    }
+  ],
+  "cache_replay_evidence": {
+    "requests_with_identical_usage_to_earlier_run": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "of_which_under_1s": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "interpretation": "Requests 1-9 of the complete run reported byte-identical token usage to the earlier run (8 of them in under 1 s). This is consistent with Portkey serving identical requests from a response cache. The complete run is therefore NOT a clean fresh-generation benchmark: only the later requests are certainly fresh. Whether replayed requests are billed is unknown.",
+    "certainly_fresh_requests": 7,
+    "certainly_fresh_tokens": {
+      "input": 50735,
+      "cached": 31357,
+      "output": 6664
+    }
+  },
+  "formula": "cost_per_run = (input - cached) * P_in + cached * P_cached + output * P_out   (P in USD per token)",
+  "assumption_runs_per_user_per_month": 3,
+  "hypothetical_cost_scenarios_using_complete_run_tokens": {
+    "H1 low (hypothetical)": {
+      "usd_per_mtok": {
+        "input": 0.5,
+        "cached_input": 0.05,
+        "output": 2.0
+      },
+      "per_run": 0.0533,
+      "per_user_month": 0.16,
+      "users_100_month": 16.0,
+      "users_10000_month": 1599.68
+    },
+    "H2 mid (hypothetical)": {
+      "usd_per_mtok": {
+        "input": 2.0,
+        "cached_input": 0.2,
+        "output": 8.0
+      },
+      "per_run": 0.2133,
+      "per_user_month": 0.6399,
+      "users_100_month": 63.99,
+      "users_10000_month": 6398.7
+    },
+    "H3 high (hypothetical)": {
+      "usd_per_mtok": {
+        "input": 5.0,
+        "cached_input": 0.5,
+        "output": 20.0
+      },
+      "per_run": 0.5332,
+      "per_user_month": 1.5997,
+      "users_100_month": 159.97,
+      "users_10000_month": 15996.75
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "run_id": "c5484533efaf",
+  "server_run_id": "c0c40a13c32c",
+  "source": "web UI (POST /api/runs)",
+  "status": "completed_with_violations",
+  "model": "gpt-6-luna",
+  "revision_performed": false,
+  "revision_target": null,
+  "grounding_violations": 1,
+  "usage_by_agent": [
+    {
+      "agent": "pathway_matcher",
+      "calls": 4,
+      "input_tokens": 12644,
+      "cached_input_tokens": 7954,
+      "output_tokens": 1693,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 15.62,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "evidence_analyst",
+      "calls": 6,
+      "input_tokens": 50726,
+      "cached_input_tokens": 29050,
+      "output_tokens": 6230,
+      "reasoning_tokens": 432,
+      "elapsed_seconds": 35.018,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "strategy_planner",
+      "calls": 2,
+      "input_tokens": 11032,
+      "cached_input_tokens": 6707,
+      "output_tokens": 2184,
+      "reasoning_tokens": 96,
+      "elapsed_seconds": 13.655,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "skeptic",
+      "calls": 1,
+      "input_tokens": 7882,
+      "cached_input_tokens": 1323,
+      "output_tokens": 559,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 4.902,
+      "estimated_cost_usd": null
+    }
+  ],
+  "totals": {
+    "input_tokens": 82284,
+    "cached_input_tokens": 45034,
+    "output_tokens": 10666,
+    "reasoning_tokens_within_output": 528,
+    "reasoning_effort": "low",
+    "model_requests": 13,
+    "tool_calls": 17,
+    "model_seconds": 69.195,
+    "wall_seconds": 69.35,
+    "estimated_cost_usd": null,
+    "cost_basis": "unknown: no documented gpt-6-luna price configured",
+    "budget": {
+      "requests": 13,
+      "max_requests": 20,
+      "total_tokens": 92950,
+      "max_total_tokens": 200000,
+      "tool_calls": 17,
+      "max_tool_calls": 40,
+      "max_seconds": 300.0
+    }
+  },
+  "error": null,
+  "server_budget_snapshot": {
+    "requests": 13,
+    "max_requests": 20,
+    "total_tokens": 92950,
+    "max_total_tokens": 200000,
+    "tool_calls": 17,
+    "max_tool_calls": 40,
+    "max_seconds": 300.0
+  }
+}

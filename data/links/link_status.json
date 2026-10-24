@@ -1,0 +1,1082 @@
+{
+  "https://som.yale.edu/programs/mba/admissions/how-to-apply": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://som.yale.edu/programs/mba/admissions/how-to-apply",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://som.yale.edu/programs/mba/admissions/tuition-and-financial-aid/cost-of-attendance": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://som.yale.edu/programs/mba/admissions/tuition-and-financial-aid/cost-of-attendance",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://som.yale.edu/careers/employment-data": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://som.yale.edu/careers/employment-data",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://som.yale.edu/programs/mba/affording-your-mba/cost-information": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://som.yale.edu/programs/mba/affording-your-mba/cost-information",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://som.yale.edu/sites/default/files/2025-12/Yale%20SOM%20Employment%20Data%202025-26.pdf": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://som.yale.edu/sites/default/files/2025-12/Yale%20SOM%20Employment%20Data%202025-26.pdf",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://som.yale.edu/programs/mba/admissions/application-information/faq": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://som.yale.edu/programs/mba/admissions/application-information/faq",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://som.yale.edu/programs/mba/career-paths/employment-report-2025-26": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://som.yale.edu/programs/mba/career-paths/employment-report-2025-26",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://som.yale.edu/story/2024/yale-som-mba-program-designated-stem-eligible": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://som.yale.edu/story/2024/yale-som-mba-program-designated-stem-eligible",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/mba/admissions/application-process": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.hbs.edu/mba/admissions/application-process",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/mba/financial-aid/cost-of-attendance": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.hbs.edu/mba/financial-aid/cost-of-attendance",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/mba/financial-aid/tuition-assistance/cost-of-attendance": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.hbs.edu/mba/financial-aid/tuition-assistance/cost-of-attendance",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/recruiting/data": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.hbs.edu/recruiting/data",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx": {
+    "status": "ok",
+    "http_status": 202,
+    "final_url": "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx?indsort=hl": {
+    "status": "ok",
+    "http_status": 202,
+    "final_url": "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx?indsort=hl",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/recruiting/employment-data/function/Pages/details.aspx": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://www.hbs.edu/recruiting/employment-data/function/Pages/details.aspx",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/recruiting/employment-data/industry/Pages/details.aspx": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://www.hbs.edu/recruiting/employment-data/industry/Pages/details.aspx",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/mba/admissions/application-process/frequently-asked-questions": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.hbs.edu/mba/admissions/application-process/frequently-asked-questions",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/news/releases/Pages/stem-mba.aspx": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://www.hbs.edu/news/releases/stem-mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/mba/admissions/application-process/international-applicants": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.hbs.edu/mba/admissions/application-process/international-applicants",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.hbs.edu/mba/handbook/academic-information-and-policies/degree-requirements": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.hbs.edu/mba/handbook/academic-information-and-policies/degree-requirements",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mitsloan.mit.edu/mba/admissions/cost-attendance": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://mitsloan.mit.edu/mba/admissions/cost-attendance",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mitsloan.mit.edu/cdo/employment-reports": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://mitsloan.mit.edu/cdo/employment-reports",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mitsloan.mit.edu/mba/admissions/application-requirements": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://mitsloan.mit.edu/mba/admissions/application-requirements",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mitsloan.mit.edu/mba/admissions/financing-your-education": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mitsloan.mit.edu/mba/admissions/financing-your-education",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mitsloan.mit.edu/sites/default/files/2025-12/2025-2026-MBA-Employment-Report.pdf": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mitsloan.mit.edu/sites/default/files/2025-12/2025-2026-MBA-Employment-Report.pdf",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://sfs.mit.edu/graduate-students/cost-of-attendance/": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://sfs.mit.edu/graduate-students/cost-of-attendance/grad-cost-of-attendance/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mitsloan.mit.edu/mba/admissions/frequently-asked-questions": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mitsloan.mit.edu/mba/admissions/frequently-asked-questions",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mitsloan.mit.edu/mba/explore-program": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mitsloan.mit.edu/mba/explore-program",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.chicagobooth.edu/programs/full-time-mba/admissions": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.chicagobooth.edu/programs/full-time-mba/admissions",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.chicagobooth.edu/programs/full-time-mba/admissions/tuition-and-financial-aid": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.chicagobooth.edu/programs/full-time-mba/admissions/tuition-and-financial-aid",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.chicagobooth.edu/careers/employment-report": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.chicagobooth.edu/careers/employment-report",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.chicagobooth.edu/mba/full-time/career-impact/employment-report": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.chicagobooth.edu/mba/full-time/career-impact/employment-report",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.chicagobooth.edu/mba/full-time/admissions/cost": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.chicagobooth.edu/mba/full-time/admissions/cost",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.chicagobooth.edu/mba/full-time/faq": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.chicagobooth.edu/mba/full-time/faq",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.chicagobooth.edu/why-booth/stories/mba-employment-report-2025": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.chicagobooth.edu/why-booth/stories/mba-employment-report-2025",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.chicagobooth.edu/mba/full-time/admissions/international-students": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.chicagobooth.edu/mba/full-time/admissions/international-students",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.chicagobooth.edu/mba/full-time/admissions/how-to-apply": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.chicagobooth.edu/mba/full-time/admissions/how-to-apply",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.fuqua.duke.edu/programs/daytime-mba/admissions/application-requirements": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.fuqua.duke.edu/programs/daytime-mba/admissions/application-requirements",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.fuqua.duke.edu/programs/daytime-mba/tuition-financial-aid": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.fuqua.duke.edu/programs/daytime-mba/tuition-financial-aid",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.fuqua.duke.edu/llms.txt": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.fuqua.duke.edu/llms.txt",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.fuqua.duke.edu/programs/daytime-mba/application-instructions": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.fuqua.duke.edu/programs/daytime-mba/application-instructions",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.fuqua.duke.edu/programs/daytime-mba": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.fuqua.duke.edu/programs/daytime-mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.fuqua.duke.edu/programs/daytime-mba/tuition-costs": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.fuqua.duke.edu/programs/daytime-mba/tuition-costs",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.fuqua.duke.edu/sites/default/files/media/programs/daytime/duke-mba-employment-2025.pdf": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.fuqua.duke.edu/sites/default/files/media/programs/daytime/duke-mba-employment-2025.pdf",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://bursar.rice.edu/tuition_fee_rates/graduate-programs/business/business-full-time-mba": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://bursar.rice.edu/tuition_fee_rates/graduate-programs/business/business-full-time-mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.rice.edu/rice-mba/full-time-mba/full-time-mba-frequently-asked-questions": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://business.rice.edu/rice-mba/full-time-mba/full-time-mba-frequently-asked-questions",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.rice.edu/mba-admissions/frequently-asked-questions": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://business.rice.edu/mba-admissions/mba-frequently-asked-questions",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://cdo.business.rice.edu/reports/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://cdo.business.rice.edu/reports/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://cdn.uconnectlabs.com/wp-content/uploads/sites/99/2026/02/2025-FTMBA-Employment-Outcomes-Data.pdf": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://cdn.uconnectlabs.com/wp-content/uploads/sites/99/2026/02/2025-FTMBA-Employment-Outcomes-Data.pdf",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.gsb.stanford.edu/programs/mba/admission/class-profile": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.gsb.stanford.edu/programs/mba/admission/class-profile",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.gsb.stanford.edu/programs/mba/admission/deadlines": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.gsb.stanford.edu/programs/mba/admission/deadlines",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.gsb.stanford.edu/programs/mba/financial-aid/cost-attendance": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://www.gsb.stanford.edu/programs/mba/tuition-financial-aid/cost-attendance",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.gsb.stanford.edu/programs/mba/admission/gmat-gre": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.gsb.stanford.edu/programs/mba/admission/gmat-gre",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.gsb.stanford.edu/experience/about/outcomes/employment-reports": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.gsb.stanford.edu/experience/about/outcomes/employment-reports",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.gsb.stanford.edu/programs/mba/career-impact/employment-outcomes": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.gsb.stanford.edu/programs/mba/career-impact/employment-outcomes",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.gsb.stanford.edu/organizations/recruit/strategies-resources/think-globally": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://www.gsb.stanford.edu/organizations/recruit/strategies-resources",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mba.wharton.upenn.edu/tuition-financial-aid/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mba.wharton.upenn.edu/tuition-financial-aid/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mba.wharton.upenn.edu/admissions/": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://mba.wharton.upenn.edu/application-timeline-deadlines/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.wharton.upenn.edu/mba-employment-report/": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.wharton.upenn.edu/mba-employment-report/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://statistics.mbacareers.wharton.upenn.edu/full-time/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://statistics.mbacareers.wharton.upenn.edu/full-time/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kellogg.northwestern.edu/programs/full-time-mba/admissions/deadlines.aspx": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://www.kellogg.northwestern.edu/admissions/ft-admissions/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kellogg.northwestern.edu/admissions/financial-aid/ft-fin-aid/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.kellogg.northwestern.edu/admissions/financial-aid/ft-fin-aid/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kellogg.northwestern.edu/programs/full-time-mba/tuition-financial-aid/tuition-and-fees.aspx": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/tuition-financial-aid/tuition-and-fees.aspx",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kellogg.northwestern.edu/programs/full-time-mba/career-services/career-outcomes/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/career-services/career-outcomes/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kellogg.northwestern.edu/companies-recruiters/hire-kellogg-mbas/hiring-international-students/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.kellogg.northwestern.edu/companies-recruiters/hire-kellogg-mbas/hiring-international-students/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://kellogg.northwestern.edu/admissions/ft-admissions/ft-international-candidates/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://kellogg.northwestern.edu/admissions/ft-admissions/ft-international-candidates/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kellogg.northwestern.edu/programs/full-time-mba/two-year-mba-program/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/two-year-mba-program/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.business.columbia.edu/mba/admissions/apply/deadlines": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://www.business.columbia.edu/mba/admissions/apply/deadlines",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.columbia.edu/recruiters/employment-report": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://business.columbia.edu/recruiters/employment-report",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.columbia.edu/recruiters/employment-report-2024/internships": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://business.columbia.edu/recruiters/employment-report-2024/internships",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.columbia.edu/press-release/cbs-press-releases/full-time-mba-and-emba-programs-awarded-stem-designation": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://business.columbia.edu/press-release/cbs-press-releases/full-time-mba-and-emba-programs-awarded-stem-designation",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://haas.berkeley.edu/full-time-mba/admissions/": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://haas.berkeley.edu/full-time-mba/admissions/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://haas.berkeley.edu/full-time-mba/admissions/deadlines/": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://haas.berkeley.edu/full-time-mba/admissions/deadlines/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://haas.berkeley.edu/full-time-mba/tuition-financial-aid/": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://haas.berkeley.edu/full-time-mba/tuition-financial-aid/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://haas.berkeley.edu/financial-aid/full-time-mba/cost/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://haas.berkeley.edu/financial-aid/full-time-mba/cost/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mba.haas.berkeley.edu/careers/employment-report": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mba.haas.berkeley.edu/careers/employment-report",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://newsroom.haas.berkeley.edu/berkeley-haas-receives-stem-designation-in-all-three-mba-programs/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://newsroom.haas.berkeley.edu/berkeley-haas-receives-stem-designation-in-all-three-mba-programs/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mba.haas.berkeley.edu/admissions/faq": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mba.haas.berkeley.edu/admissions/faq",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.tuck.dartmouth.edu/admissions/apply": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://tuck.dartmouth.edu/admissions/applying-to-tuck",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "http://www.tuck.dartmouth.edu/admissions/applying-to-tuck": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://tuck.dartmouth.edu/admissions/applying-to-tuck",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.tuck.dartmouth.edu/mba/tuition-financial-aid": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://tuck.dartmouth.edu/mba/tuition-financial-aid",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://tuck.dartmouth.edu/admissions/finance-your-degree/cost-attendance": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://tuck.dartmouth.edu/admissions/finance-your-degree/cost-attendance",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://tuck.dartmouth.edu/mba/career-services/employment-statistics": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://tuck.dartmouth.edu/mba/career-services/employment-statistics",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://tuck.dartmouth.edu/mba/life-at-tuck/international-students": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://tuck.dartmouth.edu/mba/life-at-tuck/international-students",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://tuck.dartmouth.edu/mba": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://tuck.dartmouth.edu/mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://michiganross.umich.edu/graduate/full-time-mba/admissions/tuition-financial-aid": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://michiganross.umich.edu/graduate/full-time-mba/admissions/tuition-financial-aid",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://rossweb.bus.umich.edu/financial-aid/program-overview/mba/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://rossweb.bus.umich.edu/financial-aid/program-overview/mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://michiganross.umich.edu/graduate/full-time-mba/careers/employment-data": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://michiganross.umich.edu/graduate/full-time-mba/careers/employment-data",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://michiganross.umich.edu/graduate/full-time-mba/admissions/application-requirements": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://michiganross.umich.edu/graduate/full-time-mba/admissions/application-requirements",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.darden.virginia.edu/mba/tuition-financial-aid/cost-of-attendance": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.darden.virginia.edu/mba/tuition-financial-aid/cost-of-attendance",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.darden.virginia.edu/mba/admissions/apply/deadlines": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.darden.virginia.edu/mba/admissions/apply/deadlines",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://news.darden.virginia.edu/2025/11/20/2025-26-employment-results-highlight-remarkable-job-market-success-of-darden-graduates/": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://news.darden.virginia.edu/articles/2025-26-employment-results-highlight-remarkable-job-market-success-of-darden-graduates",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.darden.virginia.edu/sites/default/files/2025-11/UVA%20Darden%20Class%20of%202025%20FT%20Employment%20Outcome%20Data_web.pdf": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.darden.virginia.edu/sites/default/files/2025-11/UVA%20Darden%20Class%20of%202025%20FT%20Employment%20Outcome%20Data_web.pdf",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.darden.virginia.edu/mba/admissions/tuition-financial-aid": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.darden.virginia.edu/mba/admissions/tuition-financial-aid",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.darden.virginia.edu/mba": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.darden.virginia.edu/mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.cornell.edu/admissions/graduate/full-time-mba/": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://business.cornell.edu/programs/mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.cornell.edu/admissions/graduate/mba/career-outcomes/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://business.cornell.edu/admissions/graduate/mba/career-outcomes/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.stern.nyu.edu/portal-partners/financial-aid/cost-attendance/full-time/mba1": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.stern.nyu.edu/portal-partners/financial-aid/cost-attendance/full-time/mba1",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.stern.nyu.edu/programs-admissions/full-time-mba/admissions": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.stern.nyu.edu/programs-admissions/full-time-mba/admissions",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.stern.nyu.edu/experience-stern/news/nyu-stern-s-two-year-full-time-mba-program-receives-stem-designation": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.stern.nyu.edu/experience-stern/news/nyu-stern-s-two-year-full-time-mba-program-receives-stem-designation",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.stern.nyu.edu/business-partnerships/employment-reports": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.stern.nyu.edu/business-partnerships/employment-reports",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.stern.nyu.edu/programs-admissions/full-time-mba/tuition-financial-aid": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.stern.nyu.edu/programs-admissions/full-time-mba/tuition-financial-aid",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.stern.nyu.edu/programs-admissions/full-time-mba": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.stern.nyu.edu/programs-admissions/full-time-mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.anderson.ucla.edu/degrees/full-time-mba/financing": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.anderson.ucla.edu/degrees/full-time-mba/financing",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.anderson.ucla.edu/degrees/full-time-mba/admissions/requirements": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.anderson.ucla.edu/degrees/full-time-mba/admissions/requirements",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.anderson.ucla.edu/degrees/full-time-mba/career-impact": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.anderson.ucla.edu/degrees/full-time-mba/career-impact",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.anderson.ucla.edu/sites/default/files/document/2026-03/Class%20of%202025%20Employment%20Report%20PDF_0.pdf": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.anderson.ucla.edu/sites/default/files/document/2026-03/Class%20of%202025%20Employment%20Report%20PDF_0.pdf",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.anderson.ucla.edu/degrees/full-time-mba/admissions/tuition-and-financial-aid": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.anderson.ucla.edu/degrees/full-time-mba/admissions/tuition-and-financial-aid",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.anderson.ucla.edu/degrees/full-time-mba": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.anderson.ucla.edu/degrees/full-time-mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.cmu.edu/sfs/tuition/graduate/tepper/full-accel-mba.html": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.cmu.edu/sfs/tuition/graduate/tepper/full-accel-mba.html",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.cmu.edu/tepper/programs/mba/admissions/apply-full-time-mba": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.cmu.edu/tepper/programs/mba/admissions/apply-full-time-mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.cmu.edu/tepper/programs/mba/careers/compensation-highlights": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.cmu.edu/tepper/programs/mba/careers/compensation-highlights",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.cmu.edu/tepper/programs/mba/admissions/tuition-and-financial-aid": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.cmu.edu/tepper/programs/mba/admissions/tuition-and-financial-aid",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.cmu.edu/tepper/programs/mba/full-time": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.cmu.edu/tepper/programs/mba/full-time",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/tuition-financial-aid/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/tuition-financial-aid/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/admissions/application-process/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/admissions/application-process/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/academics/curriculum/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/academics/curriculum/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://go.mccombs.utexas.edu/rs/503-KLY-263/images/FT%20MBA%20Employment%20Report%202025-26.pdf": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://go.mccombs.utexas.edu/rs/503-KLY-263/images/FT%20MBA%20Employment%20Report%202025-26.pdf",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/admissions/": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://www.mccombs.utexas.edu/graduate/mba/evening-mba/admissions/application-process/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/tuition-financial-aid/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/tuition-financial-aid/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/requirements-deadlines/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/requirements-deadlines/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/faq/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/faq/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kenan-flagler.unc.edu/wp-content/uploads/2025/12/FTMBA26-032-Employment-Statistics-One-Pager_FNL.pdf": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.kenan-flagler.unc.edu/wp-content/uploads/2025/12/FTMBA26-032-Employment-Statistics-One-Pager_FNL.pdf",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://goizueta.emory.edu/full-time-mba/two-year-mba/admissions/tuition": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://goizueta.emory.edu/full-time-mba/two-year-mba/admissions/tuition",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://goizueta.emory.edu/full-time-mba/two-year-mba/admissions": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://goizueta.emory.edu/full-time-mba/two-year-mba/admissions",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://goizueta.emory.edu/full-time-mba/two-year-mba/career/employment": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://goizueta.emory.edu/full-time-mba/two-year-mba/career/employment",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://msb.georgetown.edu/full-time-mba/admissions-tuition/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://msb.georgetown.edu/full-time-mba/admissions-tuition/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://msb.georgetown.edu/mba/application-components/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://msb.georgetown.edu/mba/application-components/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://msb.georgetown.edu/mba/career/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://msb.georgetown.edu/mba/career/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://msb.georgetown.edu/mba/faq/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://msb.georgetown.edu/mba/faq/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://msb.georgetown.edu/full-time-mba/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://msb.georgetown.edu/full-time-mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba/tuition-fees": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba/tuition-fees",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba/admissions": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba/admissions",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.marshall.usc.edu/full-time-mba-curriculum": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.marshall.usc.edu/full-time-mba-curriculum",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.marshall.usc.edu/programs/mba-programs/full-time-mba/tuition-financial-aid": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.marshall.usc.edu/programs/mba-programs/full-time-mba/career-services/employment-report": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://foster.uw.edu/academics/degree-programs/full-time-mba/tuition-and-fees/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/tuition-and-fees/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://foster.uw.edu/academics/degree-programs/full-time-mba/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://foster.uw.edu/academics/degree-programs/full-time-mba/admissions/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/admissions/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://foster.uw.edu/academics/degree-programs/full-time-mba/career-management/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/career-management/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://foster.uw.edu/academics/degree-programs/full-time-mba/curriculum/stem-designated-mba-management-science-degree-option/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/curriculum/stem-designated-mba-management-science-degree-option/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://kelley.iu.edu/programs/mba/full-time/index.html": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://kelley.iu.edu/programs/mba/full-time/index.html",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://kelley.iu.edu/programs/full-time-mba/admissions/tuition-aid-scholarships.html": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://kelley.iu.edu/programs/full-time-mba/admissions/tuition-aid-scholarships.html",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://bulletin.kelley.iu.edu/KD/Policy/Detail?policyId=54&year=2023-2024": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://bulletin.kelley.iu.edu/KD/Policy/Detail?policyId=54&year=2023-2024",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.vanderbilt.edu/mba/admissions/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://business.vanderbilt.edu/mba/admissions/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.vanderbilt.edu/mba/admissions/tuition-financing-scholarships/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://business.vanderbilt.edu/mba/admissions/tuition-financing-scholarships/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.vanderbilt.edu/mba/admissions/application-instructions/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://business.vanderbilt.edu/mba/admissions/application-instructions/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.vanderbilt.edu/mba/outcomes/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://business.vanderbilt.edu/mba/outcomes/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mays.tamu.edu/full-time-mba/": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://mays.tamu.edu/graduate/mba/full-time-mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mays.tamu.edu/career-management-center/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mays.tamu.edu/career-management-center/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mays.tamu.edu/graduate/mba/full-time-mba/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mays.tamu.edu/graduate/mba/full-time-mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mendoza.nd.edu/graduate-programs/two-year-mba/": {
+    "status": "redirect_ok",
+    "http_status": 200,
+    "final_url": "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/outcomes/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/outcomes/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/apply/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/apply/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://scheller.gatech.edu/degrees/mba/full-time/index.html": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://www.scheller.gatech.edu/degrees/mba/full-time/index.html",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/tuition-and-financing/index.html": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/tuition-and-financing/index.html",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/admissions/index.html": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/admissions/index.html",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/career-development/index.html": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/career-development/index.html",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/index.html": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/index.html",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://carlsonschool.umn.edu/mba/full-time-mba": {
+    "status": "broken",
+    "http_status": 404,
+    "final_url": "https://carlsonschool.umn.edu/mba/full-time-mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://carlsonschool.umn.edu/graduate/mba/full-time/tuition-aid": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://carlsonschool.umn.edu/graduate/mba/full-time/tuition-aid",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://carlsonschool.umn.edu/graduate/mba/full-time/admissions": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://carlsonschool.umn.edu/graduate/mba/full-time/admissions",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://carlsonschool.umn.edu/graduate/mba/full-time/careers/employment-statistics": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://carlsonschool.umn.edu/graduate/mba/full-time/careers/employment-statistics",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://carlsonschool.umn.edu/graduate/resources/management-science-mba-overview": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://carlsonschool.umn.edu/graduate/resources/management-science-mba-overview",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://carlsonschool.umn.edu/graduate/mba/full-time": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://carlsonschool.umn.edu/graduate/mba/full-time",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.gsb.stanford.edu/programs/mba": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.gsb.stanford.edu/programs/mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mba.wharton.upenn.edu/types-of-mba/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mba.wharton.upenn.edu/types-of-mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://academics.business.columbia.edu/admissions/mba": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://academics.business.columbia.edu/admissions/mba",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://mba.haas.berkeley.edu/academics": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://mba.haas.berkeley.edu/academics",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://michiganross.umich.edu/graduate/full-time-mba/curriculum": {
+    "status": "blocked",
+    "http_status": 403,
+    "final_url": "https://michiganross.umich.edu/graduate/full-time-mba/curriculum",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.cornell.edu/programs/mba/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://business.cornell.edu/programs/mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://goizueta.emory.edu/full-time-mba/two-year-mba/academics": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://goizueta.emory.edu/full-time-mba/two-year-mba/academics",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://foster.uw.edu/academics/degree-programs/full-time-mba/curriculum/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/curriculum/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://kelley.iu.edu/programs/full-time-mba/academics/index.html": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://kelley.iu.edu/programs/full-time-mba/academics/index.html",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  },
+  "https://business.vanderbilt.edu/mba/": {
+    "status": "ok",
+    "http_status": 200,
+    "final_url": "https://business.vanderbilt.edu/mba/",
+    "checked_at": "2026-10-23T20:42:23+00:00"
+  }
+}

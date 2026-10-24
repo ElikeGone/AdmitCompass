@@ -1,0 +1,1695 @@
+{
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "source_id": "src-yale-som-mba-01",
+      "url": "https://som.yale.edu/programs/mba/admissions/how-to-apply",
+      "title": "https://som.yale.edu/programs/mba/admissions/how-to-apply",
+      "publisher": "Yale School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-yale-som-mba-02",
+      "url": "https://som.yale.edu/programs/mba/admissions/tuition-and-financial-aid/cost-of-attendance",
+      "title": "https://som.yale.edu/programs/mba/admissions/tuition-and-financial-aid/cost-of-attendance",
+      "publisher": "Yale School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-yale-som-mba-03",
+      "url": "https://som.yale.edu/careers/employment-data",
+      "title": "https://som.yale.edu/careers/employment-data",
+      "publisher": "Yale School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-yale-som-mba-04",
+      "url": "https://som.yale.edu/programs/mba/affording-your-mba/cost-information",
+      "title": "Affording Your MBA - Cost Information | Yale School of Management",
+      "publisher": "Yale School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "tuition, COA 2026-27"
+    },
+    {
+      "source_id": "src-yale-som-mba-05",
+      "url": "https://som.yale.edu/sites/default/files/2025-12/Yale%20SOM%20Employment%20Data%202025-26.pdf",
+      "title": "Full-Time MBA Program Employment Data Class of 2025",
+      "publisher": "Yale School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "PDF fetched but text not extractable"
+    },
+    {
+      "source_id": "src-yale-som-mba-06",
+      "url": "https://som.yale.edu/programs/mba/admissions/application-information/faq",
+      "title": "FAQ | Yale School of Management",
+      "publisher": "Yale School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "requirements, test policy, length, location"
+    },
+    {
+      "source_id": "src-yale-som-mba-07",
+      "url": "https://som.yale.edu/programs/mba/career-paths/employment-report-2025-26",
+      "title": "Employment Report 2025-26",
+      "publisher": "Yale School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "industry/function percentages only in chart images; not recorded"
+    },
+    {
+      "source_id": "src-yale-som-mba-08",
+      "url": "https://som.yale.edu/story/2024/yale-som-mba-program-designated-stem-eligible",
+      "title": "Yale SOM MBA Program Designated STEM-Eligible",
+      "publisher": "Yale School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "STEM designation; no CIP code"
+    },
+    {
+      "source_id": "src-hbs-mba-01",
+      "url": "https://www.hbs.edu/mba/admissions/application-process",
+      "title": "Application Process",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Requirements list; content truncated"
+    },
+    {
+      "source_id": "src-hbs-mba-02",
+      "url": "https://www.hbs.edu/mba/financial-aid/cost-of-attendance",
+      "title": "https://www.hbs.edu/mba/financial-aid/cost-of-attendance",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-hbs-mba-03",
+      "url": "https://www.hbs.edu/mba/financial-aid/tuition-assistance/cost-of-attendance",
+      "title": "Annual Cost of Attendance",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "2026-27 figures"
+    },
+    {
+      "source_id": "src-hbs-mba-04",
+      "url": "https://www.hbs.edu/recruiting/data",
+      "title": "https://www.hbs.edu/recruiting/data",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-hbs-mba-05",
+      "url": "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx",
+      "title": "Employment Data",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "Fetched but empty content (JS-rendered). Search snippet suggested Class of 2025 median base $184,500 but not verified by fetch."
+    },
+    {
+      "source_id": "src-hbs-mba-06",
+      "url": "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx?indsort=hl",
+      "title": "Employment Data",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "Empty content"
+    },
+    {
+      "source_id": "src-hbs-mba-07",
+      "url": "https://www.hbs.edu/recruiting/employment-data/function/Pages/details.aspx",
+      "title": "Function Details",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "403"
+    },
+    {
+      "source_id": "src-hbs-mba-08",
+      "url": "https://www.hbs.edu/recruiting/employment-data/industry/Pages/details.aspx",
+      "title": "Industry Details",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "403"
+    },
+    {
+      "source_id": "src-hbs-mba-09",
+      "url": "https://www.hbs.edu/mba/admissions/application-process/frequently-asked-questions",
+      "title": "https://www.hbs.edu/mba/admissions/application-process/frequently-asked-questions",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-hbs-mba-10",
+      "url": "https://www.hbs.edu/news/releases/Pages/stem-mba.aspx",
+      "title": "Harvard Business School MBA Is Now STEM Designated",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "STEM source"
+    },
+    {
+      "source_id": "src-hbs-mba-11",
+      "url": "https://www.hbs.edu/mba/admissions/application-process/international-applicants",
+      "title": "International Applicants",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "English tests; says STEM track qualifies for 36 months total work authorization; no sponsorship/outcome data"
+    },
+    {
+      "source_id": "src-hbs-mba-12",
+      "url": "https://www.hbs.edu/mba/handbook/academic-information-and-policies/degree-requirements",
+      "title": "2.4 Degree Requirements",
+      "publisher": "Harvard Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "States 'The HBS MBA is a STEM-designated degree program.' Only 'Two Years' nav tagline for duration, not recorded as months"
+    },
+    {
+      "source_id": "src-mit-sloan-mba-01",
+      "url": "https://mitsloan.mit.edu/mba/admissions/cost-attendance",
+      "title": "https://mitsloan.mit.edu/mba/admissions/cost-attendance",
+      "publisher": "MIT Sloan School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-mit-sloan-mba-02",
+      "url": "https://mitsloan.mit.edu/cdo/employment-reports",
+      "title": "https://mitsloan.mit.edu/cdo/employment-reports",
+      "publisher": "MIT Sloan School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-mit-sloan-mba-03",
+      "url": "https://mitsloan.mit.edu/mba/admissions/application-requirements",
+      "title": "https://mitsloan.mit.edu/mba/admissions/application-requirements",
+      "publisher": "MIT Sloan School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-mit-sloan-mba-04",
+      "url": "https://mitsloan.mit.edu/mba/admissions/financing-your-education",
+      "title": "How to Finance Your MIT Sloan MBA",
+      "publisher": "MIT Sloan School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Tuition; says full-time two-year program; no COA total, refers to MIT SFS"
+    },
+    {
+      "source_id": "src-mit-sloan-mba-05",
+      "url": "https://mitsloan.mit.edu/sites/default/files/2025-12/2025-2026-MBA-Employment-Report.pdf",
+      "title": "2025-2026 MBA Employment Report",
+      "publisher": "MIT Sloan School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Class of 2025; class profile 40% international but no international employment outcomes"
+    },
+    {
+      "source_id": "src-mit-sloan-mba-06",
+      "url": "https://sfs.mit.edu/graduate-students/cost-of-attendance/",
+      "title": "Graduate cost of attendance",
+      "publisher": "MIT Sloan School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Only general MIT graduate 9-month budget ($109,017 total, 2026-2027, with general tuition $66,720); not Sloan MBA-specific, so COA left null"
+    },
+    {
+      "source_id": "src-mit-sloan-mba-07",
+      "url": "https://mitsloan.mit.edu/mba/admissions/frequently-asked-questions",
+      "title": "Frequently Asked Questions",
+      "publisher": "MIT Sloan School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Test policy, application components, location"
+    },
+    {
+      "source_id": "src-mit-sloan-mba-08",
+      "url": "https://mitsloan.mit.edu/mba/explore-program",
+      "title": "Explore the Program",
+      "publisher": "MIT Sloan School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "STEM designation; 'full-time, two-year' (months not stated)"
+    },
+    {
+      "source_id": "src-chicago-booth-mba-01",
+      "url": "https://www.chicagobooth.edu/programs/full-time-mba/admissions",
+      "title": "https://www.chicagobooth.edu/programs/full-time-mba/admissions",
+      "publisher": "University of Chicago Booth School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-chicago-booth-mba-02",
+      "url": "https://www.chicagobooth.edu/programs/full-time-mba/admissions/tuition-and-financial-aid",
+      "title": "https://www.chicagobooth.edu/programs/full-time-mba/admissions/tuition-and-financial-aid",
+      "publisher": "University of Chicago Booth School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-chicago-booth-mba-03",
+      "url": "https://www.chicagobooth.edu/careers/employment-report",
+      "title": "https://www.chicagobooth.edu/careers/employment-report",
+      "publisher": "University of Chicago Booth School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-chicago-booth-mba-04",
+      "url": "https://www.chicagobooth.edu/mba/full-time/career-impact/employment-report",
+      "title": "Employment Report (Full-Time MBA Program)",
+      "publisher": "University of Chicago Booth School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Summary only: 89% offers within 3 months, 37% consulting (2025 report)"
+    },
+    {
+      "source_id": "src-chicago-booth-mba-05",
+      "url": "https://www.chicagobooth.edu/mba/full-time/admissions/cost",
+      "title": "Full-Time MBA Cost",
+      "publisher": "University of Chicago Booth School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "2026-27 costs"
+    },
+    {
+      "source_id": "src-chicago-booth-mba-06",
+      "url": "https://www.chicagobooth.edu/mba/full-time/faq",
+      "title": "Full-Time MBA Program FAQ",
+      "publisher": "University of Chicago Booth School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Test policy, location; no program length in months"
+    },
+    {
+      "source_id": "src-chicago-booth-mba-07",
+      "url": "https://www.chicagobooth.edu/why-booth/stories/mba-employment-report-2025",
+      "title": "The ROI of a Booth MBA: Chicago Booth 2025 Full-Time MBA Employment Report",
+      "publisher": "University of Chicago Booth School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Class of 2025 outcomes"
+    },
+    {
+      "source_id": "src-chicago-booth-mba-08",
+      "url": "https://www.chicagobooth.edu/mba/full-time/admissions/international-students",
+      "title": "Full-Time MBA Admission: International Applicants",
+      "publisher": "University of Chicago Booth School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "STEM OPT statement, no CIP code"
+    },
+    {
+      "source_id": "src-chicago-booth-mba-09",
+      "url": "https://www.chicagobooth.edu/mba/full-time/admissions/how-to-apply",
+      "title": "Full-Time MBA How to Apply",
+      "publisher": "University of Chicago Booth School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Checklist; title inferred from URL"
+    },
+    {
+      "source_id": "src-duke-fuqua-mba-01",
+      "url": "https://www.fuqua.duke.edu/programs/daytime-mba/admissions/application-requirements",
+      "title": "https://www.fuqua.duke.edu/programs/daytime-mba/admissions/application-requirements",
+      "publisher": "Duke University Fuqua School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-duke-fuqua-mba-02",
+      "url": "https://www.fuqua.duke.edu/programs/daytime-mba/tuition-financial-aid",
+      "title": "https://www.fuqua.duke.edu/programs/daytime-mba/tuition-financial-aid",
+      "publisher": "Duke University Fuqua School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-duke-fuqua-mba-03",
+      "url": "https://www.fuqua.duke.edu/llms.txt",
+      "title": "Fuqua llms.txt",
+      "publisher": "Duke University Fuqua School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Used only to find URLs"
+    },
+    {
+      "source_id": "src-duke-fuqua-mba-04",
+      "url": "https://www.fuqua.duke.edu/programs/daytime-mba/application-instructions",
+      "title": "Daytime MBA Application Instructions",
+      "publisher": "Duke University Fuqua School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Requirements, test policy"
+    },
+    {
+      "source_id": "src-duke-fuqua-mba-05",
+      "url": "https://www.fuqua.duke.edu/programs/daytime-mba",
+      "title": "Daytime MBA",
+      "publisher": "Duke University Fuqua School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "STEM, address; no total duration stated"
+    },
+    {
+      "source_id": "src-duke-fuqua-mba-06",
+      "url": "https://www.fuqua.duke.edu/programs/daytime-mba/tuition-costs",
+      "title": "Daytime MBA Tuition + Costs",
+      "publisher": "Duke University Fuqua School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "2026-27 tuition and COA"
+    },
+    {
+      "source_id": "src-duke-fuqua-mba-07",
+      "url": "https://www.fuqua.duke.edu/sites/default/files/media/programs/daytime/duke-mba-employment-2025.pdf",
+      "title": "Daytime MBA Employment Report 2025",
+      "publisher": "Duke University Fuqua School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Text extracted locally with pdftotext; no international-student or sponsorship statements"
+    },
+    {
+      "source_id": "src-rice-jones-mba-01",
+      "url": "https://bursar.rice.edu/tuition_fee_rates/graduate-programs/business/business-full-time-mba",
+      "title": "Business Full-Time MBA",
+      "publisher": "Rice University Jones Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "AY2026-27 tuition and fees; no cost-of-attendance budget"
+    },
+    {
+      "source_id": "src-rice-jones-mba-02",
+      "url": "https://business.rice.edu/rice-mba/full-time-mba/full-time-mba-frequently-asked-questions",
+      "title": "Rice Business Full-Time MBA FAQs",
+      "publisher": "Rice University Jones Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "22 months, test policy, requirements; no STEM text"
+    },
+    {
+      "source_id": "src-rice-jones-mba-03",
+      "url": "https://business.rice.edu/mba-admissions/frequently-asked-questions",
+      "title": "MBA Frequently Asked Questions (FAQ)",
+      "publisher": "Rice University Jones Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "STEM statement; no CIP code; no sponsorship"
+    },
+    {
+      "source_id": "src-rice-jones-mba-04",
+      "url": "https://cdo.business.rice.edu/reports/",
+      "title": "Reports & Employment Outcomes",
+      "publisher": "Rice University Jones Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Official index linking 2025/2024 reports hosted on cdn.uconnectlabs.com"
+    },
+    {
+      "source_id": "src-rice-jones-mba-05",
+      "url": "https://cdn.uconnectlabs.com/wp-content/uploads/sites/99/2026/02/2025-FTMBA-Employment-Outcomes-Data.pdf",
+      "title": "2024-25 - Employment Statistics Complete",
+      "publisher": "Rice University Jones Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Non-rice.edu host but linked from official CDO page. Total 3-month acceptance rate not stated as a single figure (54.9% by graduation + 16.4% by 3 months), so employment_rate left null. Function breakdown left null: extraction had 8 function labels vs 6 percents, mapping ambiguous. Hosted on the car"
+    },
+    {
+      "source_id": "src-stanford-gsb-mba-01",
+      "url": "https://www.gsb.stanford.edu/programs/mba/admission/class-profile",
+      "title": "MBA class profile",
+      "publisher": "Stanford Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "location only"
+    },
+    {
+      "source_id": "src-stanford-gsb-mba-02",
+      "url": "https://www.gsb.stanford.edu/programs/mba/admission/deadlines",
+      "title": "MBA Application Deadlines",
+      "publisher": "Stanford Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-stanford-gsb-mba-03",
+      "url": "https://www.gsb.stanford.edu/programs/mba/financial-aid/cost-attendance",
+      "title": "Cost of Attendance",
+      "publisher": "Stanford Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-stanford-gsb-mba-04",
+      "url": "https://www.gsb.stanford.edu/programs/mba/admission/gmat-gre",
+      "title": "https://www.gsb.stanford.edu/programs/mba/admission/gmat-gre",
+      "publisher": "Stanford Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-stanford-gsb-mba-05",
+      "url": "https://www.gsb.stanford.edu/experience/about/outcomes/employment-reports",
+      "title": "https://www.gsb.stanford.edu/experience/about/outcomes/employment-reports",
+      "publisher": "Stanford Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-stanford-gsb-mba-06",
+      "url": "https://www.gsb.stanford.edu/programs/mba/career-impact/employment-outcomes",
+      "title": "Employment Outcomes",
+      "publisher": "Stanford Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-stanford-gsb-mba-07",
+      "url": "https://www.gsb.stanford.edu/organizations/recruit/strategies-resources/think-globally",
+      "title": "Hiring International Students",
+      "publisher": "Stanford Graduate School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "no STEM statement"
+    },
+    {
+      "source_id": "src-wharton-mba-01",
+      "url": "https://mba.wharton.upenn.edu/tuition-financial-aid/",
+      "title": "Tuition & Financial Aid",
+      "publisher": "The Wharton School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-wharton-mba-02",
+      "url": "https://mba.wharton.upenn.edu/admissions/",
+      "title": "Admissions",
+      "publisher": "The Wharton School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-wharton-mba-03",
+      "url": "https://www.wharton.upenn.edu/mba-employment-report/",
+      "title": "https://www.wharton.upenn.edu/mba-employment-report/",
+      "publisher": "The Wharton School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-wharton-mba-04",
+      "url": "https://statistics.mbacareers.wharton.upenn.edu/full-time/",
+      "title": "Full-Time Jobs Overview, Class of 2025",
+      "publisher": "The Wharton School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "placeholders for headline stats"
+    },
+    {
+      "source_id": "src-kellogg-mba-01",
+      "url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/admissions/deadlines.aspx",
+      "title": "Deadlines",
+      "publisher": "Kellogg School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-kellogg-mba-02",
+      "url": "https://www.kellogg.northwestern.edu/admissions/financial-aid/ft-fin-aid/",
+      "title": "Tuition & Financial Aid",
+      "publisher": "Kellogg School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-kellogg-mba-03",
+      "url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/tuition-financial-aid/tuition-and-fees.aspx",
+      "title": "https://www.kellogg.northwestern.edu/programs/full-time-mba/tuition-financial-aid/tuition-and-fees.aspx",
+      "publisher": "Kellogg School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-kellogg-mba-04",
+      "url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/career-services/career-outcomes/",
+      "title": "Career Development",
+      "publisher": "Kellogg School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-kellogg-mba-05",
+      "url": "https://www.kellogg.northwestern.edu/companies-recruiters/hire-kellogg-mbas/hiring-international-students/",
+      "title": "Hiring international students",
+      "publisher": "Kellogg School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "STEM/CIP"
+    },
+    {
+      "source_id": "src-kellogg-mba-06",
+      "url": "https://kellogg.northwestern.edu/admissions/ft-admissions/ft-international-candidates/",
+      "title": "Kellogg International MBA Requirements",
+      "publisher": "Kellogg School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "STEM statement"
+    },
+    {
+      "source_id": "src-kellogg-mba-07",
+      "url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/two-year-mba-program/",
+      "title": "Two-Year MBA Program | Kellogg School of Management",
+      "publisher": "Kellogg School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-columbia-cbs-mba-01",
+      "url": "https://www.business.columbia.edu/mba/admissions/apply/deadlines",
+      "title": "https://www.business.columbia.edu/mba/admissions/apply/deadlines",
+      "publisher": "Columbia Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "403 Forbidden (first attempt; also guess may be 404 on other host)"
+    },
+    {
+      "source_id": "src-columbia-cbs-mba-02",
+      "url": "https://business.columbia.edu/recruiters/employment-report",
+      "title": "2025 Employment Report",
+      "publisher": "Columbia Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "403 Forbidden"
+    },
+    {
+      "source_id": "src-columbia-cbs-mba-03",
+      "url": "https://business.columbia.edu/recruiters/employment-report-2024/internships",
+      "title": "https://business.columbia.edu/recruiters/employment-report-2024/internships",
+      "publisher": "Columbia Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "403 Forbidden"
+    },
+    {
+      "source_id": "src-columbia-cbs-mba-04",
+      "url": "https://business.columbia.edu/press-release/cbs-press-releases/full-time-mba-and-emba-programs-awarded-stem-designation",
+      "title": "https://business.columbia.edu/press-release/cbs-press-releases/full-time-mba-and-emba-programs-awarded-stem-designation",
+      "publisher": "Columbia Business School",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "403 Forbidden"
+    },
+    {
+      "source_id": "src-berkeley-haas-mba-01",
+      "url": "https://haas.berkeley.edu/full-time-mba/admissions/",
+      "title": "https://haas.berkeley.edu/full-time-mba/admissions/",
+      "publisher": "Haas School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-berkeley-haas-mba-02",
+      "url": "https://haas.berkeley.edu/full-time-mba/admissions/deadlines/",
+      "title": "https://haas.berkeley.edu/full-time-mba/admissions/deadlines/",
+      "publisher": "Haas School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-berkeley-haas-mba-03",
+      "url": "https://haas.berkeley.edu/full-time-mba/tuition-financial-aid/",
+      "title": "https://haas.berkeley.edu/full-time-mba/tuition-financial-aid/",
+      "publisher": "Haas School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-berkeley-haas-mba-04",
+      "url": "https://haas.berkeley.edu/financial-aid/full-time-mba/cost/",
+      "title": "Cost of Attendance",
+      "publisher": "Haas School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-berkeley-haas-mba-05",
+      "url": "https://mba.haas.berkeley.edu/careers/employment-report",
+      "title": "Post MBA Salary",
+      "publisher": "Haas School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-berkeley-haas-mba-06",
+      "url": "https://newsroom.haas.berkeley.edu/berkeley-haas-receives-stem-designation-in-all-three-mba-programs/",
+      "title": "Berkeley Haas receives STEM designation",
+      "publisher": "Haas School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Haas newsroom subdomain of berkeley.edu"
+    },
+    {
+      "source_id": "src-berkeley-haas-mba-07",
+      "url": "https://mba.haas.berkeley.edu/admissions/faq",
+      "title": "FAQ",
+      "publisher": "Haas School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-dartmouth-tuck-mba-01",
+      "url": "https://www.tuck.dartmouth.edu/admissions/apply",
+      "title": "https://www.tuck.dartmouth.edu/admissions/apply",
+      "publisher": "Tuck School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "301 redirect"
+    },
+    {
+      "source_id": "src-dartmouth-tuck-mba-02",
+      "url": "http://www.tuck.dartmouth.edu/admissions/applying-to-tuck",
+      "title": "Applying to Tuck",
+      "publisher": "Tuck School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-dartmouth-tuck-mba-03",
+      "url": "https://www.tuck.dartmouth.edu/mba/tuition-financial-aid",
+      "title": "https://www.tuck.dartmouth.edu/mba/tuition-financial-aid",
+      "publisher": "Tuck School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-dartmouth-tuck-mba-04",
+      "url": "https://tuck.dartmouth.edu/admissions/finance-your-degree/cost-attendance",
+      "title": "Cost of Attendance",
+      "publisher": "Tuck School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-dartmouth-tuck-mba-05",
+      "url": "https://tuck.dartmouth.edu/mba/career-services/employment-statistics",
+      "title": "MBA Employment Statistics",
+      "publisher": "Tuck School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-dartmouth-tuck-mba-06",
+      "url": "https://tuck.dartmouth.edu/mba/life-at-tuck/international-students",
+      "title": "International Students",
+      "publisher": "Tuck School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-dartmouth-tuck-mba-07",
+      "url": "https://tuck.dartmouth.edu/mba",
+      "title": "The Tuck MBA at Dartmouth | Tuck School of Business",
+      "publisher": "Tuck School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-michigan-ross-mba-01",
+      "url": "https://michiganross.umich.edu/graduate/full-time-mba/admissions/tuition-financial-aid",
+      "title": "Full-Time MBA Tuition & Financial Aid",
+      "publisher": "Ross School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "HTTP 403"
+    },
+    {
+      "source_id": "src-michigan-ross-mba-02",
+      "url": "https://rossweb.bus.umich.edu/financial-aid/program-overview/mba/",
+      "title": "Full-Time MBA - Financial Aid - iMpact Web Portal",
+      "publisher": "Ross School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "tuition and COA 2026-2027"
+    },
+    {
+      "source_id": "src-michigan-ross-mba-03",
+      "url": "https://michiganross.umich.edu/graduate/full-time-mba/careers/employment-data",
+      "title": "Employment Data for Full-Time MBA",
+      "publisher": "Ross School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "HTTP 403"
+    },
+    {
+      "source_id": "src-michigan-ross-mba-04",
+      "url": "https://michiganross.umich.edu/graduate/full-time-mba/admissions/application-requirements",
+      "title": "Application Requirements for Full-Time MBA",
+      "publisher": "Ross School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "HTTP 403"
+    },
+    {
+      "source_id": "src-uva-darden-mba-01",
+      "url": "https://www.darden.virginia.edu/mba/tuition-financial-aid/cost-of-attendance",
+      "title": "MBA - Tuition & Financial Aid - Cost of Attendance",
+      "publisher": "Darden School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-uva-darden-mba-02",
+      "url": "https://www.darden.virginia.edu/mba/admissions/apply/deadlines",
+      "title": "MBA - Admissions - Apply - Deadlines",
+      "publisher": "Darden School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-uva-darden-mba-03",
+      "url": "https://news.darden.virginia.edu/2025/11/20/2025-26-employment-results-highlight-remarkable-job-market-success-of-darden-graduates/",
+      "title": "2025-26 Employment Results Highlight Remarkable Job-Market Success of Darden Graduates",
+      "publisher": "Darden School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-uva-darden-mba-04",
+      "url": "https://www.darden.virginia.edu/sites/default/files/2025-11/UVA%20Darden%20Class%20of%202025%20FT%20Employment%20Outcome%20Data_web.pdf",
+      "title": "UVA Darden Class of 2025 FT Employment Outcome Data",
+      "publisher": "Darden School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "fetched but binary PDF not parseable by the tool"
+    },
+    {
+      "source_id": "src-uva-darden-mba-05",
+      "url": "https://www.darden.virginia.edu/mba/admissions/tuition-financial-aid",
+      "title": "https://www.darden.virginia.edu/mba/admissions/tuition-financial-aid",
+      "publisher": "Darden School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "HTTP 404 (guessed URL)"
+    },
+    {
+      "source_id": "src-uva-darden-mba-06",
+      "url": "https://www.darden.virginia.edu/mba",
+      "title": "Full-Time MBA | UVA Darden School of Business",
+      "publisher": "Darden School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-cornell-johnson-mba-01",
+      "url": "https://business.cornell.edu/admissions/graduate/full-time-mba/",
+      "title": "Full-Time MBA",
+      "publisher": "SC Johnson College of Business (Johnson)",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "redirected from johnson.cornell.edu"
+    },
+    {
+      "source_id": "src-cornell-johnson-mba-02",
+      "url": "https://business.cornell.edu/admissions/graduate/mba/career-outcomes/",
+      "title": "Cornell MBA Career Outcomes",
+      "publisher": "SC Johnson College of Business (Johnson)",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "redirected from johnson.cornell.edu employment-data"
+    },
+    {
+      "source_id": "src-nyu-stern-mba-01",
+      "url": "https://www.stern.nyu.edu/portal-partners/financial-aid/cost-attendance/full-time/mba1",
+      "title": "Cost of Attendance for Full-time MBA Students",
+      "publisher": "Stern School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-nyu-stern-mba-02",
+      "url": "https://www.stern.nyu.edu/programs-admissions/full-time-mba/admissions",
+      "title": "Full Time MBA Admissions",
+      "publisher": "Stern School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-nyu-stern-mba-03",
+      "url": "https://www.stern.nyu.edu/experience-stern/news/nyu-stern-s-two-year-full-time-mba-program-receives-stem-designation",
+      "title": "Press Release",
+      "publisher": "Stern School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "dated ~2020"
+    },
+    {
+      "source_id": "src-nyu-stern-mba-04",
+      "url": "https://www.stern.nyu.edu/business-partnerships/employment-reports",
+      "title": "Employment Reports",
+      "publisher": "Stern School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-nyu-stern-mba-05",
+      "url": "https://www.stern.nyu.edu/programs-admissions/full-time-mba/tuition-financial-aid",
+      "title": "https://www.stern.nyu.edu/programs-admissions/full-time-mba/tuition-financial-aid",
+      "publisher": "Stern School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "HTTP 404 (guessed URL)"
+    },
+    {
+      "source_id": "src-nyu-stern-mba-06",
+      "url": "https://www.stern.nyu.edu/programs-admissions/full-time-mba",
+      "title": "https://www.stern.nyu.edu/programs-admissions/full-time-mba",
+      "publisher": "Stern School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-ucla-anderson-mba-01",
+      "url": "https://www.anderson.ucla.edu/degrees/full-time-mba/financing",
+      "title": "Explore Full-Time MBA Tuition and Financial Aid",
+      "publisher": "UCLA Anderson School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "first 100000 chars read"
+    },
+    {
+      "source_id": "src-ucla-anderson-mba-02",
+      "url": "https://www.anderson.ucla.edu/degrees/full-time-mba/admissions/requirements",
+      "title": "Full-Time MBA Requirements",
+      "publisher": "UCLA Anderson School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "first 100000 chars read"
+    },
+    {
+      "source_id": "src-ucla-anderson-mba-03",
+      "url": "https://www.anderson.ucla.edu/degrees/full-time-mba/career-impact",
+      "title": "Career Impact",
+      "publisher": "UCLA Anderson School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-ucla-anderson-mba-04",
+      "url": "https://www.anderson.ucla.edu/sites/default/files/document/2026-03/Class%20of%202025%20Employment%20Report%20PDF_0.pdf",
+      "title": "Class of 2025 Full-Time MBA Employment Report",
+      "publisher": "UCLA Anderson School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "fetch failed: maxContentLength exceeded"
+    },
+    {
+      "source_id": "src-ucla-anderson-mba-05",
+      "url": "https://www.anderson.ucla.edu/degrees/full-time-mba/admissions/tuition-and-financial-aid",
+      "title": "https://www.anderson.ucla.edu/degrees/full-time-mba/admissions/tuition-and-financial-aid",
+      "publisher": "UCLA Anderson School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "HTTP 404 (guessed URL)"
+    },
+    {
+      "source_id": "src-ucla-anderson-mba-06",
+      "url": "https://www.anderson.ucla.edu/degrees/full-time-mba",
+      "title": "UCLA Anderson Full-Time MBA | UCLA Anderson School of Management",
+      "publisher": "UCLA Anderson School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-cmu-tepper-mba-01",
+      "url": "https://www.cmu.edu/sfs/tuition/graduate/tepper/full-accel-mba.html",
+      "title": "Tepper School Full-Time MBA and Accelerated MBA",
+      "publisher": "Tepper School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-cmu-tepper-mba-02",
+      "url": "https://www.cmu.edu/tepper/programs/mba/admissions/apply-full-time-mba",
+      "title": "Apply to Full-Time MBA",
+      "publisher": "Tepper School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-cmu-tepper-mba-03",
+      "url": "https://www.cmu.edu/tepper/programs/mba/careers/compensation-highlights",
+      "title": "Compensation Highlights",
+      "publisher": "Tepper School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-cmu-tepper-mba-04",
+      "url": "https://www.cmu.edu/tepper/programs/mba/admissions/tuition-and-financial-aid",
+      "title": "https://www.cmu.edu/tepper/programs/mba/admissions/tuition-and-financial-aid",
+      "publisher": "Tepper School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "HTTP 404 (guessed URL)"
+    },
+    {
+      "source_id": "src-cmu-tepper-mba-05",
+      "url": "https://www.cmu.edu/tepper/programs/mba/full-time",
+      "title": "The Tepper School Full-Time MBA Program | Carnegie Mellon University",
+      "publisher": "Tepper School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-ut-mccombs-mba-01",
+      "url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/tuition-financial-aid/",
+      "title": "Tuition & Financial Aid | Full-Time MBA | Texas McCombs",
+      "publisher": "McCombs School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-ut-mccombs-mba-02",
+      "url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/admissions/application-process/",
+      "title": "How to Apply | Full-Time MBA | Texas McCombs",
+      "publisher": "McCombs School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-ut-mccombs-mba-03",
+      "url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/academics/curriculum/",
+      "title": "Curriculum & Concentrations",
+      "publisher": "McCombs School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-ut-mccombs-mba-04",
+      "url": "https://go.mccombs.utexas.edu/rs/503-KLY-263/images/FT%20MBA%20Employment%20Report%202025-26.pdf",
+      "title": "FT MBA Employment Report 2025-26",
+      "publisher": "McCombs School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "PDF; WebFetch could not decode, text extracted locally from the saved fetched PDF with pdftotext. Domain go.mccombs.utexas.edu is a UT subdomain."
+    },
+    {
+      "source_id": "src-ut-mccombs-mba-05",
+      "url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/admissions/",
+      "title": "Apply to Evening MBA",
+      "publisher": "McCombs School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Returned Evening MBA content; not used"
+    },
+    {
+      "source_id": "src-ut-mccombs-mba-06",
+      "url": "https://www.mccombs.utexas.edu/graduate/mba/full-time-mba/",
+      "title": "Full-Time MBA | Top-Ranked Business School at UT Austin",
+      "publisher": "McCombs School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-unc-kenan-flagler-mba-01",
+      "url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/tuition-financial-aid/",
+      "title": "Full-Time MBA Tuition & Financial Aid",
+      "publisher": "UNC Kenan-Flagler Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-unc-kenan-flagler-mba-02",
+      "url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/requirements-deadlines/",
+      "title": "Full-Time MBA Requirements and Deadlines",
+      "publisher": "UNC Kenan-Flagler Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-unc-kenan-flagler-mba-03",
+      "url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/faq/",
+      "title": "Full-Time MBA FAQs",
+      "publisher": "UNC Kenan-Flagler Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-unc-kenan-flagler-mba-04",
+      "url": "https://www.kenan-flagler.unc.edu/wp-content/uploads/2025/12/FTMBA26-032-Employment-Statistics-One-Pager_FNL.pdf",
+      "title": "Full-Time Employment Statistics MBA Class of 2025",
+      "publisher": "UNC Kenan-Flagler Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "text extracted locally via pdftotext"
+    },
+    {
+      "source_id": "src-unc-kenan-flagler-mba-05",
+      "url": "https://www.kenan-flagler.unc.edu/programs/mba/full-time-mba/admissions/",
+      "title": "Full-Time MBA Admissions",
+      "publisher": "UNC Kenan-Flagler Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "no details"
+    },
+    {
+      "source_id": "src-emory-goizueta-mba-01",
+      "url": "https://goizueta.emory.edu/full-time-mba/two-year-mba/admissions/tuition",
+      "title": "Cost of Full-Time MBA",
+      "publisher": "Goizueta Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "Tuition & Fees $163,549 total, period unlabeled"
+    },
+    {
+      "source_id": "src-emory-goizueta-mba-02",
+      "url": "https://goizueta.emory.edu/full-time-mba/two-year-mba/admissions",
+      "title": "Two Year MBA Admission",
+      "publisher": "Goizueta Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-emory-goizueta-mba-03",
+      "url": "https://goizueta.emory.edu/full-time-mba/two-year-mba/career/employment",
+      "title": "Two Year MBA Employment",
+      "publisher": "Goizueta Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-georgetown-mcdonough-mba-01",
+      "url": "https://msb.georgetown.edu/full-time-mba/admissions-tuition/",
+      "title": "Full-time MBA Tuition, Financial Aid, and Scholarships",
+      "publisher": "McDonough School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-georgetown-mcdonough-mba-02",
+      "url": "https://msb.georgetown.edu/mba/application-components/",
+      "title": "MBA Admissions and Application Process",
+      "publisher": "McDonough School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-georgetown-mcdonough-mba-03",
+      "url": "https://msb.georgetown.edu/mba/career/",
+      "title": "MBA Careers",
+      "publisher": "McDonough School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-georgetown-mcdonough-mba-04",
+      "url": "https://msb.georgetown.edu/mba/faq/",
+      "title": "MBA FAQ",
+      "publisher": "McDonough School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-georgetown-mcdonough-mba-05",
+      "url": "https://msb.georgetown.edu/full-time-mba/",
+      "title": "Full-time MBA",
+      "publisher": "McDonough School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-usc-marshall-mba-01",
+      "url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba/tuition-fees",
+      "title": "FTMBA Cost of Attendance",
+      "publisher": "USC Marshall School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "title as returned not seen; descriptive"
+    },
+    {
+      "source_id": "src-usc-marshall-mba-02",
+      "url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba/admissions",
+      "title": "Full-Time MBA (FTMBA) Admissions - USC Marshall",
+      "publisher": "USC Marshall School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-usc-marshall-mba-03",
+      "url": "https://www.marshall.usc.edu/full-time-mba-curriculum",
+      "title": "Full-Time MBA Curriculum - USC Marshall",
+      "publisher": "USC Marshall School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-usc-marshall-mba-04",
+      "url": "https://www.marshall.usc.edu/programs/mba-programs/full-time-mba/tuition-financial-aid",
+      "title": "https://www.marshall.usc.edu/programs/mba-programs/full-time-mba/tuition-financial-aid",
+      "publisher": "USC Marshall School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-usc-marshall-mba-05",
+      "url": "https://www.marshall.usc.edu/programs/mba-programs/full-time-mba/career-services/employment-report",
+      "title": "Full-Time MBA (FTMBA)",
+      "publisher": "USC Marshall School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "no employment figures on page"
+    },
+    {
+      "source_id": "src-usc-marshall-mba-06",
+      "url": "https://www.marshall.usc.edu/programs/graduate-programs/mba-programs/full-time-mba",
+      "title": "Full-Time MBA (FTMBA) - USC Marshall",
+      "publisher": "USC Marshall School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-uw-foster-mba-01",
+      "url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/tuition-and-fees/",
+      "title": "Tuition and Financing | Full-Time MBA",
+      "publisher": "Michael G. Foster School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "2026-27 figures, period ambiguity"
+    },
+    {
+      "source_id": "src-uw-foster-mba-02",
+      "url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/",
+      "title": "Full-time MBA",
+      "publisher": "Michael G. Foster School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-uw-foster-mba-03",
+      "url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/admissions/",
+      "title": "Admissions | Full-time MBA",
+      "publisher": "Michael G. Foster School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-uw-foster-mba-04",
+      "url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/career-management/",
+      "title": "Full-time MBA Career Outcomes",
+      "publisher": "Michael G. Foster School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-uw-foster-mba-05",
+      "url": "https://foster.uw.edu/academics/degree-programs/full-time-mba/curriculum/stem-designated-mba-management-science-degree-option/",
+      "title": "STEM-designated MBA Management Science Degree Option",
+      "publisher": "Michael G. Foster School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-indiana-kelley-mba-01",
+      "url": "https://kelley.iu.edu/programs/mba/full-time/index.html",
+      "title": "https://kelley.iu.edu/programs/mba/full-time/index.html",
+      "publisher": "Kelley School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "certificate rejected"
+    },
+    {
+      "source_id": "src-indiana-kelley-mba-02",
+      "url": "https://kelley.iu.edu/programs/full-time-mba/admissions/tuition-aid-scholarships.html",
+      "title": "https://kelley.iu.edu/programs/full-time-mba/admissions/tuition-aid-scholarships.html",
+      "publisher": "Kelley School of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "certificate rejected"
+    },
+    {
+      "source_id": "src-indiana-kelley-mba-03",
+      "url": "https://bulletin.kelley.iu.edu/KD/Policy/Detail?policyId=54&year=2023-2024",
+      "title": "Tuition Rate - Bulletin - Kelley",
+      "publisher": "Kelley School of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "fetched but only covers Kelley Direct online tuition; irrelevant to full-time MBA"
+    },
+    {
+      "source_id": "src-vanderbilt-owen-mba-01",
+      "url": "https://business.vanderbilt.edu/mba/admissions/",
+      "title": "MBA Admissions",
+      "publisher": "Owen Graduate School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "deadlines"
+    },
+    {
+      "source_id": "src-vanderbilt-owen-mba-02",
+      "url": "https://business.vanderbilt.edu/mba/admissions/tuition-financing-scholarships/",
+      "title": "MBA Admissions",
+      "publisher": "Owen Graduate School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "cost table"
+    },
+    {
+      "source_id": "src-vanderbilt-owen-mba-03",
+      "url": "https://business.vanderbilt.edu/mba/admissions/application-instructions/",
+      "title": "MBA Admissions",
+      "publisher": "Owen Graduate School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-vanderbilt-owen-mba-04",
+      "url": "https://business.vanderbilt.edu/mba/outcomes/",
+      "title": "MBA Career Outcomes",
+      "publisher": "Owen Graduate School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-texas-am-mays-mba-01",
+      "url": "https://mays.tamu.edu/full-time-mba/",
+      "title": "Full-Time MBA",
+      "publisher": "Mays Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-texas-am-mays-mba-02",
+      "url": "https://mays.tamu.edu/career-management-center/",
+      "title": "Career Management Center",
+      "publisher": "Mays Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "redirected from careerlaunch.mays.tamu.edu/outcomes/"
+    },
+    {
+      "source_id": "src-texas-am-mays-mba-03",
+      "url": "https://mays.tamu.edu/graduate/mba/full-time-mba/",
+      "title": "Full-Time MBA - Mays Business School",
+      "publisher": "Mays Business School",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-notre-dame-mendoza-mba-01",
+      "url": "https://mendoza.nd.edu/graduate-programs/two-year-mba/",
+      "title": "Two-Year MBA",
+      "publisher": "Mendoza College of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-notre-dame-mendoza-mba-02",
+      "url": "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/outcomes/",
+      "title": "MBA Career Outcomes",
+      "publisher": "Mendoza College of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-notre-dame-mendoza-mba-03",
+      "url": "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/apply/",
+      "title": "Notre Dame MBA Application",
+      "publisher": "Mendoza College of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-notre-dame-mendoza-mba-04",
+      "url": "https://mendoza.nd.edu/graduate-programs/the-notre-dame-mba/",
+      "title": "The Notre Dame MBA - Mendoza College of Business",
+      "publisher": "Mendoza College of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-georgia-tech-scheller-mba-01",
+      "url": "https://scheller.gatech.edu/degrees/mba/full-time/index.html",
+      "title": "https://scheller.gatech.edu/degrees/mba/full-time/index.html",
+      "publisher": "Scheller College of Business",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-georgia-tech-scheller-mba-02",
+      "url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/tuition-and-financing/index.html",
+      "title": "Full-time MBA Tuition",
+      "publisher": "Scheller College of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-georgia-tech-scheller-mba-03",
+      "url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/admissions/index.html",
+      "title": "Full-time MBA Admissions",
+      "publisher": "Scheller College of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-georgia-tech-scheller-mba-04",
+      "url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/career-development/index.html",
+      "title": "Full-time MBA Career Development",
+      "publisher": "Scheller College of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-georgia-tech-scheller-mba-05",
+      "url": "https://www.scheller.gatech.edu/explore-programs/mba-programs/full-time-mba/index.html",
+      "title": "Full-time MBA Program at Scheller College of Business",
+      "publisher": "Scheller College of Business",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    },
+    {
+      "source_id": "src-minnesota-carlson-mba-01",
+      "url": "https://carlsonschool.umn.edu/mba/full-time-mba",
+      "title": "https://carlsonschool.umn.edu/mba/full-time-mba",
+      "publisher": "Carlson School of Management",
+      "source_type": "official_university",
+      "accessed": false,
+      "checked_on": null,
+      "note": "404"
+    },
+    {
+      "source_id": "src-minnesota-carlson-mba-02",
+      "url": "https://carlsonschool.umn.edu/graduate/mba/full-time/tuition-aid",
+      "title": "Tuition & Aid",
+      "publisher": "Carlson School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-minnesota-carlson-mba-03",
+      "url": "https://carlsonschool.umn.edu/graduate/mba/full-time/admissions",
+      "title": "Full-Time MBA Admissions",
+      "publisher": "Carlson School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-minnesota-carlson-mba-04",
+      "url": "https://carlsonschool.umn.edu/graduate/mba/full-time/careers/employment-statistics",
+      "title": "Employment Statistics",
+      "publisher": "Carlson School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-minnesota-carlson-mba-05",
+      "url": "https://carlsonschool.umn.edu/graduate/resources/management-science-mba-overview",
+      "title": "Management Science MBA overview",
+      "publisher": "Carlson School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": ""
+    },
+    {
+      "source_id": "src-minnesota-carlson-mba-06",
+      "url": "https://carlsonschool.umn.edu/graduate/mba/full-time",
+      "title": "Full-Time Master of Business Administration | Minnesota Carlson",
+      "publisher": "Carlson School of Management",
+      "source_type": "official_university",
+      "accessed": true,
+      "checked_on": "2026-10-23",
+      "note": "discovery pass"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "timestamp": "20261023T172305Z",
+  "requested_model": "gpt-6-luna",
+  "base_url": "https://api.portkey.ai/v1",
+  "validated_against": "SmokeResponse(claims: list[Claim])",
+  "response": {
+    "status": "ok",
+    "claims": [
+      {
+        "text": "Program X may be STEM-designated.",
+        "label": "unknown",
+        "evidence": [],
+        "based_on": []
+      },
+      {
+        "text": "An applicant should confirm STEM status on the official school website.",
+        "label": "advice",
+        "evidence": [],
+        "based_on": []
+      }
+    ]
+  },
+  "usage": {
+    "model": "gpt-6-luna-2026-09-22",
+    "timestamp": "2026-10-23T17:23:11+00:00",
+    "elapsed_seconds": 5.244,
+    "input_tokens": 523,
+    "cached_input_tokens": 0,
+    "output_tokens": 123,
+    "total_tokens": 646,
+    "estimated_cost_usd": null,
+    "cost_basis": "unknown: no documented price configured",
+    "label": "smoke_test"
+  }
+}

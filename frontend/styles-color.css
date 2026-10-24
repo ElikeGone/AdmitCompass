@@ -1,0 +1,116 @@
+/* AdmitCompass 4.0 colour layer (Step 9B). Loaded after styles-v4.css.
+   Blue = primary actions · Violet = AI insights · Cyan = discovery · Emerald = verified facts · Amber = needs checking.
+   Colours are used as soft tints and accents, never as full-saturation page fills. */
+:root {
+  --blue: #2563EB; --violet: #7C3AED; --cyan: #06B6D4; --emerald: #10B981; --amber2: #F59E0B;
+  --blue-50: #EFF6FF; --violet-50: #F5F3FF; --violet-100: #EDE9FE; --violet-700: #6D28D9; --cyan-50: #ECFEFF; --cyan-100: #CFFAFE; --cyan-700: #0E7490;
+  --emerald-50: #ECFDF5; --emerald-100: #D1FAE5; --emerald-700: #047857; --amber-50: #FFFBEB; --amber-100: #FEF3C7; --amber-700: #B45309;
+}
+
+/* header: active + hover states pick up the brand blue */
+.nav a.active { color: var(--blue); background: var(--blue-50); }
+.nav a:hover { background: var(--canvas); }
+
+/* hero: blue-violet wash */
+.hp-hero { background:
+  radial-gradient(800px 420px at 92% -8%, rgba(124, 58, 237, .16), transparent 62%),
+  radial-gradient(720px 420px at 60% 10%, rgba(37, 99, 235, .12), transparent 60%),
+  radial-gradient(600px 360px at -5% 20%, rgba(6, 182, 212, .10), transparent 60%),
+  linear-gradient(180deg, #FAFBFF 0%, #FFFFFF 100%); }
+.hp-hero h1 .grad { background: linear-gradient(90deg, var(--blue) 0%, var(--violet) 55%, var(--cyan) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pill-link b { background: var(--violet-50); color: var(--violet-700); }
+.hp-trust svg { color: var(--emerald); }
+.pv { border-color: #E0E7FF; box-shadow: 0 30px 70px rgba(79, 70, 229, .14), 0 2px 6px rgba(15, 23, 42, .05); }
+.pv-bar { background: linear-gradient(90deg, var(--violet-50), var(--blue-50)); }
+.pv-live { background: var(--violet-50); color: var(--violet-700); }
+.pv-tabs button[aria-selected="true"] { background: var(--violet-50); color: var(--violet-700); }
+/* pathway colours: background (cyan) → options (blue) → target (violet) */
+.path .node:nth-child(1) { background: var(--cyan-50); border-color: var(--cyan-100); }
+.path .node:nth-child(1) .lab { color: var(--cyan-700); }
+.path .node:nth-child(2) .lab { color: var(--blue); }
+.node.target { background: linear-gradient(160deg, var(--violet-50), #fff); border-color: var(--violet-100); }
+.node.target .lab { color: var(--violet-700); }
+.node::after { background: linear-gradient(90deg, var(--cyan), var(--blue)); height: 2px; }
+.path .node:nth-child(2)::after { background: linear-gradient(90deg, var(--blue), var(--violet)); }
+.metric { background: #F8FAFC; border: 1px solid var(--border); }
+.metric .v.ok { color: var(--emerald-700); }
+.metric .v.warn { color: var(--amber-700); }
+.insight { border-color: #E0E7FF; }
+.fitdot.strong { background: var(--emerald-50); color: var(--emerald-700); }
+.sm .n { background: linear-gradient(135deg, var(--blue), var(--violet)); }
+.bar i { background: linear-gradient(90deg, var(--blue), var(--violet)); }
+
+/* coloured sections */
+.hp-sec.alt { background: linear-gradient(180deg, #F7F5FF 0%, #F5F7FB 100%); }
+.sec-head .eyebrow { color: var(--violet); }
+#intl .sec-head .eyebrow { color: var(--cyan-700); }
+.how-card:nth-child(1) .how-ic { background: var(--cyan-50); color: var(--cyan-700); }
+.how-card:nth-child(2) .how-ic { background: var(--blue-50); color: var(--blue); }
+.how-card:nth-child(3) .how-ic { background: var(--emerald-50); color: var(--emerald-700); }
+.how-card:nth-child(4) .how-ic { background: var(--violet-50); color: var(--violet-700); }
+.feat:nth-child(1) .ic { background: var(--emerald-50); color: var(--emerald-700); }
+.feat:nth-child(2) .ic { background: var(--amber-50); color: var(--amber-700); }
+.feat:nth-child(3) .ic { background: var(--blue-50); color: var(--blue); }
+.feat:nth-child(4) .ic { background: var(--violet-50); color: var(--violet-700); }
+#intl { background: linear-gradient(180deg, #FFFFFF 0%, #F0FDFF 100%); }
+.hp-final { background: radial-gradient(520px 300px at 92% 0%, rgba(124, 58, 237, .45), transparent 60%),
+  radial-gradient(520px 320px at 0% 100%, rgba(6, 182, 212, .25), transparent 60%), linear-gradient(135deg, #0F172A, #1E1B4B); }
+
+/* ---------- explore ---------- */
+.ex-top { background: radial-gradient(700px 300px at 100% 0%, rgba(6, 182, 212, .14), transparent 60%),
+  radial-gradient(600px 300px at 0% 0%, rgba(124, 58, 237, .08), transparent 60%), #F5F7FB; }
+.ex-stat .dot.v { background: var(--emerald); } .ex-stat .dot.p { background: var(--blue); } .ex-stat .dot.d { background: var(--cyan); } .ex-stat .dot.r { background: var(--amber2); }
+.dot.p { background: var(--blue); } .dot.r { background: var(--amber2); }
+.ftoggle[aria-pressed="true"] { border-color: var(--blue); background: var(--blue-50); color: var(--blue); }
+.achip { background: var(--blue-50); color: var(--blue); }
+.fsel select:focus, .fsel input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37, 99, 235, .15); outline: none; }
+
+/* evidence status — one colour per meaning */
+.status.ev-detailed { background: var(--emerald-50); color: var(--emerald-700); }
+.status.ev-partial { background: var(--blue-50); color: #1D4ED8; }
+.status.ev-discovered { background: var(--cyan-50); color: var(--cyan-700); }
+.status.ev-unavailable { background: var(--amber-50); color: var(--amber-700); }
+.pc { position: relative; overflow: hidden; }
+.pc::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--border); }
+.pc.ev-detailed::before { background: linear-gradient(90deg, var(--emerald), #34D399); }
+.pc.ev-partial::before { background: linear-gradient(90deg, var(--blue), var(--violet)); }
+.pc.ev-discovered::before { background: linear-gradient(90deg, var(--cyan), #67E8F9); }
+.pc.ev-unavailable::before { background: linear-gradient(90deg, var(--amber2), #FCD34D); }
+.pc.ev-discovered, .pc.ev-unavailable { background: #FFFFFF; }
+.logo { background-image: linear-gradient(135deg, rgba(255, 255, 255, .18), rgba(255, 255, 255, 0)); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .15); }
+.pc.disc .logo { background: var(--cyan-50) !important; color: var(--cyan-700); border: 1px solid var(--cyan-100); }
+.pc.ev-unavailable .logo { background: var(--amber-50) !important; color: var(--amber-700); border-color: var(--amber-100); }
+.f3 .v.ok { color: var(--emerald-700); }
+.pc-why { background: var(--violet-50); color: var(--violet-700); }
+.pc-summary { font-size: 13.5px; color: var(--text-2); background: #F8FAFC; border: 1px dashed var(--border-2); border-radius: 10px; padding: 10px 12px; line-height: 1.5; }
+.pc-summary b { color: var(--text); }
+.pc-summary.unavail { background: var(--amber-50); border-color: #FDE68A; color: #78350F; }
+.pc-avail { display: flex; flex-wrap: wrap; gap: 6px; }
+.av { font-size: 12.5px; padding: 3px 9px; border-radius: 999px; background: var(--emerald-50); color: var(--emerald-700); font-weight: 500; }
+.av.miss { background: #F1F5F9; color: var(--text-3); }
+.pc-link { font-size: 13px; font-weight: 600; color: var(--blue); text-decoration: none; }
+.pc-link:hover { text-decoration: underline; }
+.save-btn[aria-pressed="true"] { color: #DB2777; background: #FDF2F8; border-color: #FBCFE8; }
+.cmp-btn[aria-pressed="true"] { border-color: var(--violet); background: var(--violet-50); color: var(--violet-700); }
+.det-btn { background: var(--blue); }
+.det-btn:hover { background: #1D4ED8; }
+
+/* tray + drawer */
+.tray { background: linear-gradient(135deg, #0F172A, #312E81); }
+.tray .chips2 span { background: rgba(167, 139, 250, .22); }
+.drawer-head { background: linear-gradient(180deg, rgba(245, 243, 255, .97), rgba(255, 255, 255, .97)); }
+.dfact { background: #F8FAFC; border: 1px solid var(--border); }
+.dfact.ok { background: var(--emerald-50); border-color: var(--emerald-100); }
+.dfact.ok .k { color: var(--emerald-700); }
+.dfact.unk { background: #FFFFFF; border-style: dashed; }
+.dfact.notchecked { background: #F8FAFC; border-style: dashed; }
+.dfact .tagline { display: inline-block; margin-top: 6px; font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; }
+.tagline.chk { background: #F1F5F9; color: var(--text-2); }
+.tagline.nchk { background: var(--amber-50); color: var(--amber-700); }
+.callout2.info { background: var(--cyan-50); border-color: var(--cyan-100); color: #164E63; }
+.callout2.ok { background: var(--emerald-50); border-color: var(--emerald-100); color: #064E3B; }
+.legend2 { display: grid; gap: 8px; font-size: 13.5px; }
+.legend2 div { display: flex; gap: 10px; align-items: start; }
+.cmp-table td.ok { color: var(--emerald-700); font-weight: 500; }
+
+.f3 .v { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.25; }

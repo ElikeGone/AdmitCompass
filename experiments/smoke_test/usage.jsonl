@@ -1,0 +1,1 @@
+{"model": "gpt-6-luna-2026-09-22", "timestamp": "2026-10-23T17:23:11+00:00", "elapsed_seconds": 5.244, "input_tokens": 523, "cached_input_tokens": 0, "output_tokens": 123, "total_tokens": 646, "estimated_cost_usd": null, "cost_basis": "unknown: no documented price configured", "label": "smoke_test"}

@@ -1,0 +1,244 @@
+{
+  "runs": {
+    "20261024T020115Z_fixture-audit-consulting-ghana": {
+      "run_dir": "20261024T020115Z_fixture-audit-consulting-ghana",
+      "status": "completed",
+      "revision_performed": false,
+      "totals": {
+        "model_requests": 13,
+        "input_tokens": 48478,
+        "cached_input_tokens": 25832,
+        "output_tokens": 7599,
+        "reasoning_tokens_within_output": 947,
+        "tool_calls": 8,
+        "model_seconds": 96.655,
+        "wall_seconds": 96.768
+      },
+      "per_agent": {
+        "pathway_matcher": {
+          "requests": 5,
+          "input": 12972,
+          "cached_input": 9321,
+          "output": 1380,
+          "reasoning": 282,
+          "model_seconds": 18.49
+        },
+        "evidence_analyst": {
+          "requests": 5,
+          "input": 21809,
+          "cached_input": 16511,
+          "output": 1340,
+          "reasoning": 168,
+          "model_seconds": 45.26
+        },
+        "strategy_planner": {
+          "requests": 2,
+          "input": 8432,
+          "cached_input": 0,
+          "output": 4531,
+          "reasoning": 218,
+          "model_seconds": 25.59
+        },
+        "skeptic": {
+          "requests": 1,
+          "input": 5265,
+          "cached_input": 0,
+          "output": 348,
+          "reasoning": 279,
+          "model_seconds": 7.32
+        }
+      }
+    },
+    "20261024T020259Z_fixture-domestic-tech-us": {
+      "run_dir": "20261024T020259Z_fixture-domestic-tech-us",
+      "status": "completed_with_violations",
+      "revision_performed": false,
+      "totals": {
+        "model_requests": 11,
+        "input_tokens": 75759,
+        "cached_input_tokens": 39251,
+        "output_tokens": 11186,
+        "reasoning_tokens_within_output": 705,
+        "tool_calls": 26,
+        "model_seconds": 99.437,
+        "wall_seconds": 99.933
+      },
+      "per_agent": {
+        "pathway_matcher": {
+          "requests": 4,
+          "input": 16340,
+          "cached_input": 11231,
+          "output": 2002,
+          "reasoning": 144,
+          "model_seconds": 17.61
+        },
+        "evidence_analyst": {
+          "requests": 3,
+          "input": 30384,
+          "cached_input": 17961,
+          "output": 3577,
+          "reasoning": 52,
+          "model_seconds": 20.7
+        },
+        "strategy_planner": {
+          "requests": 3,
+          "input": 20294,
+          "cached_input": 8736,
+          "output": 4721,
+          "reasoning": 93,
+          "model_seconds": 54.06
+        },
+        "skeptic": {
+          "requests": 1,
+          "input": 8741,
+          "cached_input": 1323,
+          "output": 886,
+          "reasoning": 416,
+          "model_seconds": 7.08
+        }
+      }
+    },
+    "20261024T024740Z_fixture-audit-consulting-ghana_webui": {
+      "run_dir": "20261024T024740Z_fixture-audit-consulting-ghana_webui",
+      "status": "stopped_budget",
+      "revision_performed": true,
+      "totals": {
+        "model_requests": 20,
+        "input_tokens": 127853,
+        "cached_input_tokens": 66773,
+        "output_tokens": 16894,
+        "reasoning_tokens_within_output": 1002,
+        "tool_calls": 31,
+        "model_seconds": 108.607,
+        "wall_seconds": 110.668
+      },
+      "per_agent": {
+        "pathway_matcher": {
+          "requests": 6,
+          "input": 20738,
+          "cached_input": 9911,
+          "output": 3808,
+          "reasoning": 100,
+          "model_seconds": 29.2
+        },
+        "evidence_analyst": {
+          "requests": 10,
+          "input": 87954,
+          "cached_input": 51756,
+          "output": 9498,
+          "reasoning": 437,
+          "model_seconds": 55.31
+        },
+        "strategy_planner": {
+          "requests": 3,
+          "input": 16200,
+          "cached_input": 6839,
+          "output": 2709,
+          "reasoning": 116,
+          "model_seconds": 18.5
+        },
+        "skeptic": {
+          "requests": 1,
+          "input": 8583,
+          "cached_input": 0,
+          "output": 914,
+          "reasoning": 349,
+          "model_seconds": 7.32
+        }
+      }
+    },
+    "20261024T024921Z_fixture-domestic-tech-us_webui": {
+      "run_dir": "20261024T024921Z_fixture-domestic-tech-us_webui",
+      "status": "completed_with_violations",
+      "revision_performed": false,
+      "totals": {
+        "model_requests": 13,
+        "input_tokens": 82284,
+        "cached_input_tokens": 45034,
+        "output_tokens": 10666,
+        "reasoning_tokens_within_output": 528,
+        "tool_calls": 17,
+        "model_seconds": 69.195,
+        "wall_seconds": 69.35
+      },
+      "per_agent": {
+        "pathway_matcher": {
+          "requests": 4,
+          "input": 12644,
+          "cached_input": 7954,
+          "output": 1693,
+          "reasoning": 0,
+          "model_seconds": 15.62
+        },
+        "evidence_analyst": {
+          "requests": 6,
+          "input": 50726,
+          "cached_input": 29050,
+          "output": 6230,
+          "reasoning": 432,
+          "model_seconds": 35.02
+        },
+        "strategy_planner": {
+          "requests": 2,
+          "input": 11032,
+          "cached_input": 6707,
+          "output": 2184,
+          "reasoning": 96,
+          "model_seconds": 13.66
+        },
+        "skeptic": {
+          "requests": 1,
+          "input": 7882,
+          "cached_input": 1323,
+          "output": 559,
+          "reasoning": 0,
+          "model_seconds": 4.9
+        }
+      }
+    }
+  },
+  "average_run_tokens": {
+    "input_tokens": 83594,
+    "cached_input_tokens": 44222,
+    "output_tokens": 11586
+  },
+  "cache": "Portkey header x-portkey-cache-force-refresh: true on every request (PORTKEY_CACHE_FORCE_REFRESH=1).",
+  "price": "UNKNOWN \u2014 no documented gpt-6-luna price was found; all dollar figures are HYPOTHETICAL scenarios.",
+  "formula": "cost_per_run = (input - cached) * P_in + cached * P_cached + output * P_out",
+  "assumption_runs_per_user_per_month": 3,
+  "cost_projections": {
+    "H1 low (hypothetical)": {
+      "usd_per_mtok": {
+        "input": 0.5,
+        "cached_input": 0.05,
+        "output": 2.0
+      },
+      "per_run": 0.04507,
+      "per_user_month": 0.1352,
+      "users_100_month": 13.52,
+      "users_10000_month": 1352.07
+    },
+    "H2 mid (hypothetical)": {
+      "usd_per_mtok": {
+        "input": 2.0,
+        "cached_input": 0.2,
+        "output": 8.0
+      },
+      "per_run": 0.18028,
+      "per_user_month": 0.5408,
+      "users_100_month": 54.08,
+      "users_10000_month": 5408.3
+    },
+    "H3 high (hypothetical)": {
+      "usd_per_mtok": {
+        "input": 5.0,
+        "cached_input": 0.5,
+        "output": 20.0
+      },
+      "per_run": 0.45069,
+      "per_user_month": 1.3521,
+      "users_100_month": 135.21,
+      "users_10000_month": 13520.74
+    }
+  }
+}

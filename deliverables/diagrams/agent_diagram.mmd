@@ -1,0 +1,53 @@
+%% AdmitCompass — agent organization (matches backend/app/orchestrator.py AGENT_SPECS, ORDER and MAX_REVISIONS = 1)
+flowchart LR
+    U["Applicant profile<br/>(validated, PII and injection screened)"] --> O
+
+    subgraph ORCH["Orchestrator — plain code, no model"]
+        O["Run controller<br/>handoffs · RunBudget caps<br/>(20 requests · 200k tokens · 40 tool calls · 300 s)"]
+        G{{"Grounding checks after EVERY agent<br/>evidence ids exist · numbers in evidence ·<br/>no odds / guarantees / sponsorship promises ·<br/>statuses recomputed from the store"}}
+    end
+
+    O -->|"1 · profile"| PM["Pathway Matcher<br/>gpt-6-luna"]
+    PM -->|"2 · target roles + shortlist"| EA["Evidence Analyst<br/>gpt-6-luna"]
+    EA -->|"3 · program dossiers"| SP["Strategy Planner<br/>gpt-6-luna"]
+    SP -->|"4 · gaps + roadmap + weekly plan"| SK["Skeptic<br/>gpt-6-luna"]
+    SK -->|"5 · findings"| R["Report + trace<br/>(dashboard, evidence, audit)"]
+    SK -. "≤ 1 revision request:<br/>re-run ONE agent + everything downstream" .-> PM
+    SK -. "≤ 1 revision" .-> EA
+    SK -. "≤ 1 revision" .-> SP
+
+    PM -.- G
+    EA -.- G
+    SP -.- G
+    SK -.- G
+
+    subgraph TOOLS["Tools (deterministic code; results wrapped as untrusted data)"]
+        T1["search_programs"]
+        T2["get_program_overview"]
+        T3["get_program_facts"]
+        T4["get_evidence"]
+        T5["compare_employment_metrics"]
+        T6["get_sponsorship_evidence<br/>(NEW: DOL H-1B LCA filings)"]
+    end
+
+    PM --> T1 & T2
+    EA --> T3 & T4 & T5 & T6
+    SP --> T3
+    SK --> T4 & T3 & T5 & T6
+
+    subgraph DATA["Evidence data"]
+        D1[("Program evidence store<br/>28 programs, official sources")]
+        D2[("Supplementary facts<br/>validated official extras + labeled estimates")]
+        D3[("DOL FY2025 LCA filings<br/>+ reviewed employer aliases")]
+    end
+    T1 & T2 & T3 & T4 & T5 --> D1
+    T6 --> D2 & D3
+
+    classDef agent fill:#1e3a8a,stroke:#60a5fa,color:#fff
+    classDef code fill:#0f172a,stroke:#94a3b8,color:#e2e8f0
+    classDef tool fill:#134e4a,stroke:#2dd4bf,color:#ecfeff
+    classDef data fill:#3b0764,stroke:#c084fc,color:#faf5ff
+    class PM,EA,SP,SK agent
+    class O,G,R,U code
+    class T1,T2,T3,T4,T5,T6 tool
+    class D1,D2,D3 data

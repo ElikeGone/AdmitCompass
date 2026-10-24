@@ -1,0 +1,165 @@
+{
+ "source": "U.S. Department of Labor, Office of Foreign Labor Certification \u2014 LCA Programs (H-1B, H-1B1, E-3) disclosure data",
+ "source_page": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+ "fiscal_year": 2025,
+ "quarters_used": [
+  "Q1",
+  "Q2",
+  "Q3",
+  "Q4"
+ ],
+ "coverage": "full fiscal year (Q1\u2013Q4)",
+ "fiscal_year_note": "FY2025 = Oct 1, 2024 \u2013 Sep 30, 2025. Each quarterly file contains only that quarter's decisions.",
+ "files": [
+  {
+   "file_name": "LCA_Disclosure_Data_FY2025_Q1.xlsx",
+   "source_url": "https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2025_Q1.xlsx",
+   "sha256": "17c08eccf8b2d543f502553f502b8165d85e3e93d86de6f7dbaed3e87c86911d",
+   "cases": 107414,
+   "columns": 97,
+   "decision_dates": [
+    "2024-10-01",
+    "2024-12-31"
+   ]
+  },
+  {
+   "file_name": "LCA_Disclosure_Data_FY2025_Q2.xlsx",
+   "source_url": "https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2025_Q2.xlsx",
+   "sha256": "bc5aaf90fa89ee2666757fe8b065ae95a8b40dde785df04adba226b4fb388d30",
+   "cases": 132133,
+   "columns": 98,
+   "decision_dates": [
+    "2025-01-01",
+    "2025-03-31"
+   ]
+  },
+  {
+   "file_name": "LCA_Disclosure_Data_FY2025_Q3.xlsx",
+   "source_url": "https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2025_Q3.xlsx",
+   "sha256": "fcabedf38c8cc3036334b7d38981878d29afb3d8ad7455ec12f127ed091a0d5e",
+   "cases": 238425,
+   "columns": 98,
+   "decision_dates": [
+    "2025-04-01",
+    "2025-06-30"
+   ]
+  },
+  {
+   "file_name": "LCA_Disclosure_Data_FY2025_Q4.xlsx",
+   "source_url": "https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2025_Q4.xlsx",
+   "sha256": "81ebf97d471014b91ae685cb7eb505369d7c80af2de67944ddd7531814976370",
+   "cases": 118580,
+   "columns": 98,
+   "decision_dates": [
+    "2025-07-01",
+    "2025-09-30"
+   ]
+  }
+ ],
+ "downloaded_on": "2026-10-23",
+ "downloaded_by": "the project owner, in a browser (dol.gov blocks automated downloads, HTTP 403)",
+ "record_layout": "LCA_Record_Layout_FY2025_Q4.pdf",
+ "case_status_counts": {
+  "Withdrawn": 9511,
+  "Denied": 3921,
+  "Certified": 552036,
+  "Certified - Withdrawn": 31084
+ },
+ "columns_used": [
+  "DECISION_DATE",
+  "CASE_STATUS",
+  "VISA_CLASS",
+  "JOB_TITLE",
+  "SOC_CODE",
+  "SOC_TITLE",
+  "EMPLOYER_NAME",
+  "WORKSITE_CITY",
+  "WORKSITE_STATE",
+  "WAGE_RATE_OF_PAY_FROM",
+  "WAGE_UNIT_OF_PAY",
+  "TOTAL_WORKER_POSITIONS"
+ ],
+ "filters": {
+  "visa_class": "H-1B",
+  "case_status": "Certified",
+  "metros": {
+   "Boston": [
+    "BOSTON"
+   ],
+   "Seattle": [
+    "SEATTLE"
+   ],
+   "Houston": [
+    "HOUSTON"
+   ],
+   "New York": [
+    "MANHATTAN",
+    "NEW YORK",
+    "NEW YORK CITY",
+    "NYC"
+   ],
+   "San Francisco Bay Area": [
+    "ALAMEDA",
+    "BELMONT",
+    "BERKELEY",
+    "BURLINGAME",
+    "CAMPBELL",
+    "CUPERTINO",
+    "DUBLIN",
+    "EMERYVILLE",
+    "FOSTER CITY",
+    "FREMONT",
+    "HAYWARD",
+    "LOS ALTOS",
+    "LOS GATOS",
+    "MENLO PARK",
+    "MILPITAS",
+    "MOUNTAIN VIEW",
+    "NEWARK",
+    "OAKLAND",
+    "PALO ALTO",
+    "PLEASANTON",
+    "REDWOOD CITY",
+    "REDWOOD SHORES",
+    "SAN BRUNO",
+    "SAN CARLOS",
+    "SAN FRANCISCO",
+    "SAN JOSE",
+    "SAN LEANDRO",
+    "SAN MATEO",
+    "SAN RAMON",
+    "SANTA CLARA",
+    "SOUTH SAN FRANCISCO",
+    "SUNNYVALE",
+    "UNION CITY",
+    "WALNUT CREEK"
+   ]
+  },
+  "occupations": "see module docstring of scripts/build_sponsorship.py (stated assumptions)"
+ },
+ "output": {
+  "file": "data/sponsorship/lca_filtered.csv",
+  "rows": 3000,
+  "total_filings": 7877,
+  "filings_by_metro_occupation": {
+   "Boston | corporate_finance_strategy": 196,
+   "Boston | management_consulting": 145,
+   "Boston | product_management": 80,
+   "Houston | corporate_finance_strategy": 134,
+   "Houston | management_consulting": 146,
+   "Houston | product_management": 29,
+   "New York | corporate_finance_strategy": 2820,
+   "New York | management_consulting": 668,
+   "New York | product_management": 462,
+   "San Francisco Bay Area | corporate_finance_strategy": 759,
+   "San Francisco Bay Area | management_consulting": 422,
+   "San Francisco Bay Area | product_management": 1414,
+   "Seattle | corporate_finance_strategy": 95,
+   "Seattle | management_consulting": 58,
+   "Seattle | product_management": 449
+  }
+ },
+ "built_on": "2026-10-23",
+ "build_seconds": 939.1,
+ "caution": "Historical H-1B LCA filings by an employer. An LCA is not a visa approval and not a promise to sponsor any person or role."
+}

@@ -1,0 +1,35 @@
+{
+ "program_id": "hbs-mba",
+ "university": "Harvard University (Harvard Business School)",
+ "program_name": "HBS MBA Program",
+ "degree": "MBA",
+ "facts": {
+  "location": null,
+  "duration_months": null,
+  "application_requirements": {"value": ["Transcripts", "GRE or GMAT score", "English Language Test (if applicable)", "Essays (separate set for 2+2 Deferred Applicants)", "Recommendations", "Resume", "Application fee or fee waiver", "Acknowledgment of the policies"], "unit": null, "period": null, "definition": null, "source_url": "https://www.hbs.edu/mba/admissions/application-process", "source_title": "Application Process - MBA - Harvard Business School", "excerpt": "Transcripts; GRE or GMAT; English Language Test; Essays; Recommendations; Resume; application fee or fee waiver; acknowledgment of the policies. All materials must be submitted to HBS online by the application deadlines.", "excerpt_is_paraphrase": true},
+  "test_policy": {"value": "GRE or GMAT score required (page lists 'GRE or GMAT' as an application component; Executive Assessment not mentioned). English test (TOEFL/IELTS/PTE/Duolingo) required if undergraduate instruction was not solely in English; no minimum score.", "unit": null, "period": null, "definition": null, "source_url": "https://www.hbs.edu/mba/admissions/application-process", "source_title": "Application Process - MBA - Harvard Business School (English test detail from https://www.hbs.edu/mba/admissions/application-process/international-applicants)", "excerpt": "GRE or GMAT ... [English test] is required if you did not attend an undergraduate institution where the sole language of instruction is English. ... does not have a minimum test score requirement to apply", "excerpt_is_paraphrase": true},
+  "tuition": {"value": 84760, "unit": "USD", "period": "2026-27 academic year", "definition": "Tuition, single student, MBA Program", "source_url": "https://www.hbs.edu/mba/financial-aid/tuition-assistance/cost-of-attendance", "source_title": "Annual Cost of Attendance", "excerpt": "MBA Program 2026-27 ... Tuition $84,760", "excerpt_is_paraphrase": false},
+  "cost_of_attendance": {"value": 130318, "unit": "USD", "period": "2026-27 academic year (9 months)", "definition": "9-Month Total Cost, single student", "source_url": "https://www.hbs.edu/mba/financial-aid/tuition-assistance/cost-of-attendance", "source_title": "Annual Cost of Attendance", "excerpt": "MBA Program 2026-27 ... 9-Month Total Cost ... $130,318", "excerpt_is_paraphrase": false},
+  "stem_designation": {"value": {"designated": true, "scope": "Entire MBA degree, Class of 2025 onward", "cip_code": null}, "unit": null, "period": "Class of 2025 onward", "definition": "Reclassified to STEM Management Sciences and Quantitative Methods CIP Code (numeric code not stated on page)", "source_url": "https://www.hbs.edu/news/releases/Pages/stem-mba.aspx", "source_title": "Harvard Business School MBA Is Now STEM Designated", "excerpt": "reclassify the School's entire MBA degree to the STEM Management Sciences and Quantitative Methods CIP Code. ... effective this fall for the class of 2025 and onward.", "excerpt_is_paraphrase": false},
+  "employment_rate": null,
+  "median_base_salary": null,
+  "industry_breakdown": null,
+  "function_breakdown": null,
+  "international_employment": null,
+  "sponsorship": null
+ },
+ "urls_checked": [
+  {"url": "https://www.hbs.edu/mba/admissions/application-process", "title": "Application Process", "accessible": true, "note": "Requirements list; content truncated"},
+  {"url": "https://www.hbs.edu/mba/financial-aid/cost-of-attendance", "title": "", "accessible": false, "note": "404"},
+  {"url": "https://www.hbs.edu/mba/financial-aid/tuition-assistance/cost-of-attendance", "title": "Annual Cost of Attendance", "accessible": true, "note": "2026-27 figures"},
+  {"url": "https://www.hbs.edu/recruiting/data", "title": "", "accessible": false, "note": "404"},
+  {"url": "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx", "title": "Employment Data", "accessible": false, "note": "Fetched but empty content (JS-rendered). Search snippet suggested Class of 2025 median base $184,500 but not verified by fetch."},
+  {"url": "https://www.hbs.edu/recruiting/employment-data/Pages/default.aspx?indsort=hl", "title": "Employment Data", "accessible": false, "note": "Empty content"},
+  {"url": "https://www.hbs.edu/recruiting/employment-data/function/Pages/details.aspx", "title": "Function Details", "accessible": false, "note": "403"},
+  {"url": "https://www.hbs.edu/recruiting/employment-data/industry/Pages/details.aspx", "title": "Industry Details", "accessible": false, "note": "403"},
+  {"url": "https://www.hbs.edu/mba/admissions/application-process/frequently-asked-questions", "title": "", "accessible": false, "note": "404"},
+  {"url": "https://www.hbs.edu/news/releases/Pages/stem-mba.aspx", "title": "Harvard Business School MBA Is Now STEM Designated", "accessible": true, "note": "STEM source"},
+  {"url": "https://www.hbs.edu/mba/admissions/application-process/international-applicants", "title": "International Applicants", "accessible": true, "note": "English tests; says STEM track qualifies for 36 months total work authorization; no sponsorship/outcome data"},
+  {"url": "https://www.hbs.edu/mba/handbook/academic-information-and-policies/degree-requirements", "title": "2.4 Degree Requirements", "accessible": true, "note": "States 'The HBS MBA is a STEM-designated degree program.' Only 'Two Years' nav tagline for duration, not recorded as months"}
+ ]
+}

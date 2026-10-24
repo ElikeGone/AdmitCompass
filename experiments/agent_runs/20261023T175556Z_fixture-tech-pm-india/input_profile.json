@@ -1,0 +1,33 @@
+{
+  "profile_id": "fixture-tech-pm-india",
+  "is_fictional": true,
+  "citizenship_country": "India",
+  "needs_us_work_authorization": true,
+  "education": [
+    {
+      "degree_level": "Bachelor's",
+      "field": "Computer Engineering",
+      "country": "India",
+      "gpa_band": "top 15% of class"
+    }
+  ],
+  "years_work_experience": 5.0,
+  "current_industry": "IT services",
+  "current_function": "Software engineering, team lead",
+  "target_function": "Product management",
+  "target_industry": "Technology",
+  "target_roles": [
+    "Product Manager at a US technology company"
+  ],
+  "preferred_us_states": [],
+  "long_term_location": "US for 3+ years after graduation, then flexible",
+  "max_total_budget_usd_per_year": 135000.0,
+  "funding_notes": "Mostly loans; needs to understand total cost before committing.",
+  "quantitative_background": "Strong; engineering degree",
+  "test_status": "preparing",
+  "test_score": null,
+  "target_intake_year": 2027,
+  "weeks_until_first_application": 10,
+  "hours_per_week_available": 12,
+  "notes": "Fictional profile for testing. Worried about post-graduation US work authorization."
+}

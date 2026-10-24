@@ -1,0 +1,532 @@
+[
+  {
+    "seq": 1,
+    "kind": "agent_start",
+    "agent": "pathway_matcher",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 2,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 1,
+      "input_tokens": 1723,
+      "cached_input_tokens": 0,
+      "output_tokens": 35,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 3.122
+    }
+  },
+  {
+    "seq": 3,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "search_programs",
+      "args": {
+        "stem_designated": false,
+        "max_cost_of_attendance": 120000,
+        "states": [
+          "MA"
+        ]
+      },
+      "ok": true,
+      "result_size": 1044
+    }
+  },
+  {
+    "seq": 4,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 1,
+      "tool_calls_requested": 1,
+      "input_tokens": 2057,
+      "cached_input_tokens": 1720,
+      "output_tokens": 96,
+      "reasoning_tokens": 59,
+      "elapsed_seconds": 1.966
+    }
+  },
+  {
+    "seq": 5,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "search_programs",
+      "args": {
+        "stem_designated": true,
+        "max_cost_of_attendance": 120000,
+        "states": [
+          "MA"
+        ]
+      },
+      "ok": true,
+      "result_size": 1059
+    }
+  },
+  {
+    "seq": 6,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 2,
+      "tool_calls_requested": 1,
+      "input_tokens": 2458,
+      "cached_input_tokens": 2054,
+      "output_tokens": 25,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 1.514
+    }
+  },
+  {
+    "seq": 7,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "get_program_overview",
+      "args": {
+        "program_id": "mit-sloan-mba"
+      },
+      "ok": true,
+      "result_size": 2614
+    }
+  },
+  {
+    "seq": 8,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 3,
+      "tool_calls_requested": 1,
+      "input_tokens": 3167,
+      "cached_input_tokens": 2455,
+      "output_tokens": 95,
+      "reasoning_tokens": 50,
+      "elapsed_seconds": 1.522
+    }
+  },
+  {
+    "seq": 9,
+    "kind": "tool_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "tool": "search_programs",
+      "args": {
+        "stem_designated": true,
+        "max_cost_of_attendance": 120000,
+        "states": [
+          "MA",
+          "NH",
+          "NY",
+          "CT",
+          "RI"
+        ]
+      },
+      "ok": true,
+      "result_size": 1059
+    }
+  },
+  {
+    "seq": 10,
+    "kind": "llm_call",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "round": 4,
+      "tool_calls_requested": 0,
+      "input_tokens": 3567,
+      "cached_input_tokens": 3092,
+      "output_tokens": 1129,
+      "reasoning_tokens": 173,
+      "elapsed_seconds": 10.374
+    }
+  },
+  {
+    "seq": 11,
+    "kind": "validation",
+    "agent": "pathway_matcher",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 12,
+    "kind": "grounding",
+    "agent": "pathway_matcher",
+    "detail": {
+      "violations": 0,
+      "rules": [],
+      "details": []
+    }
+  },
+  {
+    "seq": 13,
+    "kind": "handoff",
+    "agent": "pathway_matcher",
+    "detail": {
+      "to": "evidence_analyst",
+      "output_type": "PathwayOutput"
+    }
+  },
+  {
+    "seq": 14,
+    "kind": "agent_start",
+    "agent": "evidence_analyst",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 15,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 1,
+      "input_tokens": 3038,
+      "cached_input_tokens": 0,
+      "output_tokens": 80,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 18.867
+    }
+  },
+  {
+    "seq": 16,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_program_facts",
+      "args": {
+        "program_id": "mit-sloan-mba",
+        "fields": [
+          "application_requirements",
+          "test_policy",
+          "tuition",
+          "cost_of_attendance",
+          "stem_designation",
+          "employment_rate",
+          "median_base_salary",
+          "industry_breakdown",
+          "function_breakdown",
+          "international_employment",
+          "sponsorship",
+          "application_deadlines",
+          "location",
+          "duration_months"
+        ]
+      },
+      "ok": true,
+      "result_size": 4446
+    }
+  },
+  {
+    "seq": 17,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 1,
+      "tool_calls_requested": 1,
+      "input_tokens": 4272,
+      "cached_input_tokens": 3035,
+      "output_tokens": 38,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 5.625
+    }
+  },
+  {
+    "seq": 18,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_sponsorship_evidence",
+      "args": {
+        "program_id": "mit-sloan-mba",
+        "occupation": "management_consulting",
+        "city": "Boston"
+      },
+      "ok": true,
+      "result_size": 1073
+    }
+  },
+  {
+    "seq": 19,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 2,
+      "tool_calls_requested": 1,
+      "input_tokens": 4610,
+      "cached_input_tokens": 4269,
+      "output_tokens": 31,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 5.992
+    }
+  },
+  {
+    "seq": 20,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "get_evidence",
+      "args": "{\"evidence_id\":\"ev-mit-sloan-mba-cost-of-attendance\"}",
+      "ok": false,
+      "error": "\"unknown evidence_id 'ev-mit-sloan-mba-cost-of-attendance'\""
+    }
+  },
+  {
+    "seq": 21,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 3,
+      "tool_calls_requested": 1,
+      "input_tokens": 4675,
+      "cached_input_tokens": 4607,
+      "output_tokens": 60,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 7.679
+    }
+  },
+  {
+    "seq": 22,
+    "kind": "tool_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "tool": "compare_employment_metrics",
+      "args": {
+        "program_ids": [
+          "mit-sloan-mba",
+          "yale-som-mba",
+          "chicago-booth-mba",
+          "duke-fuqua-mba",
+          "dartmouth-tuck-mba"
+        ],
+        "metric": "employment_rate"
+      },
+      "ok": true,
+      "result_size": 1714
+    }
+  },
+  {
+    "seq": 23,
+    "kind": "llm_call",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "round": 4,
+      "tool_calls_requested": 0,
+      "input_tokens": 5214,
+      "cached_input_tokens": 4600,
+      "output_tokens": 1131,
+      "reasoning_tokens": 168,
+      "elapsed_seconds": 7.092
+    }
+  },
+  {
+    "seq": 24,
+    "kind": "validation",
+    "agent": "evidence_analyst",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 25,
+    "kind": "grounding",
+    "agent": "evidence_analyst",
+    "detail": {
+      "violations": 0,
+      "rules": [],
+      "details": []
+    }
+  },
+  {
+    "seq": 26,
+    "kind": "handoff",
+    "agent": "evidence_analyst",
+    "detail": {
+      "to": "strategy_planner",
+      "output_type": "EvidenceOutput"
+    }
+  },
+  {
+    "seq": 27,
+    "kind": "agent_start",
+    "agent": "strategy_planner",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 28,
+    "kind": "llm_call",
+    "agent": "strategy_planner",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 0,
+      "input_tokens": 3202,
+      "cached_input_tokens": 0,
+      "output_tokens": 2270,
+      "reasoning_tokens": 109,
+      "elapsed_seconds": 13.73
+    }
+  },
+  {
+    "seq": 29,
+    "kind": "validation",
+    "agent": "strategy_planner",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 30,
+    "kind": "grounding",
+    "agent": "strategy_planner",
+    "detail": {
+      "violations": 1,
+      "rules": [
+        "unsupported_claim"
+      ],
+      "details": [
+        {
+          "agent": "strategy_planner",
+          "rule": "unsupported_claim",
+          "detail": "claims: 'Tuition is $91,892 for the 2026-2027 academic year and includes a mandatory $2,200 annual MBA program fee; total cost of attendance is unknown, so aff' -> ['numbers [120000.0] not found in cited evidence']",
+          "action": "dropped claim"
+        }
+      ]
+    }
+  },
+  {
+    "seq": 31,
+    "kind": "grounding",
+    "agent": "strategy_planner",
+    "detail": {
+      "retry": true,
+      "mode": "repair"
+    }
+  },
+  {
+    "seq": 32,
+    "kind": "llm_call",
+    "agent": "strategy_planner",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 0,
+      "input_tokens": 5230,
+      "cached_input_tokens": 0,
+      "output_tokens": 2261,
+      "reasoning_tokens": 109,
+      "elapsed_seconds": 11.857
+    }
+  },
+  {
+    "seq": 33,
+    "kind": "validation",
+    "agent": "strategy_planner",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 34,
+    "kind": "grounding",
+    "agent": "strategy_planner",
+    "detail": {
+      "violations_after_retry": 0,
+      "rules": [],
+      "details": []
+    }
+  },
+  {
+    "seq": 35,
+    "kind": "handoff",
+    "agent": "strategy_planner",
+    "detail": {
+      "to": "skeptic",
+      "output_type": "StrategyOutput"
+    }
+  },
+  {
+    "seq": 36,
+    "kind": "agent_start",
+    "agent": "skeptic",
+    "detail": {
+      "revision_feedback": false
+    }
+  },
+  {
+    "seq": 37,
+    "kind": "llm_call",
+    "agent": "skeptic",
+    "detail": {
+      "attempt": 1,
+      "round": 0,
+      "tool_calls_requested": 0,
+      "input_tokens": 5265,
+      "cached_input_tokens": 0,
+      "output_tokens": 348,
+      "reasoning_tokens": 279,
+      "elapsed_seconds": 7.315
+    }
+  },
+  {
+    "seq": 38,
+    "kind": "validation",
+    "agent": "skeptic",
+    "detail": {
+      "attempt": 1,
+      "ok": true,
+      "downgraded_verified_claims": 0
+    }
+  },
+  {
+    "seq": 39,
+    "kind": "grounding",
+    "agent": "skeptic",
+    "detail": {
+      "violations": 0,
+      "rules": [],
+      "details": []
+    }
+  },
+  {
+    "seq": 40,
+    "kind": "run_end",
+    "agent": "orchestrator",
+    "detail": {
+      "status": "completed",
+      "requests": 13,
+      "max_requests": 20,
+      "total_tokens": 56077,
+      "max_total_tokens": 200000,
+      "tool_calls": 8,
+      "max_tool_calls": 40,
+      "max_seconds": 300.0
+    }
+  }
+]

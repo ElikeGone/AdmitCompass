@@ -1,0 +1,1254 @@
+{
+  "run_id": "ae6f197e0040",
+  "profile_id": "fixture-tech-pm-india",
+  "status": "completed_with_violations",
+  "model": "gpt-6-luna",
+  "target_roles": [
+    {
+      "title": "Technology Product Manager",
+      "rationale": "inference: This directly matches the stated goal and draws on the applicant's software engineering and team-lead experience."
+    },
+    {
+      "title": "Technical Product Manager",
+      "rationale": "inference: This adjacent role can leverage the applicant's computer engineering education and software engineering background."
+    },
+    {
+      "title": "Associate Product Manager",
+      "rationale": "advice: Consider as an adjacent target if the applicant is open to a less senior product role during the career transition."
+    }
+  ],
+  "recommendations": [
+    {
+      "program_id": "mit-sloan-mba",
+      "program_name": "MIT Sloan School of Management MBA Program",
+      "career_fit": "strong",
+      "fit_rationale": "inference: Cambridge location and verified STEM designation make this a relevant option to investigate for a technology-product transition and the applicant's work-authorization concern. Verified tuition is $91892 for 2026-2027, within the annual budget; total cost of attendance is unknown.",
+      "tradeoffs": [
+        "unknown: Total cost of attendance is unverified, so full budget fit cannot be determined.",
+        "verified_fact: GMAT or GRE is required.",
+        "advice: Confirm total attendance costs and technology product recruiting access; STEM designation alone does not guarantee an immigration benefit."
+      ],
+      "affordability": "unknown",
+      "affordability_basis": "Unknown: cost of attendance is unknown. Tuition alone does not establish affordability.",
+      "stem_status": "verified_designated",
+      "sponsorship_status": "unknown",
+      "facts": [
+        {
+          "fact": "location",
+          "status": "verified",
+          "value": {
+            "city": "Cambridge",
+            "state": "MA"
+          },
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-mit-sloan-mba-location"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": ""
+        },
+        {
+          "fact": "test_policy",
+          "status": "verified",
+          "value": "GMAT (Focus or 10th Edition) or GRE required; no minimum score; Executive Assessment not accepted; TOEFL/IELTS not accepted",
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-mit-sloan-mba-test-policy"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": ""
+        },
+        {
+          "fact": "tuition",
+          "status": "verified",
+          "value": 91892,
+          "period": "2026-2027",
+          "definition": null,
+          "evidence_ids": [
+            "ev-mit-sloan-mba-tuition"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": "Source period: 2026-2027 academic year. Includes mandatory $2,200 annual MBA program fee"
+        },
+        {
+          "fact": "cost_of_attendance",
+          "status": "unknown",
+          "value": null,
+          "period": null,
+          "definition": null,
+          "evidence_ids": [],
+          "verification_level": null,
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "stem_designation",
+          "status": "verified",
+          "value": {
+            "designated": true,
+            "scope": "Entire MIT Sloan MBA; eligible F-1 graduates may apply for 24-month STEM OPT extension",
+            "cip_code": null
+          },
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-mit-sloan-mba-stem-designation"
+          ],
+          "verification_level": "rechecked_first_hand",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": "STEM designation is a program classification; it does not by itself guarantee any immigration benefit (e.g., STEM OPT also depends on the student's status, employer E-Verify enrollment, and USCIS approval)."
+        },
+        {
+          "fact": "employment_rate",
+          "status": "verified",
+          "value": 91.0,
+          "period": "Class of 2025",
+          "definition": "Share of job seekers who had received an offer of employment by three months after graduation (94.1% as of publication)",
+          "evidence_ids": [
+            "ev-mit-sloan-mba-employment-rate"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "median_base_salary",
+          "status": "verified",
+          "value": 175000,
+          "period": "Class of 2025",
+          "definition": "Median full-time base salary; 89.7% of students accepting an offer provided usable salary data",
+          "evidence_ids": [
+            "ev-mit-sloan-mba-median-base-salary"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "international_employment",
+          "status": "unknown",
+          "value": null,
+          "period": null,
+          "definition": null,
+          "evidence_ids": [],
+          "verification_level": null,
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "sponsorship",
+          "status": "unknown",
+          "value": null,
+          "period": null,
+          "definition": null,
+          "evidence_ids": [],
+          "verification_level": null,
+          "freshness_warning": null,
+          "note": "No employer-specific visa sponsorship evidence on official program pages. Employer lists in employment reports are NOT evidence of sponsorship."
+        }
+      ],
+      "analyst_claims": [
+        {
+          "text": "Application requires GMAT (Focus or 10th Edition) or GRE; no minimum score is stated. It also requires transcripts, a video question, one professional recommendation, two additional references, employment materials, and an interview by invitation.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-mit-sloan-mba-application-requirements",
+            "ev-mit-sloan-mba-test-policy"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "Tuition is $91892 for 2026-2027; cost of attendance is unknown, so affordability cannot be established from cost of attendance.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-mit-sloan-mba-tuition"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "The entire MBA is verified as STEM-designated; this designation alone does not guarantee an immigration benefit.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-mit-sloan-mba-stem-designation"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "For the Class of 2025, employment rate is 91.0% (job seekers receiving an offer by three months; 94.1% as of publication); median base salary is 175000. These measures are not directly comparable across the shortlisted programs because their definitions differ.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-mit-sloan-mba-employment-rate",
+            "ev-mit-sloan-mba-median-base-salary"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "Technology accounted for 23.3% of full-time accepted offers for the Class of 2025; international employment and employer-specific sponsorship evidence are unknown.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-mit-sloan-mba-industry-breakdown"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "For this applicant's US work-authorization concern, confirm current international employment and employer sponsorship information directly; neither is established by the available program facts.",
+          "label": "advice",
+          "evidence": [],
+          "evidence_ids": [],
+          "based_on": [
+            "International employment and sponsorship are unknown."
+          ]
+        }
+      ],
+      "flags": []
+    },
+    {
+      "program_id": "chicago-booth-mba",
+      "program_name": "Booth School of Business Full-Time MBA",
+      "career_fit": "strong",
+      "fit_rationale": "inference: Chicago location and verified STEM designation make this a relevant option to investigate for a technology-product target. Verified cost of attendance is $132449 for 2026-2027, within the stated budget but with limited headroom.",
+      "tradeoffs": [
+        "verified_fact: Cost of attendance is $132449 for 2026-2027.",
+        "verified_fact: GMAT or GRE is required.",
+        "advice: Account for possible expenses beyond the reported attendance figure; STEM designation is not a guarantee of an immigration benefit."
+      ],
+      "affordability": "within_budget",
+      "affordability_basis": "Verified cost of attendance is $132449 for 2026-2027, below the stated $135000 annual budget.",
+      "stem_status": "verified_designated",
+      "sponsorship_status": "unknown",
+      "facts": [
+        {
+          "fact": "location",
+          "status": "verified",
+          "value": {
+            "city": "Chicago",
+            "state": "IL"
+          },
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-chicago-booth-mba-location"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": ""
+        },
+        {
+          "fact": "test_policy",
+          "status": "verified",
+          "value": "GMAT or GRE required (self-reported, valid five years, no superscores); not waived except optional for current UChicago undergraduates/UChicago program graduates. EA not mentioned for Full-Time MBA.",
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-chicago-booth-mba-test-policy"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": ""
+        },
+        {
+          "fact": "tuition",
+          "status": "verified",
+          "value": 89976,
+          "period": "2026-2027",
+          "definition": null,
+          "evidence_ids": [
+            "ev-chicago-booth-mba-tuition"
+          ],
+          "verification_level": "rechecked_first_hand",
+          "freshness_warning": null,
+          "note": "Source period: 2026-27 academic year (three quarters / nine months, Class of 2028)."
+        },
+        {
+          "fact": "cost_of_attendance",
+          "status": "verified",
+          "value": 132449,
+          "period": "2026-2027",
+          "definition": null,
+          "evidence_ids": [
+            "ev-chicago-booth-mba-cost-of-attendance"
+          ],
+          "verification_level": "rechecked_first_hand",
+          "freshness_warning": null,
+          "note": "Source period: 2026-27 academic year (first year, Class of 2028). Includes tuition, fees, books, housing & food, personal, transportation, first-year computer allowance and administrative fee"
+        },
+        {
+          "fact": "stem_designation",
+          "status": "verified",
+          "value": {
+            "designated": true,
+            "scope": "Chicago Booth MBA degree designated STEM-eligible for OPT purposes",
+            "cip_code": null
+          },
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-chicago-booth-mba-stem-designation"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": "STEM designation is a program classification; it does not by itself guarantee any immigration benefit (e.g., STEM OPT also depends on the student's status, employer E-Verify enrollment, and USCIS approval)."
+        },
+        {
+          "fact": "employment_rate",
+          "status": "verified",
+          "value": 89.1,
+          "period": "Class of 2025",
+          "definition": "Graduates who landed full-time job offers within three months of graduation (job-seeking graduates)",
+          "evidence_ids": [
+            "ev-chicago-booth-mba-employment-rate"
+          ],
+          "verification_level": "source_backed_paraphrase",
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "median_base_salary",
+          "status": "verified",
+          "value": 175000,
+          "period": "Class of 2025",
+          "definition": "Median base salary",
+          "evidence_ids": [
+            "ev-chicago-booth-mba-median-base-salary"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "international_employment",
+          "status": "verified",
+          "value": "International F-1 graduates may be eligible for an additional 24 months of OPT (STEM extension); no international-specific outcome statistics found.",
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-chicago-booth-mba-international-employment"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": ""
+        },
+        {
+          "fact": "sponsorship",
+          "status": "unknown",
+          "value": null,
+          "period": null,
+          "definition": null,
+          "evidence_ids": [],
+          "verification_level": null,
+          "freshness_warning": null,
+          "note": "No employer-specific visa sponsorship evidence on official program pages. Employer lists in employment reports are NOT evidence of sponsorship."
+        }
+      ],
+      "analyst_claims": [
+        {
+          "text": "GMAT or GRE is required, with the stated exceptions for certain current or former UChicago students. Application materials include an online application, short answers, resume, recommendation, transcripts, score, and fee.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-chicago-booth-mba-test-policy",
+            "ev-chicago-booth-mba-application-requirements"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "Cost of attendance is $132449 for 2026-2027; this is within the applicant's stated $135000 annual budget based on the reported cost-of-attendance figure.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-chicago-booth-mba-cost-of-attendance"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "The Chicago Booth MBA degree is verified as STEM-designated.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-chicago-booth-mba-stem-designation"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "For the Class of 2025, employment rate is 89.1% for job-seeking graduates landing full-time job offers within three months; median base salary is 175000. These measures are not directly comparable across the shortlisted programs because their definitions differ.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-chicago-booth-mba-employment-rate",
+            "ev-chicago-booth-mba-median-base-salary"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "Technology represented 14.1% of the listed top six industries for the Class of 2025. International-specific employment outcome statistics were not found; the program fact reports that international F-1 graduates may be eligible for an additional 24 months of OPT, but this is not a guarantee. Employer-specific sponsorship evidence is unknown.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-chicago-booth-mba-industry-breakdown",
+            "ev-chicago-booth-mba-international-employment"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "Request current, employer-specific sponsorship information and budget details beyond the reported first-year cost before making a commitment.",
+          "label": "advice",
+          "evidence": [],
+          "evidence_ids": [],
+          "based_on": [
+            "The reported cost of attendance is a first-year figure; sponsorship evidence is unknown."
+          ]
+        }
+      ],
+      "flags": []
+    },
+    {
+      "program_id": "duke-fuqua-mba",
+      "program_name": "Fuqua School of Business Daytime MBA",
+      "career_fit": "moderate",
+      "fit_rationale": "inference: Verified STEM designation and cost of attendance of $118974 for 2026-2027 make this a comparatively budget-conscious option among the reviewed programs. The applicant's quantitative and engineering background is relevant to a technology-product pivot, but available evidence does not establish local technology recruiting access.",
+      "tradeoffs": [
+        "verified_fact: Cost of attendance is $118974 for 2026-2027.",
+        "verified_fact: GMAT, GMAT Focus, GRE, or Executive Assessment is required.",
+        "advice: Ask about current technology product recruiting and internship outcomes."
+      ],
+      "affordability": "within_budget",
+      "affordability_basis": "Verified cost of attendance is $118974 for 2026-2027, below the stated $135000 annual budget.",
+      "stem_status": "verified_designated",
+      "sponsorship_status": "unknown",
+      "facts": [
+        {
+          "fact": "location",
+          "status": "verified",
+          "value": {
+            "city": "Durham",
+            "state": "NC"
+          },
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-location"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": "School mailing address"
+        },
+        {
+          "fact": "test_policy",
+          "status": "verified",
+          "value": "Test required; accepts GMAT, GMAT Focus, GRE, and Executive Assessment; self-reported scores accepted at application; no minimum score; scores valid 5 years.",
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-test-policy"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": ""
+        },
+        {
+          "fact": "tuition",
+          "status": "verified",
+          "value": 83700,
+          "period": "2026-2027",
+          "definition": null,
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-tuition"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": "Source period: 2026-27 academic year (9-month, first year, Class of 2028). First-year tuition"
+        },
+        {
+          "fact": "cost_of_attendance",
+          "status": "verified",
+          "value": 118974,
+          "period": "2026-2027",
+          "definition": null,
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-cost-of-attendance"
+          ],
+          "verification_level": "source_backed_paraphrase",
+          "freshness_warning": null,
+          "note": "Source period: 2026-27 academic year (9-month, first year). Total Cost of Attendance incl. tuition, fees, books, living expenses; page does not explicitly say single student"
+        },
+        {
+          "fact": "stem_designation",
+          "status": "verified",
+          "value": {
+            "designated": true,
+            "scope": "Entire Daytime MBA program (replacing prior MSTeM track)",
+            "cip_code": null
+          },
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-stem-designation"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": "STEM designation is a program classification; it does not by itself guarantee any immigration benefit (e.g., STEM OPT also depends on the student's status, employer E-Verify enrollment, and USCIS approval)."
+        },
+        {
+          "fact": "employment_rate",
+          "status": "verified",
+          "value": 79,
+          "period": "Class of 2025",
+          "definition": "Accepts by 3 months post-graduation, of graduates seeking employment (315 of 350). Offers by 3 months = 82.2%.",
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-employment-rate"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "median_base_salary",
+          "status": "verified",
+          "value": 160000,
+          "period": "Class of 2025",
+          "definition": "Median base salary for one year only; excludes discretionary bonuses, options, carried interest",
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-median-base-salary"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "international_employment",
+          "status": "unknown",
+          "value": null,
+          "period": null,
+          "definition": null,
+          "evidence_ids": [],
+          "verification_level": null,
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "sponsorship",
+          "status": "unknown",
+          "value": null,
+          "period": null,
+          "definition": null,
+          "evidence_ids": [],
+          "verification_level": null,
+          "freshness_warning": null,
+          "note": "No employer-specific visa sponsorship evidence on official program pages. Employer lists in employment reports are NOT evidence of sponsorship."
+        }
+      ],
+      "analyst_claims": [
+        {
+          "text": "A test is required; accepted tests are GMAT, GMAT Focus, GRE, and Executive Assessment. Application materials include educational background, transcripts, employment history, resume, essays, one recommendation, and an application fee.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-test-policy",
+            "ev-duke-fuqua-mba-application-requirements"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "Cost of attendance is $118974 for 2026-2027; this is within the applicant's stated $135000 annual budget based on the reported cost-of-attendance figure.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-cost-of-attendance"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "The entire Daytime MBA program is verified as STEM-designated; the designation alone does not guarantee an immigration benefit.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-stem-designation"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "For the Class of 2025, the employment metric is 79% accepting jobs by three months among graduates seeking employment (315 of 350); offers by three months were 82.2%. Median base salary is 160000. These figures are not directly comparable across the shortlisted programs because the definitions differ.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-employment-rate",
+            "ev-duke-fuqua-mba-median-base-salary"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "International employment, industry breakdown, function breakdown, and employer-specific sponsorship evidence are unknown in the available facts.",
+          "label": "unknown",
+          "evidence": [],
+          "evidence_ids": [],
+          "based_on": []
+        },
+        {
+          "text": "Ask Fuqua for current technology product recruiting and international employment information, and seek employer-specific sponsorship evidence rather than inferring it from general employment outcomes.",
+          "label": "advice",
+          "evidence": [],
+          "evidence_ids": [],
+          "based_on": [
+            "International employment and sponsorship are unknown; industry and function breakdowns are unverified."
+          ]
+        }
+      ],
+      "flags": []
+    },
+    {
+      "program_id": "yale-som-mba",
+      "program_name": "Yale School of Management Full-Time MBA",
+      "career_fit": "moderate",
+      "fit_rationale": "inference: Verified location in New Haven and STEM designation make it a plausible option to investigate for the technology-product goal. Verified cost of attendance is $128976 for 2026-2027, within budget but with less headroom than Fuqua.",
+      "tradeoffs": [
+        "verified_fact: Cost of attendance is $128976 for 2026-2027.",
+        "verified_fact: GMAT or GRE is required; no test waivers.",
+        "advice: Confirm technology product recruiting access and budget for expenses beyond the reported attendance figure."
+      ],
+      "affordability": "within_budget",
+      "affordability_basis": "Verified cost of attendance is $128976 for 2026-2027, below the stated $135000 annual budget.",
+      "stem_status": "verified_designated",
+      "sponsorship_status": "unknown",
+      "facts": [
+        {
+          "fact": "location",
+          "status": "verified",
+          "value": {
+            "city": "New Haven",
+            "state": "CT"
+          },
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-yale-som-mba-location"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": ""
+        },
+        {
+          "fact": "test_policy",
+          "status": "verified",
+          "value": "GMAT or GRE required (valid 5 years); no test waivers; no minimum score; LSAT accepted for applicants considering law school (contact admissions); TOEFL/IELTS/PTE not required; EA not mentioned.",
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-yale-som-mba-test-policy"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": ""
+        },
+        {
+          "fact": "tuition",
+          "status": "verified",
+          "value": 90900,
+          "period": "2026-2027",
+          "definition": null,
+          "evidence_ids": [
+            "ev-yale-som-mba-tuition"
+          ],
+          "verification_level": "rechecked_first_hand",
+          "freshness_warning": null,
+          "note": "Source period: 2026-27 academic year. Tuition (excludes $500 program fee)"
+        },
+        {
+          "fact": "cost_of_attendance",
+          "status": "verified",
+          "value": 128976,
+          "period": "2026-2027",
+          "definition": null,
+          "evidence_ids": [
+            "ev-yale-som-mba-cost-of-attendance"
+          ],
+          "verification_level": "rechecked_first_hand",
+          "freshness_warning": null,
+          "note": "Source period: 2026-27 academic year. Total single student budget"
+        },
+        {
+          "fact": "stem_designation",
+          "status": "verified",
+          "value": {
+            "designated": true,
+            "scope": "Full-time MBA degree (management science classification), effective with the Class of 2026",
+            "cip_code": null
+          },
+          "period": null,
+          "definition": null,
+          "evidence_ids": [
+            "ev-yale-som-mba-stem-designation"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": "Data period not stated by source; freshness unknown.",
+          "note": "Applies: Class of 2026 onward. STEM designation is a program classification; it does not by itself guarantee any immigration benefit (e.g., STEM OPT also depends on the student's status, employer E-Verify enrollment, and USCIS approval)."
+        },
+        {
+          "fact": "employment_rate",
+          "status": "verified",
+          "value": 82.1,
+          "period": "Class of 2025",
+          "definition": "Received offer by three months post-graduation (no further denominator definition on page)",
+          "evidence_ids": [
+            "ev-yale-som-mba-employment-rate"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "median_base_salary",
+          "status": "verified",
+          "value": 175000,
+          "period": "Class of 2025",
+          "definition": "Median base salary, all full-time employed graduates",
+          "evidence_ids": [
+            "ev-yale-som-mba-median-base-salary"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": ""
+        },
+        {
+          "fact": "international_employment",
+          "status": "verified",
+          "value": "International students median base salary $175,000 (Class of 2025); 7.2% of full-time employment was outside the U.S. (median base $120K)",
+          "period": "Class of 2025",
+          "definition": null,
+          "evidence_ids": [
+            "ev-yale-som-mba-international-employment"
+          ],
+          "verification_level": "source_backed_excerpt",
+          "freshness_warning": null,
+          "note": "Salary table row 'International Students'; 'International full-time employment' share"
+        },
+        {
+          "fact": "sponsorship",
+          "status": "unknown",
+          "value": null,
+          "period": null,
+          "definition": null,
+          "evidence_ids": [],
+          "verification_level": null,
+          "freshness_warning": null,
+          "note": "No employer-specific visa sponsorship evidence on official program pages. Employer lists in employment reports are NOT evidence of sponsorship."
+        }
+      ],
+      "analyst_claims": [
+        {
+          "text": "GMAT or GRE is required, scores must be valid within five years, and no test waivers are available. Application materials include a bachelor's degree or international equivalent, transcripts, essay, two professional recommendations, resume, video questions, and Behavioral Assessment.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-yale-som-mba-test-policy",
+            "ev-yale-som-mba-application-requirements"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "Cost of attendance is $128976 for 2026-2027 for the stated single-student budget; this is within the applicant's stated $135000 annual budget based on that figure.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-yale-som-mba-cost-of-attendance"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "The full-time MBA is verified as STEM-designated, effective with the Class of 2026.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-yale-som-mba-stem-designation"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "For the Class of 2025, 82.1% received an offer by three months after graduation; the page gives no further denominator definition. Median base salary is 175000 for all full-time employed graduates. These measures are not directly comparable across the shortlisted programs because definitions differ.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-yale-som-mba-employment-rate",
+            "ev-yale-som-mba-median-base-salary"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "For the Class of 2025, international students had a median base salary of $175,000 and 7.2% of full-time employment was outside the U.S. Employer-specific sponsorship evidence is unknown.",
+          "label": "verified_fact",
+          "evidence": [],
+          "evidence_ids": [
+            "ev-yale-som-mba-international-employment"
+          ],
+          "based_on": []
+        },
+        {
+          "text": "For US work-authorization planning, confirm employer-specific sponsorship practices directly; international employment and salary statistics do not establish sponsorship.",
+          "label": "advice",
+          "evidence": [],
+          "evidence_ids": [],
+          "based_on": [
+            "Employer-specific sponsorship evidence is unknown."
+          ]
+        }
+      ],
+      "flags": []
+    }
+  ],
+  "excluded_programs": [
+    {
+      "program_id": "hbs-mba",
+      "reason": "inference: Verified cost of attendance is within budget, but location is unknown in the evidence store, limiting assessment of location-based career fit. Keep as a possible option if further location and recruiting research supports it."
+    },
+    {
+      "program_id": "rice-jones-mba",
+      "reason": "inference: STEM designation is verified, but total cost of attendance is unknown and verified tuition excludes fees and health insurance; full budget fit cannot be established."
+    }
+  ],
+  "metric_comparability": [
+    {
+      "metric": "employment_rate",
+      "rows": [
+        {
+          "program_id": "mit-sloan-mba",
+          "value": 91.0,
+          "period": "Class of 2025",
+          "definition": "Share of job seekers who had received an offer of employment by three months after graduation (94.1% as of publication)",
+          "evidence_ids": [
+            "ev-mit-sloan-mba-employment-rate"
+          ]
+        },
+        {
+          "program_id": "chicago-booth-mba",
+          "value": 89.1,
+          "period": "Class of 2025",
+          "definition": "Graduates who landed full-time job offers within three months of graduation (job-seeking graduates)",
+          "evidence_ids": [
+            "ev-chicago-booth-mba-employment-rate"
+          ]
+        },
+        {
+          "program_id": "duke-fuqua-mba",
+          "value": 79,
+          "period": "Class of 2025",
+          "definition": "Accepts by 3 months post-graduation, of graduates seeking employment (315 of 350). Offers by 3 months = 82.2%.",
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-employment-rate"
+          ]
+        },
+        {
+          "program_id": "yale-som-mba",
+          "value": 82.1,
+          "period": "Class of 2025",
+          "definition": "Received offer by three months post-graduation (no further denominator definition on page)",
+          "evidence_ids": [
+            "ev-yale-som-mba-employment-rate"
+          ]
+        }
+      ],
+      "unknown_programs": [],
+      "comparable_groups": [],
+      "all_comparable": false,
+      "rule": "Comparable only if cohort period and metric definition are identical."
+    },
+    {
+      "metric": "median_base_salary",
+      "rows": [
+        {
+          "program_id": "mit-sloan-mba",
+          "value": 175000,
+          "period": "Class of 2025",
+          "definition": "Median full-time base salary; 89.7% of students accepting an offer provided usable salary data",
+          "evidence_ids": [
+            "ev-mit-sloan-mba-median-base-salary"
+          ]
+        },
+        {
+          "program_id": "chicago-booth-mba",
+          "value": 175000,
+          "period": "Class of 2025",
+          "definition": "Median base salary",
+          "evidence_ids": [
+            "ev-chicago-booth-mba-median-base-salary"
+          ]
+        },
+        {
+          "program_id": "duke-fuqua-mba",
+          "value": 160000,
+          "period": "Class of 2025",
+          "definition": "Median base salary for one year only; excludes discretionary bonuses, options, carried interest",
+          "evidence_ids": [
+            "ev-duke-fuqua-mba-median-base-salary"
+          ]
+        },
+        {
+          "program_id": "yale-som-mba",
+          "value": 175000,
+          "period": "Class of 2025",
+          "definition": "Median base salary, all full-time employed graduates",
+          "evidence_ids": [
+            "ev-yale-som-mba-median-base-salary"
+          ]
+        }
+      ],
+      "unknown_programs": [],
+      "comparable_groups": [],
+      "all_comparable": false,
+      "rule": "Comparable only if cohort period and metric definition are identical."
+    }
+  ],
+  "strategy": {
+    "test_guidance": {
+      "recommendation": "undecided_need_info",
+      "rationale": "All four shortlisted programs require GMAT or GRE, and your profile says you are preparing but gives no diagnostic score or preference. Take a timed diagnostic for both tests, compare your performance, study fit, and logistics, then choose one test and plan to submit that score to each program. GMAT or GRE is accepted at MIT Sloan, Booth, and Yale SOM; Fuqua also accepts the Executive Assessment. Confirm each policy on official pages before applying.",
+      "evidence_ids": [
+        "ev-mit-sloan-mba-test-policy",
+        "ev-chicago-booth-mba-test-policy",
+        "ev-duke-fuqua-mba-test-policy",
+        "ev-yale-som-mba-test-policy"
+      ]
+    },
+    "gaps": [
+      {
+        "gap": "No diagnostic test scores or selected exam are provided.",
+        "severity": "high",
+        "action": "Complete timed GMAT and GRE diagnostics, compare results and preparation needs, then select a test and build a study schedule. Verify current requirements on each official program page."
+      },
+      {
+        "gap": "The application narrative for moving from software engineering/team leadership into product management is not specified.",
+        "severity": "high",
+        "action": "Draft a concise career story linking engineering and team leadership experience to product-management goals; support it with specific examples of product, customer, prioritization, or cross-functional work."
+      },
+      {
+        "gap": "Recommendation readiness and application materials are not described.",
+        "severity": "high",
+        "action": "Identify recommenders early, ask whether they can provide detailed professional examples, and prepare a resume, employment history, transcripts, and achievement inventory. Check each school's distinct requirements."
+      },
+      {
+        "gap": "Full cost and financing are not established for every option; MIT cost of attendance is unknown, and the applicant expects to rely mostly on loans.",
+        "severity": "high",
+        "action": "Build a school-by-school budget using official current cost information, including living and other expenses; request financial-aid and loan information, and compare borrowing needs against personal repayment constraints before committing."
+      },
+      {
+        "gap": "Employer-specific sponsorship practices and the applicant's immigration pathway are not established by the evidence.",
+        "severity": "high",
+        "action": "Ask programs for current international employment and employer-specific sponsorship information. Discuss personal immigration questions with a qualified DSO or immigration attorney; do not treat STEM designation as a guarantee of any immigration benefit."
+      },
+      {
+        "gap": "Technology product recruiting access and outcomes are not established for the shortlist.",
+        "severity": "medium",
+        "action": "Ask each program for current technology product-management recruiting, internship, and international-student outcome information, and speak with relevant students or alumni where available."
+      },
+      {
+        "gap": "Application deadlines and the 2027 intake schedule have not been confirmed.",
+        "severity": "high",
+        "action": "Confirm application rounds and deadlines on each program's official admissions pages and work backward from the earliest relevant deadline; do not rely on assumed dates."
+      }
+    ],
+    "weekly_plan": [
+      {
+        "week": 1,
+        "priority": "high",
+        "actions": [
+          "Use available study time for timed GMAT and GRE diagnostics and record section-level results.",
+          "Confirm current test policies and application requirements on official pages for all four programs.",
+          "Create a deadline tracker after confirming official deadlines; flag the earliest application you may pursue.",
+          "List recommenders and request preliminary conversations."
+        ]
+      },
+      {
+        "week": 2,
+        "priority": "high",
+        "actions": [
+          "Select GMAT or GRE based on diagnostic results, preparation preference, and the requirements of the shortlist.",
+          "Begin a consistent test-preparation schedule sized to the 12 available hours per week.",
+          "Collect transcripts and identify translation needs.",
+          "Draft a one-page career-story outline for the engineering-to-product transition."
+        ]
+      },
+      {
+        "week": 3,
+        "priority": "high",
+        "actions": [
+          "Continue test preparation and review errors from practice sets.",
+          "Prepare a resume inventory of measurable leadership, technical, and cross-functional achievements.",
+          "Confirm recommender availability and share a concise achievements and goals brief.",
+          "Request official cost and financing information, including MIT's full cost of attendance."
+        ]
+      },
+      {
+        "week": 4,
+        "priority": "high",
+        "actions": [
+          "Take a timed practice test in the selected exam and adjust the study plan.",
+          "Draft the resume and employment-history details.",
+          "Develop specific examples demonstrating leadership, product thinking, and impact.",
+          "Send programs questions about technology product recruiting and international employment."
+        ]
+      },
+      {
+        "week": 5,
+        "priority": "high",
+        "actions": [
+          "Continue test preparation with targeted work on the weakest sections.",
+          "Draft school-specific application narratives using verified requirements and the confirmed career story.",
+          "Check that recommenders have sufficient context and time to prepare thoughtful letters.",
+          "Compare initial school-by-school budgets and note unresolved financing questions."
+        ]
+      },
+      {
+        "week": 6,
+        "priority": "high",
+        "actions": [
+          "Take another timed practice test and decide whether the current test plan remains appropriate.",
+          "Revise resume and impact examples for clarity and evidence.",
+          "Start required essays or short answers for the confirmed application priorities.",
+          "Contact a qualified DSO or immigration attorney with personal immigration questions."
+        ]
+      },
+      {
+        "week": 7,
+        "priority": "high",
+        "actions": [
+          "Continue exam preparation and schedule an official test only after reviewing readiness and confirmed application timing.",
+          "Review essays for a coherent career transition, credible goals, and school-specific fit.",
+          "Check application portals or official instructions for transcripts, references, assessments, and video components.",
+          "Follow up with programs on recruiting and international employment questions."
+        ]
+      },
+      {
+        "week": 8,
+        "priority": "high",
+        "actions": [
+          "Take a timed practice test and use the results to decide whether to sit the exam or continue preparing.",
+          "Request a trusted reviewer to critique the resume and essay drafts.",
+          "Finalize the school list for applications under consideration, subject to budget and career-fit review.",
+          "Verify official deadlines and all application components again."
+        ]
+      },
+      {
+        "week": 9,
+        "priority": "high",
+        "actions": [
+          "Complete a final application-material review against each official checklist.",
+          "Submit or schedule the selected test according to readiness and confirmed deadlines.",
+          "Confirm recommendation submission plans and resolve missing transcripts or translations.",
+          "Update the financing comparison with the best available official information."
+        ]
+      },
+      {
+        "week": 10,
+        "priority": "high",
+        "actions": [
+          "Check application readiness against confirmed official deadlines and required components.",
+          "Submit only applications you personally choose after reviewing fit, cost, and remaining uncertainties.",
+          "Save submission confirmations and track interview or follow-up steps.",
+          "Continue test preparation or application work for later rounds only after confirming official timing."
+        ]
+      }
+    ],
+    "roadmap": [
+      {
+        "phase": "Preparation and verification",
+        "timing": "Weeks 1-3",
+        "milestones": [
+          "Compare timed GMAT and GRE diagnostics and choose a preparation path.",
+          "Confirm official application requirements and deadlines for the shortlist.",
+          "Identify recommenders and gather transcripts and career-impact examples."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Testing and application development",
+        "timing": "Weeks 4-7",
+        "milestones": [
+          "Build test readiness through weekly practice and targeted review.",
+          "Develop the engineering-to-product career narrative and school-specific materials.",
+          "Seek verified recruiting, international employment, cost, and financing information."
+        ],
+        "human_checkpoint": false
+      },
+      {
+        "phase": "Application decision and submission",
+        "timing": "Weeks 8-10",
+        "milestones": [
+          "Reconfirm official deadlines and application checklists.",
+          "Review readiness, budget evidence, and unresolved questions.",
+          "Choose personally which schools to apply to and submit complete applications."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Interviews and enrollment decision",
+        "timing": "After application submission",
+        "milestones": [
+          "Prepare for interviews and complete any program-requested follow-up.",
+          "Compare admission, verified total costs, financing options, recruiting information, and personal goals if offers are received.",
+          "Ask a qualified DSO or immigration attorney about personal immigration questions before relying on any pathway.",
+          "Personally decide whether to enroll and whether to accept financing or pay any deposit after reviewing terms."
+        ],
+        "human_checkpoint": true
+      }
+    ],
+    "claims": [
+      {
+        "text": "MIT Sloan requires GMAT (Focus or 10th Edition) or GRE; no minimum score is stated.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Chicago Booth requires GMAT or GRE, with stated exceptions for certain current or former UChicago students.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-chicago-booth-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Duke Fuqua requires a test and accepts GMAT, GMAT Focus, GRE, or Executive Assessment.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-duke-fuqua-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Yale SOM requires GMAT or GRE and does not offer test waivers.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "A diagnostic comparison is a practical way to choose between GMAT and GRE because the applicant has not provided an existing score or test preference.",
+        "label": "advice",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": [
+          "Applicant profile: test_status is preparing; no score or preference supplied."
+        ]
+      },
+      {
+        "text": "MIT's cost of attendance, employer-specific sponsorship evidence across the shortlist, and some international employment information are unknown in the provided evidence.",
+        "label": "unknown",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": [
+          "MIT dossier: cost of attendance unknown.",
+          "Program dossiers: employer-specific sponsorship evidence unknown."
+        ]
+      }
+    ]
+  },
+  "skeptic": {
+    "findings": [
+      {
+        "target_agent": "strategy_planner",
+        "target_ref": "test_guidance.rationale: \u201cAll four shortlisted programs require GMAT or GRE\u201d",
+        "category": "unsupported_claim",
+        "severity": "medium",
+        "issue": "This overstates the common test requirement: the supplied facts say Fuqua also accepts the Executive Assessment. The guidance later acknowledges this, but the initial statement could wrongly rule out an accepted option.",
+        "required_fix": "Say that GMAT or GRE is accepted at all four, while noting Fuqua also accepts the Executive Assessment; distinguish accepted tests from tests required by each program."
+      }
+    ],
+    "revision_request": null,
+    "overall_assessment": "The recommendations generally preserve key uncertainties around total cost, recruiting access, and employer sponsorship, and they do not promise immigration outcomes. One test-policy statement should be corrected; it does not materially change the overall recommendation."
+  },
+  "revision_performed": false,
+  "revision_target": null,
+  "grounding_violations": [
+    {
+      "agent": "evidence_analyst",
+      "rule": "guarantee",
+      "detail": "unsupported_claims_flagged[4]: Pathway Matcher says STEM designation is verified for these four programs; this is supported, but any implication of guaranteed immigration benefit or work authorization is unsupported.",
+      "action": "flagged"
+    }
+  ],
+  "usage_by_agent": [
+    {
+      "agent": "pathway_matcher",
+      "calls": 4,
+      "input_tokens": 16678,
+      "cached_input_tokens": 4735,
+      "output_tokens": 3983,
+      "reasoning_tokens": 176,
+      "elapsed_seconds": 3.963,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "evidence_analyst",
+      "calls": 9,
+      "input_tokens": 67608,
+      "cached_input_tokens": 52935,
+      "output_tokens": 7881,
+      "reasoning_tokens": 1059,
+      "elapsed_seconds": 24.278,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "strategy_planner",
+      "calls": 2,
+      "input_tokens": 11983,
+      "cached_input_tokens": 6930,
+      "output_tokens": 2458,
+      "reasoning_tokens": 0,
+      "elapsed_seconds": 16.765,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "skeptic",
+      "calls": 1,
+      "input_tokens": 8772,
+      "cached_input_tokens": 0,
+      "output_tokens": 614,
+      "reasoning_tokens": 405,
+      "elapsed_seconds": 5.683,
+      "estimated_cost_usd": null
+    }
+  ],
+  "totals": {
+    "input_tokens": 105041,
+    "cached_input_tokens": 64600,
+    "output_tokens": 14936,
+    "reasoning_tokens_within_output": 1640,
+    "reasoning_effort": "low",
+    "model_requests": 16,
+    "tool_calls": 24,
+    "model_seconds": 50.689,
+    "wall_seconds": 50.735,
+    "estimated_cost_usd": null,
+    "cost_basis": "unknown: no documented gpt-6-luna price configured",
+    "budget": {
+      "requests": 16,
+      "max_requests": 20,
+      "total_tokens": 119977,
+      "max_total_tokens": 200000,
+      "tool_calls": 24,
+      "max_tool_calls": 40
+    }
+  },
+  "disclaimers": [
+    "Decision support only \u2014 not admissions, legal, or immigration advice.",
+    "No admission probabilities are estimated. Sponsorship is never inferred from employer lists.",
+    "STEM designation does not by itself guarantee any immigration benefit; confirm with the school's DSO and a qualified attorney.",
+    "Confirm deadlines, costs, and requirements on official school pages before acting."
+  ],
+  "error": null
+}

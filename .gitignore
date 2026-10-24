@@ -1,0 +1,36 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node (if used later)
+node_modules/
+
+# Run artifacts / logs that may contain user data
+logs/
+runs/
+experiments/outputs/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+data/app/
+
+# Raw page snapshots used only for re-validation (third-party copyrighted content; do not publish)
+data/sources/cache/
+
+# Raw DOL LCA disclosure files (hundreds of MB; download per data/sponsorship/README.md)
+data/sponsorship/raw/

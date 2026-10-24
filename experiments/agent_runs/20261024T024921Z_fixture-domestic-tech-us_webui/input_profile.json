@@ -1,0 +1,35 @@
+{
+  "profile_id": "session-c9c0a0f3",
+  "is_fictional": true,
+  "citizenship_country": "United States",
+  "needs_us_work_authorization": false,
+  "education": [
+    {
+      "degree_level": "Bachelor's",
+      "field": "Mechanical Engineering",
+      "country": "United States",
+      "gpa_band": "3.5-3.7"
+    }
+  ],
+  "years_work_experience": 6.0,
+  "current_industry": "Consumer electronics",
+  "current_function": "Hardware and systems engineering",
+  "target_function": "Product management",
+  "target_industry": "Technology",
+  "target_roles": [
+    "Product Manager at a Seattle technology company"
+  ],
+  "preferred_us_states": [],
+  "long_term_location": "Seattle",
+  "budget_usd": 150000.0,
+  "budget_period": "per_academic_year",
+  "max_total_budget_usd_per_year": 150000.0,
+  "funding_notes": "Savings plus some employer support.",
+  "quantitative_background": "Strong; engineering degree",
+  "test_status": "preparing",
+  "test_score": null,
+  "target_intake_year": 2027,
+  "weeks_until_first_application": 10,
+  "hours_per_week_available": 12,
+  "notes": "Fictional profile for testing: U.S. citizen with no work-authorization need."
+}

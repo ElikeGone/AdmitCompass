@@ -1,0 +1,679 @@
+{
+  "pathway_matcher": {
+    "target_roles": [
+      {
+        "title": "Technology Product Manager",
+        "rationale": "inference: This is the direct match for the applicant\u2019s stated target function, target industry, and Seattle technology-company goal."
+      },
+      {
+        "title": "Technical Product Manager",
+        "rationale": "inference: The applicant\u2019s mechanical-engineering education and hardware and systems engineering experience could be relevant to product roles involving technical products."
+      },
+      {
+        "title": "Hardware Product Manager",
+        "rationale": "inference: The applicant\u2019s consumer-electronics and hardware experience suggests this adjacent product-management path."
+      }
+    ],
+    "candidates": [
+      {
+        "program_id": "yale-som-mba",
+        "career_fit": "moderate",
+        "fit_rationale": "inference: The applicant\u2019s engineering and hardware background aligns with a move into technology product management, but the verified program location is New Haven, CT, not the preferred long-term destination of Seattle. verified_fact: The 2026-2027 cost of attendance is 128976, below the applicant\u2019s 150000 annual budget. verified_fact: GMAT or GRE is required, and the applicant is preparing for a test.",
+        "tradeoffs": [
+          "verified_fact: Located in New Haven, CT; this does not directly match the Seattle location goal.",
+          "verified_fact: 2026-2027 cost of attendance is 128976.",
+          "verified_fact: GMAT or GRE is required; no test waivers."
+        ]
+      },
+      {
+        "program_id": "chicago-booth-mba",
+        "career_fit": "moderate",
+        "fit_rationale": "inference: An MBA is a plausible bridge from engineering into technology product management, but the verified location, Chicago, IL, is not Seattle. verified_fact: The 2026-2027 cost of attendance is 132449, below the applicant\u2019s 150000 annual budget. verified_fact: GMAT or GRE is required, and the applicant is preparing for a test.",
+        "tradeoffs": [
+          "verified_fact: Located in Chicago, IL; this does not directly match the Seattle location goal.",
+          "verified_fact: 2026-2027 cost of attendance is 132449.",
+          "verified_fact: GMAT or GRE is required; the test is not waived except for specified UChicago-affiliated applicants."
+        ]
+      },
+      {
+        "program_id": "duke-fuqua-mba",
+        "career_fit": "moderate",
+        "fit_rationale": "inference: The applicant\u2019s technical experience could support a transition to technology product management, but the verified location, Durham, NC, is not Seattle. verified_fact: The 2026-2027 cost of attendance is 118974, below the applicant\u2019s 150000 annual budget. verified_fact: The program accepts GMAT, GMAT Focus, GRE, and Executive Assessment; the applicant is preparing for a test.",
+        "tradeoffs": [
+          "verified_fact: Located in Durham, NC; this does not directly match the Seattle location goal.",
+          "verified_fact: 2026-2027 cost of attendance is 118974.",
+          "verified_fact: A test is required, though the program accepts multiple tests."
+        ]
+      }
+    ],
+    "excluded": [
+      {
+        "program_id": "mit-sloan-mba",
+        "reason": "verified_fact: Cost of attendance is unknown in the store, so affordability against the stated annual budget cannot be verified. Its verified location is Cambridge, MA, not Seattle."
+      },
+      {
+        "program_id": "dartmouth-tuck-mba",
+        "reason": "inference: Hanover, NH is not the applicant\u2019s stated Seattle destination, making it a weaker geographic fit than the shortlisted alternatives. verified_fact: Its 2026-2027 cost of attendance is 135331, within the stated annual budget."
+      }
+    ],
+    "missing_profile_info": [
+      "unknown: Whether the applicant would consider post-MBA roles outside Seattle or prioritize an immediate Seattle-based job search over other program attributes.",
+      "unknown: Which product-management functions or technology subsectors the applicant prefers, such as hardware, consumer software, or platform products.",
+      "unknown: Intended test (GMAT or GRE), planned test date, and expected application-round timing.",
+      "unknown: Whether the applicant wants only full-time MBA programs or would consider other program formats."
+    ],
+    "claims": [
+      {
+        "text": "The applicant is a U.S. citizen, does not need U.S. work authorization, has six years of experience in consumer-electronics hardware and systems engineering, targets technology product management, and has an annual budget of 150000.",
+        "label": "inference",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": []
+      },
+      {
+        "text": "The evidence-store search returned no programs matching the non-STEM-designated filter at the stated budget; the returned set of programs was Yale SOM, MIT Sloan, Chicago Booth, Duke Fuqua, and Dartmouth Tuck.",
+        "label": "inference",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": []
+      },
+      {
+        "text": "The shortlist favors verified annual cost within budget and treats the non-Seattle location of each listed program as a material tradeoff; the store results do not establish direct Seattle employment access or product-management recruiting outcomes.",
+        "label": "inference",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": [
+          "Applicant profile: long-term location Seattle; annual budget 150000.",
+          "Program overview facts for Yale SOM, Chicago Booth, and Duke Fuqua."
+        ]
+      },
+      {
+        "text": "Yale SOM is located in New Haven, CT; its 2026-2027 cost of attendance is 128976; GMAT or GRE is required.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-location",
+          "ev-yale-som-mba-cost-of-attendance",
+          "ev-yale-som-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Chicago Booth is located in Chicago, IL; its 2026-2027 cost of attendance is 132449; GMAT or GRE is required.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-chicago-booth-mba-location",
+          "ev-chicago-booth-mba-cost-of-attendance",
+          "ev-chicago-booth-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Duke Fuqua is located in Durham, NC; its 2026-2027 cost of attendance is 118974; a test is required and accepted tests include GMAT, GMAT Focus, GRE, and Executive Assessment.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-duke-fuqua-mba-location",
+          "ev-duke-fuqua-mba-cost-of-attendance",
+          "ev-duke-fuqua-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "MIT Sloan\u2019s cost of attendance is unknown in the store; its location is Cambridge, MA.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-mit-sloan-mba-location"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Dartmouth Tuck is located in Hanover, NH; its 2026-2027 cost of attendance is 135331.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-dartmouth-tuck-mba-location",
+          "ev-dartmouth-tuck-mba-cost-of-attendance"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "Direct Seattle access, technology-industry recruiting strength, and product-management placement outcomes for these programs are not established by the retrieved evidence.",
+        "label": "unknown",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": []
+      }
+    ]
+  },
+  "evidence_analyst": {
+    "dossiers": [
+      {
+        "program_id": "yale-som-mba",
+        "claims": [
+          {
+            "text": "verified_fact: New Haven, CT; 2026-2027 cost of attendance is 128976, below the applicant's annual budget of 150000. Affordability is assessed using cost of attendance, not tuition alone.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-location",
+              "ev-yale-som-mba-cost-of-attendance"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: GMAT or GRE is required, with no test waivers; application requirements also include a bachelor's degree, essays, transcripts, two professional recommendations, resume, video questions and Behavioral Assessment.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-test-policy",
+              "ev-yale-som-mba-application-requirements"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: The full-time MBA is STEM-designated for the Class of 2026 onward. This classification does not guarantee an immigration benefit.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-stem-designation"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: For the Class of 2025, 82.1% received an offer by three months post-graduation; the page gives no further denominator definition. Median base salary was 175000 for all full-time employed graduates. These measures are not directly comparable across this shortlist because definitions differ.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-employment-rate",
+              "ev-yale-som-mba-median-base-salary"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: Class of 2025 international employment information reports international students' median base salary as 175000 and 7.2% of full-time employment outside the U.S. Historical FY2025 Seattle product-management LCA filings included Amazon (307), JPMorgan Chase (4), and Microsoft (2). Historical H-1B filings by this employer. Not a guarantee of sponsorship. U.S. work-authorization rules change; confirm with official sources and the school's international student office. Not legal advice.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-yale-som-mba-international-employment",
+              "lca-fy2025-amazon-3de5f1",
+              "lca-fy2025-jpmorgan-chase-f8f234",
+              "lca-fy2025-microsoft-186d85"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "inference: The verified cost is within budget, but the location is not Seattle; the retrieved evidence does not establish direct Seattle access or product-management placement outcomes.",
+            "label": "inference",
+            "evidence": [],
+            "evidence_ids": [],
+            "based_on": [
+              "ev-yale-som-mba-location",
+              "ev-yale-som-mba-cost-of-attendance"
+            ]
+          }
+        ],
+        "affordability": "within_budget",
+        "affordability_basis": "Cost of attendance 128976 for 2026-2027 versus annual budget 150000.",
+        "stem_status": "verified_designated",
+        "sponsorship_status": "unknown",
+        "source_strength": "Cost of attendance is rechecked_first_hand. Requirements and employment, STEM, and international-employment facts are source_backed_paraphrase or source_backed_excerpt, not rechecked_first_hand. Evidence pages were accessed and checked 2026-10-23; location, requirements, and STEM pages warn that source data period is unstated and freshness unknown.",
+        "flags": [
+          "Employment-rate and salary metrics are not directly comparable with the other shortlisted programs.",
+          "Historical filings do not establish employer sponsorship for a particular person or position."
+        ]
+      },
+      {
+        "program_id": "chicago-booth-mba",
+        "claims": [
+          {
+            "text": "verified_fact: Chicago, IL; 2026-2027 cost of attendance is 132449, below the applicant's annual budget of 150000.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-chicago-booth-mba-location",
+              "ev-chicago-booth-mba-cost-of-attendance"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: GMAT or GRE is required, except it is optional for specified current UChicago-affiliated applicants. Application requirements include short-answer responses, resume, one supervisor recommendation, transcripts, self-reported test score, and application fee.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-chicago-booth-mba-test-policy",
+              "ev-chicago-booth-mba-application-requirements"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: The MBA degree is designated STEM-eligible for OPT purposes. This classification does not guarantee an immigration benefit.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-chicago-booth-mba-stem-designation"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: For the Class of 2025, 89.1% of job-seeking graduates landed full-time offers within three months; median base salary was 175000. Technology was 14.1% of the top-six industry breakdown; the top-five function breakdown does not report product management. Rate and salary definitions differ from other shortlisted programs, so metrics are not directly comparable.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-chicago-booth-mba-employment-rate",
+              "ev-chicago-booth-mba-median-base-salary",
+              "ev-chicago-booth-mba-industry-breakdown",
+              "ev-chicago-booth-mba-function-breakdown"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: The international-employment source states that international F-1 graduates may be eligible for an additional 24 months of OPT, but reports no international-specific outcome statistics. Historical FY2025 Seattle product-management LCA filings included Amazon (307), JPMorgan Chase (4), Google (2), and Adobe (1). Historical H-1B filings by this employer. Not a guarantee of sponsorship. U.S. work-authorization rules change; confirm with official sources and the school's international student office. Not legal advice.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-chicago-booth-mba-international-employment",
+              "lca-fy2025-amazon-3de5f1",
+              "lca-fy2025-jpmorgan-chase-f8f234",
+              "lca-fy2025-google-823b70",
+              "lca-fy2025-adobe-6f61fb"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "inference: Cost is within budget, but Chicago is not Seattle; evidence does not establish direct Seattle access or product-management placement outcomes.",
+            "label": "inference",
+            "evidence": [],
+            "evidence_ids": [],
+            "based_on": [
+              "ev-chicago-booth-mba-location",
+              "ev-chicago-booth-mba-cost-of-attendance"
+            ]
+          }
+        ],
+        "affordability": "within_budget",
+        "affordability_basis": "Cost of attendance 132449 for 2026-2027 versus annual budget 150000.",
+        "stem_status": "verified_designated",
+        "sponsorship_status": "unknown",
+        "source_strength": "Cost of attendance is rechecked_first_hand. Requirements, location, STEM, international employment, and employment outcomes are source_backed_excerpt or source_backed_paraphrase. Evidence pages were accessed and checked 2026-10-23; several program pages warn that source period is unstated and freshness unknown. Employer-list cohort attribution is noted as ambiguous in the source result.",
+        "flags": [
+          "Employment-rate and salary metrics are not directly comparable with the other shortlisted programs.",
+          "International-specific outcome statistics were not found.",
+          "Historical filings do not establish employer sponsorship for a particular person or position."
+        ]
+      },
+      {
+        "program_id": "duke-fuqua-mba",
+        "claims": [
+          {
+            "text": "verified_fact: Durham, NC; 2026-2027 cost of attendance is 118974, below the applicant's annual budget of 150000.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-duke-fuqua-mba-location",
+              "ev-duke-fuqua-mba-cost-of-attendance"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: A test is required; accepted tests are GMAT, GMAT Focus, GRE, and Executive Assessment. Application requirements include educational and employment history, transcripts, resume, self-reported test scores, essays, one recommendation, and application fee.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-duke-fuqua-mba-test-policy",
+              "ev-duke-fuqua-mba-application-requirements"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: The entire Daytime MBA program is STEM-designated. This classification does not guarantee an immigration benefit.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-duke-fuqua-mba-stem-designation"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "verified_fact: For the Class of 2025, 79% of graduates seeking employment accepted an offer by three months (315 of 350); offers by three months were 82.2%. Median base salary was 160000, excluding discretionary bonuses, options, and carried interest. These metrics are not directly comparable with the other shortlisted programs because definitions differ.",
+            "label": "verified_fact",
+            "evidence": [],
+            "evidence_ids": [
+              "ev-duke-fuqua-mba-employment-rate",
+              "ev-duke-fuqua-mba-median-base-salary"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "unknown: International-employment information and industry/function breakdowns are not verified. Historical FY2025 Seattle product-management LCA filings included Amazon (307) and Adobe (1). Historical H-1B filings by this employer. Not a guarantee of sponsorship. U.S. work-authorization rules change; confirm with official sources and the school's international student office. Not legal advice.",
+            "label": "unknown",
+            "evidence": [],
+            "evidence_ids": [
+              "lca-fy2025-amazon-3de5f1",
+              "lca-fy2025-adobe-6f61fb"
+            ],
+            "based_on": []
+          },
+          {
+            "text": "inference: Cost is within budget, but Durham is not Seattle; evidence does not establish direct Seattle access or product-management placement outcomes.",
+            "label": "inference",
+            "evidence": [],
+            "evidence_ids": [],
+            "based_on": [
+              "ev-duke-fuqua-mba-location",
+              "ev-duke-fuqua-mba-cost-of-attendance"
+            ]
+          }
+        ],
+        "affordability": "within_budget",
+        "affordability_basis": "Cost of attendance 118974 for 2026-2027 versus annual budget 150000.",
+        "stem_status": "verified_designated",
+        "sponsorship_status": "unknown",
+        "source_strength": "Cost of attendance is source_backed_paraphrase; requirements, test policy, STEM status, and employment outcomes are source_backed_paraphrase or source_backed_excerpt. Evidence was accessed and checked 2026-10-23; several program pages warn that source period is unstated and freshness unknown. Employment report extraction leaves industry/function breakdowns unverified.",
+        "flags": [
+          "Employment-rate and salary metrics are not directly comparable with the other shortlisted programs.",
+          "International-employment information is unknown.",
+          "Historical filings do not establish employer sponsorship for a particular person or position."
+        ]
+      }
+    ],
+    "metric_comparisons": [
+      {
+        "program_ids": [
+          "yale-som-mba",
+          "chicago-booth-mba",
+          "duke-fuqua-mba"
+        ],
+        "metric": "employment_rate",
+        "treated_as_comparable": false,
+        "reason": "All are Class of 2025, but definitions and denominators differ: Yale reports offers without a further denominator; Booth reports job-seeking graduates with offers; Fuqua reports accepts among job seekers and separately offers."
+      },
+      {
+        "program_ids": [
+          "yale-som-mba",
+          "chicago-booth-mba",
+          "duke-fuqua-mba"
+        ],
+        "metric": "median_base_salary",
+        "treated_as_comparable": false,
+        "reason": "All are Class of 2025, but salary populations/definitions are not identical; Fuqua explicitly excludes discretionary bonuses, options, and carried interest, while Yale specifies all full-time employed graduates."
+      }
+    ],
+    "unsupported_claims_flagged": [
+      "Pathway Matcher claim that the shortlist favors verified annual cost within budget: supported for the three shortlisted programs, but not sufficient to establish broader shortlist screening criteria.",
+      "Pathway Matcher descriptions of test requirements and annual costs for these three shortlisted programs are supported by retrieved facts.",
+      "Pathway Matcher assertion that each shortlisted program's location is not Seattle is supported by retrieved location facts.",
+      "Pathway Matcher conclusions that engineering experience aligns with technology product management are inferences, not verified program placement evidence.",
+      "Pathway Matcher statement that the applicant's profile details are an inference is mislabelled: those details are supplied directly in the applicant profile.",
+      "Pathway Matcher claim about a search returning no programs for a non-STEM-designated filter is not established by the evidence retrieved for these three programs."
+    ]
+  },
+  "strategy_planner": {
+    "test_guidance": {
+      "recommendation": "either_gmat_or_gre",
+      "rationale": "Because you are preparing and have a strong quantitative background, choose the exam whose diagnostic and practice format best suits you; there is no supplied score evidence to recommend using an existing result. Yale and Booth require GMAT or GRE; Fuqua accepts GMAT, GMAT Focus, GRE, or Executive Assessment. Confirm current policies before applying.",
+      "evidence_ids": [
+        "ev-yale-som-mba-test-policy",
+        "ev-chicago-booth-mba-test-policy",
+        "ev-duke-fuqua-mba-test-policy"
+      ]
+    },
+    "gaps": [
+      {
+        "gap": "No diagnostic or test score is provided, and all three programs require a test.",
+        "severity": "high",
+        "action": "Take timed GMAT and GRE diagnostics, compare fit and preparation needs, then select one exam and begin a focused study schedule."
+      },
+      {
+        "gap": "School-specific application materials are not yet documented as prepared.",
+        "severity": "high",
+        "action": "Build a requirements tracker: Yale requires essays, transcripts, two professional recommendations, resume, video questions and Behavioral Assessment; Booth requires short answers, resume, supervisor recommendation, transcripts and self-reported test score; Fuqua requires essays, transcripts, resume, activities and achievements, and one recommendation. Confirm the current requirements on official pages."
+      },
+      {
+        "gap": "The Seattle goal is not matched by the verified locations of the three shortlisted programs, and supplied evidence does not establish Seattle access or product-management placement outcomes.",
+        "severity": "medium",
+        "action": "Decide whether to keep these schools despite the location tradeoff; investigate Seattle recruiting, alumni access, and product-management outcomes using current official school materials and direct conversations."
+      },
+      {
+        "gap": "The shortlist has no documented personal preference ranking or financing plan beyond savings and some employer support.",
+        "severity": "medium",
+        "action": "Compare total cost, funding availability, opportunity cost, location, and career fit; verify employer support terms and personally determine an acceptable financing limit."
+      },
+      {
+        "gap": "Current application deadlines for the target intake are not supplied.",
+        "severity": "high",
+        "action": "Confirm each school's current deadlines and application round on official pages before setting submission targets."
+      }
+    ],
+    "weekly_plan": [
+      {
+        "week": 1,
+        "priority": "high",
+        "actions": [
+          "Take timed GMAT and GRE diagnostic tests and record section-level results.",
+          "Review official test policies and choose a test based on diagnostic fit.",
+          "Confirm current application deadlines and round options on each school's official page."
+        ]
+      },
+      {
+        "week": 2,
+        "priority": "high",
+        "actions": [
+          "Start a 12-hour weekly test-preparation routine focused on diagnostic weaknesses.",
+          "Create a school-by-school application tracker for essays, recommendations, transcripts, resume, and other components.",
+          "Identify potential recommenders and ask about availability."
+        ]
+      },
+      {
+        "week": 3,
+        "priority": "high",
+        "actions": [
+          "Continue test preparation and complete a timed practice section.",
+          "Draft a concise career narrative connecting engineering experience to product management.",
+          "Gather transcripts and prepare a one-page resume draft."
+        ]
+      },
+      {
+        "week": 4,
+        "priority": "high",
+        "actions": [
+          "Review practice-test progress and adjust study priorities.",
+          "Discuss recommendation plans with selected recommenders and provide them with role and achievement context.",
+          "Research Seattle-oriented recruiting and alumni access for each school."
+        ]
+      },
+      {
+        "week": 5,
+        "priority": "high",
+        "actions": [
+          "Complete a full-length practice exam under timed conditions.",
+          "Draft school-specific essay outlines and Booth short-answer concepts.",
+          "List measurable work achievements and examples of leadership, collaboration, and product judgment."
+        ]
+      },
+      {
+        "week": 6,
+        "priority": "high",
+        "actions": [
+          "Continue targeted test preparation; decide whether a test attempt can fit before the application window you confirm.",
+          "Revise resume bullets to show scope, decisions, and outcomes.",
+          "Request transcripts and check each school's current document instructions."
+        ]
+      },
+      {
+        "week": 7,
+        "priority": "medium",
+        "actions": [
+          "Draft first versions of essays and short answers.",
+          "Meet with recommenders to align on submission requirements and timing.",
+          "Compare school costs with the annual budget and sketch financing scenarios."
+        ]
+      },
+      {
+        "week": 8,
+        "priority": "high",
+        "actions": [
+          "Take another timed practice exam and reassess readiness.",
+          "Revise essays for clear school-specific motivation and credible product-management goals.",
+          "Verify current application requirements and test-score reporting instructions on official pages."
+        ]
+      },
+      {
+        "week": 9,
+        "priority": "high",
+        "actions": [
+          "Finalize a shortlist decision based on career fit, location, cost, and your preferences.",
+          "Check recommender progress and complete application forms where appropriate.",
+          "Practice concise video responses and prepare for any school-specific assessment."
+        ]
+      },
+      {
+        "week": 10,
+        "priority": "high",
+        "actions": [
+          "Audit application materials against each official checklist and confirmed deadlines.",
+          "Set a personally chosen test and submission sequence based on readiness and verified deadlines.",
+          "Decide which schools to apply to; submit only when materials are complete and reviewed."
+        ]
+      }
+    ],
+    "roadmap": [
+      {
+        "phase": "Test choice and foundation",
+        "timing": "Weeks 1-2",
+        "milestones": [
+          "Complete GMAT and GRE diagnostics and select a test.",
+          "Confirm current application deadlines and construct a school-specific requirements tracker.",
+          "Identify recommenders and begin transcript and resume preparation."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Application preparation and school research",
+        "timing": "Weeks 3-6",
+        "milestones": [
+          "Build a career narrative connecting technical experience to product management.",
+          "Develop application stories and a resume showing impact.",
+          "Investigate Seattle recruiting and alumni access without assuming placement outcomes."
+        ],
+        "human_checkpoint": false
+      },
+      {
+        "phase": "Application readiness and submission decisions",
+        "timing": "Weeks 7-10",
+        "milestones": [
+          "Refine essays, short answers, and recommendation coordination.",
+          "Compare financing scenarios and assess location and career tradeoffs.",
+          "Make a personal decision about which schools to apply to and verify deadlines on official pages."
+        ],
+        "human_checkpoint": true
+      },
+      {
+        "phase": "Admissions outcomes and enrollment decision",
+        "timing": "After applications and through the enrollment decision",
+        "milestones": [
+          "Review offers, financial-aid terms, total cost, and career resources using current official information.",
+          "Personally decide whether to accept an offer, how to finance enrollment, and whether to submit a deposit.",
+          "If immigration questions arise, consult the appropriate official sources or qualified professional; do not rely on program designation alone."
+        ],
+        "human_checkpoint": true
+      }
+    ],
+    "claims": [
+      {
+        "text": "The supplied profile reports six years of experience, a mechanical-engineering bachelor's degree, strong quantitative background, preparation for a test, and a target transition to technology product management; these are applicant-provided details, not independently verified program facts.",
+        "label": "inference",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": []
+      },
+      {
+        "text": "Yale requires GMAT or GRE and has no test waivers; Booth requires GMAT or GRE except for specified UChicago-affiliated applicants; Fuqua requires a test and accepts GMAT, GMAT Focus, GRE, or Executive Assessment. Policies may change, so verify them on official pages.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-test-policy",
+          "ev-chicago-booth-mba-test-policy",
+          "ev-duke-fuqua-mba-test-policy"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "The supplied dossier lists Yale in New Haven, Booth in Chicago, and Fuqua in Durham, while the applicant's long-term location goal is Seattle. The evidence does not establish direct Seattle access or product-management placement outcomes.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-location",
+          "ev-chicago-booth-mba-location",
+          "ev-duke-fuqua-mba-location"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "The supplied dossier reports 2026-2027 costs of attendance of 128976 for Yale, 132449 for Booth, and 118974 for Fuqua.",
+        "label": "verified_fact",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-cost-of-attendance",
+          "ev-chicago-booth-mba-cost-of-attendance",
+          "ev-duke-fuqua-mba-cost-of-attendance"
+        ],
+        "based_on": []
+      },
+      {
+        "text": "An MBA may provide a route to explore product management, but the supplied evidence does not verify that any shortlisted program places graduates into the applicant's target role or Seattle market.",
+        "label": "inference",
+        "evidence": [],
+        "evidence_ids": [],
+        "based_on": [
+          "ev-yale-som-mba-location",
+          "ev-chicago-booth-mba-location",
+          "ev-duke-fuqua-mba-location"
+        ]
+      },
+      {
+        "text": "Choose the test using diagnostic performance, preparation constraints, and current program policies rather than assuming one exam is universally preferable.",
+        "label": "advice",
+        "evidence": [],
+        "evidence_ids": [
+          "ev-yale-som-mba-test-policy",
+          "ev-chicago-booth-mba-test-policy",
+          "ev-duke-fuqua-mba-test-policy"
+        ],
+        "based_on": []
+      }
+    ]
+  },
+  "skeptic": {
+    "findings": [
+      {
+        "target_agent": "pathway_matcher",
+        "target_ref": "Claim that the evidence-store search returned no programs matching a non-STEM-designated filter at the stated budget",
+        "category": "unsupported_claim",
+        "severity": "medium",
+        "issue": "The supplied profile does not state a non-STEM preference, and the retrieved evidence does not establish that an exhaustive search using this filter occurred. This could confuse the shortlist rationale or imply a screening constraint the applicant never gave.",
+        "required_fix": "Remove the claim unless supported by a verified search result and a stated applicant preference; clarify the actual criteria used to select and exclude programs."
+      },
+      {
+        "target_agent": "evidence_analyst",
+        "target_ref": "2026-2027 cost-of-attendance figures and 'within_budget' assessments for 2027 intake",
+        "category": "affordability",
+        "severity": "medium",
+        "issue": "The cited costs are for 2026-2027, while the applicant targets 2027 intake. They are below the stated annual budget for that reported period, but do not establish affordability for the applicant's eventual enrollment year, and source freshness is flagged as unknown.",
+        "required_fix": "Qualify the assessment as based on 2026-2027 costs only; state that 2027-2028 costs and any other applicable expenses are unknown and should be checked before treating affordability as confirmed."
+      },
+      {
+        "target_agent": "pathway_matcher",
+        "target_ref": "Claim that the applicant's supplied profile details are an inference",
+        "category": "other",
+        "severity": "low",
+        "issue": "The profile details are directly supplied by the applicant, not inferred. The evidence analyst also flags this mislabeling.",
+        "required_fix": "Label these details as applicant-provided information rather than inference."
+      }
+    ],
+    "revision_request": null,
+    "overall_assessment": "The agents generally distinguish inference from verified program facts, avoid comparing non-comparable employment metrics, and identify the Seattle-location tradeoff. No high-severity issue requiring a revision is apparent."
+  }
+}

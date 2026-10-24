@@ -1,0 +1,395 @@
+[
+ {
+  "program_id": "wharton-mba",
+  "field": "class_size",
+  "value": 866,
+  "unit": "students",
+  "period": "Class of 2026",
+  "period_basis": "cohort",
+  "source_url": "https://mba.wharton.upenn.edu/class-profile/",
+  "publisher": "The Wharton School",
+  "excerpt": "Wharton MBA Program Class of 2026 Class Size 866",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing. Class of 2027 section showed placeholder zeros."
+ },
+ {
+  "program_id": "wharton-mba",
+  "field": "class_avg_gmat",
+  "value": 732,
+  "unit": "score",
+  "period": "Class of 2026",
+  "period_basis": "cohort",
+  "source_url": "https://mba.wharton.upenn.edu/class-profile/",
+  "publisher": "The Wharton School",
+  "excerpt": "Average: 732",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing."
+ },
+ {
+  "program_id": "wharton-mba",
+  "field": "class_pct_international",
+  "value": 31,
+  "unit": "percent",
+  "period": "Class of 2026",
+  "period_basis": "cohort",
+  "source_url": "https://mba.wharton.upenn.edu/class-profile/",
+  "publisher": "The Wharton School",
+  "excerpt": "International Students: 31%",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing."
+ },
+ {
+  "program_id": "wharton-mba",
+  "field": "application_deadlines",
+  "value": [
+   {
+    "round": "Round 1",
+    "deadline": "2026-09-08"
+   },
+   {
+    "round": "Round 2",
+    "deadline": "2027-01-05"
+   },
+   {
+    "round": "Round 3",
+    "deadline": "2027-03-31"
+   },
+   {
+    "round": "Deferred Admissions Round",
+    "deadline": "2027-04-21"
+   }
+  ],
+  "unit": "dates",
+  "period": "2026-2027",
+  "period_basis": "cycle",
+  "source_url": "https://mba.wharton.upenn.edu/admissions/",
+  "publisher": "The Wharton School",
+  "excerpt": "Round 1: Tuesday, September 8, 2026 at 5:00 PM ET ... Round 2: Tuesday, January 5, 2027 at 5:00 PM ET ... Round 3: Wednesday, March 31, 2027 at 5:00 PM ET",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing."
+ },
+ {
+  "program_id": "dartmouth-tuck-mba",
+  "field": "class_size",
+  "value": 282,
+  "unit": "students",
+  "period": "Class of 2028",
+  "period_basis": "cohort",
+  "source_url": "https://www.tuck.dartmouth.edu/admissions/class-profile",
+  "publisher": "Tuck School of Business at Dartmouth",
+  "excerpt": "MBA Class of 2028 ... 282",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing. Tool paraphrased as 'Enrollment is 282 students'."
+ },
+ {
+  "program_id": "dartmouth-tuck-mba",
+  "field": "class_avg_gmat",
+  "value": 682,
+  "unit": "score",
+  "period": "Class of 2028",
+  "period_basis": "cohort",
+  "source_url": "https://www.tuck.dartmouth.edu/admissions/class-profile",
+  "publisher": "Tuck School of Business at Dartmouth",
+  "excerpt": "average is 682, and the mid-80% range is 635-735",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing. Paraphrased by tool; scale (Focus vs classic) unclear."
+ },
+ {
+  "program_id": "dartmouth-tuck-mba",
+  "field": "class_pct_international",
+  "value": 39,
+  "unit": "percent",
+  "period": "Class of 2028",
+  "period_basis": "cohort",
+  "source_url": "https://www.tuck.dartmouth.edu/admissions/class-profile",
+  "publisher": "Tuck School of Business at Dartmouth",
+  "excerpt": "39%, including dual citizens and permanent residents",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing. Foreign nationals alone 29%."
+ },
+ {
+  "program_id": "berkeley-haas-mba",
+  "field": "class_size",
+  "value": 273,
+  "unit": "students",
+  "period": "Class of 2027",
+  "period_basis": "cohort",
+  "source_url": "https://mba.haas.berkeley.edu/admissions/class-profile",
+  "publisher": "UC Berkeley Haas School of Business",
+  "excerpt": "273 Students Enrolled",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing."
+ },
+ {
+  "program_id": "berkeley-haas-mba",
+  "field": "class_median_gmat",
+  "value": 730,
+  "unit": "score",
+  "period": "Class of 2027",
+  "period_basis": "cohort",
+  "source_url": "https://mba.haas.berkeley.edu/admissions/class-profile",
+  "publisher": "UC Berkeley Haas School of Business",
+  "excerpt": "730 median",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing. GMAT Focus median also listed: 675."
+ },
+ {
+  "program_id": "berkeley-haas-mba",
+  "field": "class_pct_international",
+  "value": 44,
+  "unit": "percent",
+  "period": "Class of 2027",
+  "period_basis": "cohort",
+  "source_url": "https://mba.haas.berkeley.edu/admissions/class-profile",
+  "publisher": "UC Berkeley Haas School of Business",
+  "excerpt": "44% international; 42 countries represented",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing."
+ },
+ {
+  "program_id": "berkeley-haas-mba",
+  "field": "application_deadlines",
+  "value": [
+   {
+    "round": "Round 1",
+    "deadline": "2026-09-10"
+   },
+   {
+    "round": "Round 2",
+    "deadline": "2027-01-07"
+   },
+   {
+    "round": "Round 3",
+    "deadline": "2027-04-01"
+   }
+  ],
+  "unit": "dates",
+  "period": "2026-2027",
+  "period_basis": "cycle",
+  "source_url": "https://mba.haas.berkeley.edu/admissions/deadlines",
+  "publisher": "UC Berkeley Haas School of Business",
+  "excerpt": "Deadline: September 10, 2026 ... Deadline: January 7, 2027 ... Deadline: April 1, 2027",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing."
+ },
+ {
+  "program_id": "kellogg-mba",
+  "field": "application_deadlines",
+  "value": [
+   {
+    "round": "Round 1",
+    "deadline": "2026-09-09"
+   },
+   {
+    "round": "Round 2",
+    "deadline": "2027-01-06"
+   },
+   {
+    "round": "Round 3",
+    "deadline": "2027-03-31"
+   }
+  ],
+  "unit": "dates",
+  "period": "2026-2027",
+  "period_basis": "cycle",
+  "source_url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/admissions/",
+  "publisher": "Northwestern Kellogg",
+  "excerpt": "Sept. 9, 2026 ... Jan. 6, 2027 ... March 31, 2027",
+  "retrieved_on": "2026-10-23",
+  "status": "found",
+  "notes": "Excerpt is the quote WebFetch returned (summarizing tool); re-verify exact wording before publishing. Page may cover multiple MBA programs; confirm these are full-time 2Y."
+ },
+ {
+  "program_id": "kellogg-mba",
+  "field": "class_size",
+  "value": null,
+  "unit": "students",
+  "period": "Class of 2027",
+  "period_basis": "cohort",
+  "source_url": "https://www.kellogg.northwestern.edu/programs/full-time-mba/admissions/",
+  "publisher": "Northwestern Kellogg",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "Values not in fetched text; class-profile.aspx returned 404."
+ },
+ {
+  "program_id": "stanford-gsb-mba",
+  "field": "class_size",
+  "value": null,
+  "unit": "students",
+  "period": "Class of 2027",
+  "period_basis": "cohort",
+  "source_url": "https://www.gsb.stanford.edu/programs/mba/admission/class-profile",
+  "publisher": "Stanford GSB",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "Stats not rendered in fetched text (likely JS). Deadlines URL application-deadlines-requirements 404."
+ },
+ {
+  "program_id": "stanford-gsb-mba",
+  "field": "application_deadlines",
+  "value": null,
+  "unit": "dates",
+  "period": "2026-2027",
+  "period_basis": "cycle",
+  "source_url": "https://www.gsb.stanford.edu/programs/mba/admission/application-deadlines-requirements",
+  "publisher": "Stanford GSB",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "404."
+ },
+ {
+  "program_id": "dartmouth-tuck-mba",
+  "field": "application_deadlines",
+  "value": null,
+  "unit": "dates",
+  "period": "2026-2027",
+  "period_basis": "cycle",
+  "source_url": "https://www.tuck.dartmouth.edu/admissions/deadlines",
+  "publisher": "Tuck",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "Empty page content."
+ },
+ {
+  "program_id": "uva-darden-mba",
+  "field": "class_size",
+  "value": null,
+  "unit": "students",
+  "period": "Class of 2027",
+  "period_basis": "cohort",
+  "source_url": "https://www.darden.virginia.edu/mba/admissions/class-profile",
+  "publisher": "UVA Darden",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "Figures not in fetched text (likely JS). dates-deadlines URL 404."
+ },
+ {
+  "program_id": "michigan-ross-mba",
+  "field": "class_size",
+  "value": null,
+  "unit": "students",
+  "period": null,
+  "period_basis": "cohort",
+  "source_url": "https://michiganross.umich.edu/programs/full-time-mba/admissions/class-profile",
+  "publisher": "Michigan Ross",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "blocked",
+  "notes": "HTTP 403."
+ },
+ {
+  "program_id": "nyu-stern-mba",
+  "field": "class_size",
+  "value": null,
+  "unit": "students",
+  "period": null,
+  "period_basis": "cohort",
+  "source_url": "https://www.stern.nyu.edu/programs-admissions/full-time-mba/admissions/class-profile",
+  "publisher": "NYU Stern",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "blocked",
+  "notes": "HTTP 403."
+ },
+ {
+  "program_id": "wharton-mba",
+  "field": "scholarships",
+  "value": null,
+  "unit": "text",
+  "period": null,
+  "period_basis": "cycle",
+  "source_url": "",
+  "publisher": "",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "Not searched within timebox; Wharton admissions page had no fellowship statement."
+ },
+ {
+  "program_id": "kellogg-mba",
+  "field": "scholarships",
+  "value": null,
+  "unit": "text",
+  "period": null,
+  "period_basis": "cycle",
+  "source_url": "",
+  "publisher": "",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "Not searched within timebox; Wharton admissions page had no fellowship statement."
+ },
+ {
+  "program_id": "stanford-gsb-mba",
+  "field": "scholarships",
+  "value": null,
+  "unit": "text",
+  "period": null,
+  "period_basis": "cycle",
+  "source_url": "",
+  "publisher": "",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "Not searched within timebox; Wharton admissions page had no fellowship statement."
+ },
+ {
+  "program_id": "dartmouth-tuck-mba",
+  "field": "scholarships",
+  "value": null,
+  "unit": "text",
+  "period": null,
+  "period_basis": "cycle",
+  "source_url": "",
+  "publisher": "",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "Not searched within timebox; Wharton admissions page had no fellowship statement."
+ },
+ {
+  "program_id": "berkeley-haas-mba",
+  "field": "scholarships",
+  "value": null,
+  "unit": "text",
+  "period": null,
+  "period_basis": "cycle",
+  "source_url": "",
+  "publisher": "",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "Not searched within timebox; Wharton admissions page had no fellowship statement."
+ },
+ {
+  "program_id": "uva-darden-mba",
+  "field": "scholarships",
+  "value": null,
+  "unit": "text",
+  "period": null,
+  "period_basis": "cycle",
+  "source_url": "",
+  "publisher": "",
+  "excerpt": "",
+  "retrieved_on": "2026-10-23",
+  "status": "not_found",
+  "notes": "Not searched within timebox; Wharton admissions page had no fellowship statement."
+ }
+]

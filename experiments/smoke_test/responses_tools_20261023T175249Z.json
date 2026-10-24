@@ -1,0 +1,46 @@
+{
+  "timestamp": "20261023T175249Z",
+  "endpoint": "https://api.portkey.ai/v1/responses",
+  "requested_model": "gpt-6-luna",
+  "reasoning": {
+    "effort": "low"
+  },
+  "store": false,
+  "calls": [
+    {
+      "elapsed_s": 2.532,
+      "response_model": "gpt-6-luna-global",
+      "output_item_types": [
+        "function_call"
+      ],
+      "usage": {
+        "input_tokens": 68,
+        "output_tokens": 22,
+        "total_tokens": 90,
+        "cached_tokens": 0,
+        "reasoning_tokens": 0
+      }
+    },
+    {
+      "elapsed_s": 1.198,
+      "response_model": "gpt-6-luna-global",
+      "output_item_types": [
+        "message"
+      ],
+      "usage": {
+        "input_tokens": 107,
+        "output_tokens": 12,
+        "total_tokens": 119,
+        "cached_tokens": 0,
+        "reasoning_tokens": 0
+      }
+    }
+  ],
+  "tool_called": "add_numbers",
+  "tool_args": {
+    "a": 19,
+    "b": 23
+  },
+  "final_text": "{\"sum\":42}",
+  "ok": true
+}

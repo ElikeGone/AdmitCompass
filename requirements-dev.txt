@@ -1,0 +1,2 @@
+openpyxl>=3.1   # only for scripts/build_sponsorship.py (reads the DOL .xlsx files)
+pypdf>=4.0      # only for scripts/build_supplementary.py (PDF employment reports)

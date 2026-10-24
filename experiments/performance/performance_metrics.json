@@ -1,0 +1,99 @@
+{
+  "measured_at": "2026-10-23T18:41:14+00:00",
+  "machine": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "cpu_count": 8
+  },
+  "method": "Wall-clock time.perf_counter(); localhost HTTP via urllib; warm-up request excluded for HTTP; no model calls.",
+  "startup": {
+    "n": 5,
+    "median_ms": 2620.14,
+    "min_ms": 2604.34,
+    "max_ms": 2699.88,
+    "p90_ms": 2638.4,
+    "what": "spawn uvicorn process -> first successful GET /health (includes Python import time)"
+  },
+  "http_api": {
+    "/health": {
+      "n": 50,
+      "median_ms": 3.69,
+      "min_ms": 1.94,
+      "max_ms": 28.43,
+      "p90_ms": 16.84,
+      "response_bytes": 62
+    },
+    "/api/config": {
+      "n": 50,
+      "median_ms": 2.12,
+      "min_ms": 1.88,
+      "max_ms": 26.49,
+      "p90_ms": 4.05,
+      "response_bytes": 234
+    },
+    "/api/fixtures": {
+      "n": 50,
+      "median_ms": 5.88,
+      "min_ms": 3.81,
+      "max_ms": 32.6,
+      "p90_ms": 18.0,
+      "response_bytes": 2236
+    },
+    "/api/demo": {
+      "n": 50,
+      "median_ms": 6.97,
+      "min_ms": 5.08,
+      "max_ms": 24.71,
+      "p90_ms": 8.9,
+      "response_bytes": 86998
+    },
+    "/": {
+      "n": 50,
+      "median_ms": 3.61,
+      "min_ms": 3.04,
+      "max_ms": 24.46,
+      "p90_ms": 7.04,
+      "response_bytes": 1756
+    },
+    "/static/app.js": {
+      "n": 50,
+      "median_ms": 5.83,
+      "min_ms": 4.06,
+      "max_ms": 31.15,
+      "p90_ms": 7.98,
+      "response_bytes": 60952
+    }
+  },
+  "evidence_store": {
+    "first_load_ms": 7.54,
+    "load_and_validate_dataset": {
+      "n": 20,
+      "median_ms": 8.22,
+      "min_ms": 6.08,
+      "max_ms": 12.64,
+      "p90_ms": 10.74
+    },
+    "get_fact_with_evidence_and_freshness": {
+      "n": 2000,
+      "median_ms": 0.01,
+      "min_ms": 0.01,
+      "max_ms": 0.46,
+      "p90_ms": 0.02
+    },
+    "filter_programs": {
+      "n": 200,
+      "median_ms": 0.01,
+      "min_ms": 0.01,
+      "max_ms": 0.04,
+      "p90_ms": 0.01
+    }
+  },
+  "report_verification": {
+    "n": 20,
+    "median_ms": 702.46,
+    "min_ms": 652.87,
+    "max_ms": 750.64,
+    "p90_ms": 728.12,
+    "what": "full CLI process: python start + imports + audit of the saved run"
+  }
+}

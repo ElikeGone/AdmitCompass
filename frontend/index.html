@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdmitCompass — your career ambition deserves a better education plan</title>
+  <meta name="description" content="Career-first MBA discovery with verified program facts and an actionable application plan, built for international applicants.">
+  <link rel="preload" href="/static/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/plus-jakarta-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/styles.css?v=122">
+  <link rel="stylesheet" href="/static/styles-v4.css?v=122">
+  <link rel="stylesheet" href="/static/styles-color.css?v=122">
+  <link rel="stylesheet" href="/static/styles-dash.css?v=122">
+  <link rel="stylesheet" href="/static/styles-dark.css?v=122" id="dark-theme">
+  <link rel="stylesheet" href="/static/styles-home.css?v=122">
+  <link rel="stylesheet" href="/static/styles-copilot.css?v=122">
+  <meta name="theme-color" content="#0A0F1E">
+  <script>
+    /* Apply the saved theme before first paint (dark is the default). */
+    (function () {
+      var light = false;
+      try { light = localStorage.getItem("ac-theme") === "light"; } catch (e) {}
+      if (light) {
+        document.getElementById("dark-theme").disabled = true;
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#FFFFFF");
+      }
+      document.documentElement.setAttribute("data-theme", light ? "light" : "dark");
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563EB'/%3E%3Cpath d='M16 7l5 9-5 9-5-9z' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#/" aria-label="AdmitCompass home">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#14B8A6"/></linearGradient></defs>
+          <rect width="32" height="32" rx="9" fill="url(#bm)"/><path d="M16 7l5.5 9L16 25l-5.5-9z" fill="#fff"/><circle cx="16" cy="16" r="2.2" fill="#2563EB"/>
+        </svg>
+        AdmitCompass
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <div class="nav-links">
+          <a href="#/explore" data-nav="explore">Explore Programs</a>
+          <a href="#/how" data-nav="how">How It Works</a>
+          <a href="#/intl" data-nav="intl">International Applicants</a>
+          <a href="#/dashboard/demo" data-nav="results">Sample Analysis</a>
+        </div>
+        <div class="nav-auth" hidden>
+          <a href="#/signin" class="btn btn-outline" data-nav="signin">Sign In</a>
+          <a href="#/signup" class="btn btn-primary" data-nav="signup">Sign Up</a>
+        </div>
+      </nav>
+      <button class="theme-btn" type="button" id="theme-toggle" aria-pressed="true" aria-label="Dark theme" title="Switch to light theme">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 14.5A8.5 8.5 0 0 1 9.5 3a7 7 0 1 0 11.5 11.5z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
+      </button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <footer class="footer footer2">
+    <div class="wrap footer2-grid">
+      <div>
+        <div class="brand footer2-brand">AdmitCompass</div>
+        <p>Career-first MBA guidance for international applicants, with every fact traced to an official source.</p>
+      </div>
+      <nav aria-label="Product"><h2>Product</h2><a href="#/explore">Explore programs</a><a href="#/how">How it works</a><a href="#/dashboard/demo">Sample analysis</a></nav>
+      <nav aria-label="Applicants"><h2>Applicants</h2><a href="#/start">Find my pathway</a><a href="#/intl">International applicants</a></nav>
+    </div>
+    <div class="wrap footer2-note">AdmitCompass offers decision support, not admissions, legal or immigration advice. It never estimates admission chances or promises visa sponsorship. Detailed program facts come from official sources captured on 23 October 2026.</div>
+  </footer>
+  <div id="modal-root"></div>
+  <script src="/static/app.js?v=122"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+{
+  "run_dir": "20261023T180104Z_fixture-tech-pm-india",
+  "programs": [
+    {
+      "program_id": "mit-sloan-mba",
+      "evidence_ids": [
+        "ev-mit-sloan-mba-application-requirements",
+        "ev-mit-sloan-mba-employment-rate",
+        "ev-mit-sloan-mba-industry-breakdown",
+        "ev-mit-sloan-mba-location",
+        "ev-mit-sloan-mba-median-base-salary",
+        "ev-mit-sloan-mba-stem-designation",
+        "ev-mit-sloan-mba-test-policy",
+        "ev-mit-sloan-mba-tuition"
+      ],
+      "evidence_ids_invalid": [],
+      "verified_claims": 5,
+      "verified_claims_without_evidence": 0,
+      "numbers_not_in_store_or_profile": [],
+      "possible_employment_comparisons": [],
+      "stem_status_matches_store": true,
+      "sponsorship_status": "unknown",
+      "sponsorship_store_status": "unknown"
+    },
+    {
+      "program_id": "chicago-booth-mba",
+      "evidence_ids": [
+        "ev-chicago-booth-mba-application-requirements",
+        "ev-chicago-booth-mba-cost-of-attendance",
+        "ev-chicago-booth-mba-employment-rate",
+        "ev-chicago-booth-mba-industry-breakdown",
+        "ev-chicago-booth-mba-international-employment",
+        "ev-chicago-booth-mba-location",
+        "ev-chicago-booth-mba-median-base-salary",
+        "ev-chicago-booth-mba-stem-designation",
+        "ev-chicago-booth-mba-test-policy",
+        "ev-chicago-booth-mba-tuition"
+      ],
+      "evidence_ids_invalid": [],
+      "verified_claims": 5,
+      "verified_claims_without_evidence": 0,
+      "numbers_not_in_store_or_profile": [],
+      "possible_employment_comparisons": [],
+      "stem_status_matches_store": true,
+      "sponsorship_status": "unknown",
+      "sponsorship_store_status": "unknown"
+    },
+    {
+      "program_id": "duke-fuqua-mba",
+      "evidence_ids": [
+        "ev-duke-fuqua-mba-application-requirements",
+        "ev-duke-fuqua-mba-cost-of-attendance",
+        "ev-duke-fuqua-mba-employment-rate",
+        "ev-duke-fuqua-mba-location",
+        "ev-duke-fuqua-mba-median-base-salary",
+        "ev-duke-fuqua-mba-stem-designation",
+        "ev-duke-fuqua-mba-test-policy",
+        "ev-duke-fuqua-mba-tuition"
+      ],
+      "evidence_ids_invalid": [],
+      "verified_claims": 4,
+      "verified_claims_without_evidence": 0,
+      "numbers_not_in_store_or_profile": [],
+      "possible_employment_comparisons": [],
+      "stem_status_matches_store": true,
+      "sponsorship_status": "unknown",
+      "sponsorship_store_status": "unknown"
+    },
+    {
+      "program_id": "yale-som-mba",
+      "evidence_ids": [
+        "ev-yale-som-mba-application-requirements",
+        "ev-yale-som-mba-cost-of-attendance",
+        "ev-yale-som-mba-employment-rate",
+        "ev-yale-som-mba-international-employment",
+        "ev-yale-som-mba-location",
+        "ev-yale-som-mba-median-base-salary",
+        "ev-yale-som-mba-stem-designation",
+        "ev-yale-som-mba-test-policy",
+        "ev-yale-som-mba-tuition"
+      ],
+      "evidence_ids_invalid": [],
+      "verified_claims": 5,
+      "verified_claims_without_evidence": 0,
+      "numbers_not_in_store_or_profile": [],
+      "possible_employment_comparisons": [],
+      "stem_status_matches_store": true,
+      "sponsorship_status": "unknown",
+      "sponsorship_store_status": "unknown"
+    }
+  ],
+  "problems": [],
+  "metric_comparability": [
+    {
+      "metric": "employment_rate",
+      "all_comparable": false,
+      "comparable_groups": []
+    },
+    {
+      "metric": "median_base_salary",
+      "all_comparable": false,
+      "comparable_groups": []
+    }
+  ],
+  "ok": true
+}

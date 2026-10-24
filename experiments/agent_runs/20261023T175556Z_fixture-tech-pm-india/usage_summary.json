@@ -1,0 +1,52 @@
+{
+  "run_id": "d3a8f2fcb708",
+  "status": "stopped_budget",
+  "model": "gpt-6-luna",
+  "revision_performed": false,
+  "revision_target": null,
+  "grounding_violations": 3,
+  "usage_by_agent": [
+    {
+      "agent": "pathway_matcher",
+      "calls": 4,
+      "input_tokens": 16678,
+      "cached_input_tokens": 4735,
+      "output_tokens": 3983,
+      "reasoning_tokens": 176,
+      "elapsed_seconds": 25.024,
+      "estimated_cost_usd": null
+    },
+    {
+      "agent": "evidence_analyst",
+      "calls": 9,
+      "input_tokens": 67680,
+      "cached_input_tokens": 52989,
+      "output_tokens": 7714,
+      "reasoning_tokens": 1059,
+      "elapsed_seconds": 55.749,
+      "estimated_cost_usd": null
+    }
+  ],
+  "totals": {
+    "input_tokens": 84358,
+    "cached_input_tokens": 57724,
+    "output_tokens": 11697,
+    "reasoning_tokens_within_output": 1235,
+    "reasoning_effort": "low",
+    "model_requests": 14,
+    "tool_calls": 21,
+    "model_seconds": 80.773,
+    "wall_seconds": 86.34,
+    "estimated_cost_usd": null,
+    "cost_basis": "unknown: no documented gpt-6-luna price configured",
+    "budget": {
+      "requests": 14,
+      "max_requests": 14,
+      "total_tokens": 101090,
+      "max_total_tokens": 120000,
+      "tool_calls": 21,
+      "max_tool_calls": 40
+    }
+  },
+  "error": "request limit reached (14/14)"
+}
