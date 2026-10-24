@@ -141,12 +141,12 @@ def test_unknown_sponsorship_and_missing_cost_stay_unknown(model):
 
 
 def test_saved_analysis_context_numbers_allowed(model):
-    model["m"] = Scripted({"answer": "With your $135,000 yearly budget, Booth leaves about $2,551 of headroom per year; this comes from the saved analysis.",
-                           "citations": [], "uncertainties": [], "answer_type": "mixed", "next_step": "Confirm Booth's budget page."})
-    j = ask("Can I afford Booth?", ctx={"run": "demo"}).json()
+    model["m"] = Scripted({"answer": "With your $140,000 yearly budget, Duke leaves about $21,026 of headroom per year; this comes from the saved analysis.",
+                           "citations": [], "uncertainties": [], "answer_type": "mixed", "next_step": "Confirm Duke's budget page."})
+    j = ask("Can I afford Duke?", ctx={"run": "demo"}).json()
     assert j["grounding"]["fallback"] is False
     sent = json.loads(model["m"].sent[0][1]["content"])["SAVED_ANALYSIS"]
-    assert sent["applicant_profile"]["budget_usd"] == 135000 and "profile_id" not in sent["applicant_profile"]
+    assert sent["applicant_profile"]["budget_usd"] == 140000 and "profile_id" not in sent["applicant_profile"]
 
 
 # ---------- safety ----------

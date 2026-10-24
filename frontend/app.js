@@ -314,6 +314,7 @@ async function renderHome(scrollTo) {
           el("span", { class: "hp2-eyebrow", text: "Career-first MBA guidance" }),
           el("h1", {}, "Your career ambition deserves ", el("span", { class: "grad", text: "a better education plan." })),
           el("p", { class: "hp2-sub", text: "Match MBA programs to the career you want, settle the GRE-or-GMAT question, and turn your gaps into a weekly plan — with every claim traced to its official source." }),
+          el("p", { class: "hp2-sub hp2-intl-line", text: "Applying from abroad? See which employers that hire each school's graduates have filed H-1B applications, from official U.S. Department of Labor data." }),
           el("div", { class: "hp2-cta" },
             el("a", { class: "btn btn-primary btn-lg", href: "#/start" }, "Find my pathway ", arrow()),
             el("a", { class: "btn btn-ghost-light btn-lg", href: "#/explore", text: "Explore programs" })),
@@ -343,7 +344,7 @@ async function renderHome(scrollTo) {
           el("a", { class: "btn btn-outline", href: "#/dashboard/demo", text: "See a sample analysis" }))),
       el("div", { class: "intl3-grid" }, [
         ["shield", "STEM status, with its source", "Shown only when an official university page says so — never presented as a visa guarantee."],
-        ["globe", "Sponsorship is never assumed", "Without employer-specific evidence, sponsorship stays unknown."],
+        ["globe", "Employer filing history, from official data", "For employers that hire each school's graduates, the H-1B applications they filed, from U.S. Department of Labor data. It's history, never a guarantee of sponsorship."],
         ["dollar", "Total cost, not just tuition", "Your budget is compared only with a published one-year cost of attendance."],
         ["chart", "Outcomes with definitions", "Employment figures keep their cohorts and definitions, and aren't ranked when they differ."]]
         .map(([i, h, t]) => el("div", { class: "intl3-card" }, el("span", { class: "ic" }, svgIcon(i)), el("h3", { text: h }), el("p", { text: t })))))),
@@ -367,8 +368,17 @@ async function renderHome(scrollTo) {
             : el("div", {}, el("dt", { text: "Cost of attendance" }), el("dd", { class: "unk", text: "Not on official pages checked" })),
           el("div", {}, el("dt", { text: "STEM designation" }), el("dd", { class: stem === "Verified" ? "" : "unk", text: stem })),
           el("div", {}, el("dt", { text: "Employment rate" }), el("dd", { class: it.employment ? "" : "unk", text: it.employment ? `${it.employment.rate}% (${it.employment.period})` : "Not on official pages checked" }))),
+        el("p", { class: "show-h1b", "data-h1b": it.id }),
         it.official_link?.url ? extLink(it.official_link.final_url || it.official_link.url, "Official page") : null);
     }));
+    items.forEach(async it => {   // employer filing history (all tracked occupations and cities), only where it exists
+      try {
+        const h = (await api(`/api/programs/${encodeURIComponent(it.id)}`)).h1b_history;
+        const slot = grid.querySelector(`[data-h1b="${it.id}"]`);
+        if (slot && h?.status === "ok" && h.employers?.some(e => e.total_filings > 0)) put(slot, el("b", { text: "Employer filing history: " }), filingLine(h));
+        else slot?.remove();
+      } catch { grid.querySelector(`[data-h1b="${it.id}"]`)?.remove(); }
+    });
   } catch { put(clear(grid), el("p", { class: "small muted", text: "Programs could not be loaded." })); }
   if (scrollTo && location.hash === "#/" + scrollTo) document.getElementById(scrollTo)?.scrollIntoView({ block: "start" });
 }
@@ -632,7 +642,7 @@ function renderReview(body) {
     el("div", { class: "actions" },
       el("button", { class: "btn btn-quiet", onclick: () => { S.step = STEPS.length - 1; rerenderStart(); }, text: "Back" }),
       el("div", { class: "row" },
-        d.source === "tech-pm" && d.pristine ? el("a", { class: "btn btn-quiet", href: "#/results/demo", text: "View saved analysis" }) : null,
+        d.source === "tech-pm" && d.pristine ? el("a", { class: "btn btn-quiet", href: "#/dashboard/demo-india", text: "View saved analysis" }) : null,
         S.user ? el("button", { class: "btn btn-quiet", type: "button", onclick: async e => { const b = e.currentTarget; b.disabled = true; b.textContent = "Saving…";
           try { const { profile_id, is_fictional, ...rest } = toProfile(S.draft); await api("/api/account/profile", { method: "PUT", body: JSON.stringify(rest) }); b.textContent = "Saved to account ✓"; }
           catch (err) { b.disabled = false; b.textContent = "Save profile to account"; toast(`Not saved: ${err.message}`); } }, text: "Save profile to account" }) : null,
@@ -698,7 +708,7 @@ const EV = {
   discovered: { label: "Discovered", icon: "search", plain: "We've confirmed the program exists on its official page, but haven't collected its facts yet." },
   unavailable: { label: "Retrieval unavailable", icon: "alert", plain: "The official site refused our automated collector, so nothing about this program is verified yet." },
 };
-const EV_PLAIN = { detailed: "Official sources for key facts", partial: "Limited information", discovered: "Limited information · facts not collected yet",
+const EV_PLAIN = { detailed: "Official sources", partial: "Limited information", discovered: "Limited information · facts not collected yet",
   unavailable: "Limited information · site couldn't be checked" };
 const FACT_SHORT = { location: "Location", duration_months: "Duration", application_requirements: "Requirements", test_policy: "Test policy", tuition: "Tuition",
   cost_of_attendance: "Total cost", stem_designation: "STEM", employment_rate: "Employment", median_base_salary: "Salary", industry_breakdown: "Industries",
@@ -723,7 +733,7 @@ async function renderExplore() {
   const searchInput = el("input", { type: "search", "aria-label": "Search programs", placeholder: "Search schools, cities, states or career keywords — try “technology” or “Texas”",
     oninput: e => { f.q = e.target.value; deb(load); } });
   const statusSel = el("select", { "aria-label": "Evidence status", onchange: e => { f.status = e.target.value; load(); } },
-    [["", "All programs"], ["detailed", "Official sources for key facts"], ["partial", "Limited information"], ["discovered", "Facts not collected yet"], ["unavailable", "Site couldn't be checked"]]
+    [["", "All programs"], ["detailed", "Most complete official evidence"], ["partial", "Limited information"], ["discovered", "Facts not collected yet"], ["unavailable", "Site couldn't be checked"]]
       .map(([v, t]) => el("option", { value: v, text: t })));
   const stateSel = el("select", { "aria-label": "State", onchange: e => { f.state = e.target.value; load(); } }, el("option", { value: "", text: "Any state" }),
     (first?.states || []).map(s => el("option", { value: s, text: s })));
@@ -764,8 +774,8 @@ async function renderExplore() {
     const primary = items.filter(isPrimary), others = items.filter(it => !isPrimary(it));
     const grouped = !filtersActive() && primary.length > 0;
     const shown = grouped ? primary : items;
-    put(clear(metaLine), el("h2", { class: "ex-h", text: grouped ? "Programs with official sources for key facts" : filtersActive() ? `${items.length} matching program${items.length === 1 ? "" : "s"}` : "All programs" }),
-      el("span", { class: "ex-sub", text: grouped ? "Cost, STEM status, test policy and outcomes each come from the school's own pages. Start your shortlist here."
+    put(clear(metaLine), el("h2", { class: "ex-h", text: grouped ? "Programs with the most complete official evidence" : filtersActive() ? `${items.length} matching program${items.length === 1 ? "" : "s"}` : "All programs" }),
+      el("span", { class: "ex-sub", text: grouped ? "STEM status, test policy and outcomes come from each school's own pages; costs are official unless the card says otherwise. Start your shortlist here."
         : `${sortHelp[f.sort]}.${(f.stem || num(f.max)) ? " Cost and STEM filters only match facts with official evidence." : ""}` }));
     clear(grid);
     if (!items.length) { put(grid, el("div", { class: "empty2" }, el("b", { text: f.savedOnly ? "No saved programs yet" : "No programs match" }),
@@ -804,7 +814,8 @@ async function renderExplore() {
     const sig = (icon, text, known) => el("li", { class: known ? "" : "unk" }, svgIcon(icon), el("span", { text }));
     return el("article", { class: `pc2 ev-${st}` },
       el("div", { class: "pc2-head" }, el("h3", { text: shortName(it) }), el("div", { class: "pc2-where", text: where })),
-      el("div", { class: `pc2-ev ev-${st}`, title: ev.plain }, el("span", { class: "dot", "aria-hidden": "true" }), EV_PLAIN[st] || ev.label),
+      el("div", { class: `pc2-ev ev-${st}${st === "detailed" && !coa && est ? " est" : ""}`, title: ev.plain }, el("span", { class: "dot", "aria-hidden": "true" }),
+        st === "detailed" && !coa && est ? "Official sources · cost is a third-party estimate" : st === "detailed" && !coa ? "Official sources · total cost needs confirmation" : (EV_PLAIN[st] || ev.label)),
       el("ul", { class: "pc2-sig" }, sig("dollar", cost, !!(coa || est || it.tuition)), sig("shield", stem, it.stem_designated === true), sig("chart", job, !!emp)),
       el("div", { class: "pc2-acts" },
         el("button", { type: "button", class: "btn btn-secondary btn-sm", onclick: () => openDetails(it.id) }, "Details"),
@@ -822,7 +833,7 @@ async function renderExplore() {
       active,
       el("div", { class: "ex3-note" },
         el("p", {}, el("span", { class: "dot", "aria-hidden": "true" }),
-          `${by.detailed ?? "Some"} programs have official sources for every key fact and are shown first. Others have limited information — anything not confirmed is marked “Needs confirmation”, never filled in.`),
+          `${by.detailed ?? "Some"} programs have the most complete official evidence and are shown first. Others have limited information — anything not confirmed is marked “Needs confirmation”, never filled in.`),
         el("details", { class: "ex3-details" }, el("summary", { text: "Evidence details" }),
           el("div", { class: "ex3-details-body" },
             el("ul", {},
@@ -1055,7 +1066,7 @@ async function renderIntl() {
       el("h1", { text: "Plan an MBA when you'll need U.S. work authorization" }),
       el("p", { class: "pg-lead", text: "STEM status, total cost, employer sponsorship history and international outcomes decide whether a program is realistic for you. AdmitCompass shows what official sources say about each one — and marks clearly what isn't known." }),
       el("div", { class: "pg-cta" }, el("a", { class: "btn btn-primary btn-lg", href: "#/start" }, "Start my personalized pathway ", arrow()),
-        el("a", { class: "btn btn-quiet", href: "#/dashboard/demo", text: "See a sample analysis for an applicant from India" })),
+        el("a", { class: "btn btn-quiet", href: "#/dashboard/demo", text: "See a sample analysis for an applicant from Ghana" })),
       counts)),
     el("div", { class: "wrap pg-narrow" },
       el("section", { class: "pg-sec" }, el("h2", { text: "What we check for you" }),
@@ -1244,8 +1255,8 @@ function sources(res, ids) {
 }
 async function renderResults(which, sub) {
   let res = S.result;
-  if (which === "demo") {
-    try { res = await api("/api/demo"); } catch (err) { put($main, el("div", { class: "wrap" }, note("bad", "Could not load the sample analysis.", err.message))); return; }
+  if (String(which).startsWith("demo")) {
+    try { res = await api(`/api/demo${which === "demo" ? "" : `?sample=${encodeURIComponent(which.replace(/^demo-/, ""))}`}`); } catch (err) { put($main, el("div", { class: "wrap" }, note("bad", "Could not load the sample analysis.", err.message))); return; }
   } else if (!res || !res.report) {
     put($main, el("div", { class: "wrap empty" }, el("h2", { text: "No results in this session" }),
       el("p", { text: "Live results are kept in memory only." }), el("a", { class: "btn btn-primary", href: "#/results/demo", text: "See the sample analysis" })));
@@ -1259,7 +1270,7 @@ async function renderResults(which, sub) {
     el("div", { class: "kicker", text: demo ? "Sample analysis · fictional applicant" : "Your analysis" }),
     el("h1", { text: view === "plan" ? "Your roadmap" : view === "evidence" ? "Evidence & risks" : "Your shortlist" }),
     el("p", { class: "lead", text: `${[p.target_function, p.target_industry].filter(Boolean).join(" in ") || "Career goal not given"} · ${budget}${p.citizenship_country ? ` · from ${p.citizenship_country}` : ""}` }),
-    demo ? el("p", { class: "small muted", text: `A real ${r.model} analysis saved on 23 October 2026. Viewing it makes no AI call.` }) : null,
+    demo ? el("p", { class: "small muted", text: `A real ${r.model} analysis saved on ${res.sample?.saved_on || "—"}. Viewing it makes no AI call.` }) : null,
     note("", "Reviewer and legacy view.", el("span", {}, "The dashboard is the main view of this analysis. ", el("a", { href: `#/dashboard/${which}`, text: "Open the dashboard" })))),
     el("nav", { class: "seg subnav", "aria-label": "Analysis sections" }, [["shortlist", "Shortlist"], ["plan", "Roadmap"], ["evidence", "Evidence & risks"]].map(([v, t]) =>
       el("a", { href: `#/results/${which}/${v}`, "aria-current": view === v ? "page" : null, text: t }))));
@@ -1357,13 +1368,13 @@ function viewEvidence(host, res) {
         el("p", { class: "small muted", text: "Code checks that run after every agent: ids must exist, numbers must match evidence, statuses are recomputed, and risky wording is flagged." }),
         (r.grounding_violations || []).map(v => { const [label, detail] = safeguardText(v);
           return el("div", { class: "claim" }, el("span", { class: "label", text: label }), el("div", {}, el("div", { text: detail }), el("div", { class: "xs muted", text: `${AGENT_NAME[v.agent] || "Agent"} · ${v.action}` }))); }),
-        res.mode === "saved_demo" ? el("p", { class: "xs muted", text: "Note: this saved run's one flag was a false positive — the analyst was correctly warning that STEM status doesn't guarantee immigration benefits. The rule was fixed afterwards." }) : null),
+        res.mode === "saved_demo" ? (res.sample?.notes || []).filter(n => !n.startsWith("Measurement")).map(n => el("p", { class: "xs muted", text: n })) : null),
       more(`All citations (${allIds.length})`, sources(res, allIds)),
       more("Usage and cost",
         el("p", { class: "small", text: `${fmtInt(t.model_requests)} model requests · ${fmtInt(t.input_tokens)} input tokens (${fmtInt(t.cached_input_tokens)} cached) · ${fmtInt(t.output_tokens)} output tokens (${fmtInt(t.reasoning_tokens_within_output)} reasoning) · ${fmtInt(t.tool_calls)} lookups · ${t.wall_seconds ?? "—"} s · cost unknown (no published gpt-6-luna price).` }),
         el("div", { class: "tbl-wrap" }, el("table", { class: "tbl" }, el("thead", {}, el("tr", {}, ["Agent", "Requests", "Input", "Cached", "Output", "Reasoning", "Model time"].map(h => el("th", { text: h })))),
           el("tbody", {}, (r.usage_by_agent || []).map(u => el("tr", {}, [AGENT_NAME[u.agent], u.calls, fmtInt(u.input_tokens), fmtInt(u.cached_input_tokens), fmtInt(u.output_tokens), fmtInt(u.reasoning_tokens), `${u.elapsed_seconds}s`].map(x => el("td", { text: x }))))))),
-        res.mode === "saved_demo" ? el("p", { class: "xs muted", text: "Measurement note: requests 1–9 of this saved run returned token counts identical to an earlier run, 8 in under a second — likely served from Portkey's response cache. Requests 10–16 were fresh." }) : null,
+        res.mode === "saved_demo" ? (res.sample?.notes || []).filter(n => n.startsWith("Measurement")).map(n => el("p", { class: "xs muted", text: n })) : null,
         res.verification ? el("p", { class: "xs muted", text: `Post-run audit: ${res.verification.ok ? "passed" : "problems found"} — every evidence id checked against the store; no unsupported numbers.` }) : null),
       more(`Technical run details (${events.length} events)`, el("p", { class: "xs muted", text: "For reviewers: the raw agent trace — lookups with their internal tool names and arguments, handoffs, checks and token counts. Prompts and model reasoning are never stored or shown." }), feed))));
 }
@@ -1432,7 +1443,8 @@ async function renderDashboard(runId) {
     el("div", { class: "ds-cta" },
       el("button", { type: "button", class: "btn btn-primary btn-lg", onclick: jump("d-plan") }, "Start this week's plan ", arrow()),
       el("button", { type: "button", class: "btn btn-quiet", onclick: jump("d-short"), text: "See the shortlist" })),
-    demo ? el("p", { class: "ds-note", text: "A saved analysis for a fictional applicant. Viewing it makes no AI call." }) : null));
+    demo ? el("p", { class: "ds-note" }, "A saved analysis for a fictional applicant. Viewing it makes no AI call.",
+      (dres.sample?.others || []).map(o => [" Other sample: ", el("a", { href: `#/dashboard/${o.route}`, text: `${o.label} →` })])) : null));
 
   /* 2. shortlist: four compact cards; "View evidence" opens that school's full source-backed details */
   const drawer = el("div", { class: "ds-drawer", hidden: true });
@@ -1502,7 +1514,8 @@ async function renderDashboard(runId) {
     fullPlan),
     el("section", { class: "ds-sec ds-review", "aria-label": "Reviewer details" },
       panel("Reviewer details", "d-review", el("div", {},
-        el("p", {}, `Analysis status: ${RUN_STATUS_TEXT[d.run.status] || "not recorded"}. Model: ${d.run.model}. ${demo ? "Saved on 23 October 2026 and combined with today's evidence store." : ""}`),
+        el("p", {}, `Analysis status: ${RUN_STATUS_TEXT[d.run.status] || "not recorded"}. Model: ${d.run.model}. ${demo ? `Saved on ${dres.sample?.saved_on || "—"} and combined with today's evidence store.` : ""}`),
+        (dres.sample?.notes || []).map(n => el("p", { class: "small muted", text: n })),
         el("p", {}, el("a", { href: `#/results/${runId}/evidence`, text: "Skeptic review, citations, usage and technical trace" }),
           " · Legacy views: ", el("a", { href: `#/results/${runId}/shortlist`, text: "shortlist" }), " · ", el("a", { href: `#/results/${runId}/plan`, text: "roadmap" })),
         runDetailsPanel(runId), safetyTestPanel()))));
@@ -1536,8 +1549,21 @@ function shortlistCard(pg, isOpen, onEvidence) {
       el("div", {}, el("dt", { text: "Cost" }), el("dd", {}, cost)),
       el("div", {}, el("dt", { text: "Test policy" }), el("dd", {}, test)),
       el("div", {}, el("dt", { text: "Next deadline" }), el("dd", {}, next)),
+      pg.feasibility ? el("div", {}, el("dt", { text: "Employer filing history" }), el("dd", {}, filingLine(pg.feasibility.h1b_history))) : null,
       trade ? el("div", {}, el("dt", { text: "Tradeoff" }), el("dd", { text: trade })) : null),
     el("button", { type: "button", class: "btn btn-secondary ds-ev", "aria-expanded": isOpen ? "true" : "false", onclick: onEvidence, text: isOpen ? "Hide evidence" : "View evidence" }));
+}
+/* One line of employer H-1B filing history: top matched employers with FY2025 certified filings (scoped to the
+   applicant's target occupation and city when the analysis has them). History, never a promise of sponsorship. */
+function filingLine(h, limit = 3) {
+  if (!h) return el("span", { class: "muted", text: "No employer filing evidence" });
+  if (h.status !== "ok") return el("span", {}, el("span", { text: "No employer filing evidence" }), el("span", { class: "muted", text: h.reason ? ` — ${h.reason}` : "" }));
+  const top = (h.employers || []).filter(e => e.total_filings > 0).slice(0, limit);
+  if (!top.length) return el("span", {}, "No employer filing evidence", el("span", { class: "muted", text: " — none of the school's listed employers filed in this occupation and city." }));
+  const src = h.data_source || {}, scope = [h.occupation ? OCC_LABEL[h.occupation] || h.occupation : "three target occupations", h.metro || "five cities"].join(", ");
+  return el("span", {}, top.map(e => `${e.employer} ${fmtInt(e.total_filings)}`).join(" · "),
+    el("span", { class: "muted", text: ` — FY${src.fiscal_year || ""} certified H-1B filings, ${scope}. ` }),
+    h.school_list?.source_url ? [extLink(h.school_list.source_url, "School list"), " · "] : null, src.source_page ? extLink(src.source_page, "DOL data") : null);
 }
 function careerPathwayBlock(d) {
   const pw = d.pathway;
@@ -1617,7 +1643,7 @@ function runDetailsPanel(runId) {
     if (!e.target.open || body.dataset.loaded) return;
     body.dataset.loaded = "1";
     try {
-      const rec = await api(runId === "demo" ? "/api/demo/record" : `/api/runs/${encodeURIComponent(runId)}/record`);
+      const rec = await api(String(runId).startsWith("demo") ? `/api/demo/record${runId === "demo" ? "" : `?sample=${encodeURIComponent(runId.replace(/^demo-/, ""))}`}` : `/api/runs/${encodeURIComponent(runId)}/record`);
       put(clear(body),
         el("dl", { class: "drun-sum" }, rec.summary.map(x => el("div", {}, el("dt", { text: x.label }), el("dd", { text: x.value })))),
         el("div", { class: "dactions" },
@@ -1787,10 +1813,9 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
   const planWeek = t => `Plan week ${t.week}`;
   const wk = w.weekly || null, act = id => wk?.actions?.[id];
   const TIER_TEXT = { must: "Must do", should: "Should do", optional: "Optional" };
-  const unlockKey = `ac-weeks-${d.run.run_id || runId}`;
-  let unlocked = 1, viewWeek = null, showAllWeek = false;
+  let openWeeks = null;
+  const showAllIn = new Set();
   const plainWhy = w2 => w2.replace(/^Gap flagged by the Strategy Planner \(AI-inferred\): /, "From your profile: ");
-  try { unlocked = Math.max(1, Number(localStorage.getItem(unlockKey)) || 1); } catch { /* storage blocked: start at week 1 */ }
   const toggle = (id, isDone) => () => { const nx = { ...done }; if (isDone) delete nx[id]; else nx[id] = true; change(nx); };
   const taskRow = (id, nextId) => { const t = byId[id], isDone = !!done[id];
     return el("div", { class: `dtask${isDone ? " done" : ""}${id === nextId ? " next" : ""}`, "data-task": id },
@@ -1799,16 +1824,14 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
       el("button", { type: "button", class: "btn btn-quiet tbtn", "aria-pressed": isDone ? "true" : "false", "aria-label": `${isDone ? "Mark not done" : "Mark complete"}: ${t.text}`,
         onclick: toggle(id, isDone), text: isDone ? "Done ✓" : "Mark complete" })); };
   /* Weekly action system: one week at a time, at most 5 priority actions split into must / should / optional, each with
-     a planning-estimate duration, the reason it matters and a completion control. The next week unlocks only after the
-     applicant confirms they understand the current one. */
+     a planning-estimate duration, the reason it matters and a completion control. Every week is listed; week 1 starts open. */
   function drawWeek() {
     if (!wk?.weeks?.length) {   // older payloads without the weekly layer: fall back to the next open tasks
       const nextId = order.find(id => !done[id]), open = order.filter(id => !done[id]).slice(0, 4);
       put(clear(weekHost), el("div", { class: "dtasks" }, open.map(id => taskRow(id, nextId)))); return;
     }
-    const weeks = wk.weeks, last = weeks[weeks.length - 1].week;
-    unlocked = Math.min(unlocked, weeks.length);
-    const shown = weeks[Math.min(viewWeek ?? unlocked, unlocked) - 1];
+    const weeks = wk.weeks;
+    if (!openWeeks) openWeeks = new Set([weeks[0].week]);
     const row = id => { const t = byId[id], a = act(id), isDone = !!done[id];
       return el("li", { class: `dwk-item${isDone ? " done" : ""}`, "data-task": id },
         el("button", { type: "button", class: "dwk-check", "aria-pressed": isDone ? "true" : "false", "aria-label": `${isDone ? "Mark not done" : "Mark done"}: ${t.text}`,
@@ -1818,29 +1841,23 @@ function drawWorkspace(host, d, dres, runId, selectProgram, remote = null, weekH
           el("div", { class: "dwk-meta", text: [`About ${a.minutes} min · planning estimate`, a.moved_from ? `moved up from plan week ${a.moved_from} so week 1 covers the essentials` : null].filter(Boolean).join(" · ") }))); };
     const group = (tier, ids) => ids.length ? el("div", { class: `dwk-group ${tier}` }, el("h4", {}, el("span", { class: `dtag ${tier === "must" ? "ok" : tier === "optional" ? "" : "ai"}`, text: TIER_TEXT[tier] })),
       el("ul", { class: "dwk-list" }, ids.map(row))) : null;
-    const prio = shown.priority, INITIAL = 3, visible = showAllWeek ? prio : prio.slice(0, INITIAL);
-    const must = visible.filter(i => act(i).tier === "must"), should = visible.filter(i => act(i).tier === "should");
-    const allMust = prio.filter(i => act(i).tier === "must");
-    const doneMust = allMust.filter(i => done[i]).length, hrs = Math.round(shown.minutes / 30) / 2;
-    put(clear(weekHost),
-      el("div", { class: "dwk-tabs", role: "group", "aria-label": "Plan weeks" },
-        weeks.slice(0, unlocked).map(x => el("button", { type: "button", class: "chip", "aria-pressed": x.week === shown.week ? "true" : "false",
-          onclick: () => { viewWeek = x.week; showAllWeek = false; drawWeek(); }, text: `Week ${x.week}` })),
-        unlocked < weeks.length ? el("span", { class: "chip locked", "aria-disabled": "true", text: `Week ${weeks[unlocked].week} · locked` }) : null),
-      el("div", { class: "spread dwk-head" }, el("b", { text: `Week ${shown.week} of ${last}` }),
-        el("span", { class: "small muted", text: `${prio.length} priority actions · about ${hrs} hours · ${doneMust}/${allMust.length} must-dos done` })),
-      group("must", must), group("should", should),
-      prio.length > INITIAL ? el("button", { type: "button", class: "btn btn-quiet dwk-more", "aria-expanded": showAllWeek ? "true" : "false", onclick: () => { showAllWeek = !showAllWeek; drawWeek(); },
-        text: showAllWeek ? "Show fewer" : `Show ${prio.length - INITIAL} more this week` }) : null,
-      showAllWeek ? group("optional", shown.optional) : null,
-      shown.more.length ? more(`Also planned this week (${shown.more.length})`, el("ul", { class: "dwk-list" }, shown.more.map(row))) : null,
-      shown.week === weeks[unlocked - 1].week && unlocked < weeks.length
-        ? el("div", { class: "dwk-gate" }, el("p", { class: "small", text: `When this week's plan is clear to you, unlock week ${weeks[unlocked].week}. You don't need to finish every task first.` }),
-            el("button", { type: "button", class: "btn btn-secondary", onclick: () => { unlocked += 1; viewWeek = unlocked; showAllWeek = false; try { localStorage.setItem(unlockKey, String(unlocked)); } catch { /* not remembered */ } drawWeek(); },
-              text: `I understand week ${shown.week} — show week ${weeks[unlocked].week}` }))
-        : null,
+    const INITIAL = 3;
+    put(clear(weekHost), weeks.map(x => {
+      const all = showAllIn.has(x.week), prio = x.priority, visible = all ? prio : prio.slice(0, INITIAL);
+      const allMust = prio.filter(i => act(i).tier === "must"), doneMust = allMust.filter(i => done[i]).length, hrs = Math.round(x.minutes / 30) / 2;
+      return el("details", { class: "dwk-week", open: openWeeks.has(x.week) || null, ontoggle: e => { e.target.open ? openWeeks.add(x.week) : openWeeks.delete(x.week); } },
+        el("summary", {}, el("b", { text: `Week ${x.week}` }),
+          el("span", { class: "small muted", text: `${prio.length} priority actions · about ${hrs} hours · ${doneMust}/${allMust.length} must-dos done` })),
+        el("div", { class: "dwk-body" },
+          group("must", visible.filter(i => act(i).tier === "must")), group("should", visible.filter(i => act(i).tier === "should")),
+          prio.length > INITIAL ? el("button", { type: "button", class: "btn btn-quiet dwk-more", "aria-expanded": all ? "true" : "false",
+            onclick: () => { all ? showAllIn.delete(x.week) : showAllIn.add(x.week); drawWeek(); }, text: all ? "Show fewer" : `Show ${prio.length - INITIAL} more this week` }) : null,
+          all ? group("optional", x.optional) : null,
+          x.more.length ? more(`Also planned this week (${x.more.length})`, el("ul", { class: "dwk-list" }, x.more.map(row))) : null));
+    }),
       el("p", { class: "xs muted", text: `${wk.estimate_note} ${Object.keys(done).length} of ${w.tasks.length} plan tasks done; the full plan is under Detailed evidence.` }));
   }
+
   function draw() {
     clear(host);
     if (weekHost) drawWeek();

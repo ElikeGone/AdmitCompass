@@ -4,7 +4,7 @@ Routes
   GET  /health                       safe status (no secrets)
   GET  /api/config                   limits shown in the UI (read-only)
   GET  /api/fixtures                 the two fictional demo applicant profiles
-  GET  /api/demo                     the saved, real fictional tech-PM run (no model call)
+  GET  /api/demo[?sample=india]      a saved, real run for a fictional applicant (default: Ghana consulting; no model call)
   POST /api/runs                     start ONE live paid analysis (requires confirm_paid_run=true)
   GET  /api/runs/{run_id}            status + events since `since` + result when finished
 Model, prompts, budgets, and evidence data are server-side only and cannot be set by requests.
@@ -39,7 +39,45 @@ load_environment()
 
 FRONTEND_DIR = REPO_ROOT / "frontend"
 FIXTURES_DIR = REPO_ROOT / "data" / "fixtures"
-DEMO_RUN_DIR = REPO_ROOT / "experiments" / "agent_runs" / "20261023T180104Z_fixture-tech-pm-india"
+# Saved real runs shown as samples (no model call when viewed). "ghana" is the default sample everywhere.
+RUNS_DIR = REPO_ROOT / "experiments" / "agent_runs"
+SAMPLES = {
+    "ghana": {"dir": RUNS_DIR / "20261024T032006Z_fixture-audit-consulting-ghana", "saved_on": "24 October 2026",
+              "label": "Audit professional from Ghana → management consulting",
+              "notes": ["This saved run's one automatic flag was a false positive: a sentence telling the applicant not to treat "
+                        "employer filings as a guarantee was flagged as a guarantee. The rule was fixed afterwards."]},
+    "india": {"dir": RUNS_DIR / "20261023T180104Z_fixture-tech-pm-india", "saved_on": "23 October 2026",
+              "label": "Software engineer from India → technology product management",
+              "notes": ["This saved run's one automatic flag was a false positive — the analyst was correctly warning that STEM status "
+                        "doesn't guarantee immigration benefits. The rule was fixed afterwards.",
+                        "Measurement note: requests 1–9 of this saved run returned token counts identical to an earlier run, 8 in under "
+                        "a second — likely served from Portkey's response cache. Requests 10–16 were fresh."]},
+}
+DEFAULT_SAMPLE = "ghana"
+DEMO_RUN_DIR = SAMPLES[DEFAULT_SAMPLE]["dir"]
+
+
+def sample_key(name: str | None) -> str:
+    """'demo' / None → default sample; 'demo-india' or 'india' → that sample."""
+    key = (name or DEFAULT_SAMPLE).removeprefix("demo").lstrip("-") or DEFAULT_SAMPLE
+    if key not in SAMPLES:
+        raise HTTPException(404, "Saved sample not found.")
+    return key
+
+
+def _load_sample(key: str):
+    d = SAMPLES[key]["dir"]
+    if not (d / "report.json").exists():
+        raise HTTPException(404, "Saved demo run not found.")
+    load = lambda n: json.loads((d / n).read_text(encoding="utf-8"))  # noqa: E731
+    verification = load("verification.json") if (d / "verification.json").exists() else None
+    return load, verification
+
+
+def sample_meta(key: str) -> dict:
+    meta = SAMPLES[key]
+    return {"key": key, "label": meta["label"], "saved_on": meta["saved_on"], "notes": meta["notes"],
+            "others": [{"key": k, "label": v["label"], "route": "demo" if k == DEFAULT_SAMPLE else f"demo-{k}"} for k, v in SAMPLES.items() if k != key]}
 FIXTURE_FILES = {"tech-pm": "applicant_tech_pm.json", "energy-finance": "applicant_energy_finance.json",
                  "audit-consulting-ghana": "applicant_audit_consulting_ghana.json", "domestic-tech-us": "applicant_domestic_tech_us.json"}
 
@@ -138,14 +176,12 @@ def fixtures() -> dict:
 
 
 @app.get("/api/demo")
-def demo() -> dict:
-    if not (DEMO_RUN_DIR / "report.json").exists():
-        raise HTTPException(404, "Saved demo run not found.")
-    load = lambda n: json.loads((DEMO_RUN_DIR / n).read_text(encoding="utf-8"))  # noqa: E731
-    verification = load("verification.json") if (DEMO_RUN_DIR / "verification.json").exists() else None
+def demo(sample: str | None = Query(None, max_length=20)) -> dict:
+    key = sample_key(sample)
+    load, verification = _load_sample(key)
     profile = ApplicantProfile.model_validate(load("input_profile.json")).model_dump(mode="json")  # normalize legacy fields
     return result_payload("saved_demo", profile, load("report.json"), load("trace.json"),
-                          {"run_folder": DEMO_RUN_DIR.name, "verification": verification})
+                          {"run_folder": SAMPLES[key]["dir"].name, "verification": verification, "sample": sample_meta(key)})
 
 
 def _record(mode: str, report: dict, trace: list, verification: dict | None) -> dict:
@@ -154,12 +190,9 @@ def _record(mode: str, report: dict, trace: list, verification: dict | None) -> 
 
 
 @app.get("/api/demo/record")
-def demo_record() -> dict:
-    """Developer/report view of the saved real run: steps, tools, sources, tokens, latency, cost, checks. No keys, no profile."""
-    if not (DEMO_RUN_DIR / "report.json").exists():
-        raise HTTPException(404, "Saved demo run not found.")
-    load = lambda n: json.loads((DEMO_RUN_DIR / n).read_text(encoding="utf-8"))  # noqa: E731
-    verification = load("verification.json") if (DEMO_RUN_DIR / "verification.json").exists() else None
+def demo_record(sample: str | None = Query(None, max_length=20)) -> dict:
+    """Developer/report view of a saved real run: steps, tools, sources, tokens, latency, cost, checks. No keys, no profile."""
+    load, verification = _load_sample(sample_key(sample))
     return _record("saved_demo", load("report.json"), load("trace.json"), verification)
 
 
@@ -233,8 +266,8 @@ def program_detail(item_id: str) -> dict:
 def dashboard(run_id: str) -> dict:
     """Career Intelligence dashboard for the saved demo ('demo') or a finished live run. Deterministic, no model calls."""
     from .tools.dashboard import build_dashboard
-    if run_id == "demo":
-        base = demo()
+    if run_id.startswith("demo"):
+        base = demo(run_id)
     else:
         try:
             state = app.state.runs.get(run_id)
@@ -245,7 +278,7 @@ def dashboard(run_id: str) -> dict:
         base = result_payload("live", state.profile.model_dump(mode="json"), state.report.model_dump(mode="json"),
                               state.orchestrator.trace if state.orchestrator else [])
     profile = ApplicantProfile.model_validate(base["profile"])
-    return {"mode": base["mode"], "profile": base["profile"], "evidence": base["evidence"],
+    return {"mode": base["mode"], "profile": base["profile"], "evidence": base["evidence"], "sample": base.get("sample"),
             "dashboard": build_dashboard(default_store(), profile, base["report"])}
 
 

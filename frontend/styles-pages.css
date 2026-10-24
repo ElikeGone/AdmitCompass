@@ -165,3 +165,14 @@ body.cp-open .cp-launch { display: inline-flex; }
   .rm-stage { padding: 0 0 0 30px; }
   .rm-node { top: 3px; }
 }
+
+/* employer filing history rows + weekly plan by week */
+.show-h1b { font-size: 14px; line-height: 1.5; color: var(--text-2); margin: 10px 0 0; }
+.show-h1b:empty { display: none; }
+.ds-school dd .muted { color: var(--text-3); }
+.pc2-ev.est .dot { background: var(--amber2, #F59E0B); }
+.hp2-intl-line { margin-top: 12px; font-size: 16px; }
+.dwk-week { border-top: 1px solid var(--border); }
+.dwk-week:last-of-type { border-bottom: 1px solid var(--border); }
+.dwk-week > summary { cursor: pointer; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; padding: 14px 2px; min-height: 44px; }
+.dwk-body { padding: 0 2px 18px; }

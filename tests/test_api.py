@@ -58,7 +58,7 @@ def test_fixtures_are_fictional(client):
 
 
 def test_demo_is_saved_real_run_with_linked_evidence(client):
-    d = client.get("/api/demo").json()
+    d = client.get("/api/demo?sample=india").json()
     assert d["mode"] == "saved_demo" and d["run_folder"].startswith("20261023T180104Z")
     assert d["report"]["status"] == "completed_with_violations" and len(d["report"]["recommendations"]) == 4
     ids = {i for rec in d["report"]["recommendations"] for f in rec["facts"] for i in f["evidence_ids"]}

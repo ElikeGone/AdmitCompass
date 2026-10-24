@@ -12,12 +12,12 @@ from backend.app.tools.evidence_store import default_store
 
 @pytest.fixture(scope="module")
 def demo():
-    return TestClient(app).get("/api/demo").json()
+    return TestClient(app).get("/api/demo?sample=india").json()
 
 
 @pytest.fixture(scope="module")
 def dash():
-    r = TestClient(app).get("/api/dashboard/demo")
+    r = TestClient(app).get("/api/dashboard/demo-india")
     assert r.status_code == 200
     return r.json()
 

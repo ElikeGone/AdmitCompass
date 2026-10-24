@@ -100,3 +100,10 @@ Last inspected: 2026-10-23 (Step 9B: 28 programs with sourced facts, link audit,
   - **Safety test mode:** `GET /api/safety/demo`, and "Safety test mode" in the dashboard reviewer footer. It runs five defenses on fixed unsafe inputs with no model call; 5/5 stopped.
   - **Run details:** `GET /api/demo/record` and `/api/runs/{id}/record`, plus the collapsed "Run details" panel with a JSON download. No keys and no profile fields; profile-derived tool arguments are masked.
   - **Tests:** 310 passed, 1 skipped; secret scan clean.
+- 2026-10-24 **Ghana default sample, employer filing history, light-mode report screenshots.**
+  - **Default sample:** the saved Ghana consulting run (`20261024T032006Z`) is now the default sample everywhere: `/api/demo`, `#/dashboard/demo`, the homepage and the International page. The India run stays at `#/dashboard/demo-india` (`?sample=india`).
+  - **Employer filing history:** shown on shortlist cards (scoped to the target occupation and city) and on homepage program cards. Each line gives the top employers with FY2025 certified H-1B counts and links to the school list and the DOL data.
+  - **Explore accuracy:** the badge now says "cost is a third-party estimate" when the shown cost isn't official (MIT Sloan).
+  - **Weekly plan:** every week is listed and week 1 starts open; the unlock step is gone.
+  - **Report screenshots:** saved to `deliverables/screenshots/report/` (light mode, 1440×900).
+  - **Tests:** 314 passed, 1 skipped.

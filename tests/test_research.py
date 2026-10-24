@@ -114,7 +114,7 @@ def test_official_values_are_never_overwritten_by_secondary():
 
 
 def test_dashboard_estimate_is_labeled_and_official_comparison_unchanged():
-    d = TestClient(app).get("/api/dashboard/demo").json()["dashboard"]
+    d = TestClient(app).get("/api/dashboard/demo-india").json()["dashboard"]
     mit = next(p for p in d["programs"] if p["program_id"] == "mit-sloan-mba")["affordability"]
     assert mit["comparable"] is False and mit["gap"] is None and mit["status"] == "no_cost"
     assert mit["estimate"]["kind"] == "estimate" and mit["estimate"]["gap_estimate"] == 135000 - 144325
@@ -125,7 +125,7 @@ def test_dashboard_estimate_is_labeled_and_official_comparison_unchanged():
 def test_estimate_not_used_when_budget_is_whole_program():
     from backend.app.schemas.applicant import ApplicantProfile
     from backend.app.tools.dashboard import affordability
-    demo = TestClient(app).get("/api/demo").json()
+    demo = TestClient(app).get("/api/demo?sample=india").json()
     rec = next(r for r in demo["report"]["recommendations"] if r["program_id"] == "mit-sloan-mba")
     prof = ApplicantProfile.model_validate(demo["profile"]).model_copy(update={"budget_period": "total_program"})
     a = affordability(prof, rec)

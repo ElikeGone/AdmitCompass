@@ -6,7 +6,7 @@ import logging
 from fastapi.testclient import TestClient
 
 from backend.app.core.public_errors import public_error, public_event, public_report
-from backend.app.main import DEMO_RUN_DIR, app
+from backend.app.main import SAMPLES, app
 
 RAW_MARKERS = ["validation error for", "validation errors for", "type=value_error", "errors.pydantic.dev", "input_value=",
                "PathwayOutput", "Traceback", "File \"", "C:\\\\", "/Users/", "/home/", "PORTKEY_API_KEY", "sk-"]
@@ -26,7 +26,7 @@ def _errors(obj):
 
 
 def test_demo_payload_has_no_raw_validation_details():
-    body = TestClient(app).get("/api/demo")
+    body = TestClient(app).get("/api/demo?sample=india")   # the India run has a failed format check
     assert body.status_code == 200
     text = body.text
     for m in RAW_MARKERS:
@@ -46,7 +46,7 @@ def test_dashboard_payload_has_no_raw_validation_details():
 
 
 def test_raw_detail_is_kept_in_the_developer_run_record():
-    trace = json.loads((DEMO_RUN_DIR / "trace.json").read_text(encoding="utf-8"))
+    trace = json.loads((SAMPLES["india"]["dir"] / "trace.json").read_text(encoding="utf-8"))
     raw = [e["detail"]["error"] for e in trace if e.get("kind") == "validation" and e["detail"].get("error")]
     assert raw and "validation error" in raw[0]
 

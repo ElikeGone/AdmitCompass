@@ -82,7 +82,7 @@ def test_dashboard_carries_evidence_rows():
 
 
 def test_run_record_has_the_report_fields_and_no_private_data():
-    r = client.get("/api/demo/record")
+    r = client.get("/api/demo/record?sample=india")
     assert r.status_code == 200
     rec = r.json()
     for k in ("model", "agent_steps", "tool_calls", "sources", "tokens", "latency_seconds", "estimated_cost",
