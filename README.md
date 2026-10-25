@@ -12,7 +12,7 @@ Requirements: **Python 3.10 or newer** (tested on 3.10, 3.11 and 3.14) and inter
 ```
 PORTKEY_API_KEY=your-course-key
 ```
-Everything else has defaults; `.env.example` lists every setting. Without a key the app still runs (Explore, the saved sample analysis, the dashboard); only new live analyses and live Ask AI answers need the key.
+Everything else has defaults; `.env.example` lists every setting. Without a key the app still runs (Explore, the saved sample analysis, the dashboard, accounts); only new live analyses and live Ask AI answers need the key. To try Ask AI with no key and no cost, add `AC_COPILOT_MODE=mock` to the same `.env` (answers are labeled as mock).
 
 **2. Install and start**
 
@@ -35,10 +35,11 @@ python3 -m venv .venv
 ## What to try
 | Where | What |
 |---|---|
-| **Sample Analysis** (top menu) | A saved real four-agent run (fictional applicant) — no cost to view |
+| **Sample Analysis** (top menu) | A saved real four-agent run for a fictional applicant from Ghana (a second sample, from India, is linked on the page) — no cost to view |
 | **Find my pathway** → *Use a sample applicant* → *Run my analysis* | A live four-agent run (~1–2 minutes, capped at 25 model requests / 200k tokens) |
 | **Explore Programs** | 30 MBA programs with official facts, cost lines (official vs. estimates) and historical employer H-1B filings |
-| **Ask AI** (bottom right) | A copilot that answers only from the evidence store, with citations |
+| **Ask AI** (top right, in the header) | A copilot that answers only from the evidence store, with citations; optional voice input in Chrome, Edge or Safari |
+| **Sign Up / Sign In** (top right) | Accounts are on by default: saved programs, profile and weekly-task progress. The SQLite file `data/app/accounts.sqlite3` is created automatically (git-ignored); set `AC_ENABLE_ACCOUNTS=false` to turn accounts off. Guests can use everything else. |
 
 Demo fixtures (fictional) are in `data/fixtures/`: `fixture-audit-consulting-ghana` (needs U.S. work authorization; consulting in Boston) and `fixture-domestic-tech-us` (U.S. citizen; product management in Seattle). Fictional demo profiles use only the 5 programs with detailed evidence (`AC_DEMO_DETAILED_ONLY=1`).
 
@@ -54,7 +55,9 @@ The full DOL source files (~420 MB) are **not** in the repo. To rebuild the filt
 .venv\Scripts\python -m pytest -q          (Windows)
 .venv/bin/python -m pytest -q              (macOS / Linux)
 ```
-All model calls in tests are mocked (no cost). Expected: all pass, 1 skipped (an optional live integration test).
+All model calls in tests are mocked (no cost). Expected: all pass, 1 skipped (an optional live integration test). The voice-input JavaScript tests run through pytest when Node.js is installed and are skipped otherwise.
+
+Fresh-clone check (any OS): `python scripts/fresh_clone_test.py [--repo-url <git url>]` clones into a new temporary folder, puts a placeholder `.env` one folder above it, follows the steps above and checks `/health` (results go to `experiments/fresh_clone_test.md`).
 
 ## Troubleshooting
 | Symptom | Fix |

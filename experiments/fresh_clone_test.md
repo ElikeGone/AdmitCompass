@@ -1,7 +1,7 @@
 # Fresh-clone test
 
 The scripts follow README.md exactly: a new folder, a `.env` **one level above** the repo, a virtual environment, `pip install -r requirements.txt`, starting uvicorn, then checking `/health`, `/` and `/api/programs`.
-- Windows: `powershell -ExecutionPolicy Bypass -File scripts\fresh_clone_test.ps1 [-RepoUrl <git url>]`
+- Any OS (Python): `python scripts/fresh_clone_test.py [--repo-url <git url>]`. This replaces the earlier PowerShell script, which Windows Defender flagged as a false positive ("potentially unwanted software") and removed on checkout, aborting `git clone` (found in the 2026-10-24 grader-workflow test).
 - macOS / Linux: `bash scripts/fresh_clone_test.sh [<git url>]`
 
 **Status note:** the project has no git remote yet (no `git init`, per the Step 1 rule), so these runs copy the working tree exactly as a clone would contain it. **Re-run with `-RepoUrl` / the URL argument after pushing to GitHub**; that is the official pre-submission dry run.

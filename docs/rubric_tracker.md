@@ -56,7 +56,7 @@ Last inspected: 2026-10-23 (Step 9B: 28 programs with sourced facts, link audit,
 - 2026-10-24 **Task 4 — Run-it-anywhere hardening: done.**
   - **Settings:** `.env.example` lists every setting the code reads; the unused HOST/PORT entries were removed.
   - **Python versions:** one 3.12-only f-string fixed. The full suite passes on Python 3.10, 3.11 and 3.14; the true minimum is 3.10.
-  - **Fresh-clone scripts:** `scripts/fresh_clone_test.ps1` and `.sh` both PASS (122 s and 103 s); results are in `experiments/fresh_clone_test.md`. There's no git remote yet, so they copied the working tree; re-run them with the repo URL after pushing.
+  - **Fresh-clone scripts:** `scripts/fresh_clone_test.py` (replaced the PowerShell version on 2026-10-24 after Windows Defender flagged it as a false positive and broke `git clone`) and `.sh`; earlier runs PASS (122 s and 103 s); results are in `experiments/fresh_clone_test.md`. There's no git remote yet, so they copied the working tree; re-run them with the repo URL after pushing.
   - **README:** rewritten for graders; the development history moved to `docs/CHANGELOG.md`.
   - **Tests:** 263 passed, 1 skipped.
 - 2026-10-24 **Task 5 — Trim scope: done.**
