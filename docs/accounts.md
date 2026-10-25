@@ -66,25 +66,29 @@ No new dependencies are needed. The database is created automatically on first u
 
 # Voice input for Ask AdmitCompass
 
-- **Browser speech recognition only:** the microphone button in the Ask AdmitCompass question box uses the browser's built-in speech recognition (the Web Speech API). AdmitCompass has no transcription server, no speech-to-text provider and no extra API key for voice.
-- **Support depends on the browser:** Chrome, Edge and Safari are supported where their speech recognition is available. Firefox may show "Voice input isn’t supported in this browser. Type your question instead."
+- **Mechanism:** the browser's Web Speech API (`SpeechRecognition` / `webkitSpeechRecognition`), in `frontend/voice.js`. AdmitCompass has no transcription server, no speech-to-text provider and no extra API key for voice. No MediaRecorder or audio upload is used.
 - **Permission:** the browser asks for microphone access only after the user clicks the microphone button.
 - **Nothing is sent automatically:** the transcript is written into the question box so the user can review and edit it. It's sent only when the user presses Send (or Enter), like a typed question.
-- **Privacy:**
-  - AdmitCompass receives only the transcript the user chooses to send, through the normal Ask AdmitCompass request with its existing safety checks.
-  - Audio is not stored by AdmitCompass, and AdmitCompass never receives it.
-  - Speech-to-text is done by the browser. Some browsers (Chrome, for example) use their vendor's own online speech service, so voice input isn't guaranteed to work offline.
+- **States shown:** **Ready**, **Listening**, **Processing** (finishing the transcript, checking local mode or downloading it; clicks are ignored meanwhile), and **Microphone unavailable** (unsupported browser, access blocked, no microphone, speech service unreachable). "I didn’t hear anything" and other one-off errors return to Ready so the user can try again.
+- **Stopping:** clicking the microphone again stops listening and keeps the text; closing the chat does the same. Navigating to another page, leaving the site or hiding the tab aborts listening immediately.
+- **Where audio is processed:** the browser decides.
+  - **Chrome and Edge:** by default they send the audio to their vendor's online speech service (Google, Microsoft).
+  - **Chrome's local mode:** when the online service fails and Chrome supports it, AdmitCompass retries in Chrome's local mode (`processLocally`), or offers a "Download on-device speech" button that installs a language pack once.
+  - **AdmitCompass:** never receives, sends or stores audio; it receives only the transcript the user chooses to send.
+  - **Offline:** voice input isn't claimed to work offline.
 - **Messages:**
-  - network error — "Voice input is temporarily unavailable. Type your question instead.";
+  - network error — "Voice input is temporarily unavailable. Type your question instead. If this keeps happening, try Chrome.";
   - microphone blocked — "Microphone access is blocked. Allow it in your browser settings, or type your question instead.";
   - unsupported browser — "Voice input isn’t supported in this browser. Type your question instead.";
-  - no speech — "I didn’t hear anything. Try again or type your question."
-- **When the online speech service fails** (the browser reports a `network` error):
-  - **On-device retry:** if the browser supports on-device speech recognition (newer Chrome, feature-detected), AdmitCompass retries on-device automatically when it's installed. If it can be downloaded, AdmitCompass offers a "Download on-device speech" button; the browser downloads a language pack once. After that, dictation runs on the device.
-  - **Browser guidance:** browsers known to block the online speech service — Brave, and embedded Electron windows such as an app's built-in preview — get specific guidance: "This browser blocks the online speech service that voice input needs. Open AdmitCompass in Chrome, Edge or Safari, or type your question instead."
-  - **Otherwise:** the network message above is shown.
+  - no speech — "I didn’t hear anything. Try again or type your question.";
+  - Brave or embedded Electron windows (such as an app's built-in preview) — "This browser blocks the online speech service that voice input needs. Open AdmitCompass in Chrome, Edge or Safari, or type your question instead."
 - **Typing always works:** the text box and Enter-to-send are unchanged.
 
-## Voice input limitations
-- **Successful dictation with a physical microphone was not tested in this environment.** Dictation, editing, stopping and the unsupported state were tested with a simulated speech API; the blocked-microphone state was tested with a real browser speech API that had no microphone access.
-- **Browser support varies;** recognition quality and language handling depend on the browser.
+## Voice input: what was tested (2026-10-24)
+- **Automated:** `tests/js/voice.test.mjs` (19 tests) runs `voice.js` against a mocked speech API — every state and error, local-mode retry and download, repeated clicks, stopping on close, aborting on navigation, and checks that the transcript fills the input without being sent. `tests/test_frontend_js.py` runs them inside pytest when Node.js is installed.
+- **Real browsers, headless, with Chromium's fake microphone** (a synthetic test signal, auto-granted permission) on `http://127.0.0.1:8000`:
+  - **Chrome 156:** worked. Clicking the microphone started listening, Chrome's online speech service returned text from the synthetic audio, the text appeared in the question box, and stopping showed Processing then "Transcript ready". No question was sent.
+  - **Edge 155:** the speech service returned `network` about a second after audio started, and local mode was unavailable, so the app showed "Microphone unavailable". This may differ in a normal, signed-in Edge window; it wasn't tested there.
+  - **The Claude app's preview pane (Electron):** `network`, as expected for Electron.
+- **Human test with a physical microphone (Chrome, 2026-10-24): passed.** The project owner opened `http://127.0.0.1:8000/#/dashboard/demo` in Chrome, clicked the microphone, spoke a question, and the speech appeared in the question box without being sent.
+- **Not tested with a physical microphone:** Edge, Safari and Firefox.

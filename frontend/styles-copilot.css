@@ -86,3 +86,6 @@ body.cp-open .cp-launch { display: none; }
 @keyframes cp-mic-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, .35); } 50% { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); } }
 @media (prefers-reduced-motion: reduce) { .cp-mic[data-state="listening"] { animation: none; } }
 .cp-voice-act { font-size: 13px; font-weight: 600; }
+.cp-voice-state { font-weight: 700; color: var(--text); margin-right: 2px; }
+.cp-mic[data-state="unavailable"] { opacity: .6; }
+.cp-mic[data-state="processing"] { cursor: progress; opacity: .75; }
