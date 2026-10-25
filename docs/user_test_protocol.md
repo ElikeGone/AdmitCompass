@@ -2,6 +2,8 @@
 
 **Status: protocol ready. No sessions run yet. No results recorded.** Results go in `experiments/user_testing/` only after real sessions.
 
+> **Shorter alternative:** a one-tester impact test on the current Sample Analysis (Ghana applicant) — strongest programs, GRE/GMAT next step, top profile gap, this week's action — is in `experiments/user_testing/impact_test_single_user.md`. Note this protocol still points at the older India sample and `#/results/demo`.
+
 ## Who
 2–3 people who are prospective or recent graduate-school applicants, ideally international (e.g. classmates or friends considering an MBA). Not the author. Verbal consent; no names, emails, or personal identifiers recorded. Use tester codes T1, T2, T3.
 
