@@ -251,7 +251,8 @@ async function loadFixture(key) {
   const fx = await api("/api/fixtures");
   S.draft = draftFromProfile(fx[key].profile, key); S.step = STEPS.length; saveDraft();
   toast(`Loaded a fictional ${key === "tech-pm" ? "tech product manager" : "energy finance"} applicant.`);
-  location.hash = "#/start";
+  // Already on the start page: setting the same hash fires no hashchange, so re-render here.
+  if (location.hash === "#/start" || location.hash === "#/profile") rerenderStart(); else location.hash = "#/start";
 }
 /* Small inline icons (static path data only). */
 const ICONS = {

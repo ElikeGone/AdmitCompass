@@ -19,3 +19,13 @@ The placeholder key used is not a real key. `/health` only reports whether a key
 - Mode: working-tree copy (no git remote yet); Python: Python 3.11.9
 - .env one level above the repo; /health ok=yes, api_key_configured=true; GET / = 200; GET /api/programs = 200
 - Time to installed: 93s; time to app answering /health: 103s (limit: 600s)
+
+## 2026-10-25T03:27:59Z - PASS (win32, Python script)
+- Mode: git clone of the local repository HEAD; Python 3.14.7
+- .env one folder above the repo; /health ok=True, api_key_configured=True; GET / = 200; GET /api/programs = 200
+- Time to installed: 57s; time to app answering /health: 60s (limit: 600s)
+
+## 2026-10-25T03:35:42Z - PASS (win32, Python script)
+- Mode: git clone of the local repository HEAD; Python 3.14.7
+- .env one folder above the repo; /health ok=True, api_key_configured=True; GET / = 200; GET /api/programs = 200
+- Time to installed: 62s; time to app answering /health: 66s (limit: 600s)
