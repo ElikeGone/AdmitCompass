@@ -1688,16 +1688,18 @@ function safetyTestPanel() {
     try {
       const r = await api("/api/safety/demo");
       put(clear(body), el("p", { class: "small" }, el("b", { text: `${r.stopped} of ${r.total} defenses stopped the unsafe input.` }), " No AI call was made; each check runs the app's own code."),
-        el("div", { class: "tbl-wrap" }, el("table", { class: "tbl devtbl" },
-          el("thead", {}, el("tr", {}, ["Defense", "Unsafe input", "Result", "What the user sees"].map(h => el("th", { scope: "col", text: h })))),
+        el("div", { class: "tbl-wrap" }, el("table", { class: "tbl devtbl safetbl" },
+          el("thead", {}, el("tr", {}, ["Case", "Input", "Defense triggered", "Outcome", "What the user sees"].map(h => el("th", { scope: "col", text: h })))),
           el("tbody", {}, r.scenarios.map(x => el("tr", {},
-            el("td", {}, el("b", { text: x.defense }), el("div", { class: "xs muted", text: x.mechanism })),
+            el("td", {}, el("b", { text: x.category }), el("div", { class: "xs muted", text: x.defense })),
             el("td", { class: "small", text: x.input }),
-            el("td", {}, el("span", { class: `dtag ${x.stopped ? "ok" : "warn"}`, text: x.stopped ? "Stopped" : "Not stopped" }), el("div", { class: "xs", text: x.outcome })),
+            el("td", { class: "small", text: x.mechanism }),
+            el("td", {}, el("span", { class: `dtag ${x.stopped ? (x.outcome_kind === "blocked" ? "ok" : "fact") : "warn"}`, text: x.stopped ? x.outcome_kind[0].toUpperCase() + x.outcome_kind.slice(1) : "Not stopped" }),
+              el("div", { class: "xs", text: x.outcome })),
             el("td", { class: "small", text: x.shown_to_user })))))));
     } catch (err) { put(clear(body), el("p", { class: "small", text: `The safety checks couldn't run: ${err.message}` })); }
   };
-  put(body, el("p", { class: "small muted", text: "Runs five defenses on fixed unsafe inputs: prompt injection in a source, an admissions-odds request, a personal immigration question, stale or missing data, and an answer that contradicts verified evidence." }),
+  put(body, el("p", { class: "small muted", text: "Runs eight defenses on fixed unsafe inputs: prompt injection in a school source, admission-odds questions and answers, visa and sponsorship guarantees, missing or stale cost and deadline data, an answer that contradicts verified evidence, and excessive model use." }),
     el("button", { type: "button", class: "btn btn-secondary", onclick: e => run(e.currentTarget), text: "Run the safety checks" }));
   return el("details", { class: "more drun" }, el("summary", { text: "Safety test mode" }), body);
 }

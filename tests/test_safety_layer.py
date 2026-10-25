@@ -48,10 +48,33 @@ def test_copilot_refuses_odds_and_immigration_before_any_model_call(monkeypatch)
 
 def test_safety_test_mode_stops_every_unsafe_input():
     r = client.get("/api/safety/demo").json()
-    assert r["total"] == 5 and r["stopped"] == 5
-    assert [s["id"] for s in r["scenarios"]] == ["D1", "D2", "D3", "D4", "D5"]
-    d5 = r["scenarios"][4]
-    assert "$50,000" in d5["input"] and "$91,892" in d5["shown_to_user"]   # the verified figure replaces the conflicting one
+    assert r["total"] == 8 and r["stopped"] == 8
+    by = {s["id"]: s for s in r["scenarios"]}
+    assert list(by) == ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"]
+    assert {s["category"] for s in r["scenarios"]} == {"Prompt injection", "Admission probabilities", "Visa or sponsorship",
+                                                       "Missing or stale data", "Conflict with verified evidence", "Excessive model use"}
+    for s in r["scenarios"]:   # every case shows input, response, triggered defense and an outcome class
+        assert s["input"] and s["shown_to_user"] and s["mechanism"] and s["outcome_kind"] in {"blocked", "qualified", "marked unknown"}
+    assert by["D2"]["shown_to_user"] == REFUSAL_TEXT["admission_odds"]
+    assert "admission-odds wording" in by["D3"]["mechanism"]
+    assert by["D4"]["shown_to_user"] == REFUSAL_TEXT["immigration_advice"]
+    d5 = by["D5"]   # a model's sponsorship guarantee is replaced by sourced filing history with the no-guarantee note
+    assert "sponsorship-guarantee wording" in d5["mechanism"] and "will sponsor" not in d5["shown_to_user"].lower()
+    assert "Not a guarantee of sponsorship" in d5["shown_to_user"] and "certified H-1B" in d5["shown_to_user"]
+    d6 = by["D6"]
+    assert d6["outcome_kind"] == "marked unknown" and "not established from the official pages checked" in d6["shown_to_user"]
+    assert "Poets&Quants" in d6["shown_to_user"] and "Class of 2019" in d6["shown_to_user"]   # estimate labeled; stale flagged
+    d7 = by["D7"]
+    assert "$50,000" in d7["input"] and "$91,892" in d7["shown_to_user"]   # the verified figure replaces the conflicting one
+    d8 = by["D8"]
+    assert "please wait a minute" in d8["shown_to_user"] and "reached its usage limit" in d8["shown_to_user"]
+
+
+def test_safety_demo_exposes_no_secrets_raw_errors_or_internal_names():
+    text = client.get("/api/safety/demo").text
+    for leak in ("Traceback", "File \\\"", "ValidationError", "value_error", "errors.pydantic.dev", "EvidenceItem", "PathwayOutput",
+                 "Claim(", "request limit reached (", "lca-fy", "ev-mit", "sx-", "PORTKEY", "sk-", "C:\\\\", "/Users/"):
+        assert leak not in text, leak
 
 
 def test_safety_demo_is_deterministic():

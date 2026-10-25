@@ -222,3 +222,8 @@
   .ds-school dl > div { grid-template-columns: 1fr; gap: 2px; }
 }
 .drun-h { margin: 14px 0 6px; font-size: 14px; }
+/* reviewer tables fit the panel: fixed columns, wrapped text */
+.drun .devtbl { table-layout: fixed; width: 100%; }
+.drun .devtbl th, .drun .devtbl td { white-space: normal; overflow-wrap: anywhere; font-size: 13px; line-height: 1.45; }
+.safetbl th:nth-child(1) { width: 17%; } .safetbl th:nth-child(2) { width: 22%; } .safetbl th:nth-child(3) { width: 17%; }
+.safetbl th:nth-child(4) { width: 16%; } .safetbl th:nth-child(5) { width: 28%; }
