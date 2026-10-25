@@ -1664,7 +1664,16 @@ function runDetailsPanel(runId) {
     try {
       const rec = await api(String(runId).startsWith("demo") ? `/api/demo/record${runId === "demo" ? "" : `?sample=${encodeURIComponent(runId.replace(/^demo-/, ""))}`}` : `/api/runs/${encodeURIComponent(runId)}/record`);
       put(clear(body),
+        el("h4", { class: "drun-h", text: "Measured in this run" }),
         el("dl", { class: "drun-sum" }, rec.summary.map(x => el("div", {}, el("dt", { text: x.label }), el("dd", { text: x.value })))),
+        rec.projections ? [
+          el("h4", { class: "drun-h", text: "Estimates — not measured" }),
+          el("p", { class: "xs muted", text: `Method: ${rec.projections.method}. ${rec.projections.assumptions.join(" ")}` }),
+          el("div", { class: "tbl-wrap" }, el("table", { class: "tbl devtbl" },
+            el("thead", {}, el("tr", {}, ["Scenario", "Runs", "Model requests", "Input tokens", "Cached input", "Output tokens", "Cost"].map(h => el("th", { scope: "col", text: h })))),
+            el("tbody", {}, rec.projections.rows.map(r => el("tr", {}, [r.scenario, fmtInt(r.runs), fmtInt(r.model_requests), fmtInt(r.input_tokens),
+              fmtInt(r.cached_input_tokens), fmtInt(r.output_tokens), r.estimated_cost_usd != null ? fmtUSD(r.estimated_cost_usd) : "Not calculated"].map(v => el("td", { text: v }))))))),
+          el("p", { class: "xs muted", text: `Cost formula (used only with a documented price): ${rec.projections.formula.cost_usd}` })] : null,
         el("div", { class: "dactions" },
           el("button", { type: "button", class: "btn btn-secondary", onclick: () => downloadJSON(`admitcompass-run-${rec.run_id || runId}.json`, rec), text: "Download JSON record" })),
         el("p", { class: "xs muted", text: rec.privacy }));
