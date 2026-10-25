@@ -91,7 +91,7 @@ figcaption b{color:var(--ink)}
         <dt>Author</dt><dd>Elike Gone (solo project)</dd>
         <dt>Course</dt><dd>MGT 409, Yale SOM, Fall 2026 · due Monday, October 26, 2026, 6:00 PM ET · <a href="https://zlisto.github.io/mgt_409_fa26/project_requirements.html">project requirements</a></dd>
         <dt>GitHub repository</dt><dd><a href="https://github.com/ElikeGone/AdmitCompass">github.com/ElikeGone/AdmitCompass</a> (public)</dd>
-        <dt>App link</dt><dd>Not hosted online. It runs locally from the repository README in about 2 minutes (working-tree copy test, not yet a GitHub clone: 103–122 s to a working <code>/health</code>, §7).</dd>
+        <dt>App link</dt><dd>Not hosted online. It runs locally from the repository README: a fresh clone from GitHub completed setup and served the app in 55 s (§7).</dd>
         <dt>Model</dt><dd><code>gpt-6-luna</code> through Portkey (course key), for all four agents and Ask AI</dd>
         <dt>Slides / demo</dt><dd><code>slides.html</code> is submitted separately. No demo video is linked in this report.</dd>
         <dt>Report date</dt><dd>October 24, 2026. Every number below comes from a file in the repository, and its label says what kind of evidence it is.</dd>
@@ -310,9 +310,9 @@ figcaption b{color:var(--ink)}
         <tr><td>Safety test mode / red-team suite</td><td class="r">8/8 · 26/26</td></tr>
         <tr><td>Saved four-agent run: requests · wall time</td><td class="r">9 · 53.8 s</td></tr>
         <tr><td>Open the saved analysis (<code>/api/demo</code>, median of 50)</td><td class="r">7.0 ms</td></tr>
-        <tr><td>Working-tree copy → app answering <code>/health</code> (Windows / bash)</td><td class="r">122 s / 103 s</td></tr>
+        <tr><td>Fresh clone from GitHub → app answering <code>/health</code></td><td class="r">55 s</td></tr>
       </table>
-      <p class="cap">Sources: pytest run of 2026-10-24; <code>experiments/performance/performance_metrics.md</code>; <code>experiments/fresh_clone_test.md</code>. This test copied the local working tree into a new folder and followed the README. <b>No public GitHub clone has been tested yet</b>, because the repository isn't published.</p>
+      <p class="cap">Sources: pytest run of 2026-10-24; <code>experiments/performance/performance_metrics.md</code>; <code>experiments/fresh_clone_test.md</code>. Fresh clone of the public GitHub repo via the README (2026-10-25): setup in 55 s, app served, 323 tests passed, 1 skipped.</p>
     </div>
   </div>
   <h3>Real users: early qualitative feedback <span class="tag t-qual">Qualitative</span></h3>

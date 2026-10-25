@@ -29,3 +29,8 @@ The placeholder key used is not a real key. `/health` only reports whether a key
 - Mode: git clone of the local repository HEAD; Python 3.14.7
 - .env one folder above the repo; /health ok=True, api_key_configured=True; GET / = 200; GET /api/programs = 200
 - Time to installed: 62s; time to app answering /health: 66s (limit: 600s)
+
+## 2026-10-25T04:27:31Z - PASS (win32, Python script)
+- Mode: git clone of the repo URL; Python 3.14.7
+- .env one folder above the repo; /health ok=True, api_key_configured=True; GET / = 200; GET /api/programs = 200
+- Time to installed: 51s; time to app answering /health: 55s (limit: 600s)
